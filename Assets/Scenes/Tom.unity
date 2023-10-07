@@ -154,6 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blackhole: {fileID: 1140830785}
+  movementSpeed: 10
 --- !u!212 &8231500
 SpriteRenderer:
   m_ObjectHideFlags: 0
