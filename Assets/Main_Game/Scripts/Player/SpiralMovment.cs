@@ -1,30 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SpiralMovment : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
     public GameObject blackhole;
-    private float horizontalInput;
-    private float verticalInput;
     public float movementSpeed;
+    Quaternion targetRotation;
     Vector3 direction;
-    // Update is called once per frame
+
     void Update()
     {
-        //verticalInput = Input.GetAxis("Vertical");
-        //horizontalInput = Input.GetAxis("Horizontal");
-        //Vector3 direction = blackhole.transform.position - transform.position;
-        
+               
         if (!Input.GetKey(KeyCode.Space))
         {
             direction = Time.deltaTime * (blackhole.transform.position - transform.position);
-            direction = Quaternion.Euler(0, 0, 0.05f) * direction ;
+            direction = Quaternion.Euler(0, 0, 75) * direction ;
+    
+            targetRotation = Quaternion.LookRotation(Vector3.forward, direction);
 
         }
         else
@@ -34,13 +25,8 @@ public class SpiralMovment : MonoBehaviour
         float distanceThisFrame = movementSpeed * Time.deltaTime;
      
         transform.Translate(direction.normalized * distanceThisFrame, Space.World);
-        //transform.Translate(Vector3.right * Time.deltaTime * 12 * horizontalInput);
-        //transform.Translate(Vector3. up * Time.deltaTime * 12 * verticalInput);
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 5f * Time.deltaTime);        
 
-        // make the object z axis point towards the direction its moving
-        transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
-        // if space key is pressed
-             
-        
+
     }
 }
