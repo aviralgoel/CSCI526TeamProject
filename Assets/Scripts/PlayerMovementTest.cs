@@ -4,23 +4,35 @@ using UnityEngine;
 
 public class PlayerMovementTest : MonoBehaviour
 {
-    public float movementSpeed = 5f; // Adjust this to control the force strength.
+    public float movementSpeed = 10f; // Adjust this to control the force strength.
     private Rigidbody2D rb;
+    public GameObject blackhole;
+    public float angleToTurn = 10f;
+    Vector3 direction;
+    Quaternion targetRotation;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        rb.velocity = Vector3.zero;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
-
-        // Calculate the force vector based on input.
-        Vector2 moveForce = new Vector2(horizontalInput, verticalInput) * movementSpeed;
-
-        // Apply the force to the Rigidbody2D.
-        rb.AddForce(moveForce);
+       
+        rb.velocity = transform.up * movementSpeed * Time.deltaTime;
+        if(Input.GetKey(KeyCode.A))
+        {
+            direction = Quaternion.Euler(3, 5, 0.5f) * transform.up * Time.deltaTime;
+            targetRotation = Quaternion.LookRotation(Vector3.forward, direction);
+        }
+        else
+        {
+            direction = Time.deltaTime * (blackhole.transform.position - transform.position);
+            direction = Quaternion.Euler(0, 0, angleToTurn) * direction;
+            
+        }
+        targetRotation = Quaternion.LookRotation(Vector3.forward, direction);
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 5f * Time.deltaTime);
     }
 }
