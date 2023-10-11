@@ -42,6 +42,8 @@ public class GameManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.A))
             {
                 isPlayerOneActive=true;
+                playerOne.GetComponent<ScoreManager>().SetPlayerActive(true);
+                playerOne.GetComponent<ScoreManager>().SetPlayerNumber(1);
             }
         }
         if (!isPlayerTwoActive)
@@ -49,6 +51,8 @@ public class GameManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.L))
             {
                 isPlayerTwoActive=true;
+                playerTwo.GetComponent<ScoreManager>().SetPlayerActive(true);
+                playerTwo.GetComponent<ScoreManager>().SetPlayerNumber(2);
             }
         }
     }
