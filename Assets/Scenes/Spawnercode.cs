@@ -18,7 +18,7 @@ public class Spawnercode : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             int randomIndex = Random.Range(0, myobj.Length);
-            Vector3 randomSpawn = new Vector3(Random.Range(-5, 5), Random.Range(-5, 5));
+            Vector3 randomSpawn = new Vector3(Random.Range(-5, 5), Random.Range(-5, 5), -1);
 
             Instantiate(myobj[randomIndex], randomSpawn, Quaternion.identity);
         }
