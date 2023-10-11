@@ -2,37 +2,46 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Collectiblesscript : MonoBehaviour
+public class Collectibles : MonoBehaviour
 {
     public float speed;
-    public Vector2 direction;
-    //bool moving = false;
-    public List<GameObject> items = new List<GameObject>();
+    public GameObject[] myobj;
+
+    public Vector3 direction; 
+    bool running = false;
+    Vector3 dest;
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("DestroyMyObject", 5);
+       direction = Vector3.zero;
 
     }
 
     // Update is called once per frame
-
-    private float horizontalInput;
-    private float verticalInput;
     void Update()
     {
-        if (changeDirection())
-            horizontalInput = Input.GetAxis("Horizontal");
-        verticalInput = Input.GetAxis("Vertical");
-        transform.Translate(Vector3.right * Time.deltaTime * 40 * horizontalInput);
-        transform.Translate(Vector3.up * Time.deltaTime * 40 * verticalInput);
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            int randomIndex = Random.Range(0, myobj.Length);
+            Vector3 randomSpawn = new Vector3(Random.Range(-5, 5), Random.Range(-5,5));
+
+            Instantiate(myobj[randomIndex], randomSpawn, Quaternion.identity);
+        }
+        if (!running)
+        {
+            StartCoroutine(changeDirection());
+        }
+        dest = transform.position + direction * 5;
+        transform.position = Vector3.Lerp(transform.position, dest, Time.deltaTime);
     }
 
     IEnumerator changeDirection()
     {
-        yield return new WaitforSeconds(3);
-        direction.x = Random.Range(-1, 1);
-        direction.y = Random.Range(-1, 1);
+        running = true;
+        yield return new WaitForSeconds(0.5f);
+        direction.x = Random.Range(-5, 5);
+        direction.y = Random.Range(-5, 5);
+        running = false;
     }
 
 }
