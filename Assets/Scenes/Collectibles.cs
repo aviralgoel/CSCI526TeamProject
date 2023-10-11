@@ -5,8 +5,6 @@ using UnityEngine;
 public class Collectibles : MonoBehaviour
 {
     public float speed;
-    public GameObject[] myobj;
-
     public Vector3 direction; 
     bool running = false;
     Vector3 dest;
@@ -20,18 +18,11 @@ public class Collectibles : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            int randomIndex = Random.Range(0, myobj.Length);
-            Vector3 randomSpawn = new Vector3(Random.Range(-5, 5), Random.Range(-5,5));
-
-            Instantiate(myobj[randomIndex], randomSpawn, Quaternion.identity);
-        }
         if (!running)
         {
             StartCoroutine(changeDirection());
         }
-        dest = transform.position + direction * 5;
+        dest = transform.position + direction * 0;
         transform.position = Vector3.Lerp(transform.position, dest, Time.deltaTime);
     }
 

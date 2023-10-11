@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5818194942804883217}
   - component: {fileID: 5818194942804883223}
   m_Layer: 0
-  m_Name: Capsule (2)
+  m_Name: Bad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53,7 +53,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3944cbd08695241159563d219f055193, type: 2}
+  - {fileID: 2100000, guid: aed5370afe71b7e46b9b129a61a18f0d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -98,5 +98,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.4
-  myobj: []
   direction: {x: 0, y: 0, z: 0}
