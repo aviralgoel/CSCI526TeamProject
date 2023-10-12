@@ -7,12 +7,19 @@ public class Collectibles : MonoBehaviour
     public float speed;
     public Vector3 direction; 
     bool running = false;
+
+    public float minDeactivationTime = 3f;
+    public float maxDeactivationTime = 8f;
     Vector3 dest;
     // Start is called before the first frame update
     void Start()
     {
        direction = Vector3.zero;
 
+    }
+    private void OnEnable()
+    {
+        StartCoroutine(DelayedDeactivate());
     }
 
     // Update is called once per frame
@@ -33,6 +40,12 @@ public class Collectibles : MonoBehaviour
         direction.x = Random.Range(-5, 5);
         direction.y = Random.Range(-5, 5);
         running = false;
+    }
+    IEnumerator DelayedDeactivate()
+    {
+        float randomTime = Random.Range(minDeactivationTime, maxDeactivationTime);
+        yield return new WaitForSeconds(randomTime);
+        this.gameObject.SetActive(false);
     }
 
 }

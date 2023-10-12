@@ -1,21 +1,32 @@
-
-
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Spawnercode : MonoBehaviour
 {
-    public GameObject[] myobj;
+    public GameObject[] myobj;  // Array of prefabs to spawn
+    public float spawnInterval = 0.3f;  // Time interval between spawns
+    public float xRange = 5.0f;  // Random X range
+    public float yRange = 5.0f;  // Random Y range
+
+    private float timer = 0.0f;
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            int randomIndex = Random.Range(0, myobj.Length);
-            Vector3 randomSpawn = new Vector3(Random.Range(-5, 5), Random.Range(-5, 5), -1);
+        // Update the timer
+        timer += Time.deltaTime;
 
-            // This line will instantiate a capsule and the capsule will start its own deactivation timer.
+        // Check if it's time to spawn a new object
+        if (timer >= spawnInterval)
+        {
+            // Reset the timer
+            timer = 0.0f;
+
+            // Generate a random position
+            Vector3 randomSpawn = new Vector3(Random.Range(-xRange, xRange), Random.Range(-yRange, yRange), -1);
+
+            // Choose a random prefab from the array
+            int randomIndex = Random.Range(0, myobj.Length);
+
+            // Instantiate the chosen prefab at the random position
             Instantiate(myobj[randomIndex], randomSpawn, Quaternion.identity);
         }
     }

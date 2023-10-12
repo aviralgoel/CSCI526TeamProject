@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3116677190169294801}
   - component: {fileID: 3116677190169294807}
   - component: {fileID: 216389118}
-  - component: {fileID: 7666707052716279631}
   m_Layer: 0
   m_Name: Good
   m_TagString: Untagged
@@ -101,6 +100,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   direction: {x: 0, y: 0, z: 0}
+  minDeactivationTime: 3
+  maxDeactivationTime: 8
 --- !u!70 &216389118
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -117,17 +118,3 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 2}
   m_Direction: 0
---- !u!114 &7666707052716279631
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5282602700515287355}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3965485ab907ba343b6caa5c83e2b289, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minDeactivationTime: 3
-  maxDeactivationTime: 8
