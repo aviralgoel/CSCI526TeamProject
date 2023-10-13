@@ -5,9 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: Assets/Scenes/Rahul.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
     path: Assets/Scenes/Start_Scene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    guid: b186a7e5f35d82c439087c641cfa79ea
   - enabled: 1
     path: Assets/Scenes/Aviral.unity
     guid: f96a6a298b61da74fb1a5526eb4f3899
