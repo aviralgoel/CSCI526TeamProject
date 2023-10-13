@@ -323,11 +323,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8380706850418640478, guid: ae3a6f138e83aff4cb2774d2706f10b5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -153
       objectReference: {fileID: 0}
     - target: {fileID: 8380706850418640478, guid: ae3a6f138e83aff4cb2774d2706f10b5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 86
       objectReference: {fileID: 0}
     - target: {fileID: 8380706850418640478, guid: ae3a6f138e83aff4cb2774d2706f10b5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -364,6 +364,10 @@ PrefabInstance:
     - target: {fileID: 8380706850418640479, guid: ae3a6f138e83aff4cb2774d2706f10b5, type: 3}
       propertyPath: lengthInSec
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8380706850418640479, guid: ae3a6f138e83aff4cb2774d2706f10b5, type: 3}
+      propertyPath: moveWithTransform
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8380706850418640479, guid: ae3a6f138e83aff4cb2774d2706f10b5, type: 3}
       propertyPath: ShapeModule.radiusThickness
