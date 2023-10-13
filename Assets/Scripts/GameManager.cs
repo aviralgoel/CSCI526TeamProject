@@ -24,6 +24,11 @@ public class GameManager : MonoBehaviour
     // player 2 variables
     bool isPlayerTwoActive = false;
 
+    public string player1StartTime;
+    public string player1EndTime;
+    public string player2StartTime;
+    public string player2EndTime;
+
     
 
     // Start is called before the first frame update
@@ -37,18 +42,25 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        AnalyticsCollector analyticsCollector = GetComponent<AnalyticsCollector>();
         if (!isPlayerOneActive)
         {
             if (Input.GetKeyDown(KeyCode.A))
             {
+                float temp = Time.time;
+                player1StartTime = temp.ToString(); 
                 isPlayerOneActive=true;
+                analyticsCollector.SendPlayer1("A", player1StartTime);
             }
         }
         if (!isPlayerTwoActive)
         {
             if (Input.GetKeyDown(KeyCode.L))
             {
+                float temp = Time.time;
+                player2StartTime = temp.ToString(); 
                 isPlayerTwoActive=true;
+                analyticsCollector.SendPlayer2("L", player2StartTime);
             }
         }
     }
