@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class CollisionController : MonoBehaviour
 {
+    // public GameObject player;
+    // private ScoreManager scoreManager;
+
+    private void Start()
+    {
+    }
     // detect collision with other game bodies 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -14,6 +20,10 @@ public class CollisionController : MonoBehaviour
         else if (this.gameObject.CompareTag("Player2Blade") && collision.gameObject.CompareTag("Player1"))
         {
             Debug.Log("Player 2 hit Player 1");
+        }
+        else if(collision.gameObject.CompareTag("Blackhole"))
+        {
+            //Die();
         }
     }
     private void Update()

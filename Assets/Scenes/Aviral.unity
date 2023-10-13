@@ -371,6 +371,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5657236042390071254, guid: 41433c31d6401cc46890a14ed4cc10dc, type: 3}
+      propertyPath: m_TagString
+      value: Blackhole
+      objectReference: {fileID: 0}
     - target: {fileID: 5657236043178004034, guid: 41433c31d6401cc46890a14ed4cc10dc, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5
@@ -482,23 +486,21 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6184972171403645291, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
   m_PrefabInstance: {fileID: 671775149}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1469920199 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8413391673206966585, guid: b25c44eadcf8d0e43b6980cf9b94a946, type: 3}
-  m_PrefabInstance: {fileID: 8491089684687662137}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1469920200
+--- !u!114 &1441567226
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1469920199}
+  m_GameObject: {fileID: 1441567221}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a0b0fbb1968140728e192c540ca6824, type: 3}
+  m_Script: {fileID: 11500000, guid: bdcbfb5efb94441439093611546365ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isMovementAllowed: 0
+  movementSpeed: 20
+  angleToTurn: 10
 --- !u!1 &1590111225
 GameObject:
   m_ObjectHideFlags: 0
@@ -655,6 +657,21 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5539643207180068566, guid: aa9161055e227c24583beef344af0ec7, type: 3}
   m_PrefabInstance: {fileID: 2113452613}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2113452619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 809736415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdcbfb5efb94441439093611546365ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMovementAllowed: 0
+  movementSpeed: 20
+  angleToTurn: 10
 --- !u!1001 &8491089684687662137
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -663,10 +680,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6309508478128937345, guid: b25c44eadcf8d0e43b6980cf9b94a946, type: 3}
-      propertyPath: blackhole
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6309508478128937345, guid: b25c44eadcf8d0e43b6980cf9b94a946, type: 3}
       propertyPath: playerOne
       value: 
       objectReference: {fileID: 1441567221}
@@ -674,18 +687,6 @@ PrefabInstance:
       propertyPath: playerTwo
       value: 
       objectReference: {fileID: 809736415}
-    - target: {fileID: 6309508478128937345, guid: b25c44eadcf8d0e43b6980cf9b94a946, type: 3}
-      propertyPath: angleToTurn
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 6309508478128937345, guid: b25c44eadcf8d0e43b6980cf9b94a946, type: 3}
-      propertyPath: playeerOneMovementSpeed
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 6309508478128937345, guid: b25c44eadcf8d0e43b6980cf9b94a946, type: 3}
-      propertyPath: playeerTwoMovementSpeed
-      value: 40
-      objectReference: {fileID: 0}
     - target: {fileID: 6690346119174730491, guid: b25c44eadcf8d0e43b6980cf9b94a946, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -733,10 +734,6 @@ PrefabInstance:
     - target: {fileID: 8413391673206966585, guid: b25c44eadcf8d0e43b6980cf9b94a946, type: 3}
       propertyPath: m_Name
       value: GameManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 8413391673206966585, guid: b25c44eadcf8d0e43b6980cf9b94a946, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b25c44eadcf8d0e43b6980cf9b94a946, type: 3}
