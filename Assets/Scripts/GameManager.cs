@@ -51,6 +51,9 @@ public class GameManager : MonoBehaviour
                 player1StartTime = temp.ToString(); 
                 isPlayerOneActive=true;
                 analyticsCollector.SendPlayer1("A", player1StartTime);
+                playerOne.GetComponent<ScoreManager>().SetPlayerActive(true);
+                playerOne.GetComponent<ScoreManager>().SetPlayerNumber(1);
+
             }
         }
         if (!isPlayerTwoActive)
@@ -61,6 +64,8 @@ public class GameManager : MonoBehaviour
                 player2StartTime = temp.ToString(); 
                 isPlayerTwoActive=true;
                 analyticsCollector.SendPlayer2("L", player2StartTime);
+                playerTwo.GetComponent<ScoreManager>().SetPlayerActive(true);
+                playerTwo.GetComponent<ScoreManager>().SetPlayerNumber(2);
             }
         }
     }
