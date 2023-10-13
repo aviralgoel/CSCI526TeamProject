@@ -220,7 +220,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8810299168822125677, guid: f9ba1044021e4604fac7d57da3b27a1b, type: 3}
       propertyPath: sceneToLoad
-      value: Sharan
+      value: Start_Scene
       objectReference: {fileID: 0}
     - target: {fileID: 8810299169720683919, guid: f9ba1044021e4604fac7d57da3b27a1b, type: 3}
       propertyPath: m_SizeDelta.x

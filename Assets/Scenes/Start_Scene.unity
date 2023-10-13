@@ -376,6 +376,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 957593269, guid: c73e76eb4446e924ba833d2cda66799b, type: 3}
+      propertyPath: sceneToLoad
+      value: Aviral
+      objectReference: {fileID: 0}
+    - target: {fileID: 3666594015099151747, guid: c73e76eb4446e924ba833d2cda66799b, type: 3}
+      propertyPath: sceneToLoad
+      value: End_Scene
+      objectReference: {fileID: 0}
     - target: {fileID: 3666594016984141154, guid: c73e76eb4446e924ba833d2cda66799b, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -464,5 +472,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Start_Menu
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4979791292910941980, guid: c73e76eb4446e924ba833d2cda66799b, type: 3}
+      propertyPath: sceneToLoad
+      value: Aviral
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 957593269, guid: c73e76eb4446e924ba833d2cda66799b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c73e76eb4446e924ba833d2cda66799b, type: 3}
