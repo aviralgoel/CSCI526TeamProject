@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Blackhole
+  - Obstacles
+  - Player1Blade
+  - Player2Blade
+  - Player1
+  - Player2
   layers:
   - Default
   - TransparentFX
