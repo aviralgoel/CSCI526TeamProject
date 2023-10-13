@@ -501,6 +501,18 @@ MonoBehaviour:
   isMovementAllowed: 0
   movementSpeed: 20
   angleToTurn: 10
+--- !u!114 &1441567227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1441567221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d41c71c76fa412488a0e25949d59727, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1590111225
 GameObject:
   m_ObjectHideFlags: 0
