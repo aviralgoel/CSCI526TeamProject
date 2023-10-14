@@ -18,13 +18,22 @@ public class GameManager : MonoBehaviour
     private Quaternion playerTwoTargetRotation;
     public float angleToTurn = 10f;
 
+    // player 1 variables
+    bool isPlayerOneActive = false;
+
+    // player 2 variables
+    bool isPlayerTwoActive = false;
+
+    public string player1StartTime;
+    public string player1EndTime;
+    public string player2StartTime;
+    public string player2EndTime;
+
     
 
     // Start is called before the first frame update
     void Start()
     {
-        playerOne.SetActive(false);
-        playerTwo.SetActive(false);
         rb1 = playerOne.GetComponent<Rigidbody2D>();
         rb2 = playerTwo.GetComponent<Rigidbody2D>();
         rb1.velocity = Vector3.zero;
@@ -33,18 +42,30 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (playerOne.activeInHierarchy == false)
+        AnalyticsCollector analyticsCollector = GetComponent<AnalyticsCollector>();
+        if (!isPlayerOneActive)
         {
-            if (Input.GetKeyDown(KeyCode.O))
+            if (Input.GetKeyDown(KeyCode.A))
             {
-                playerOne.SetActive(true);
+                float temp = Time.time;
+                player1StartTime = temp.ToString(); 
+                isPlayerOneActive=true;
+                analyticsCollector.SendPlayer1("A", player1StartTime);
+                playerOne.GetComponent<ScoreManager>().SetPlayerActive(true);
+                playerOne.GetComponent<ScoreManager>().SetPlayerNumber(1);
+
             }
         }
-        if (playerTwo.activeInHierarchy == false)
+        if (!isPlayerTwoActive)
         {
-            if (Input.GetKeyDown(KeyCode.P))
+            if (Input.GetKeyDown(KeyCode.L))
             {
-                playerTwo.SetActive(true);
+                float temp = Time.time;
+                player2StartTime = temp.ToString(); 
+                isPlayerTwoActive=true;
+                analyticsCollector.SendPlayer2("L", player2StartTime);
+                playerTwo.GetComponent<ScoreManager>().SetPlayerActive(true);
+                playerTwo.GetComponent<ScoreManager>().SetPlayerNumber(2);
             }
         }
     }
@@ -54,11 +75,11 @@ public class GameManager : MonoBehaviour
     {   
 
         // Manage Player Inputs
-        if(playerOne.activeInHierarchy)
+        if(isPlayerOneActive)
         {
             PlayerOneInputController();
         }
-        if(playerTwo.activeInHierarchy)
+        if(isPlayerTwoActive)
         {
             PlayerTwoInputController();
         }
@@ -70,13 +91,13 @@ public class GameManager : MonoBehaviour
         rb1.velocity = playerOne.transform.up * playeerOneMovementSpeed * Time.deltaTime;
         if (Input.GetKey(KeyCode.A))
         {
-            playerOneDirection = Quaternion.Euler(3, 5, 0.5f) * playerOne.transform.up * Time.deltaTime;
+            playerOneDirection = Quaternion.Euler(3, 5, angleToTurn) * playerOne.transform.up * Time.deltaTime;
             //playerOneTargetRotation = Quaternion.LookRotation(Vector3.forward, playerOneDirection);
         }
         else
         {
-            playerOneDirection = Time.deltaTime * (blackhole.transform.position - playerOne.transform.position);
-            playerOneDirection = Quaternion.Euler(0, 0, angleToTurn) * playerOneDirection;
+            playerOneDirection = Quaternion.Euler(3, 5, -angleToTurn) * playerOne.transform.up * Time.deltaTime;
+
 
         }
         playerOneTargetRotation = Quaternion.LookRotation(Vector3.forward, playerOneDirection);
@@ -87,13 +108,11 @@ public class GameManager : MonoBehaviour
         rb2.velocity = playerTwo.transform.up * playeerTwoMovementSpeed * Time.deltaTime;
         if (Input.GetKey(KeyCode.L))
         {
-            playerTwoDirection = Quaternion.Euler(3, 5, 0.5f) * playerTwo.transform.up * Time.deltaTime;
-            //playerTwoTargetRotation = Quaternion.LookRotation(Vector3.forward, playerTwoDirection);
+            playerTwoDirection = Quaternion.Euler(3, 5, angleToTurn) * playerTwo.transform.up * Time.deltaTime;
         }
         else
         {
-            playerTwoDirection = Time.deltaTime * (blackhole.transform.position - playerTwo.transform.position);
-            playerTwoDirection = Quaternion.Euler(0, 0, angleToTurn) * playerTwoDirection;
+            playerTwoDirection = Quaternion.Euler(3, 5, -angleToTurn) * playerTwo.transform.up * Time.deltaTime;
         }
         playerTwoTargetRotation = Quaternion.LookRotation(Vector3.forward, playerTwoDirection);
         playerTwo.transform.rotation = Quaternion.Lerp(playerTwo.transform.rotation, playerTwoTargetRotation, 5f * Time.deltaTime);
