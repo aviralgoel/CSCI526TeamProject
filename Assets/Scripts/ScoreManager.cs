@@ -23,6 +23,11 @@ public class ScoreManager : MonoBehaviour
         {
             UpdateTime();
         }
+        if(Input.GetKeyDown(KeyCode.S)) 
+        {
+            GetComponent<PlayerInputController>().speedMultiplier *= 2;
+        }
+
     }
 
     private void UpdateTime()

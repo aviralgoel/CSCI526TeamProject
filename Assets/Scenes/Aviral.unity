@@ -500,7 +500,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMovementAllowed: 0
   movementSpeed: 20
+  turnSpeed: 0
   angleToTurn: 10
+  speedMultiplier: 0
+  turnSpeedMultiplier: 0
 --- !u!114 &1441567227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -683,7 +686,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMovementAllowed: 0
   movementSpeed: 20
+  turnSpeed: 0
   angleToTurn: 10
+  speedMultiplier: 1
+  turnSpeedMultiplier: 1.5
 --- !u!1001 &8491089684687662137
 PrefabInstance:
   m_ObjectHideFlags: 0

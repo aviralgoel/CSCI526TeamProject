@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerInputController : MonoBehaviour
@@ -10,8 +8,13 @@ public class PlayerInputController : MonoBehaviour
     Quaternion targetRotation;
     public bool isMovementAllowed;
     public float movementSpeed;
+    public float turnSpeed;
     public float angleToTurn = 10f;
-    UnityEngine.KeyCode controllingKey; 
+    [Range(1f, 5f)]
+    public float speedMultiplier;
+    [Range(0f, 2f)]
+    public float turnSpeedMultiplier;
+    KeyCode controllingKey; 
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +30,10 @@ public class PlayerInputController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         controllingKey = playerNumber == 1 ? KeyCode.A : KeyCode.L;
         rb.velocity = Vector3.zero;
-        isMovementAllowed = false;  
+        isMovementAllowed = false;
+        speedMultiplier = 1f;
+        turnSpeedMultiplier = 1f;
+        turnSpeed = 1f;
     }
 
     // Update is called once per frame
@@ -43,17 +49,24 @@ public class PlayerInputController : MonoBehaviour
 
     private void InputController()
     {
-        rb.velocity = transform.up * movementSpeed * Time.deltaTime;
+        rb.velocity = transform.up * movementSpeed * Time.deltaTime * speedMultiplier;
         if (Input.GetKey(controllingKey))
         {
-            direction = Quaternion.Euler(3, 5, angleToTurn) * transform.up * Time.deltaTime;
+            direction = Quaternion.Euler(3, 5, angleToTurn * turnSpeed) * transform.up * Time.deltaTime;
+            turnSpeed += turnSpeedMultiplier * Time.deltaTime;
         }
         else
         {
-            direction = Quaternion.Euler(3, 5, -angleToTurn) * transform.up * Time.deltaTime;
+            turnSpeed = 1f;
+            direction = Quaternion.Euler(3, 5, -angleToTurn*turnSpeed) * transform.up * Time.deltaTime;
         }
         targetRotation = Quaternion.LookRotation(Vector3.forward, direction);
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 5f * Time.deltaTime);
+        
+        if(Input.GetKeyUp(controllingKey))
+        {
+            turnSpeedMultiplier = 1f;
+        }
     }
    
 }
