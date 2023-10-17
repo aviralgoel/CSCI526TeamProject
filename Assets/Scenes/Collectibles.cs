@@ -78,7 +78,7 @@ public class Collectibles : MonoBehaviour
     bool running = false;
 
     public float minDeactivationTime = 3f;
-    public float maxDeactivationTime = 8f;
+    public float maxDeactivationTime = 15f;
     Vector3 dest;
     
     void Start()

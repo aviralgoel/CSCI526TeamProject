@@ -47,32 +47,27 @@ using UnityEngine;
 
 public class BladeCollisionChecker : MonoBehaviour
 {
-    private ScoreManager scoreManager;
+    public ScoreManager scoreManager;
 
     private void Start()
     {
         // Find the ScoreManager script in the scene
-        scoreManager = FindObjectOfType<ScoreManager>();
+       // scoreManager = FindObjectOfType<ScoreManager>();
     }
     private void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.CompareTag("Good") || collider.CompareTag("Bad"))
         {
-            if (gameObject.CompareTag("Player1Blade"))
+            if (gameObject.CompareTag("Player1Blade") || gameObject.CompareTag("Player2Blade"))
             {
-                Debug.Log("Player 1 blade collided with " + collider.tag);
-                if (scoreManager != null)
-                {
-                    scoreManager.IncrementScore();
-                }
+                string playerName = gameObject.CompareTag("Player1Blade") ? "Player 1" : "Player 2";
+                string collisionType = collider.CompareTag("Good") ? "collided with Good" : "collided with Bad";
+                Debug.Log(playerName + " blade " + collisionType);
 
-            }
-            else if (gameObject.CompareTag("Player2Blade"))
-            {
-                Debug.Log("Player 2 blade collided with " + collider.tag);
                 if (scoreManager != null)
                 {
-                    scoreManager.DecrementScore();
+                    int scoreChange = collider.CompareTag("Good") ? 1 : -1;
+                    scoreManager.ChangeScore(scoreChange);
                 }
             }
         }

@@ -46,16 +46,11 @@ public class ScoreManager : MonoBehaviour
     {
         return timeActive;
     }
-    public void IncrementScore()
+    public void ChangeScore(int amount)
     {
         // Increment the score when a good collectible is collected
-        score += 1;
+        score += amount;
     }
 
-    public void DecrementScore()
-    {
-        // Decrement the score when a bad collectible is collected
-        score -= 1;
-    }
-
+   
 }
