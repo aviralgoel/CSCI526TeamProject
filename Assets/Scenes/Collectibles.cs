@@ -105,8 +105,8 @@ public class Collectibles : MonoBehaviour
     {
         running = true;
         yield return new WaitForSeconds(0.5f);
-        direction.x = Random.Range(-5, 5);
-        direction.y = Random.Range(-5, 5);
+        direction.x = Random.Range(-2.5f, 3.75f);
+        direction.y = Random.Range(-2.1f, 3.5f);
         running = false;
     }
 
