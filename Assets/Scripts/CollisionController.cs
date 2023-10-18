@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class CollisionController : MonoBehaviour
 {
+    public GameObject enemy;
+    public int score = 10;
+    private Vector3 pos;
+    void Start()
+    {
+        pos = enemy.transform.position;
+    }
     // detect collision with other game bodies 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (this.gameObject.CompareTag("Player1Blade") && collision.gameObject.CompareTag("Player2"))
+        if (collision.gameObject == enemy)
         {
-            Debug.Log("Player 1 hit Player 2");
-        }
-        else if (this.gameObject.CompareTag("Player2Blade") && collision.gameObject.CompareTag("Player1"))
-        {
-            Debug.Log("Player 2 hit Player 1");
+            enemy.transform.position = pos;
+            score += 10;
         }
     }
     private void Update()
