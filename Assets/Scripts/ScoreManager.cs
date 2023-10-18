@@ -16,6 +16,7 @@ public class ScoreManager : MonoBehaviour
     public int numOfTimesKilledByPlayer = 0;
     public int numOfTimesKilledByCollectible = 0;
 
+    
     Vector3 respawnPosition;
     // Start is called before the first frame update
     void Start()
