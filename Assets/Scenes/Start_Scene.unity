@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748171, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -191,6 +191,40 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &259845050 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3666594016652453698, guid: c73e76eb4446e924ba833d2cda66799b, type: 3}
+  m_PrefabInstance: {fileID: 1791048066}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &259845055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 259845050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2614857017217088608, guid: 335f0413ec323fc4f919545a237f6cda, type: 3}
+          m_TargetAssemblyTypeName: SceneCountdownTimer, Assembly-CSharp
+          m_MethodName: StartCountdownOnClick
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -380,9 +414,29 @@ PrefabInstance:
       propertyPath: sceneToLoad
       value: Aviral
       objectReference: {fileID: 0}
+    - target: {fileID: 1623814367941176034, guid: c73e76eb4446e924ba833d2cda66799b, type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1623814367941176034, guid: c73e76eb4446e924ba833d2cda66799b, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 98
+      objectReference: {fileID: 0}
+    - target: {fileID: 3666594015083269730, guid: c73e76eb4446e924ba833d2cda66799b, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 01619818213a41d439ba0a3684bb0751, type: 2}
+    - target: {fileID: 3666594015083269730, guid: c73e76eb4446e924ba833d2cda66799b, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 01619818213a41d439ba0a3684bb0751, type: 2}
     - target: {fileID: 3666594015099151747, guid: c73e76eb4446e924ba833d2cda66799b, type: 3}
       propertyPath: sceneToLoad
       value: End_Scene
+      objectReference: {fileID: 0}
+    - target: {fileID: 3666594016984141152, guid: c73e76eb4446e924ba833d2cda66799b, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3666594016984141154, guid: c73e76eb4446e924ba833d2cda66799b, type: 3}
       propertyPath: m_Pivot.x
@@ -466,6 +520,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3666594016984141154, guid: c73e76eb4446e924ba833d2cda66799b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3666594016984141155, guid: c73e76eb4446e924ba833d2cda66799b, type: 3}
+      propertyPath: m_TargetDisplay
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3666594016984141158, guid: c73e76eb4446e924ba833d2cda66799b, type: 3}
