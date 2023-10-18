@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class CollisionController : MonoBehaviour
 {
@@ -34,5 +35,6 @@ public class CollisionController : MonoBehaviour
             Debug.Log(this.gameObject.tag);
         }
     }
+    
 
 }

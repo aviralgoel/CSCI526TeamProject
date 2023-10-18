@@ -51,4 +51,11 @@ public class ScoreManager : MonoBehaviour
     {
         return timeActive;
     }
+    public void ChangeScore(int amount)
+    {
+        // Increment the score when a good collectible is collected
+        score += amount;
+    }
+
+   
 }

@@ -10,6 +10,8 @@ TagManager:
   - Player2Blade
   - Player1
   - Player2
+  - Bad
+  - Good
   layers:
   - Default
   - TransparentFX
