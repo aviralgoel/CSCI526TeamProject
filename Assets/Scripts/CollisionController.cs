@@ -23,41 +23,38 @@ public class CollisionController : MonoBehaviour
         if (this.gameObject.CompareTag("Player1Blade") && collision.gameObject.CompareTag("Player2"))
         {
             Debug.Log("Player 1 hit Player 2");
-            scoreManagerPlayer1.ChangeScore(scoreOnKill); // + score
-            scoreManagerPlayer2.ChangeScore(-scoreOnKill); // - score
+            scoreManagerPlayer1.IncrementScore(scoreOnKill); // + score
+            scoreManagerPlayer2.IncrementScore(-scoreOnKill); // - score
             scoreManagerPlayer2.RespawnPlayer("OtherPlayer");
         }
         else if (this.gameObject.CompareTag("Player2Blade") && collision.gameObject.CompareTag("Player1"))
         {
-            scoreManagerPlayer2.GetComponentInParent<ScoreManager>().ChangeScore(scoreOnKill); // + score
-            scoreManagerPlayer1.GetComponentInParent<ScoreManager>().ChangeScore(-scoreOnKill); // - score
+            scoreManagerPlayer2.GetComponentInParent<ScoreManager>().IncrementScore(scoreOnKill); // + score
+            scoreManagerPlayer1.GetComponentInParent<ScoreManager>().IncrementScore(-scoreOnKill); // - score
             scoreManagerPlayer1.GetComponentInParent<ScoreManager>().RespawnPlayer("OtherPlayer"); // respawn
         }
         else if (collision.gameObject.CompareTag("Blackhole"))
         {
             this.gameObject.GetComponentInParent<ScoreManager>().RespawnPlayer("Blackhole");
         }
-      
+        // detect collision with good and bad objects
         else if (collision.CompareTag("Good") || collision.CompareTag("Bad"))
         {
             if (gameObject.CompareTag("Player1Blade"))
             {
                 int scoreChange = collision.gameObject.CompareTag("Good") ? 1 : -1;
-                scoreManagerPlayer1.ChangeScore(scoreChange);
+                scoreManagerPlayer1.IncrementScore(scoreChange);
             }
             else if (gameObject.CompareTag("Player2Blade"))
             {
                 int scoreChange = collision.gameObject.CompareTag("Good") ? 1 : -1;
-                scoreManagerPlayer2.ChangeScore(scoreChange);
+                scoreManagerPlayer2.IncrementScore(scoreChange);
             }
            /* string playerName = (gameObject.CompareTag("Player1Blade")) ? "Player 1" : "Player 2";
             string collisionType = (collision.CompareTag("Good")) ? "Good" : "Bad";
             Debug.Log(playerName + " blade collided with " + collisionType);*/
             Destroy(collision.gameObject);
-            
         }
-
-
 
     }
 }

@@ -16,7 +16,6 @@ public class Spawnercode : MonoBehaviour
         sr = HexagonPlayground.GetComponent<SpriteRenderer>();
         playGroundExtendMin = sr.bounds.min;
         playGroundExtendMax = sr.bounds.max;
-
     }
 
     void Update()
@@ -36,16 +35,11 @@ public class Spawnercode : MonoBehaviour
             // Choose a random prefab from the array
             int randomIndex = Random.Range(0, myobj.Length);
 
-            
-
             if(randomSpawn.x > playGroundExtendMin.x && randomSpawn.x < playGroundExtendMax.x && randomSpawn.y > playGroundExtendMin.y && randomSpawn.y < playGroundExtendMax.y)
             {
                 GameObject newCollectible = Instantiate(myobj[randomIndex], randomSpawn, Quaternion.identity);
             }
 
-            // Instantiate the chosen prefab at the random position
-            // Destroy the collectible after the specified destruction time
-            // Destroy(newCollectible, destructionTime);
         }
     }
 }

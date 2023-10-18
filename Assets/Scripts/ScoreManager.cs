@@ -6,15 +6,14 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {   
-    public float score = 10;
-    public float timeActive = 0;
-    public int playerNumber;
-    public bool isPlayerActive;
-
-    public int numOfLives = 2;
-    public int numOfTimesKilledByBlackHole = 0;
-    public int numOfTimesKilledByPlayer = 0;
-    public int numOfTimesKilledByCollectible = 0;
+    [SerializeField] private float score = 10;
+    [SerializeField] private float timeActive = 0;
+    [SerializeField] private int playerNumber;
+    [SerializeField] private bool isPlayerActive;
+    [SerializeField] private int numOfLives = 3;
+    [SerializeField] public int numOfTimesKilledByBlackHole = 0;
+    [SerializeField] public int numOfTimesKilledByPlayer = 0;
+    [SerializeField] public int numOfTimesKilledByCollectible = 0;
 
     Vector3 respawnPosition;
     // Start is called before the first frame update
@@ -31,11 +30,6 @@ public class ScoreManager : MonoBehaviour
         {
             UpdateTime();
         }
-        if(Input.GetKeyDown(KeyCode.S)) 
-        {
-            GetComponent<PlayerInputController>().speedMultiplier *= 2;
-        }
-
     }
 
     private void UpdateTime()
@@ -47,9 +41,17 @@ public class ScoreManager : MonoBehaviour
     {   
         isPlayerActive = isActive;
     }
+    public bool IsPlayerActive()
+    {
+        return isPlayerActive;
+    }
     public void SetPlayerNumber(int number)
     {
         playerNumber = number;
+    }
+    public int GetPlayerNumber()
+    {
+        return playerNumber;
     }
     public float GetScore()
     {
@@ -59,7 +61,7 @@ public class ScoreManager : MonoBehaviour
     {
         return timeActive;
     }
-    public void ChangeScore(int amount)
+    public void IncrementScore(int amount)
     {
         // Increment the score when a good collectible is collected
         score += amount;
@@ -81,7 +83,7 @@ public class ScoreManager : MonoBehaviour
         }
 
         // player lives handler
-        if(numOfLives > 0) 
+        if(numOfLives > 1) 
         {
             transform.position = respawnPosition;
             numOfLives--;

@@ -4,9 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
-{
+{   
     public GameObject playerOne;
     public GameObject playerTwo;
+
+    private ScoreManager player1ScoreManager;
+    private ScoreManager player2ScoreManager;
     
     // player 1 variables
     bool isPlayerOneActive = false;
@@ -15,10 +18,9 @@ public class GameManager : MonoBehaviour
     bool isPlayerTwoActive = false;
 
     string player1StartTime;
-    string player1EndTime;
     string player2StartTime;
-    string player2EndTime;
-    AnalyticsCollector analyticsCollector;
+
+    public AnalyticsCollector analyticsCollector;
 
     
 
@@ -26,17 +28,17 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         AnalyticsCollector analyticsCollector = GetComponent<AnalyticsCollector>();
+        player1ScoreManager = playerOne.GetComponent<ScoreManager>();
+        player2ScoreManager = playerTwo.GetComponent<ScoreManager>();
+        analyticsCollector = GetComponent<AnalyticsCollector>();
     }
 
     void Update()
     {
-        if(!analyticsCollector)
+
+        if (!isPlayerOneActive) // player has not yet joined the game
         {
-            analyticsCollector = GetComponent<AnalyticsCollector>();
-        }
-        if (!isPlayerOneActive)
-        {
-            if (Input.GetKeyDown(KeyCode.A))
+            if (Input.GetKeyDown(KeyCode.A)) // player has joined the game
             {
                 float temp = Time.time;
                 player1StartTime = temp.ToString(); 
@@ -47,9 +49,9 @@ public class GameManager : MonoBehaviour
                 playerOne.GetComponent<PlayerInputController>().isMovementAllowed = true; 
             }
         }
-        if (!isPlayerTwoActive)
+        if (!isPlayerTwoActive) // player has not yet joined the game
         {
-            if (Input.GetKeyDown(KeyCode.L))
+            if (Input.GetKeyDown(KeyCode.L)) // player has joined the game
             {
                 float temp = Time.time;
                 player2StartTime = temp.ToString(); 
@@ -60,11 +62,12 @@ public class GameManager : MonoBehaviour
                 playerTwo.GetComponent<PlayerInputController>().isMovementAllowed = true;
             }
         }
-        // game began
+
+        // two playerW game began
         if (isPlayerOneActive && isPlayerTwoActive)
         {   
             // then both player died
-            if(playerOne.GetComponent<ScoreManager>().isPlayerActive== false && playerTwo.GetComponent<ScoreManager>().isPlayerActive==false)
+            if(player1ScoreManager.IsPlayerActive ()== false && player1ScoreManager.IsPlayerActive() ==false)
             {
                 CollectEndGameAnalytics();
             }
@@ -73,15 +76,15 @@ public class GameManager : MonoBehaviour
 
     private void CollectEndGameAnalytics()
     {
-        int player1Score = (int)playerOne.GetComponent<ScoreManager>().GetScore();
-        int player2Score = (int)playerTwo.GetComponent<ScoreManager>().GetScore();
-        float player1Time = playerOne.GetComponent<ScoreManager>().GetTimeActive();
-        float player2Time = playerTwo.GetComponent<ScoreManager>().GetTimeActive();
-        int player1KilledByBlackHole = playerOne.GetComponent<ScoreManager>().numOfTimesKilledByBlackHole;
-        int player2KilledByBlackHole = playerTwo.GetComponent<ScoreManager>().numOfTimesKilledByBlackHole;
-        int player1KilledByPlayer = playerOne.GetComponent<ScoreManager>().numOfTimesKilledByPlayer;
-        int player2KilledByPlayer = playerTwo.GetComponent<ScoreManager>().numOfTimesKilledByPlayer;
-        int player1KilledByCollectible = playerOne.GetComponent<ScoreManager>().numOfTimesKilledByCollectible;
-        int player2KilledByCollectible = playerTwo.GetComponent<ScoreManager>().numOfTimesKilledByCollectible;
+        int player1Score = (int)player1ScoreManager.GetScore();
+        int player2Score = (int)player2ScoreManager.GetScore();
+        float player1Time = player1ScoreManager.GetTimeActive();
+        float player2Time = player2ScoreManager.GetTimeActive();
+        int player1KilledByBlackHole = player1ScoreManager.numOfTimesKilledByBlackHole;
+        int player2KilledByBlackHole = player2ScoreManager.numOfTimesKilledByBlackHole;
+        int player1KilledByPlayer = player1ScoreManager.numOfTimesKilledByPlayer;
+        int player2KilledByPlayer = player2ScoreManager.numOfTimesKilledByPlayer;
+        int player1KilledByCollectible = player1ScoreManager.numOfTimesKilledByCollectible;
+        int player2KilledByCollectible = player2ScoreManager.numOfTimesKilledByCollectible;
     }
 }

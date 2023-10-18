@@ -77,15 +77,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4940011466156706943, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.25
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 4940011466156706943, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.25
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 4940011466156706943, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.25
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 4940011466156706943, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1456,7 +1456,7 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.092701994, g: 0.7712239, b: 0.7924528, a: 1}
+        key0: {r: 0.8941177, g: 0, b: 1, a: 1}
         key1: {r: 0.51648706, g: 0.79844546, b: 0.71202946, a: 1}
         key2: {r: 0.17493767, g: 0.43559644, b: 0.7924528, a: 0}
         key3: {r: 0.13294764, g: 0.9150943, b: 0.6196592, a: 0}
@@ -1472,7 +1472,7 @@ ParticleSystem:
         ctime5: 0
         ctime6: 0
         ctime7: 0
-        atime0: 0
+        atime0: 18697
         atime1: 52235
         atime2: 65535
         atime3: 65535
