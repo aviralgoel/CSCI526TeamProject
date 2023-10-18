@@ -1,30 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
 
 public class CollisionController : MonoBehaviour
 {
-    // public GameObject player;
-    // private ScoreManager scoreManager;
-
-    private void Start()
+    public GameObject enemy;
+    public int score = 10;
+    private Vector3 pos;
+    void Start()
     {
+        pos = enemy.transform.position;
     }
     // detect collision with other game bodies 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (this.gameObject.CompareTag("Player1Blade") && collision.gameObject.CompareTag("Player2"))
-        {
-            Debug.Log("Player 1 hit Player 2");
-        }
-        else if (this.gameObject.CompareTag("Player2Blade") && collision.gameObject.CompareTag("Player1"))
+        if (collision.gameObject == enemy)
         {
             Debug.Log("Player 2 hit Player 1");
-        }
-        else if(collision.gameObject.CompareTag("Blackhole"))
-        {
-            //Die();
+            enemy.transform.position = pos;
+            score += 10;
         }
     }
     private void Update()
@@ -35,6 +29,5 @@ public class CollisionController : MonoBehaviour
             Debug.Log(this.gameObject.tag);
         }
     }
-    
 
 }
