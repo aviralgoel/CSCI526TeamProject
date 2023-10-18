@@ -84,7 +84,7 @@ public class GameManager : MonoBehaviour
         int player2KilledByBlackHole = player2ScoreManager.numOfTimesKilledByBlackHole;
         int player1KilledByPlayer = player1ScoreManager.numOfTimesKilledByPlayer;
         int player2KilledByPlayer = player2ScoreManager.numOfTimesKilledByPlayer;
-        int player1KilledByCollectible = player1ScoreManager.numOfTimesKilledByCollectible;
-        int player2KilledByCollectible = player2ScoreManager.numOfTimesKilledByCollectible;
+        int player1KilledByCollectible = player1ScoreManager.numOfCollectiblesCollected;
+        int player2KilledByCollectible = player2ScoreManager.numOfCollectiblesCollected;
     }
 }

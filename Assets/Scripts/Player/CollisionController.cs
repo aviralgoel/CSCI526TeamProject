@@ -44,15 +44,14 @@ public class CollisionController : MonoBehaviour
             {
                 int scoreChange = collision.gameObject.CompareTag("Good") ? 1 : -1;
                 scoreManagerPlayer1.IncrementScore(scoreChange);
+                scoreManagerPlayer1.RespawnPlayer("Collectible"); // this will not actually respawn player, just increase count of collectible
             }
             else if (gameObject.CompareTag("Player2Blade"))
             {
                 int scoreChange = collision.gameObject.CompareTag("Good") ? 1 : -1;
                 scoreManagerPlayer2.IncrementScore(scoreChange);
+                scoreManagerPlayer2.RespawnPlayer("Collectible"); // this will not actually respawn player, just increase count of collectible
             }
-           /* string playerName = (gameObject.CompareTag("Player1Blade")) ? "Player 1" : "Player 2";
-            string collisionType = (collision.CompareTag("Good")) ? "Good" : "Bad";
-            Debug.Log(playerName + " blade collided with " + collisionType);*/
             Destroy(collision.gameObject);
         }
 
