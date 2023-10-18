@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CollisionController : MonoBehaviour
-{   
+{
+    
     //public ScoreManager scoreManager;
     public int scoreOnKill = 4;
     Vector3 respawnLocation = new Vector3(1.5f, 1.4f, 0f);
@@ -17,8 +18,8 @@ public class CollisionController : MonoBehaviour
         if (this.gameObject.CompareTag("Player1Blade") && collision.gameObject.CompareTag("Player2"))
         {
             Debug.Log("Player 1 hit Player 2");
-            this.gameObject.GetComponentInParent<ScoreManager>().ChangeScore(scoreOnKill);
-            collision.gameObject.GetComponentInParent<ScoreManager>().ChangeScore(-scoreOnKill);
+            this.gameObject.GetComponentInParent<ScoreManager>().ChangeScore(scoreOnKill); // + score
+            collision.gameObject.GetComponentInParent<ScoreManager>().ChangeScore(-scoreOnKill); // - score
             collision.gameObject.GetComponentInParent<ScoreManager>().RespawnPlayer("OtherPlayer");
         }
         else if (this.gameObject.CompareTag("Player2Blade") && collision.gameObject.CompareTag("Player1"))
@@ -31,10 +32,6 @@ public class CollisionController : MonoBehaviour
         {
             this.gameObject.GetComponentInParent<ScoreManager>().RespawnPlayer("Blackhole");
         }
-    }
-    private void Update()
-    {
-        
     }
 
 }

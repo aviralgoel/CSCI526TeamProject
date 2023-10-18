@@ -94,7 +94,8 @@ public class ScoreManager : MonoBehaviour
 
     }
     private void PlayerIsDead() 
-    {
+    {   
+        // sstop the player
         isPlayerActive = false;
         this.gameObject.SetActive(false);
     }
