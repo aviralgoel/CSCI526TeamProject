@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class PlayerInputController : MonoBehaviour
@@ -14,7 +15,8 @@ public class PlayerInputController : MonoBehaviour
     public float speedMultiplier;
     [Range(0f, 2f)]
     public float turnSpeedMultiplier;
-    KeyCode controllingKey; 
+    KeyCode controllingKey;
+    //public GameObject blackHole;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +36,7 @@ public class PlayerInputController : MonoBehaviour
         speedMultiplier = 1f;
         turnSpeedMultiplier = 1f;
         turnSpeed = 1f;
+        
     }
 
     // Update is called once per frame
@@ -48,15 +51,20 @@ public class PlayerInputController : MonoBehaviour
 
 
     private void InputController()
-    {
+    {   
+        // turning and moving the player always to its right
+        // using forces (and not trasnform.Translate())
+        
         rb.velocity = transform.up * movementSpeed * Time.deltaTime * speedMultiplier;
         if (Input.GetKey(controllingKey))
         {
+           
             direction = Quaternion.Euler(3, 5, angleToTurn * turnSpeed) * transform.up * Time.deltaTime;
             turnSpeed += turnSpeedMultiplier * Time.deltaTime;
         }
         else
         {
+            // direction = transform.position - blackHole.transform.position;
             turnSpeed = 1f;
             direction = Quaternion.Euler(3, 5, -angleToTurn*turnSpeed) * transform.up * Time.deltaTime;
         }

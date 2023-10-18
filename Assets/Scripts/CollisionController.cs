@@ -1,13 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CollisionController : MonoBehaviour
 {
-    
+
     //public ScoreManager scoreManager;
     public int scoreOnKill = 4;
-    Vector3 respawnLocation = new Vector3(1.5f, 1.4f, 0f);
+    public ScoreManager scoreManagerPlayer1;
+    public ScoreManager scoreManagerPlayer2;
+
+
     private void Start()
     {
         //respawnLocation = this.gameObject.transform.root.position;
@@ -18,20 +23,45 @@ public class CollisionController : MonoBehaviour
         if (this.gameObject.CompareTag("Player1Blade") && collision.gameObject.CompareTag("Player2"))
         {
             Debug.Log("Player 1 hit Player 2");
-            this.gameObject.GetComponentInParent<ScoreManager>().ChangeScore(scoreOnKill); // + score
-            collision.gameObject.GetComponentInParent<ScoreManager>().ChangeScore(-scoreOnKill); // - score
-            collision.gameObject.GetComponentInParent<ScoreManager>().RespawnPlayer("OtherPlayer");
+            scoreManagerPlayer1.ChangeScore(scoreOnKill); // + score
+            scoreManagerPlayer2.ChangeScore(-scoreOnKill); // - score
+            scoreManagerPlayer2.RespawnPlayer("OtherPlayer");
         }
         else if (this.gameObject.CompareTag("Player2Blade") && collision.gameObject.CompareTag("Player1"))
         {
-            this.gameObject.GetComponentInParent<ScoreManager>().ChangeScore(scoreOnKill);
-            collision.gameObject.GetComponentInParent<ScoreManager>().ChangeScore(-scoreOnKill);
-            collision.gameObject.GetComponentInParent<ScoreManager>().RespawnPlayer("OtherPlayer");
+            scoreManagerPlayer2.GetComponentInParent<ScoreManager>().ChangeScore(scoreOnKill); // + score
+            scoreManagerPlayer1.GetComponentInParent<ScoreManager>().ChangeScore(-scoreOnKill); // - score
+            scoreManagerPlayer1.GetComponentInParent<ScoreManager>().RespawnPlayer("OtherPlayer"); // respawn
         }
-        else if(collision.gameObject.CompareTag("Blackhole"))
+        else if (collision.gameObject.CompareTag("Blackhole"))
         {
             this.gameObject.GetComponentInParent<ScoreManager>().RespawnPlayer("Blackhole");
         }
-    }
+      
+        else if (collision.CompareTag("Good") || collision.CompareTag("Bad"))
+        {
+            if (gameObject.CompareTag("Player1Blade"))
+            {
+                int scoreChange = collision.gameObject.CompareTag("Good") ? 1 : -1;
+                scoreManagerPlayer1.ChangeScore(scoreChange);
+            }
+            else if (gameObject.CompareTag("Player2Blade"))
+            {
+                int scoreChange = collision.gameObject.CompareTag("Good") ? 1 : -1;
+                scoreManagerPlayer2.ChangeScore(scoreChange);
+            }
+            string playerName = (gameObject.CompareTag("Player1Blade")) ? "Player 1" : "Player 2";
+            string collisionType = (collision.CompareTag("Good")) ? "Good" : "Bad";
+            Debug.Log(playerName + " blade collided with " + collisionType);
+            Destroy(collision.gameObject);
+            
+        }
 
+
+
+    }
 }
+
+    
+   
+

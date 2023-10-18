@@ -7,9 +7,6 @@ public class Spawnercode : MonoBehaviour
     public float destructionTime = 15f;  // Time after which the collectible will be destroyed
     public GameObject HexagonPlayground;
     SpriteRenderer sr;
-/*    public float xRange ;  // Random X range
-    public float yRange ;  // Random Y range*/
-
     private float timer = 0.0f;
     Vector3 playGroundExtendMin;
     Vector3 playGroundExtendMax;
@@ -34,7 +31,7 @@ public class Spawnercode : MonoBehaviour
             timer = 0.0f;
 
             // Generate a random position
-            Vector3 randomSpawn = new Vector3(Random.Range(-5f, 5f), Random.Range(-5, 5f), -1);
+            Vector3 randomSpawn = new Vector3(Random.Range(-5f, 5f), Random.Range(-5, 5f), 0);
 
             // Choose a random prefab from the array
             int randomIndex = Random.Range(0, myobj.Length);
@@ -47,8 +44,6 @@ public class Spawnercode : MonoBehaviour
             }
 
             // Instantiate the chosen prefab at the random position
-            
-
             // Destroy the collectible after the specified destruction time
             // Destroy(newCollectible, destructionTime);
         }
