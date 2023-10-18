@@ -46,9 +46,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: PlayerComponents
-    uniqueID: 56477939
+  - name: Background
+    uniqueID: 3126057383
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: PlayerComponents
+    uniqueID: 56477939
+    locked: 0
+  - name: Collectibles
+    uniqueID: 3154006485
     locked: 0

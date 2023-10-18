@@ -67,7 +67,7 @@ public class BladeCollisionChecker : MonoBehaviour
                 if (scoreManager != null)
                 {
                     int scoreChange = collider.CompareTag("Good") ? 1 : -1;
-                    scoreManager.ChangeScore(scoreChange);
+                    scoreManager.IncrementScore(scoreChange);
                 }
             }
         }

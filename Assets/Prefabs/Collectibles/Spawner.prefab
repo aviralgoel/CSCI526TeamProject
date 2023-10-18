@@ -47,3 +47,6 @@ MonoBehaviour:
   myobj:
   - {fileID: 5282602700515287355, guid: a3b9b36bfb4163744b69c76be95a3fcc, type: 3}
   - {fileID: 5818194942804883219, guid: 1c8c6bef141aba240a6c9a44a6129a24, type: 3}
+  spawnInterval: 1
+  destructionTime: 15
+  HexagonPlayground: {fileID: 0}
