@@ -532,7 +532,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4979791292910941980, guid: c73e76eb4446e924ba833d2cda66799b, type: 3}
       propertyPath: sceneToLoad
-      value: instruction
+      value: Aviral
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 957593269, guid: c73e76eb4446e924ba833d2cda66799b, type: 3}
