@@ -47,14 +47,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerOne: {fileID: 0}
   playerTwo: {fileID: 0}
-  playeerOneMovementSpeed: 40
-  playeerTwoMovementSpeed: 40
-  blackhole: {fileID: 0}
-  angleToTurn: 15
-  player1StartTime: 
-  player1EndTime: 
-  player2StartTime: 
-  player2EndTime: 
 --- !u!114 &1469920200
 MonoBehaviour:
   m_ObjectHideFlags: 0
