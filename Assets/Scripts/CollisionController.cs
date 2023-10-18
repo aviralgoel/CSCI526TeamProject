@@ -16,7 +16,6 @@ public class CollisionController : MonoBehaviour
     {
         if (collision.gameObject == enemy)
         {
-            Debug.Log("Player 2 hit Player 1");
             enemy.transform.position = pos;
             score += 10;
         }
