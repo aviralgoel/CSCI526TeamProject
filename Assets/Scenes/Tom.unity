@@ -178,6 +178,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spawner
       objectReference: {fileID: 0}
+    - target: {fileID: 6587957134335053147, guid: e5e30e8b166c19040a2821b786af2f45, type: 3}
+      propertyPath: HexagonPlayground
+      value: 
+      objectReference: {fileID: 1725413073}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5e30e8b166c19040a2821b786af2f45, type: 3}
 --- !u!1 &552687325
@@ -688,6 +692,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf29a5cc1c01d4a429259105bbfbf1db, type: 3}
+--- !u!1 &1725413073 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5657236042866399030, guid: 41433c31d6401cc46890a14ed4cc10dc, type: 3}
+  m_PrefabInstance: {fileID: 881682086}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2113452613
 PrefabInstance:
   m_ObjectHideFlags: 0
