@@ -60,6 +60,28 @@ public class GameManager : MonoBehaviour
                 playerTwo.GetComponent<PlayerInputController>().isMovementAllowed = true;
             }
         }
+        // game began
+        if (isPlayerOneActive && isPlayerTwoActive)
+        {   
+            // then both player died
+            if(playerOne.GetComponent<ScoreManager>().isPlayerActive== false && playerTwo.GetComponent<ScoreManager>().isPlayerActive==false)
+            {
+                CollectEndGameAnalytics();
+            }
+        }
     }
 
+    private void CollectEndGameAnalytics()
+    {
+        int player1Score = (int)playerOne.GetComponent<ScoreManager>().GetScore();
+        int player2Score = (int)playerTwo.GetComponent<ScoreManager>().GetScore();
+        float player1Time = playerOne.GetComponent<ScoreManager>().GetTimeActive();
+        float player2Time = playerTwo.GetComponent<ScoreManager>().GetTimeActive();
+        int player1KilledByBlackHole = playerOne.GetComponent<ScoreManager>().numOfTimesKilledByBlackHole;
+        int player2KilledByBlackHole = playerTwo.GetComponent<ScoreManager>().numOfTimesKilledByBlackHole;
+        int player1KilledByPlayer = playerOne.GetComponent<ScoreManager>().numOfTimesKilledByPlayer;
+        int player2KilledByPlayer = playerTwo.GetComponent<ScoreManager>().numOfTimesKilledByPlayer;
+        int player1KilledByCollectible = playerOne.GetComponent<ScoreManager>().numOfTimesKilledByCollectible;
+        int player2KilledByCollectible = playerTwo.GetComponent<ScoreManager>().numOfTimesKilledByCollectible;
+    }
 }
