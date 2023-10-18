@@ -50,9 +50,9 @@ public class CollisionController : MonoBehaviour
                 int scoreChange = collision.gameObject.CompareTag("Good") ? 1 : -1;
                 scoreManagerPlayer2.ChangeScore(scoreChange);
             }
-            string playerName = (gameObject.CompareTag("Player1Blade")) ? "Player 1" : "Player 2";
+           /* string playerName = (gameObject.CompareTag("Player1Blade")) ? "Player 1" : "Player 2";
             string collisionType = (collision.CompareTag("Good")) ? "Good" : "Bad";
-            Debug.Log(playerName + " blade collided with " + collisionType);
+            Debug.Log(playerName + " blade collided with " + collisionType);*/
             Destroy(collision.gameObject);
             
         }
