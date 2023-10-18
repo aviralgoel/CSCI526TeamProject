@@ -14,6 +14,8 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] public int numOfTimesKilledByBlackHole = 0;
     [SerializeField] public int numOfTimesKilledByPlayer = 0;
     [SerializeField] public int numOfCollectiblesCollected = 0;
+    [SerializeField] public int numOfGoodCollectiblesCollected = 0;
+    [SerializeField] public int numOfBadCollectiblesCollected = 0;
 
     Vector3 respawnPosition;
     // Start is called before the first frame update
@@ -83,9 +85,17 @@ public class ScoreManager : MonoBehaviour
                 PlayerIsDead(); return;
             }
         }
-        else if(tagOfKiller == "Collectible")
+        else if(tagOfKiller == "Good" || tagOfKiller=="Bad")
         {
             numOfCollectiblesCollected++;
+            if(tagOfKiller == "Good")
+            {
+                numOfGoodCollectiblesCollected++;
+            }
+            else
+            {
+                numOfBadCollectiblesCollected++;
+            }
             return;
         }
         transform.position = respawnPosition;

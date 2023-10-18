@@ -44,13 +44,13 @@ public class CollisionController : MonoBehaviour
             {
                 int scoreChange = collision.gameObject.CompareTag("Good") ? 1 : -1;
                 scoreManagerPlayer1.IncrementScore(scoreChange);
-                scoreManagerPlayer1.RespawnPlayer("Collectible"); // this will not actually respawn player, just increase count of collectible
+                scoreManagerPlayer1.RespawnPlayer(collision.gameObject.tag); // this will not actually respawn player, just increase count of collectible
             }
             else if (gameObject.CompareTag("Player2Blade"))
             {
                 int scoreChange = collision.gameObject.CompareTag("Good") ? 1 : -1;
                 scoreManagerPlayer2.IncrementScore(scoreChange);
-                scoreManagerPlayer2.RespawnPlayer("Collectible"); // this will not actually respawn player, just increase count of collectible
+                scoreManagerPlayer2.RespawnPlayer(collision.gameObject.tag); // this will not actually respawn player, just increase count of collectible
             }
             Destroy(collision.gameObject);
         }
