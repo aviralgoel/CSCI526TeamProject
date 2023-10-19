@@ -13,7 +13,9 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private int numOfLives = 3;
     [SerializeField] public int numOfTimesKilledByBlackHole = 0;
     [SerializeField] public int numOfTimesKilledByPlayer = 0;
-    [SerializeField] public int numOfTimesKilledByCollectible = 0;
+    [SerializeField] public int numOfCollectiblesCollected = 0;
+    [SerializeField] public int numOfGoodCollectiblesCollected = 0;
+    [SerializeField] public int numOfBadCollectiblesCollected = 0;
 
     
     Vector3 respawnPosition;
@@ -73,30 +75,34 @@ public class ScoreManager : MonoBehaviour
         if(tagOfKiller == "Blackhole")
         {
             numOfTimesKilledByBlackHole++;
+            PlayerIsDead(); return;
         }
         else if(tagOfKiller == "OtherPlayer")
         {
             numOfTimesKilledByPlayer++;
-        }
-        else if(tagOfKiller == "Bad")
-        {
-            numOfTimesKilledByCollectible++;
-        }
-
-        // player lives handler
-        if(numOfLives > 1) 
-        {
-            transform.position = respawnPosition;
             numOfLives--;
+            if(numOfLives == 0)
+            {
+                PlayerIsDead(); return;
+            }
         }
-        else
+        else if(tagOfKiller == "Good" || tagOfKiller=="Bad")
         {
-            PlayerIsDead();
+            numOfCollectiblesCollected++;
+            if(tagOfKiller == "Good")
+            {
+                numOfGoodCollectiblesCollected++;
+            }
+            else
+            {
+                numOfBadCollectiblesCollected++;
+            }
+            return;
         }
-        
+        transform.position = respawnPosition;
 
     }
-    private void PlayerIsDead() 
+    public void PlayerIsDead() 
     {   
         // sstop the player
         isPlayerActive = false;
