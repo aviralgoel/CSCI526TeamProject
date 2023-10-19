@@ -3,17 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {   
     public GameObject playerOne;
     public GameObject playerTwo;
 
-    public Text playerOneScoreText; //sharan
-    public Text playerTwoScoreText; // sharan
+    //public Text playerOneScoreText; //sharan
+    //public Text playerTwoScoreText; // sharan
 
     private ScoreManager player1ScoreManager;
     private ScoreManager player2ScoreManager;
+
+    // text mesh pro text field
+    public TextMeshProUGUI player1ScoreTextMeshPro;
 
     private static System.Random random = new System.Random();
     
@@ -42,8 +46,8 @@ public class GameManager : MonoBehaviour
         analyticsCollector = GetComponent<AnalyticsCollector>();
 
         // Sharan
-        playerOneScoreText = GameObject.Find("PlayerOneScoreText").GetComponent<Text>();
-        playerTwoScoreText = GameObject.Find("PlayerTwoScoreText").GetComponent<Text>();
+        //playerOneScoreText = GameObject.Find("PlayerOneScoreText").GetComponent<Text>();
+        //playerTwoScoreText = GameObject.Find("PlayerTwoScoreText").GetComponent<Text>();
     }
 
     void Update()
@@ -51,15 +55,16 @@ public class GameManager : MonoBehaviour
         //analyticsCollector = GetComponent<AnalyticsCollector>();
 
         //sharan
-        if (playerOneScoreText != null && player1ScoreManager != null)
+        //if (playerOneScoreText != null && player1ScoreManager != null)
         {
-            playerOneScoreText.text = "Player 1 Score: " + player1ScoreManager.GetScore().ToString();
+            //playerOneScoreText.text = "Player 1 Score: " + player1ScoreManager.GetScore().ToString();
+            player1ScoreTextMeshPro.text = "Score: " + player1ScoreManager.GetScore().ToString();
         }
 
-        if (playerTwoScoreText != null && player2ScoreManager != null)
-        {
-            playerTwoScoreText.text = "Player 2 Score: " + player2ScoreManager.GetScore().ToString();
-        }
+        //if (playerTwoScoreText != null && player2ScoreManager != null)
+        //{
+          //  playerTwoScoreText.text = "Player 2 Score: " + player2ScoreManager.GetScore().ToString();
+        //}
 
         // sharan
         if (!isPlayerOneActive) // player has not yet joined the game
