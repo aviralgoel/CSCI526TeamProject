@@ -2,11 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {   
     public GameObject playerOne;
     public GameObject playerTwo;
+
+    public Text playerOneScoreText; //sharan
+    public Text playerTwoScoreText; // sharan
 
     private ScoreManager player1ScoreManager;
     private ScoreManager player2ScoreManager;
@@ -36,12 +40,28 @@ public class GameManager : MonoBehaviour
         player1ScoreManager = playerOne.GetComponent<ScoreManager>();
         player2ScoreManager = playerTwo.GetComponent<ScoreManager>();
         analyticsCollector = GetComponent<AnalyticsCollector>();
+
+        // Sharan
+        playerOneScoreText = GameObject.Find("PlayerOneScoreText").GetComponent<Text>();
+        playerTwoScoreText = GameObject.Find("PlayerTwoScoreText").GetComponent<Text>();
     }
 
     void Update()
     {
         //analyticsCollector = GetComponent<AnalyticsCollector>();
 
+        //sharan
+        if (playerOneScoreText != null && player1ScoreManager != null)
+        {
+            playerOneScoreText.text = "Player 1 Score: " + player1ScoreManager.GetScore().ToString();
+        }
+
+        if (playerTwoScoreText != null && player2ScoreManager != null)
+        {
+            playerTwoScoreText.text = "Player 2 Score: " + player2ScoreManager.GetScore().ToString();
+        }
+
+        // sharan
         if (!isPlayerOneActive) // player has not yet joined the game
         {
             if (Input.GetKeyDown(KeyCode.L)) // player has joined the game
@@ -147,3 +167,4 @@ public class GameManager : MonoBehaviour
         return new string(sessionID);
     }
 }
+
