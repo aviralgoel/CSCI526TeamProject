@@ -17,7 +17,14 @@ public class GameManager : MonoBehaviour
     private ScoreManager player2ScoreManager;
 
     // text mesh pro text field
-    public TextMeshProUGUI player1ScoreTextMeshPro;
+   public TextMeshProUGUI player1ScoreTextMeshPro;
+    public TextMeshProUGUI player2ScoreTextMeshPro;
+
+    public TextMeshProUGUI player1LivesTextMeshPro;
+    public TextMeshProUGUI player2LivesTextMeshPro;
+
+
+
 
     private static System.Random random = new System.Random();
     
@@ -56,10 +63,16 @@ public class GameManager : MonoBehaviour
 
         //sharan
         //if (playerOneScoreText != null && player1ScoreManager != null)
-        {
+        
             //playerOneScoreText.text = "Player 1 Score: " + player1ScoreManager.GetScore().ToString();
-            player1ScoreTextMeshPro.text = "Score: " + player1ScoreManager.GetScore().ToString();
-        }
+
+            //sharan
+            player1ScoreTextMeshPro.text = player1ScoreManager.GetScore().ToString();
+            player2ScoreTextMeshPro.text = player2ScoreManager.GetScore().ToString();
+
+            player1LivesTextMeshPro.text = "Lives:" + player1ScoreManager.numOfLives.ToString();
+            player2LivesTextMeshPro.text = "Lives:" + player2ScoreManager.numOfLives.ToString();
+            //sharan
 
         //if (playerTwoScoreText != null && player2ScoreManager != null)
         //{
@@ -171,5 +184,32 @@ public class GameManager : MonoBehaviour
 
         return new string(sessionID);
     }
+    //sharan
+     public void UpdatePlayerScoreUI(ScoreManager scoreManager)
+    {
+        if (scoreManager == player1ScoreManager)
+        {
+            player1ScoreTextMeshPro.text = "Player 1 Score: " + scoreManager.GetScore().ToString();
+        }
+        else if (scoreManager == player2ScoreManager)
+        {
+            player2ScoreTextMeshPro.text = "Player 2 Score: " + scoreManager.GetScore().ToString();
+        }
+    }
+
+   
+    public void UpdatePlayerLivesUI(ScoreManager scoreManager)
+    {
+        if (scoreManager == player1ScoreManager)
+        {
+            player1LivesTextMeshPro.text = "Lives: " + scoreManager.numOfLives.ToString();
+        }
+        else if (scoreManager == player2ScoreManager)
+        {
+            player2LivesTextMeshPro.text = "Lives: " + scoreManager.numOfLives.ToString();
+        }
+    }
+
+    //sharan
 }
 

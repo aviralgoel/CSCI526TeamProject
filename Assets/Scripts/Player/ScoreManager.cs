@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using TMPro;
 
 public class ScoreManager : MonoBehaviour
 {   
@@ -10,12 +11,20 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private float timeActive = 0;
     [SerializeField] private int playerNumber;
     [SerializeField] private bool isPlayerActive;
-    [SerializeField] private int numOfLives = 3;
+    [SerializeField] public int numOfLives = 3;
     [SerializeField] public int numOfTimesKilledByBlackHole = 0;
     [SerializeField] public int numOfTimesKilledByPlayer = 0;
     [SerializeField] public int numOfCollectiblesCollected = 0;
     [SerializeField] public int numOfGoodCollectiblesCollected = 0;
     [SerializeField] public int numOfBadCollectiblesCollected = 0;
+
+   //sharan
+      [SerializeField]
+    private GameManager gameManager;
+
+  
+   //sharan
+
 
     
     Vector3 respawnPosition;
@@ -68,6 +77,7 @@ public class ScoreManager : MonoBehaviour
     {
         // Increment the score when a good collectible is collected
         score += amount;
+         gameManager.UpdatePlayerScoreUI(this);
     }
     public void RespawnPlayer(string tagOfKiller)
     {   
@@ -75,7 +85,9 @@ public class ScoreManager : MonoBehaviour
         if(tagOfKiller == "Blackhole")
         {
             numOfTimesKilledByBlackHole++;
-            PlayerIsDead(); return;
+            PlayerIsDead();
+            PlayerIsKilled();//sharan
+             return;
         }
         else if(tagOfKiller == "OtherPlayer")
         {
@@ -83,7 +95,9 @@ public class ScoreManager : MonoBehaviour
             numOfLives--;
             if(numOfLives == 0)
             {
-                PlayerIsDead(); return;
+                PlayerIsDead(); 
+                PlayerIsKilled();//sharan
+                return;
             }
         }
         else if(tagOfKiller == "Good" || tagOfKiller=="Bad")
@@ -109,6 +123,16 @@ public class ScoreManager : MonoBehaviour
         this.gameObject.SetActive(false);
     }
 
+    //sharan
+
+
+
+public void PlayerIsKilled()
+{
+    
+    numOfLives--;
+      gameManager.UpdatePlayerLivesUI(this);//sharan
+}
    
    
 }
