@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
 
     private ScoreManager player1ScoreManager;
     private ScoreManager player2ScoreManager;
+    public Spawnercode spanwerManager;
 
     // text mesh pro text field
    public TextMeshProUGUI player1ScoreTextMeshPro;
@@ -53,6 +54,9 @@ public class GameManager : MonoBehaviour
         player1ScoreManager = playerOne.GetComponent<ScoreManager>();
         player2ScoreManager = playerTwo.GetComponent<ScoreManager>();
         analyticsCollector = GetComponent<AnalyticsCollector>();
+
+        //int totalCollectiblesSpawned = spanwerManager.numOfCollectiblesSpawned;
+
 
         // Sharan
         //playerOneScoreText = GameObject.Find("PlayerOneScoreText").GetComponent<Text>();
@@ -212,6 +216,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    //sharan
+  
 }
 

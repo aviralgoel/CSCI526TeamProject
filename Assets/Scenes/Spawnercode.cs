@@ -10,6 +10,7 @@ public class Spawnercode : MonoBehaviour
     private float timer = 0.0f;
     Vector3 playGroundExtendMin;
     Vector3 playGroundExtendMax;
+    public int numOfCollectiblesSpawned = 0;
 
     private void Start()
     {
@@ -38,6 +39,7 @@ public class Spawnercode : MonoBehaviour
             if(randomSpawn.x > playGroundExtendMin.x && randomSpawn.x < playGroundExtendMax.x && randomSpawn.y > playGroundExtendMin.y && randomSpawn.y < playGroundExtendMax.y)
             {
                 GameObject newCollectible = Instantiate(myobj[randomIndex], randomSpawn, Quaternion.identity);
+                numOfCollectiblesSpawned++;
             }
 
         }
