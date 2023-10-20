@@ -1,51 +1,44 @@
+// using System.Collections;
+// using UnityEngine;
+
+// public class Collectibles : MonoBehaviour
+// {
+
+//     // Updated collision method with debug log messages for "Player1" and "Player2"
+//     private void OnTriggerEnter2D(Collider2D collision)
+//     {
+//         if (collision.gameObject.CompareTag("Player1Blade") || collision.gameObject.CompareTag("Player2Blade"))
+//         {         
+//             // Destroy this collectible
+//             Destroy(this.gameObject);
+//         }
+//     }
+// }
+
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Collectibles : MonoBehaviour
 {
-    public float speed;
-    public Vector3 direction; 
-    bool running = false;
+    private float selfDestructionTime = 10f;
 
-    public float minDeactivationTime = 3f;
-    public float maxDeactivationTime = 8f;
-    Vector3 dest;
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-       direction = Vector3.zero;
-
-    }
-    private void OnEnable()
-    {
-        StartCoroutine(DelayedDeactivate());
+        StartCoroutine(DestroyAfterDelay());
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator DestroyAfterDelay()
     {
-        if (!running)
-        {
-            StartCoroutine(changeDirection());
+        yield return new WaitForSeconds(selfDestructionTime);
+        Destroy(this.gameObject);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player1Blade") || collision.gameObject.CompareTag("Player2Blade"))
+        {         
+            // Destroy this collectible immediately upon collision
+            Destroy(this.gameObject);
         }
-        dest = transform.position + direction * 0;
-        transform.position = Vector3.Lerp(transform.position, dest, Time.deltaTime);
     }
-
-    IEnumerator changeDirection()
-    {
-        running = true;
-        yield return new WaitForSeconds(0.5f);
-        direction.x = Random.Range(-5, 5);
-        direction.y = Random.Range(-5, 5);
-        running = false;
-    }
-    IEnumerator DelayedDeactivate()
-    {
-        float randomTime = Random.Range(minDeactivationTime, maxDeactivationTime);
-        yield return new WaitForSeconds(randomTime);
-        this.gameObject.SetActive(false);
-    }
-
 }
