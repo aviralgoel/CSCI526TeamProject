@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI player1LivesTextMeshPro;
     public TextMeshProUGUI player2LivesTextMeshPro;
 
+    public bool isGameOver = false;
+
 
 
 

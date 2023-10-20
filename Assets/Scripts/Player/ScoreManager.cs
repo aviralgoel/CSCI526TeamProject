@@ -81,19 +81,12 @@ public class ScoreManager : MonoBehaviour
         if(tagOfKiller == "Blackhole")
         {
             numOfTimesKilledByBlackHole++;
-            ReducePlayerLife(); //sharan
-            PlayerIsDead();
-            return;
+            ReducePlayerLife();
         }
         else if(tagOfKiller == "OtherPlayer")
         {
             numOfTimesKilledByPlayer++;
             ReducePlayerLife();
-            if(numOfLives == 0)
-            {
-                PlayerIsDead(); 
-                return;
-            }
         }
         else if(tagOfKiller == "Good" || tagOfKiller=="Bad")
         {
@@ -111,11 +104,12 @@ public class ScoreManager : MonoBehaviour
         transform.position = respawnPosition;
 
     }
-    public void PlayerIsDead() 
+    public void GameOver() 
     {   
         // sstop the player
         isPlayerActive = false;
         this.gameObject.SetActive(false);
+        gameManager.isGameOver = true; 
         //change scene to game over
         SceneManager.LoadScene("End_Scene");
 
@@ -129,6 +123,10 @@ public void ReducePlayerLife()
 {
     numOfLives--;
     gameManager.UpdatePlayerLivesUI(this);//sharan
+    if(numOfLives == 0)
+    {
+        GameOver();
+    }
 }
    
    
