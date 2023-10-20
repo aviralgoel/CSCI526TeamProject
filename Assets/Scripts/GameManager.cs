@@ -114,7 +114,9 @@ public class GameManager : MonoBehaviour
             if(!isPlayer1DataSent && player1ScoreManager.IsPlayerActive ()== false)
             {
                 string player1AnalyticsData = collectPlayer1AnalyticsData();
+                string player2AnalyticsData = collectPlayer2AnalyticsData();
                 analyticsCollector.SendPlayer1Data(player1AnalyticsData);
+                analyticsCollector.SendPlayer2Data(player2AnalyticsData);
                 //Debug.Log("Analytics Data:\n" + player1AnalyticsData);
                 isPlayer1DataSent = true;
             }
@@ -127,6 +129,8 @@ public class GameManager : MonoBehaviour
             if(!isPlayer2DataSent && player2ScoreManager.IsPlayerActive ()== false)
             {
                 string player2AnalyticsData = collectPlayer2AnalyticsData();
+                string player1AnalyticsData = collectPlayer1AnalyticsData();
+                analyticsCollector.SendPlayer1Data(player1AnalyticsData);
                 analyticsCollector.SendPlayer2Data(player2AnalyticsData);
                 //Debug.Log("Analytics Data:\n" + player2AnalyticsData);
                 isPlayer2DataSent = true;
@@ -142,6 +146,7 @@ public class GameManager : MonoBehaviour
         int player1KilledByPlayer = player1ScoreManager.numOfTimesKilledByPlayer;
         int player1GoodCollectibles = player1ScoreManager.numOfGoodCollectiblesCollected;
         int player1BadCollectibles = player1ScoreManager.numOfBadCollectiblesCollected;
+        int totalCollectibles = spanwerManager.numOfCollectiblesSpawned;
 
         string player1AnalyticsData = 
             "Player 1 Session: " + sessionID + "\n" +
@@ -151,8 +156,9 @@ public class GameManager : MonoBehaviour
             "Player 1 Killed by Black Hole: " + player1KilledByBlackHole + "\n" +
             "Player 1 Killed by Player: " + player1KilledByPlayer + "\n" +
             "Player 1 Good Collectibles: " + player1GoodCollectibles + "\n" +
-            "Player 1 Bad Collectibles: " + player1BadCollectibles;
-
+            "Player 1 Bad Collectibles: " + player1BadCollectibles + "\n" +
+            "Total Collectibles: " + totalCollectibles;
+        
         return player1AnalyticsData;
     }
 
@@ -164,6 +170,7 @@ public class GameManager : MonoBehaviour
         int player2KilledByPlayer = player2ScoreManager.numOfTimesKilledByPlayer;
         int player2GoodCollectibles = player2ScoreManager.numOfGoodCollectiblesCollected;
         int player2BadCollectibles = player2ScoreManager.numOfBadCollectiblesCollected;
+        int totalCollectibles = spanwerManager.numOfCollectiblesSpawned;
 
         string player2AnalyticsData = 
             "Player 2 Session: " + sessionID + "\n" +
@@ -173,8 +180,9 @@ public class GameManager : MonoBehaviour
             "Player 2 Killed by Black Hole: " + player2KilledByBlackHole + "\n" +
             "Player 2 Killed by Player: " + player2KilledByPlayer + "\n" +
             "Player 2 Good Collectibles: " + player2GoodCollectibles + "\n" +
-            "Player 2 Bad Collectibles: " + player2BadCollectibles;
-
+            "Player 2 Bad Collectibles: " + player2BadCollectibles + "\n" +
+            "Total Collectibles: " + totalCollectibles;
+        
         return player2AnalyticsData;
     }
 
