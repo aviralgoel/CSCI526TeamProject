@@ -5,16 +5,26 @@ using System.Collections;
 
 public class AnalyticsCollector : MonoBehaviour
 {
+    public bool shouldDataBeSentToGoogleForms = false;
     private string googleFormURL = "https://docs.google.com/forms/u/0/d/1Bzx0bE5zS9WPcNZXTGq1ZVLMDmkgT8iWEa-L3u_wnEU/formResponse";
 
     public void SendPlayer1Data(string player1Data)
-    {
-        StartCoroutine(Post(player1Data, "entry.1941188781"));
+    {   
+        if(shouldDataBeSentToGoogleForms)
+        {
+            StartCoroutine(Post(player1Data, "entry.1941188781"));
+        }
+
     }
+        
 
     public void SendPlayer2Data(string player2Data)
     {
-        StartCoroutine(Post(player2Data, "entry.839068046"));
+        if(shouldDataBeSentToGoogleForms)
+        {
+            StartCoroutine(Post(player2Data, "entry.839068046"));
+        }
+        
     }
 
     private IEnumerator Post(string playerData, string playerFormFieldKey)
