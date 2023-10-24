@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayer: -1
   m_SortingOrder: 1
   m_Sprite: {fileID: 2747690628134850419, guid: b670ab75dde984907b8570040daa08c5, type: 3}
-  m_Color: {r: 0.504717, g: 0.9211166, b: 1, a: 0.6666667}
+  m_Color: {r: 0.2536045, g: 0.37010315, b: 0.38679248, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -166,7 +166,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -299,7 +299,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -432,7 +432,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -651,7 +651,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -784,7 +784,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -917,7 +917,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -990,6 +990,18 @@ PrefabInstance:
       value: Blackhole
       objectReference: {fileID: 0}
     - target: {fileID: 2344834157794600819, guid: b56b926cd10b8574eb9e68e0f14aeff5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 62111ff120026814c85476df20e41573, type: 3}
+    - target: {fileID: 2344834157794600819, guid: b56b926cd10b8574eb9e68e0f14aeff5, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2344834157794600819, guid: b56b926cd10b8574eb9e68e0f14aeff5, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2344834157794600819, guid: b56b926cd10b8574eb9e68e0f14aeff5, type: 3}
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
@@ -1011,15 +1023,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2344834157794600828, guid: b56b926cd10b8574eb9e68e0f14aeff5, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.075
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 2344834157794600828, guid: b56b926cd10b8574eb9e68e0f14aeff5, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.075
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 2344834157794600828, guid: b56b926cd10b8574eb9e68e0f14aeff5, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.075
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 2344834157794600828, guid: b56b926cd10b8574eb9e68e0f14aeff5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1061,6 +1073,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2344834157794600828, guid: b56b926cd10b8574eb9e68e0f14aeff5, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b56b926cd10b8574eb9e68e0f14aeff5, type: 3}
 --- !u!1 &5657236042390071254 stripped
@@ -1083,7 +1099,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0.000000019868216, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 2.44
 --- !u!4 &5657236042390071256 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2344834157794600828, guid: b56b926cd10b8574eb9e68e0f14aeff5, type: 3}
