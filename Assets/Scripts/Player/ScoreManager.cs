@@ -1,9 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using TMPro;
+using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour
 {   
@@ -85,20 +81,12 @@ public class ScoreManager : MonoBehaviour
         if(tagOfKiller == "Blackhole")
         {
             numOfTimesKilledByBlackHole++;
-            PlayerIsDead();
-            PlayerIsKilled();//sharan
-             return;
+            ReducePlayerLife();
         }
         else if(tagOfKiller == "OtherPlayer")
         {
             numOfTimesKilledByPlayer++;
-            numOfLives--;
-            if(numOfLives == 0)
-            {
-                PlayerIsDead(); 
-                PlayerIsKilled();//sharan
-                return;
-            }
+            ReducePlayerLife();
         }
         else if(tagOfKiller == "Good" || tagOfKiller=="Bad")
         {
@@ -116,22 +104,29 @@ public class ScoreManager : MonoBehaviour
         transform.position = respawnPosition;
 
     }
-    public void PlayerIsDead() 
+    public void GameOver() 
     {   
         // sstop the player
         isPlayerActive = false;
         this.gameObject.SetActive(false);
+        gameManager.isGameOver = true; 
+        //change scene to game over
+        SceneManager.LoadScene("End_Scene");
+
     }
 
     //sharan
 
 
 
-public void PlayerIsKilled()
+public void ReducePlayerLife()
 {
-    
     numOfLives--;
-      gameManager.UpdatePlayerLivesUI(this);//sharan
+    gameManager.UpdatePlayerLivesUI(this);//sharan
+    if(numOfLives == 0)
+    {
+        GameOver();
+    }
 }
    
    

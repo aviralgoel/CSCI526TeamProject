@@ -11,11 +11,15 @@ public class PlayerInputController : MonoBehaviour
     public float movementSpeed;
     public float turnSpeed;
     public float angleToTurn = 10f;
+    private ScoreManager scoreManager;
     [Range(1f, 5f)]
     public float speedMultiplier;
     [Range(0f, 2f)]
     public float turnSpeedMultiplier;
+    
     KeyCode controllingKey;
+    private float defaultTurnSpeedMultiplierValue = 1f;
+
     //public GameObject blackHole;
 
     // Start is called before the first frame update
@@ -36,6 +40,7 @@ public class PlayerInputController : MonoBehaviour
         speedMultiplier = 1f;
         turnSpeedMultiplier = 1f;
         turnSpeed = 1f;
+        scoreManager = GetComponent<ScoreManager>();
         
     }
 
@@ -47,6 +52,14 @@ public class PlayerInputController : MonoBehaviour
         {
             InputController();
         }
+        
+
+    }
+    private void Update()
+    {
+        speedMultiplier = (scoreManager.GetTimeActive() < 10f) ? 1f : 1 + scoreManager.GetTimeActive() / 75f;
+        angleToTurn = (scoreManager.GetTimeActive() < 10f) ? 10f : 10f + scoreManager.GetTimeActive() / 20f;
+        //defaultTurnSpeedMultiplierValue = (scoreManager.GetTimeActive() < 10f) ? 1f : 1 + scoreManager.GetTimeActive() / 10f;
     }
 
 
@@ -54,7 +67,7 @@ public class PlayerInputController : MonoBehaviour
     {   
         // turning and moving the player always to its right
         // using forces (and not trasnform.Translate())
-        
+      
         rb.velocity = transform.up * movementSpeed * Time.deltaTime * speedMultiplier;
         if (Input.GetKey(controllingKey))
         {
@@ -73,7 +86,7 @@ public class PlayerInputController : MonoBehaviour
         
         if(Input.GetKeyUp(controllingKey))
         {
-            turnSpeedMultiplier = 1f;
+            turnSpeedMultiplier = defaultTurnSpeedMultiplierValue;
         }
     }
    

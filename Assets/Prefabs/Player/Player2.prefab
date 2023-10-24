@@ -4976,7 +4976,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMovementAllowed: 0
-  movementSpeed: 40
+  movementSpeed: 45
   turnSpeed: 0
   angleToTurn: 10
   speedMultiplier: 0
@@ -5000,7 +5000,10 @@ MonoBehaviour:
   numOfLives: 2
   numOfTimesKilledByBlackHole: 0
   numOfTimesKilledByPlayer: 0
-  numOfTimesKilledByCollectible: 0
+  numOfCollectiblesCollected: 0
+  numOfGoodCollectiblesCollected: 0
+  numOfBadCollectiblesCollected: 0
+  gameManager: {fileID: 0}
 --- !u!114 &8879033084394458845
 MonoBehaviour:
   m_ObjectHideFlags: 0
