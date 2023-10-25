@@ -438,6 +438,14 @@ PrefabInstance:
       propertyPath: m_UiScaleMode
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3666594016984141152, guid: c73e76eb4446e924ba833d2cda66799b, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3666594016984141152, guid: c73e76eb4446e924ba833d2cda66799b, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 900
+      objectReference: {fileID: 0}
     - target: {fileID: 3666594016984141154, guid: c73e76eb4446e924ba833d2cda66799b, type: 3}
       propertyPath: m_Pivot.x
       value: 0
