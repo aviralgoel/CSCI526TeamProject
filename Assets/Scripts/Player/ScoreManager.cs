@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour
 {   
-    [SerializeField] private float score = 10;
+    [SerializeField] private float score = 100;
     [SerializeField] private float timeActive = 0;
     [SerializeField] private int playerNumber;
     [SerializeField] private bool isPlayerActive;
@@ -13,6 +13,7 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] public int numOfCollectiblesCollected = 0;
     [SerializeField] public int numOfGoodCollectiblesCollected = 0;
     [SerializeField] public int numOfBadCollectiblesCollected = 0;
+    public GameObject bar;
 
    //sharan
       [SerializeField]
@@ -29,6 +30,7 @@ public class ScoreManager : MonoBehaviour
     {
         isPlayerActive = false;
         respawnPosition = transform.position;
+        InvokeRepeating("UpdateScore", 0, 1.0f);
     }
 
     // Update is called once per frame
@@ -38,6 +40,13 @@ public class ScoreManager : MonoBehaviour
         {
             UpdateTime();
         }
+    }
+
+    private void UpdateScore()
+    {
+        score--;
+        bar.transform.localScale -= new Vector3(0, 0.05f, 0);
+        bar.transform.position -= new Vector3(0, 0.025f, 0);
     }
 
     private void UpdateTime()
@@ -73,7 +82,9 @@ public class ScoreManager : MonoBehaviour
     {
         // Increment the score when a good collectible is collected
         score += amount;
-         gameManager.UpdatePlayerScoreUI(this);
+        gameManager.UpdatePlayerScoreUI(this);
+        bar.transform.localScale += new Vector3(0, 0.05f*amount, 0);
+        bar.transform.position += new Vector3(0, 0.025f*amount, 0);
     }
     public void RespawnPlayer(string tagOfKiller)
     {   
