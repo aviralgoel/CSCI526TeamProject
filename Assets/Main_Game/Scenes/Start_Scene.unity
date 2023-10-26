@@ -538,6 +538,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Start_Menu
       objectReference: {fileID: 0}
+    - target: {fileID: 4315538074713779579, guid: c73e76eb4446e924ba833d2cda66799b, type: 3}
+      propertyPath: sceneToLoad
+      value: Scene1
+      objectReference: {fileID: 0}
     - target: {fileID: 4979791292910941980, guid: c73e76eb4446e924ba833d2cda66799b, type: 3}
       propertyPath: sceneToLoad
       value: Tom

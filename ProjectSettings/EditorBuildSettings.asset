@@ -5,19 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Main_Game/Scenes/Start_Scene.unity
     guid: b186a7e5f35d82c439087c641cfa79ea
   - enabled: 0
     path: Assets/Main_Game/Scenes/Tom.unity
     guid: 8b6e1e88fdafb49d3be84c1db30cf48e
-  - enabled: 0
-    path: Assets/Main_Game/Scenes/End_Scene.unity
-    guid: eb8171f12f00dd04081b0fcceb566b47
   - enabled: 1
-    path: Assets/Tutorial_Game/Scenes/scene1.unity
+    path: Assets/Tutorial_Game/Scenes/Scene1.unity
     guid: 50aa09534b02f2348a65ec4bdc237fbd
   - enabled: 1
     path: Assets/Tutorial_Game/Scenes/Scene2.unity
     guid: ef943369b195e724eb222755991f0227
+  - enabled: 1
+    path: Assets/Main_Game/Scenes/End_Scene.unity
+    guid: eb8171f12f00dd04081b0fcceb566b47
   m_configObjects: {}
