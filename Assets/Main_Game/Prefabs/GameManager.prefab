@@ -185,3 +185,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1PanelText: {fileID: 0}
   player2PanelText: {fileID: 0}
+  player1PowerUpText: {fileID: 0}
+  player2PowerUpText: {fileID: 0}

@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4940011465256298640, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
+      propertyPath: m_TagString
+      value: Player1
+      objectReference: {fileID: 0}
     - target: {fileID: 4940011465256298646, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -218,6 +222,21 @@ MonoBehaviour:
   angleToTurn: 10
   speedMultiplier: 1
   turnSpeedMultiplier: 1
+--- !u!114 &1441567228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6184972171403645291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09149736fb2616047af42ac41780fc8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerNumber: 0
+  PowerUpControllingKey: 0
+  totalPowerUpCount: 0
 --- !u!114 &1619474688059181860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,20 +259,7 @@ MonoBehaviour:
   numOfCollectiblesCollected: 0
   numOfGoodCollectiblesCollected: 0
   numOfBadCollectiblesCollected: 0
-  bar: {fileID: 0}
   gameManager: {fileID: 0}
---- !u!114 &1441567228
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6184972171403645291}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09149736fb2616047af42ac41780fc8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &6184972172514375042 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4940011465256298641, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}

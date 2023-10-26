@@ -152,15 +152,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6587957134335053144, guid: e5e30e8b166c19040a2821b786af2f45, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6587957134335053144, guid: e5e30e8b166c19040a2821b786af2f45, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6587957134335053144, guid: e5e30e8b166c19040a2821b786af2f45, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6587957134335053144, guid: e5e30e8b166c19040a2821b786af2f45, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -202,18 +202,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 835738887423779743, guid: 026fcc7326fdc714c8e38afdbe81c62d, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 835738887423779743, guid: 026fcc7326fdc714c8e38afdbe81c62d, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3116677190169294807, guid: 026fcc7326fdc714c8e38afdbe81c62d, type: 3}
-      propertyPath: selfDestructionTime
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 5282602700515287355, guid: 026fcc7326fdc714c8e38afdbe81c62d, type: 3}
       propertyPath: m_Name
       value: FireWalls
@@ -417,10 +405,6 @@ PrefabInstance:
     - target: {fileID: 6184972171403645292, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 226.423
-      objectReference: {fileID: 0}
-    - target: {fileID: 6184972172514375043, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
-      propertyPath: m_TagString
-      value: Player1
       objectReference: {fileID: 0}
     - target: {fileID: 8249208950005484453, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
       propertyPath: scoreManagerPlayer2
@@ -686,21 +670,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06cd899b5724d124abe1ef804929784f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &809736422
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 809736415}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09149736fb2616047af42ac41780fc8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerNumber: 0
-  PowerUpControllingKey: 0
-  totalPowerUpCount: 0
 --- !u!1001 &881682086
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -994,22 +963,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 144015237, guid: bf29a5cc1c01d4a429259105bbfbf1db, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -53.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 144015238, guid: bf29a5cc1c01d4a429259105bbfbf1db, type: 3}
-      propertyPath: m_text
-      value: PlaceHolder
-      objectReference: {fileID: 0}
-    - target: {fileID: 1831206012, guid: bf29a5cc1c01d4a429259105bbfbf1db, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -53.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1831206013, guid: bf29a5cc1c01d4a429259105bbfbf1db, type: 3}
-      propertyPath: m_text
-      value: PlaceHolder
-      objectReference: {fileID: 0}
     - target: {fileID: 589337306042353433, guid: bf29a5cc1c01d4a429259105bbfbf1db, type: 3}
       propertyPath: m_Name
       value: Player_ui
@@ -1393,10 +1346,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 46.736
       objectReference: {fileID: 0}
-    - target: {fileID: 5539643208147550777, guid: aa9161055e227c24583beef344af0ec7, type: 3}
-      propertyPath: m_TagString
-      value: Player2
-      objectReference: {fileID: 0}
     - target: {fileID: 7732320587634424863, guid: aa9161055e227c24583beef344af0ec7, type: 3}
       propertyPath: scoreManagerPlayer1
       value: 
@@ -1480,15 +1429,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6690346119174730491, guid: b25c44eadcf8d0e43b6980cf9b94a946, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6690346119174730491, guid: b25c44eadcf8d0e43b6980cf9b94a946, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6690346119174730491, guid: b25c44eadcf8d0e43b6980cf9b94a946, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6690346119174730491, guid: b25c44eadcf8d0e43b6980cf9b94a946, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
