@@ -46,8 +46,12 @@ public class ScoreManager : MonoBehaviour
     }
     
     public void SetPlayerActive(bool isActive)
-    {   
+    {
+        this.gameObject.SetActive(isActive);
+        // print the player number
+        Debug.Log("Player " + playerNumber + " has joined the game");
         isPlayerActive = isActive;
+        
     }
     public bool IsPlayerActive()
     {

@@ -290,6 +290,18 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1441567226, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
+      propertyPath: turnSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1441567226, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
+      propertyPath: speedMultiplier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1441567226, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
+      propertyPath: turnSpeedMultiplier
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1441567230, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
       propertyPath: prewarm
       value: 0
@@ -325,6 +337,10 @@ PrefabInstance:
     - target: {fileID: 6184972171403645291, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
       propertyPath: m_Name
       value: Player1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6184972171403645291, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6184972171403645292, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
       propertyPath: m_RootOrder
@@ -380,6 +396,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6184972171403645293, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
       propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6184972171403645293, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6184972172514375045, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
@@ -1500,6 +1520,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player2
       objectReference: {fileID: 0}
+    - target: {fileID: 5539643207180068561, guid: aa9161055e227c24583beef344af0ec7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5539643207180068566, guid: aa9161055e227c24583beef344af0ec7, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -1543,6 +1567,10 @@ PrefabInstance:
     - target: {fileID: 5539643207180068566, guid: aa9161055e227c24583beef344af0ec7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 46.736
+      objectReference: {fileID: 0}
+    - target: {fileID: 5539643208147550783, guid: aa9161055e227c24583beef344af0ec7, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7732320587634424863, guid: aa9161055e227c24583beef344af0ec7, type: 3}
       propertyPath: scoreManagerPlayer1

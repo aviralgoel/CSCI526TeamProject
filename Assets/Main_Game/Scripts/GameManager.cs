@@ -1,117 +1,73 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using static Unity.VisualScripting.Member;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {   
     public GameObject playerOne;
     public GameObject playerTwo;
-
-    //public Text playerOneScoreText; //sharan
-    //public Text playerTwoScoreText; // sharan
-
-    private ScoreManager player1ScoreManager;
-    private ScoreManager player2ScoreManager;
     public Spawnercode spanwerManager;
 
     // text mesh pro text field
-   public TextMeshProUGUI player1ScoreTextMeshPro;
+    public TextMeshProUGUI player1ScoreTextMeshPro;
     public TextMeshProUGUI player2ScoreTextMeshPro;
 
     public TextMeshProUGUI player1LivesTextMeshPro;
     public TextMeshProUGUI player2LivesTextMeshPro;
 
     public bool isGameOver = false;
+    public bool isGameStarted = false;
+
+    public AnalyticsCollector analyticsCollector;
 
 
-
-
+    private ScoreManager player1ScoreManager;
+    private ScoreManager player2ScoreManager;
     private static System.Random random = new System.Random();
     
     // player 1 variables
-    bool isPlayerOneActive = false;
+    [SerializeField] private bool isPlayerOneActive = false;
+    [SerializeField] private bool isPlayerOneMoving = false;
 
     // player 2 variables
-    bool isPlayerTwoActive = false;
+    [SerializeField] private bool isPlayerTwoActive = false;
+    [SerializeField] private bool isPlayerTwoMoving = false;
 
-    string sessionID;
+    private string sessionID;
     private bool isPlayer1DataSent = false;
     private bool isPlayer2DataSent = false;
-
-   public AnalyticsCollector analyticsCollector;
-
     
+    // audio source
+    public AudioSource CountDownAudioSource;
 
-    // Start is called before the first frame update
     void Start()
     {
         sessionID = GenerateSessionID();
         Debug.Log("Generated Session ID: " + sessionID);
-        AnalyticsCollector analyticsCollector = GetComponent<AnalyticsCollector>();
+
         player1ScoreManager = playerOne.GetComponent<ScoreManager>();
         player2ScoreManager = playerTwo.GetComponent<ScoreManager>();
         analyticsCollector = GetComponent<AnalyticsCollector>();
-
-        //int totalCollectiblesSpawned = spanwerManager.numOfCollectiblesSpawned;
-
-
-        // Sharan
-        //playerOneScoreText = GameObject.Find("PlayerOneScoreText").GetComponent<Text>();
-        //playerTwoScoreText = GameObject.Find("PlayerTwoScoreText").GetComponent<Text>();
+        UIManager.instance.SetPlayer1PanelnText("Press L to Join");
+        UIManager.instance.SetPlayer2PanelText("Press A to Join");
     }
 
     void Update()
     {
-        //analyticsCollector = GetComponent<AnalyticsCollector>();
 
-        //sharan
-        //if (playerOneScoreText != null && player1ScoreManager != null)
-        
-            //playerOneScoreText.text = "Player 1 Score: " + player1ScoreManager.GetScore().ToString();
+        // Update UI
+        player1ScoreTextMeshPro.text = player1ScoreManager.GetScore().ToString();
+        player2ScoreTextMeshPro.text = player2ScoreManager.GetScore().ToString();
 
-            //sharan
-            player1ScoreTextMeshPro.text = player1ScoreManager.GetScore().ToString();
-            player2ScoreTextMeshPro.text = player2ScoreManager.GetScore().ToString();
-
-            player1LivesTextMeshPro.text = "Lives:" + player1ScoreManager.numOfLives.ToString();
-            player2LivesTextMeshPro.text = "Lives:" + player2ScoreManager.numOfLives.ToString();
-            //sharan
-
-        //if (playerTwoScoreText != null && player2ScoreManager != null)
-        //{
-          //  playerTwoScoreText.text = "Player 2 Score: " + player2ScoreManager.GetScore().ToString();
-        //}
-
-        // sharan
-        if (!isPlayerOneActive) // player has not yet joined the game
-        {
-            if (Input.GetKeyDown(KeyCode.L)) // player has joined the game
-            {
-                isPlayerOneActive=true;
-                player1ScoreManager.SetPlayerActive(true);
-                player1ScoreManager.SetPlayerNumber(1);
-                playerOne.GetComponent<PlayerInputController>().isMovementAllowed = true; 
-                
-            }
-        }
-        if (!isPlayerTwoActive) // player has not yet joined the game
-        {
-            if (Input.GetKeyDown(KeyCode.A)) // player has joined the game
-            {
-                isPlayerTwoActive=true;
-                player2ScoreManager.SetPlayerActive(true);
-                player2ScoreManager.SetPlayerNumber(2);
-                playerTwo.GetComponent<PlayerInputController>().isMovementAllowed = true;
-            }
-        }
+        player1LivesTextMeshPro.text = "Lives:" + player1ScoreManager.numOfLives.ToString();
+        player2LivesTextMeshPro.text = "Lives:" + player2ScoreManager.numOfLives.ToString();
+        HasPlayersJoined();
 
         // collect player1 data when it is dead
         if (isPlayerOneActive)
-        { 
-            if(!isPlayer1DataSent && player1ScoreManager.IsPlayerActive ()== false)
+        {
+            if (!isPlayer1DataSent && player1ScoreManager.IsPlayerActive() == false)
             {
                 string player1AnalyticsData = collectPlayer1AnalyticsData();
                 string player2AnalyticsData = collectPlayer2AnalyticsData();
@@ -125,8 +81,8 @@ public class GameManager : MonoBehaviour
 
         // collect player2 data when it is dead
         if (isPlayerTwoActive)
-        { 
-            if(!isPlayer2DataSent && player2ScoreManager.IsPlayerActive ()== false)
+        {
+            if (!isPlayer2DataSent && player2ScoreManager.IsPlayerActive() == false)
             {
                 string player2AnalyticsData = collectPlayer2AnalyticsData();
                 string player1AnalyticsData = collectPlayer1AnalyticsData();
@@ -136,6 +92,61 @@ public class GameManager : MonoBehaviour
                 isPlayer2DataSent = true;
             }
         }
+    }
+
+    private void HasPlayersJoined()
+    {   
+        if(isGameStarted) { return; } // game is in session, no further needs to make these checks
+        if (!isPlayerOneActive) // player 1 has not yet joined the game
+        {
+            if (Input.GetKeyUp(KeyCode.L)) // player has joined the game
+            {
+                isPlayerOneActive = true;
+                player1ScoreManager.SetPlayerNumber(1);
+                player1ScoreManager.SetPlayerActive(true);
+                UIManager.instance.SetPlayer1PanelnText("waiting for other player to join...");
+            }
+        }
+        if (!isPlayerTwoActive) // player 2 has not yet joined the game
+        {
+            if (Input.GetKeyUp(KeyCode.A)) // player has joined the game
+            {
+                isPlayerTwoActive = true;
+                player2ScoreManager.SetPlayerNumber(2);
+                player2ScoreManager.SetPlayerActive(true);
+                UIManager.instance.SetPlayer2PanelText("waiting for other player to join...");
+            }
+        }
+        if (isPlayerOneActive && isPlayerTwoActive) // both players have joined but are yet to move
+        {
+            UIManager.instance.SetPlayer1PanelnText("Press Space to Begin");
+            UIManager.instance.SetPlayer2PanelText("Press Space to Begin");
+            if(Input.GetKeyDown(KeyCode.Space)) 
+            { 
+                isPlayerTwoMoving = true;
+                isPlayerOneMoving = true;
+            }
+            /*if (Input.GetKeyUp(KeyCode.L) && !isPlayerOneMoving)
+            {
+                isPlayerOneMoving = true;
+            }
+            if (Input.GetKeyUp(KeyCode.A) && !isPlayerTwoMoving)
+            {
+                //playerTwo.GetComponent<PlayerInputController>().SetIsMovementAllowed(true);
+                isPlayerTwoMoving = true;
+            }*/
+            if(isPlayerTwoMoving && isPlayerOneMoving)
+            {
+                StartCoroutine(BeginTheGame());
+
+            }
+            if (isPlayerOneMoving && isPlayerTwoMoving)
+            {
+                isGameStarted = true;
+            }
+        }
+
+       
     }
 
     private string collectPlayer1AnalyticsData()
@@ -224,6 +235,26 @@ public class GameManager : MonoBehaviour
         }
     }
 
-  
+    IEnumerator BeginTheGame()
+    {   
+        CountDownAudioSource.Play();
+        //Wait Until Sound has finished playing
+        for (int i = (int)CountDownAudioSource.clip.length; i >= 0; i--)
+        {
+            UIManager.instance.SetPlayer1PanelnText("Game Begins in ..." + i.ToString());
+            UIManager.instance.SetPlayer2PanelText("Game Begins in ..." + i.ToString());
+            yield return new WaitForSeconds(1.0f);
+        }
+
+        playerOne.GetComponent<PlayerInputController>().SetIsMovementAllowed(true);
+        playerTwo.GetComponent<PlayerInputController>().SetIsMovementAllowed(true);
+        UIManager.instance.SetPlayer1PanelnText("Press L to Turn");
+        UIManager.instance.SetPlayer2PanelText("Press A to Turn");
+
+    }
+
 }
+
+
+
 
