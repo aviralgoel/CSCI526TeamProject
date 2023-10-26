@@ -13,6 +13,8 @@ TagManager:
   - Bad
   - Good
   - FireWalls
+  - Shield
+  - Freeze
   layers:
   - Default
   - TransparentFX

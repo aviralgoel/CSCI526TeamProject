@@ -143,6 +143,8 @@ public class GameManager : MonoBehaviour
             if (isPlayerOneMoving && isPlayerTwoMoving)
             {
                 isGameStarted = true;
+                UIManager.instance.SetPlayer1PowerUpText("No powerup collected yet.");
+                UIManager.instance.SetPlayer2PowerUpText("No powerup collected yet.");
             }
         }
 

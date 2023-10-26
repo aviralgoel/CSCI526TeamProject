@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Collectibles : MonoBehaviour
 {
-    private float selfDestructionTime = 10f;
+    public float selfDestructionTime = 10f;
 
     private void Start()
     {
@@ -23,5 +23,7 @@ public class Collectibles : MonoBehaviour
             // Destroy this collectible immediately upon collision
             Destroy(this.gameObject);
         }
+        // print tag of object collided with
+        Debug.Log(collision.gameObject.tag);
     }
 }
