@@ -12,6 +12,9 @@ TagManager:
   - Player2
   - Bad
   - Good
+  - FireWalls
+  - Shield
+  - Freeze
   layers:
   - Default
   - TransparentFX

@@ -1,14 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SpiralMovment : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
     public GameObject blackhole;
     private float horizontalInput;
     private float verticalInput;
@@ -44,3 +37,4 @@ public class SpiralMovment : MonoBehaviour
         
     }
 }
+
