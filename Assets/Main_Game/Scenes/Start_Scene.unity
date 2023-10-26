@@ -414,6 +414,14 @@ PrefabInstance:
       propertyPath: sceneToLoad
       value: Aviral
       objectReference: {fileID: 0}
+    - target: {fileID: 493873534430070430, guid: c73e76eb4446e924ba833d2cda66799b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 208.8088
+      objectReference: {fileID: 0}
+    - target: {fileID: 493873534430070430, guid: c73e76eb4446e924ba833d2cda66799b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1.7701
+      objectReference: {fileID: 0}
     - target: {fileID: 1623814367941176034, guid: c73e76eb4446e924ba833d2cda66799b, type: 3}
       propertyPath: m_FontData.m_MinSize
       value: 0
@@ -433,6 +441,18 @@ PrefabInstance:
     - target: {fileID: 3666594015099151747, guid: c73e76eb4446e924ba833d2cda66799b, type: 3}
       propertyPath: sceneToLoad
       value: End_Scene
+      objectReference: {fileID: 0}
+    - target: {fileID: 3666594016652453709, guid: c73e76eb4446e924ba833d2cda66799b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 202.1947
+      objectReference: {fileID: 0}
+    - target: {fileID: 3666594016652453709, guid: c73e76eb4446e924ba833d2cda66799b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -2.0396
+      objectReference: {fileID: 0}
+    - target: {fileID: 3666594016652453709, guid: c73e76eb4446e924ba833d2cda66799b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -65.5
       objectReference: {fileID: 0}
     - target: {fileID: 3666594016984141152, guid: c73e76eb4446e924ba833d2cda66799b, type: 3}
       propertyPath: m_UiScaleMode
@@ -545,6 +565,14 @@ PrefabInstance:
     - target: {fileID: 4979791292910941980, guid: c73e76eb4446e924ba833d2cda66799b, type: 3}
       propertyPath: sceneToLoad
       value: Tom
+      objectReference: {fileID: 0}
+    - target: {fileID: 5245261065614213745, guid: c73e76eb4446e924ba833d2cda66799b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 7.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5245261065614213745, guid: c73e76eb4446e924ba833d2cda66799b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.00000095367
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 957593269, guid: c73e76eb4446e924ba833d2cda66799b, type: 3}
