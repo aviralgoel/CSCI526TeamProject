@@ -215,6 +215,28 @@ MonoBehaviour:
   playerNumber: 0
   PowerUpControllingKey: 0
   totalPowerUpCount: 0
+  fireWallMovementSpeed: 0.2
+  wallBottom: {fileID: 0}
+  wallTop: {fileID: 0}
+  wallLeftTop: {fileID: 0}
+  wallLeftBottom: {fileID: 0}
+  wallRightTop: {fileID: 0}
+  wallRightBottom: {fileID: 0}
+  wallBottomDestination: {fileID: 0}
+  wallTopDestination: {fileID: 0}
+  wallLeftTopDestination: {fileID: 0}
+  wallLeftBottomDestination: {fileID: 0}
+  wallRightTopDestination: {fileID: 0}
+  wallRightBottomDestination: {fileID: 0}
+  wallBottomSource: {fileID: 0}
+  wallTopSource: {fileID: 0}
+  wallLeftTopSource: {fileID: 0}
+  wallLeftBottomSource: {fileID: 0}
+  wallRightTopSource: {fileID: 0}
+  wallRightBottomSource: {fileID: 0}
+  fireWallActive: 0
+  moveWallsInside: 0
+  moveWallsOutside: 0
 --- !u!114 &2113452619
 MonoBehaviour:
   m_ObjectHideFlags: 0
