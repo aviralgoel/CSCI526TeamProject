@@ -9,6 +9,7 @@ public class PowerUpManager : MonoBehaviour
     [SerializeField] private int playerNumber;
     [SerializeField] private KeyCode PowerUpControllingKey;
     [SerializeField] private int totalPowerUpCount = 0;
+    public GameObject wallBottom;
     // enum for powerup types
     public enum PowerUpType
     {
@@ -34,7 +35,7 @@ public class PowerUpManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(totalPowerUpCount > 0 && Input.GetKeyDown(PowerUpControllingKey))
+        if(totalPowerUpCount > 0)
         {
             UsePowerUp();
         }
@@ -44,7 +45,7 @@ public class PowerUpManager : MonoBehaviour
     {
         if (powerupsCount[PowerUpType.Freeeze] > 0)
         {
-            //UseFreeze();
+            UseFreeze();
             removePowerUp(PowerUpType.Freeeze);
         }
         else if (powerupsCount[PowerUpType.Shield] > 0)
@@ -57,6 +58,12 @@ public class PowerUpManager : MonoBehaviour
             UseFireWalls();
             removePowerUp(PowerUpType.FireWalls);
         }
+    }
+
+    private void UseFreeze()
+    {
+        // Niranjanaa implements
+
     }
 
     private void UseFireWalls()
@@ -87,14 +94,14 @@ public class PowerUpManager : MonoBehaviour
         {
             powerupsCount[type] = 0;
             totalPowerUpCount = 0;
-            if (playerNumber == 1)
+            /*if (playerNumber == 1)
             {
                 UIManager.instance.SetPlayer1PowerUpText("No Powerup Collected Yet...");
             }
             else if (playerNumber == 2)
             {
                 UIManager.instance.SetPlayer2PowerUpText("No Powerup Collected Yet...");
-            }
+            }*/
         }        
     }
 

@@ -241,7 +241,7 @@ public class GameManager : MonoBehaviour
     {   
         CountDownAudioSource.Play();
         //Wait Until Sound has finished playing
-        for (int i = (int)CountDownAudioSource.clip.length; i >= 0; i--)
+        for (int i = (int)CountDownAudioSource.clip.length-1; i >= 0; i--)
         {
             UIManager.instance.SetPlayer1PanelnText("Game Begins in ..." + i.ToString());
             UIManager.instance.SetPlayer2PanelText("Game Begins in ..." + i.ToString());
