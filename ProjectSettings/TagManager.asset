@@ -12,6 +12,9 @@ TagManager:
   - Player2
   - Bad
   - Good
+  - Freeze
+  - SpikeL
+  - SpikeR
   layers:
   - Default
   - TransparentFX
