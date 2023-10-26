@@ -4,7 +4,7 @@ public class CollisionController : MonoBehaviour
 {
 
     //public ScoreManager scoreManager;
-    public int scoreOnKill = 4;
+    public int scoreOnKill = 10;
     public ScoreManager scoreManagerPlayer1;
     public ScoreManager scoreManagerPlayer2;
 
