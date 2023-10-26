@@ -58,6 +58,3 @@ TagManager:
   - name: Collectibles
     uniqueID: 3154006485
     locked: 0
-  - name: CollectibleHider
-    uniqueID: 966750281
-    locked: 0
