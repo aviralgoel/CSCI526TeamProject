@@ -69,19 +69,13 @@
 // }
 
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Collectibles : MonoBehaviour
 {
-<<<<<<< Updated upstream
     public float speed;
     public Vector3 direction; 
     bool running = false;
-=======
-
-    private float selfDestructionTime = 10f;
->>>>>>> Stashed changes
 
     public float minDeactivationTime = 3f;
     public float maxDeactivationTime = 15f;
@@ -92,21 +86,11 @@ public class Collectibles : MonoBehaviour
         direction = Vector3.zero;
     }
 
-<<<<<<< Updated upstream
     private void OnEnable()
-=======
-    private void update()
-    {
-        
-    }
-
-    IEnumerator DestroyAfterDelay()
->>>>>>> Stashed changes
     {
         StartCoroutine(DelayedDeactivate());
     }
 
-<<<<<<< Updated upstream
     void Update()
     {
         if (!running)
@@ -153,12 +137,4 @@ public class Collectibles : MonoBehaviour
             }
         }
     }
-=======
-
->>>>>>> Stashed changes
 }
-
-
-
-
-
