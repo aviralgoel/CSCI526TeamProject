@@ -50,3 +50,4 @@ MonoBehaviour:
   spawnInterval: 1
   destructionTime: 15
   HexagonPlayground: {fileID: 0}
+  numOfCollectiblesSpawned: 0

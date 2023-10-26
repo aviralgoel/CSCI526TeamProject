@@ -36,6 +36,10 @@ PrefabInstance:
       value: Player2
       objectReference: {fileID: 0}
     - target: {fileID: 4940011466156706936, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4940011466156706936, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
       propertyPath: m_TagString
       value: Player2
       objectReference: {fileID: 0}
@@ -232,6 +236,7 @@ MonoBehaviour:
   numOfCollectiblesCollected: 0
   numOfGoodCollectiblesCollected: 0
   numOfBadCollectiblesCollected: 0
+  bar: {fileID: 0}
   gameManager: {fileID: 0}
 --- !u!4 &5539643208147550776 stripped
 Transform:
