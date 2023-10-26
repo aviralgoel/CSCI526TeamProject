@@ -122,7 +122,7 @@ public class PowerUpManager : MonoBehaviour
         wallTop.position = Vector3.MoveTowards(wallTop.position, wallTopSource.position , Time.deltaTime * fireWallMovementSpeed);
         if (Mathf.Approximately(Vector3.Distance(wallBottom.position, wallBottomSource.position),0))
         {
-            moveWallsOutside=false;
+           moveWallsOutside=false;
             fireWallActive = false;
         }
 
