@@ -175,11 +175,11 @@ public class PowerUpManager : MonoBehaviour
             totalPowerUpCount = 1;
             if (playerNumber == 1)
             {
-                UIManager.instance.SetPlayer1PowerUpText(type.ToString());
+                UIManager.instance.SetPlayer1PowerUpText("You picked up " + type.ToString());
             }
             else if (playerNumber == 2)
             {
-                UIManager.instance.SetPlayer2PowerUpText(type.ToString());
+                UIManager.instance.SetPlayer2PowerUpText("You picked up " + type.ToString());
             }
         }
         
@@ -190,14 +190,14 @@ public class PowerUpManager : MonoBehaviour
         {
             powerupsCount[type] = 0;
             totalPowerUpCount = 0;
-            if (playerNumber == 1)
+            /*if (playerNumber == 1)
             {
                 UIManager.instance.SetPlayer1PowerUpText("No Powerup Collected Yet...");
             }
             else if (playerNumber == 2)
             {
                 UIManager.instance.SetPlayer2PowerUpText("No Powerup Collected Yet...");
-            }
+            }*/
         }        
     }
 

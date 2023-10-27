@@ -54,7 +54,11 @@ public class ScoreManager : MonoBehaviour
             if(score <= 0)
             {
                 score = 0;
-                GameOver();
+                if(!gameManager.isGameOver)
+                {
+                    GameOver();
+                }
+                
             }
         }
     }
@@ -62,7 +66,7 @@ public class ScoreManager : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if((PowerUpManagerPlayer1.fireWallActive || PowerUpManagerPlayer2.fireWallActive) && walls.Contains(collision.gameObject)) {
-            score--;
+            score=-3;
         }
     }
 
@@ -112,12 +116,12 @@ public class ScoreManager : MonoBehaviour
         if(tagOfKiller == "Blackhole")
         {
             numOfTimesKilledByBlackHole++;
-            ReducePlayerLife();
+            //ReducePlayerLife();
         }
         else if(tagOfKiller == "OtherPlayer")
         {
             numOfTimesKilledByPlayer++;
-            ReducePlayerLife();
+            //ReducePlayerLife();
         }
         else if(tagOfKiller == "Good" || tagOfKiller=="Bad")
         {
@@ -140,9 +144,22 @@ public class ScoreManager : MonoBehaviour
         // sstop the player
         isPlayerActive = false;
         this.gameObject.SetActive(false);
-        gameManager.isGameOver = true; 
+        gameManager.isGameOver = true;
+        gameManager.losePlayerNumber = playerNumber;
+        /*if(playerNumber == 1)
+        {
+            UIManager.instance.SetPlayer1PowerUpText("Player 1 has lost");
+            UIManager.instance.SetPlayer2PowerUpText("Player 2 has won");
+        }
+        else
+        {
+            UIManager.instance.SetPlayer1PowerUpText("Player 2 has lost");
+            UIManager.instance.SetPlayer2PowerUpText("Player 1 has won");
+        }*/
+
+
         //change scene to game over
-        SceneManager.LoadScene("End_Scene");
+        //SceneManager.LoadScene("End_Scene");
 
     }
 
@@ -150,14 +167,14 @@ public class ScoreManager : MonoBehaviour
 
 
 
-public void ReducePlayerLife()
+/*public void ReducePlayerLife()
 {
-    gameManager.UpdatePlayerLivesUI(this);//sharan
+    // gameManager.UpdatePlayerLivesUI(this);//sharan
     if(score == 0)
     {
         GameOver();
     }
-}
+}*/
    
    
 }

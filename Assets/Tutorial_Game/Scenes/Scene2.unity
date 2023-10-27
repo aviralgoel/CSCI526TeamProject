@@ -737,6 +737,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2202385777493762543, guid: 83a63d1f28beab94ca00197e4f35846b, type: 3}
+      propertyPath: sceneToLoad
+      value: Aviral
+      objectReference: {fileID: 0}
     - target: {fileID: 2202385777686666834, guid: 83a63d1f28beab94ca00197e4f35846b, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0.5

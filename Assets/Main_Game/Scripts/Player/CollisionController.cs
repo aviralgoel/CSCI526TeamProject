@@ -4,7 +4,7 @@ public class CollisionController : MonoBehaviour
 {
 
     //public ScoreManager scoreManager;
-    public int scoreOnKill = 10;
+    public int scoreOnKill = 5;
     public ScoreManager scoreManagerPlayer1;
     public ScoreManager scoreManagerPlayer2;
 
@@ -22,12 +22,14 @@ public class CollisionController : MonoBehaviour
             scoreManagerPlayer1.IncrementScore(scoreOnKill); // + score
             scoreManagerPlayer2.IncrementScore(-scoreOnKill); // - score
             scoreManagerPlayer2.RespawnPlayer("OtherPlayer");
+            UIManager.instance.SetPlayer1PowerUpText("You killed the other player");
         }
         else if (this.gameObject.CompareTag("Player2Blade") && collision.gameObject.CompareTag("Player1"))
         {
             scoreManagerPlayer2.GetComponentInParent<ScoreManager>().IncrementScore(scoreOnKill); // + score
             scoreManagerPlayer1.GetComponentInParent<ScoreManager>().IncrementScore(-scoreOnKill); // - score
             scoreManagerPlayer1.GetComponentInParent<ScoreManager>().RespawnPlayer("OtherPlayer"); // respawn
+            UIManager.instance.SetPlayer2PowerUpText("You killed the other player");
         }
         else if (collision.gameObject.CompareTag("Blackhole"))
         {
@@ -38,13 +40,13 @@ public class CollisionController : MonoBehaviour
         {
             if (gameObject.CompareTag("Player1Blade"))
             {
-                int scoreChange = collision.gameObject.CompareTag("Good") ? 1 : -1;
+                int scoreChange = collision.gameObject.CompareTag("Good") ? 6 : -2;
                 scoreManagerPlayer1.IncrementScore(scoreChange);
                 scoreManagerPlayer1.RespawnPlayer(collision.gameObject.tag); // this will not actually respawn player, just increase count of collectible
             }
             else if (gameObject.CompareTag("Player2Blade"))
             {
-                int scoreChange = collision.gameObject.CompareTag("Good") ? 1 : -1;
+                int scoreChange = collision.gameObject.CompareTag("Good") ? 6 : -2;
                 scoreManagerPlayer2.IncrementScore(scoreChange);
                 scoreManagerPlayer2.RespawnPlayer(collision.gameObject.tag); // this will not actually respawn player, just increase count of collectible
             }

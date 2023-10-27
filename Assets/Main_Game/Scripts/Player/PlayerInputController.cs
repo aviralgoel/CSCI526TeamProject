@@ -38,7 +38,7 @@ public class PlayerInputController : MonoBehaviour
             playerNumber = 2;
         }
         rb = GetComponent<Rigidbody2D>();
-        controllingKey = playerNumber == 1 ? KeyCode.L : KeyCode.A;
+        controllingKey = playerNumber == 1 ? KeyCode.L : KeyCode.A  ;
         rb.velocity = Vector3.zero;
         speedMultiplier = 1f;
         turnSpeedMultiplier = 1f;
