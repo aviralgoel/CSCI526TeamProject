@@ -326,6 +326,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4101085873177028069, guid: 369e53c95f5df7644a39203f8ecbd16d, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: b10c7a73a69548c47b39df251b55b08c, type: 3}
+    - target: {fileID: 4101085873177028070, guid: 369e53c95f5df7644a39203f8ecbd16d, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -479.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 4101085873177028070, guid: 369e53c95f5df7644a39203f8ecbd16d, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 411.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 4101085873177028070, guid: 369e53c95f5df7644a39203f8ecbd16d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 268
+      objectReference: {fileID: 0}
+    - target: {fileID: 4101085873177028070, guid: 369e53c95f5df7644a39203f8ecbd16d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 112.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4101085874619549398, guid: 369e53c95f5df7644a39203f8ecbd16d, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: 8f925612fd47af845806d3c656c14b93, type: 3}
+    - target: {fileID: 4101085874619549399, guid: 369e53c95f5df7644a39203f8ecbd16d, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 411.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 4101085874619549399, guid: 369e53c95f5df7644a39203f8ecbd16d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 112.25
+      objectReference: {fileID: 0}
     - target: {fileID: 7886838763303688226, guid: 369e53c95f5df7644a39203f8ecbd16d, type: 3}
       propertyPath: m_Name
       value: Tutorial3Stuff
