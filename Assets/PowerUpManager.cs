@@ -13,7 +13,8 @@ public class PowerUpManager : MonoBehaviour
 	private bool isFrozen = false;
     private float freezeTime = 10f; // Time in seconds for freezing effect
 
-    [SerializeField]  private PlayerInputController playerController;
+    private PlayerInputController OpponentPlayerController;
+    
 
     public float fireWallMovementSpeed = 0.2f;
 
@@ -64,7 +65,7 @@ public class PowerUpManager : MonoBehaviour
     {
         playerNumber = GetComponent<ScoreManager>().GetPlayerNumber();
         PowerUpControllingKey = (playerNumber == 2) ? KeyCode.Q : KeyCode.P;
-		playerController = GetComponent<PlayerInputController>(); // Get the reference to PlayerInputController
+		
 
     }
 
@@ -189,14 +190,14 @@ public class PowerUpManager : MonoBehaviour
         {
             powerupsCount[type] = 0;
             totalPowerUpCount = 0;
-            *//*if (playerNumber == 1)
+            if (playerNumber == 1)
             {
                 UIManager.instance.SetPlayer1PowerUpText("No Powerup Collected Yet...");
             }
             else if (playerNumber == 2)
             {
                 UIManager.instance.SetPlayer2PowerUpText("No Powerup Collected Yet...");
-            }*//*
+            }
         }        
     }
 
@@ -232,13 +233,14 @@ public class PowerUpManager : MonoBehaviour
     {
         isFrozen = true;
 
-        playerController.isMovementAllowed = false; // Freeze the player's movement
+        OpponentPlayerController.isMovementAllowed = false; // Freeze the player's movement
+
 
         yield return new WaitForSeconds(freezeTime);
 
         isFrozen = false;
 
-        playerController.isMovementAllowed = true; // Unfreeze the player's movement
+        OpponentPlayerController.isMovementAllowed = true; // Unfreeze the player's movement
     }
 
 

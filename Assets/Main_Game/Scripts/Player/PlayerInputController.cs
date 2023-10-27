@@ -61,7 +61,18 @@ public class PlayerInputController : MonoBehaviour
     public void SetIsMovementAllowed(bool isAllowed)
     {
         isMovementAllowed = isAllowed;
-        Debug.Log("Player movement active");
+        //Debug.Log("Player movement active");
+    }
+    public void FreezeThisPlayer()
+    {
+        isMovementAllowed = false;
+        rb.velocity = Vector3.zero;
+        //Debug.Log("Player movement freezed");
+    }
+    public void UnFreezeThisPlayer()
+    {
+        isMovementAllowed = true;
+        Debug.Log("Player movement unfreezed");
     }
     private void Update()
     {
