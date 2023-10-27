@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     public GameObject playerTwo;
     public Spawnercode spanwerManager;
 
+    public int losePlayerNumber = 0;
+
     // text mesh pro text field
     public TextMeshProUGUI player1ScoreTextMeshPro;
     public TextMeshProUGUI player2ScoreTextMeshPro;
@@ -92,6 +94,24 @@ public class GameManager : MonoBehaviour
                 isPlayer2DataSent = true;
             }
         }
+
+        if(losePlayerNumber != 0)
+        {
+            if(losePlayerNumber == 1)
+            {
+                UIManager.instance.SetPlayer1PowerUpText("You Lose!");
+                UIManager.instance.SetPlayer2PowerUpText("You Win!");
+                player2ScoreManager.SetPlayerActive(false);
+            }
+            else if(losePlayerNumber == 2)
+            {
+                UIManager.instance.SetPlayer2PowerUpText("You Lose!");
+                UIManager.instance.SetPlayer1PowerUpText("You Win!");
+                player1ScoreManager.SetPlayerActive(false);
+            }
+            //isGameOver = true;
+            
+        }
     }
 
     private void HasPlayersJoined()
@@ -143,8 +163,8 @@ public class GameManager : MonoBehaviour
             if (isPlayerOneMoving && isPlayerTwoMoving)
             {
                 isGameStarted = true;
-                UIManager.instance.SetPlayer1PowerUpText("No powerup collected yet.");
-                UIManager.instance.SetPlayer2PowerUpText("No powerup collected yet.");
+                UIManager.instance.SetPlayer1PowerUpText("Collect Health & Powerups to outlive your opponent");
+                UIManager.instance.SetPlayer2PowerUpText("Collect Health & Powerups to outlive your oppoenent");
             }
         }
 
