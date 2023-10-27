@@ -15,6 +15,7 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] public int numOfCollectiblesCollected = 0;
     [SerializeField] public int numOfGoodCollectiblesCollected = 0;
     [SerializeField] public int numOfBadCollectiblesCollected = 0;
+    [SerializeField] private GameObject floatingText;
     public List<GameObject> walls = new List<GameObject>();
     public PowerUpManager PowerUpManagerPlayer1;
     public PowerUpManager PowerUpManagerPlayer2;
@@ -54,11 +55,15 @@ public class ScoreManager : MonoBehaviour
             if(score <= 0)
             {
                 score = 0;
+
                 if(!gameManager.isGameOver)
                 {
                     GameOver();
                 }
                 
+
+                // GameOver();
+
             }
         }
     }
@@ -66,7 +71,19 @@ public class ScoreManager : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if((PowerUpManagerPlayer1.fireWallActive || PowerUpManagerPlayer2.fireWallActive) && walls.Contains(collision.gameObject)) {
-            score=-3;
+
+            
+            IncrementScore(-1);
+        }
+    }
+
+    void showDamage(string text)
+    {
+        if(floatingText)
+        {
+            GameObject prefab = Instantiate(floatingText, transform.position + new Vector3(0.5f, 1.5f, 0), Quaternion.identity);
+            prefab.GetComponentInChildren<TextMesh>().text = text;
+
         }
     }
 
@@ -106,6 +123,10 @@ public class ScoreManager : MonoBehaviour
     public void IncrementScore(int amount)
     {
         // Increment the score when a good collectible is collected
+        string damage;
+        if(amount < 0) damage = amount.ToString();
+        else damage = "+" +  amount.ToString();
+        showDamage(damage);
         score += amount;
         gameManager.UpdatePlayerScoreUI(this);
         HealthBar.fillAmount = score / TotalHealth;
