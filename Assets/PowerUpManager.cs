@@ -13,7 +13,7 @@ public class PowerUpManager : MonoBehaviour
 	private bool isFrozen = false;
     private float freezeTime = 10f; // Time in seconds for freezing effect
 
-    private PlayerInputController OpponentPlayerController;
+    public PlayerInputController OpponentPlayerController;
     
 
     public float fireWallMovementSpeed = 0.2f;
@@ -233,14 +233,15 @@ public class PowerUpManager : MonoBehaviour
     {
         isFrozen = true;
 
-        OpponentPlayerController.isMovementAllowed = false; // Freeze the player's movement
-
+        //OpponentPlayerController.isMovementAllowed = false; // Freeze the player's movement
+        OpponentPlayerController.FreezeThisPlayer();
 
         yield return new WaitForSeconds(freezeTime);
+        OpponentPlayerController.UnFreezeThisPlayer();
 
         isFrozen = false;
 
-        OpponentPlayerController.isMovementAllowed = true; // Unfreeze the player's movement
+        //OpponentPlayerController.isMovementAllowed = true; // Unfreeze the player's movement
     }
 
 

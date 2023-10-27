@@ -67,11 +67,29 @@ public class PlayerInputController : MonoBehaviour
     {
         isMovementAllowed = false;
         rb.velocity = Vector3.zero;
+        if(playerNumber == 1)
+        {
+            UIManager.instance.SetPlayer1PowerUpText("You got frozen!");
+
+        }
+        else
+        {
+            UIManager.instance.SetPlayer2PowerUpText("You got frozen!");
+        }
         //Debug.Log("Player movement freezed");
     }
     public void UnFreezeThisPlayer()
     {
         isMovementAllowed = true;
+        if (playerNumber == 1)
+        {
+            UIManager.instance.SetPlayer1PowerUpText("");
+
+        }
+        else
+        {
+            UIManager.instance.SetPlayer2PowerUpText("");
+        }
         Debug.Log("Player movement unfreezed");
     }
     private void Update()
