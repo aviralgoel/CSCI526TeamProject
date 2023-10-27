@@ -189,7 +189,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6587957134335053147, guid: e5e30e8b166c19040a2821b786af2f45, type: 3}
   m_PrefabInstance: {fileID: 27868111}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 794948791}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1dcec61017af6e0428bdf60070e76813, type: 3}
@@ -220,6 +220,10 @@ PrefabInstance:
     - target: {fileID: 5282602700515287355, guid: 026fcc7326fdc714c8e38afdbe81c62d, type: 3}
       propertyPath: m_Name
       value: FireWalls
+      objectReference: {fileID: 0}
+    - target: {fileID: 5282602700515287355, guid: 026fcc7326fdc714c8e38afdbe81c62d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7661579309944626597, guid: 026fcc7326fdc714c8e38afdbe81c62d, type: 3}
       propertyPath: m_RootOrder
@@ -283,6 +287,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &481007016 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5282602700515287355, guid: 026fcc7326fdc714c8e38afdbe81c62d, type: 3}
+  m_PrefabInstance: {fileID: 335013811}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &528421525 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 528421525, guid: 41433c31d6401cc46890a14ed4cc10dc, type: 3}
@@ -629,6 +638,31 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &794948791 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6587957134335053145, guid: e5e30e8b166c19040a2821b786af2f45, type: 3}
+  m_PrefabInstance: {fileID: 27868111}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &794948793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 794948791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 750e3a38fbfb0ec48a1645a6334f94ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerUpPrefabs:
+  - {fileID: 481007016}
+  - {fileID: 1022070688}
+  spawnInterval: 1
+  powerUpDuration: 30
+  powerup_index: 0000000000
+  numberofpowerupsspawned: 0
+  HexagonPlayground: {fileID: 1725413073}
 --- !u!1 &798040245
 GameObject:
   m_ObjectHideFlags: 0
@@ -870,6 +904,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1022070688 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8456921302061631568, guid: 40578d57ba712554ba0a56668bb2a874, type: 3}
+  m_PrefabInstance: {fileID: 4328687346130665927}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1091108940 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1091108940, guid: 41433c31d6401cc46890a14ed4cc10dc, type: 3}
@@ -1736,6 +1775,10 @@ PrefabInstance:
     - target: {fileID: 8456921302061631568, guid: 40578d57ba712554ba0a56668bb2a874, type: 3}
       propertyPath: m_Name
       value: Freeze
+      objectReference: {fileID: 0}
+    - target: {fileID: 8456921302061631568, guid: 40578d57ba712554ba0a56668bb2a874, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40578d57ba712554ba0a56668bb2a874, type: 3}
