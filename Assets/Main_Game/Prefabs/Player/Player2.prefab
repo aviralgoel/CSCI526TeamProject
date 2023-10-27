@@ -41,7 +41,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4940011466156706936, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4940011466156706936, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
       propertyPath: m_TagString
@@ -269,7 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06cd899b5724d124abe1ef804929784f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 10
+  score: 30
   timeActive: 0
   playerNumber: 0
   isPlayerActive: 0
@@ -279,6 +279,8 @@ MonoBehaviour:
   numOfCollectiblesCollected: 0
   numOfGoodCollectiblesCollected: 0
   numOfBadCollectiblesCollected: 0
+  HealthBar: {fileID: 0}
+  TotalHealth: 30
   gameManager: {fileID: 0}
 --- !u!4 &5539643208147550776 stripped
 Transform:
