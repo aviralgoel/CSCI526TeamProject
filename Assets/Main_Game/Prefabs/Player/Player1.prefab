@@ -76,6 +76,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7929893104096976367, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
+      propertyPath: score
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 7929893104096976367, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
       propertyPath: PowerUpManagerPlayer1
       value: 
       objectReference: {fileID: 1250625391053489653}

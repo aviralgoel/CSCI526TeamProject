@@ -17,6 +17,7 @@ public class PowerUpManager : MonoBehaviour
     
 
     public float fireWallMovementSpeed = 0.2f;
+    public float fireWallDuration = 7f;
 
     public Transform wallBottom;
     public Transform wallTop;
@@ -221,7 +222,7 @@ public class PowerUpManager : MonoBehaviour
     IEnumerator Pause()
     {
         
-        yield return new WaitForSeconds(15);
+        yield return new WaitForSeconds(fireWallDuration);
         moveWallsOutside = true;
 	}
 	private void UseFreeze()
