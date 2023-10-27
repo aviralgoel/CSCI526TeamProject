@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4940011466156706936, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
       propertyPath: m_Name
-      value: Player1
+      value: Player1tut
       objectReference: {fileID: 0}
     - target: {fileID: 4940011466156706943, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
       propertyPath: m_RootOrder
@@ -17,11 +17,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4940011466156706943, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1
+      value: 1.5613632
       objectReference: {fileID: 0}
     - target: {fileID: 4940011466156706943, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.03
+      value: 1.4275565
       objectReference: {fileID: 0}
     - target: {fileID: 4940011466156706943, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
       propertyPath: m_LocalPosition.z

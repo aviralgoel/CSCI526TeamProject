@@ -672,7 +672,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4811321, g: 0.4811321, b: 0.4811321, a: 0.392}
+  m_Color: {r: 0.7686275, g: 0.7686275, b: 0.7686275, a: 0.392}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -833,10 +833,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player1tut
       objectReference: {fileID: 0}
-    - target: {fileID: 6184972171403645291, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6184972171403645292, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -982,10 +978,6 @@ PrefabInstance:
     - target: {fileID: 5539643207180068561, guid: aa9161055e227c24583beef344af0ec7, type: 3}
       propertyPath: m_Name
       value: Player2tut
-      objectReference: {fileID: 0}
-    - target: {fileID: 5539643207180068561, guid: aa9161055e227c24583beef344af0ec7, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5539643207180068566, guid: aa9161055e227c24583beef344af0ec7, type: 3}
       propertyPath: m_RootOrder
