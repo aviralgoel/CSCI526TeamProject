@@ -51,7 +51,6 @@ public class CollisionController : MonoBehaviour
             // collectible is already being destroyed in collectible script
             //Destroy(collision.gameObject);
         }
-
     }
 }
 
