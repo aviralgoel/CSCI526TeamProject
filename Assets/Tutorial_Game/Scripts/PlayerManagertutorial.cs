@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerManager : MonoBehaviour
+public class PlayerManagertutorial : MonoBehaviour
 {
     public GameObject player1;
     public GameObject player2;
