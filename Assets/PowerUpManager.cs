@@ -1,9 +1,9 @@
-using System;
+
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-
+using Random = UnityEngine.Random;
 
 public class PowerUpManager : MonoBehaviour
 {
@@ -39,6 +39,9 @@ public class PowerUpManager : MonoBehaviour
     public bool fireWallActive = false;
     public bool moveWallsInside = false;
     public bool moveWallsOutside = false;
+
+    public float vibrationFrequency = 0.05f; // Frequency of the vibration effect
+    public float vibrationIntensity = 0.1f;
     // enum for powerup types
     public enum PowerUpType
     {
@@ -59,13 +62,6 @@ public class PowerUpManager : MonoBehaviour
     {
         playerNumber = GetComponent<ScoreManager>().GetPlayerNumber();
         PowerUpControllingKey = (playerNumber == 2) ? KeyCode.Q : KeyCode.P;
-
-        /*wallBottomSource = wallBottom.position;
-        wallTopSource = wallTop.position;
-        wallLeftTopSource = wallLeftTop.position;
-        wallLeftBottomSource = wallLeftBottom.position;
-        wallRightTopSource = wallRightTop.position;
-        wallRightBottomSource = wallRightBottom.position;*/
 
     }
 
@@ -95,22 +91,24 @@ public class PowerUpManager : MonoBehaviour
         wallRightBottom.position = Vector3.MoveTowards(wallRightBottom.position, wallRightBottomDestination.position, Time.deltaTime*fireWallMovementSpeed);
         wallRightTop.position = Vector3.MoveTowards(wallRightTop.position, wallRightTopDestination.position, Time.deltaTime*fireWallMovementSpeed);
         wallTop.position = Vector3.MoveTowards(wallTop.position, wallTopDestination.position, Time.deltaTime*fireWallMovementSpeed);
+
+        // change color of all the walls to red
+        wallBottom.transform.GetComponent<SpriteRenderer>().color = Color.red;
+        wallLeftBottom.transform.GetComponent<SpriteRenderer>().color = Color.red;
+        wallTop.transform.GetComponent<SpriteRenderer>().color = Color.red;
+        wallLeftTop.transform.GetComponent<SpriteRenderer>().color = Color.red;
+        wallRightBottom.transform.GetComponent<SpriteRenderer>().color = Color.red;
+        wallRightTop.transform.GetComponent<SpriteRenderer>().color = Color.red;
+
+        UIManager.instance.SetPlayer1PowerUpText("Avoid Red Walls!");
+        UIManager.instance.SetPlayer2PowerUpText("Avoid Red Walls!");
         if (Mathf.Approximately(Vector3.Distance(wallBottom.position, wallBottomDestination.position),0))
         {
             StartCoroutine(Pause());
             moveWallsInside = false;
 
         }
-        
-
-        // shake
-        //wallBottom.GetComponent<ShakeMe>().Shake();
-        //wallLeftBottom.GetComponent<ShakeMe>().Shake();
-        //wallLeftTop.GetComponent<ShakeMe>().Shake();
-        //wallRightBottom.GetComponent<ShakeMe>().Shake();
-        //wallRightTop.GetComponent<ShakeMe>().Shake();
-        //wallTop.GetComponent<ShakeMe>().Shake();
-    }
+            }
     private void MoveWallsOutside()
     {   
         // move
@@ -126,14 +124,17 @@ public class PowerUpManager : MonoBehaviour
             fireWallActive = false;
         }
 
+        // change color of all the walls to white
+        wallBottom.transform.GetComponent<SpriteRenderer>().color = Color.white;
+        wallLeftBottom.transform.GetComponent<SpriteRenderer>().color = Color.white;
+        wallTop.transform.GetComponent<SpriteRenderer>().color = Color.white;
+        wallLeftTop.transform.GetComponent<SpriteRenderer>().color = Color.white;
+        wallRightBottom.transform.GetComponent<SpriteRenderer>().color = Color.white;
+        wallRightTop.transform.GetComponent<SpriteRenderer>().color = Color.white;
 
-        // shake
-        //wallBottom.GetComponent<ShakeMe>().Shake();
-        //wallLeftBottom.GetComponent<ShakeMe>().Shake();
-        //wallLeftTop.GetComponent<ShakeMe>().Shake();
-        //wallRightBottom.GetComponent<ShakeMe>().Shake();
-        //wallRightTop.GetComponent<ShakeMe>().Shake();
-        //wallTop.GetComponent<ShakeMe>().Shake();
+        UIManager.instance.SetPlayer1PowerUpText("");
+        UIManager.instance.SetPlayer2PowerUpText("");
+
     }
 
     private void UsePowerUp()
@@ -165,7 +166,6 @@ public class PowerUpManager : MonoBehaviour
     {
         fireWallActive = true;
         moveWallsInside = true;
-        //StartCoroutine(WallMoveFunction(wallBottom.transform, wallBottomDestination));
     }
 
     void addPowerUp(PowerUpType type)
