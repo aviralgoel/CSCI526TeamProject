@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6587957134335053144}
   - component: {fileID: 6587957134335053147}
+  - component: {fileID: 794948793}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -47,7 +48,28 @@ MonoBehaviour:
   myobj:
   - {fileID: 5282602700515287355, guid: a3b9b36bfb4163744b69c76be95a3fcc, type: 3}
   - {fileID: 5818194942804883219, guid: 1c8c6bef141aba240a6c9a44a6129a24, type: 3}
+  - {fileID: 5282602700515287355, guid: a3b9b36bfb4163744b69c76be95a3fcc, type: 3}
   spawnInterval: 1
   destructionTime: 15
   HexagonPlayground: {fileID: 0}
   numOfCollectiblesSpawned: 0
+--- !u!114 &794948793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6587957134335053145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 750e3a38fbfb0ec48a1645a6334f94ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerUpPrefabs:
+  - {fileID: 5282602700515287355, guid: 026fcc7326fdc714c8e38afdbe81c62d, type: 3}
+  - {fileID: 8456921302061631568, guid: 40578d57ba712554ba0a56668bb2a874, type: 3}
+  spawnInterval: 1
+  powerUpDuration: 30
+  powerup_index: 0000000000
+  numberofpowerupsspawned: 0
+  HexagonPlayground: {fileID: 0}
