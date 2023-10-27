@@ -157,10 +157,10 @@ RectTransform:
   m_Father: {fileID: 636480222}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 300, y: 173}
-  m_SizeDelta: {x: -616.9998, y: -363.907}
+  m_AnchoredPosition: {x: -116, y: -61}
+  m_SizeDelta: {x: 215.00018, y: 104.09299}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1076594
 MonoBehaviour:
@@ -603,7 +603,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 1854006711}
   player2: {fileID: 2097687608}
-  timeToWait: 2
+  timeToWait: 1
   nextSceneName: Scene2
 --- !u!4 &1215148693
 Transform:
@@ -655,9 +655,9 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -298.62582, y: -171}
-  m_SizeDelta: {x: -616.9998, y: -363.907}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 117.374176, y: 63}
+  m_SizeDelta: {x: 215.00018, y: 104.09299}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1460930227
 MonoBehaviour:
