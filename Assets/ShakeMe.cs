@@ -5,7 +5,7 @@ using UnityEngine;
 public class ShakeMe : MonoBehaviour
 {
     public bool shaking = false;
-    public float shakeAmount = 0.001f;
+    public float shakeAmount = 0.01f;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +36,7 @@ public class ShakeMe : MonoBehaviour
         {
             shaking = true; 
         }
-        yield return new WaitForSeconds(0.025f);
+        yield return new WaitForSeconds(0.25f);
         shaking = false;
         transform.position = originalPos;
     }

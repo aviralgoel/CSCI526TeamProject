@@ -109,11 +109,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4940011466156706943, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.5613632
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4940011466156706943, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.4275565
+      value: 1.03
       objectReference: {fileID: 0}
     - target: {fileID: 4940011466156706943, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -259,6 +259,8 @@ MonoBehaviour:
   fireWallActive: 0
   moveWallsInside: 0
   moveWallsOutside: 0
+  vibrationFrequency: 5
+  vibrationIntensity: 0.1
 --- !u!114 &1619474688059181860
 MonoBehaviour:
   m_ObjectHideFlags: 0
