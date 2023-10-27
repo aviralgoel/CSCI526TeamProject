@@ -15,12 +15,6 @@ EditorBuildSettings:
     path: Assets/Tutorial_Game/Scenes/Scene2.unity
     guid: ef943369b195e724eb222755991f0227
   - enabled: 1
-    path: Assets/Tutorial_Game/Scenes/Scene3.unity
-    guid: b95f42f991fd2f9489ee0b9a3acb1388
-  - enabled: 1
     path: Assets/Main_Game/Scenes/Aviral.unity
     guid: 7314570b7d5d4df44b9edf732effa2cf
-  - enabled: 1
-    path: Assets/Main_Game/Scenes/End_Scene.unity
-    guid: eb8171f12f00dd04081b0fcceb566b47
   m_configObjects: {}
