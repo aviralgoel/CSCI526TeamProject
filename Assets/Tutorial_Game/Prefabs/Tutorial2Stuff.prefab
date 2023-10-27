@@ -213,7 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4cfd8dc5c3e7234d807725ee2b5e6cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: Aviral
+  sceneToLoad: tut3
 --- !u!114 &2202385777493762542
 MonoBehaviour:
   m_ObjectHideFlags: 0
