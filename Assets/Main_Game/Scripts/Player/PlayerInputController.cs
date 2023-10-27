@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerInputController : MonoBehaviour
 {
-    int playerNumber;
+    public int playerNumber;
     Rigidbody2D rb;
     Vector3 direction;
     Quaternion targetRotation;
