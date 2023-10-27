@@ -459,6 +459,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 579241295}
     - target: {fileID: 1441567228, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
+      propertyPath: OpponentPlayerController
+      value: 
+      objectReference: {fileID: 809736417}
+    - target: {fileID: 1441567228, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
       propertyPath: wallLeftBottomDestination
       value: 
       objectReference: {fileID: 2087885442}
@@ -780,6 +784,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 06cd899b5724d124abe1ef804929784f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &809736417 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2113452619, guid: aa9161055e227c24583beef344af0ec7, type: 3}
+  m_PrefabInstance: {fileID: 2113452613}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 809736415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdcbfb5efb94441439093611546365ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &881682086
@@ -1239,6 +1254,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06cd899b5724d124abe1ef804929784f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1441567224 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1441567226, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
+  m_PrefabInstance: {fileID: 671775149}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1441567221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdcbfb5efb94441439093611546365ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1463237468 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5657236044051540938, guid: 41433c31d6401cc46890a14ed4cc10dc, type: 3}
@@ -1524,6 +1550,10 @@ PrefabInstance:
       propertyPath: wallRightTopDestination
       value: 
       objectReference: {fileID: 579241295}
+    - target: {fileID: 809736422, guid: aa9161055e227c24583beef344af0ec7, type: 3}
+      propertyPath: OpponentPlayerController
+      value: 
+      objectReference: {fileID: 1441567224}
     - target: {fileID: 809736422, guid: aa9161055e227c24583beef344af0ec7, type: 3}
       propertyPath: wallLeftBottomDestination
       value: 

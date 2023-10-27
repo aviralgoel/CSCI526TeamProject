@@ -216,6 +216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdcbfb5efb94441439093611546365ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerNumber: 0
   isMovementAllowed: 0
   movementSpeed: 45
   turnSpeed: 1
@@ -237,6 +238,7 @@ MonoBehaviour:
   playerNumber: 0
   PowerUpControllingKey: 0
   totalPowerUpCount: 0
+  OpponentPlayerController: {fileID: 0}
   fireWallMovementSpeed: 0.2
   wallBottom: {fileID: 0}
   wallTop: {fileID: 0}
@@ -259,8 +261,6 @@ MonoBehaviour:
   fireWallActive: 0
   moveWallsInside: 0
   moveWallsOutside: 0
-  vibrationFrequency: 5
-  vibrationIntensity: 0.1
 --- !u!114 &1619474688059181860
 MonoBehaviour:
   m_ObjectHideFlags: 0
