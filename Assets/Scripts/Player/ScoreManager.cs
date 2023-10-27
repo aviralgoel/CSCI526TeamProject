@@ -15,6 +15,7 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] public int numOfGoodCollectiblesCollected = 0;
     [SerializeField] public int numOfBadCollectiblesCollected = 0;
     public Image HealthBar;
+    public float TotalHealth;
 
    //sharan
       [SerializeField]
@@ -41,7 +42,7 @@ public class ScoreManager : MonoBehaviour
         {
             UpdateTime();
         }
-        HealthBar.fillAmount = score / 100f;
+        HealthBar.fillAmount = score / TotalHealth;
     }
 
     private void UpdateScore()
@@ -83,7 +84,7 @@ public class ScoreManager : MonoBehaviour
         // Increment the score when a good collectible is collected
         score += amount;
         gameManager.UpdatePlayerScoreUI(this);
-        HealthBar.fillAmount = score / 100f;
+        HealthBar.fillAmount = score / TotalHealth;
     }
     public void RespawnPlayer(string tagOfKiller)
     {   

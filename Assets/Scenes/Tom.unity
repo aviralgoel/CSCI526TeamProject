@@ -312,7 +312,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1441567230, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
       propertyPath: ShapeModule.radiusThickness
-      value: 1.0000
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1441567230, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
       propertyPath: EmissionModule.rateOverDistance.scalar
@@ -324,12 +324,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1619474688059181860, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
       propertyPath: score
-      value: 100
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1619474688059181860, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
       propertyPath: HealthBar
       value: 
       objectReference: {fileID: 946328294}
+    - target: {fileID: 1619474688059181860, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
+      propertyPath: TotalHealth
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 1619474688059181860, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
       propertyPath: gameManager
       value: 
@@ -1919,12 +1923,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7929893104096976367, guid: aa9161055e227c24583beef344af0ec7, type: 3}
       propertyPath: score
-      value: 100
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7929893104096976367, guid: aa9161055e227c24583beef344af0ec7, type: 3}
       propertyPath: HealthBar
       value: 
       objectReference: {fileID: 908031270}
+    - target: {fileID: 7929893104096976367, guid: aa9161055e227c24583beef344af0ec7, type: 3}
+      propertyPath: TotalHealth
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 7929893104096976367, guid: aa9161055e227c24583beef344af0ec7, type: 3}
       propertyPath: gameManager
       value: 
