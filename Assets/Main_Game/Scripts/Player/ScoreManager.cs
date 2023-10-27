@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class ScoreManager : MonoBehaviour
 {   
@@ -13,10 +15,16 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] public int numOfCollectiblesCollected = 0;
     [SerializeField] public int numOfGoodCollectiblesCollected = 0;
     [SerializeField] public int numOfBadCollectiblesCollected = 0;
+    public List<GameObject> walls = new List<GameObject>();
+    public PowerUpManager PowerUpManagerPlayer1;
+    public PowerUpManager PowerUpManagerPlayer2;
+
+    public Image HealthBar;
+    public float TotalHealth;
     //public GameObject bar;
 
-   //sharan
-      [SerializeField]
+    //sharan
+    [SerializeField]
     private GameManager gameManager;
 
   
@@ -30,7 +38,6 @@ public class ScoreManager : MonoBehaviour
     {
         isPlayerActive = false;
         respawnPosition = transform.position;
-        InvokeRepeating("UpdateScore", 0, 1.0f);
     }
 
     // Update is called once per frame
@@ -40,13 +47,23 @@ public class ScoreManager : MonoBehaviour
         {
             UpdateTime();
         }
+
+        if(gameManager.isGameStarted) {
+            score -= Time.deltaTime;
+            HealthBar.fillAmount = score / TotalHealth;
+            if(score <= 0)
+            {
+                score = 0;
+                GameOver();
+            }
+        }
     }
 
-    private void UpdateScore()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        score--;
-        //bar.transform.localScale -= new Vector3(0, 0.05f, 0);
-        //bar.transform.position -= new Vector3(0, 0.025f, 0);
+        if((PowerUpManagerPlayer1.fireWallActive || PowerUpManagerPlayer2.fireWallActive) && walls.Contains(collision.gameObject)) {
+            score--;
+        }
     }
 
     private void UpdateTime()
@@ -74,9 +91,9 @@ public class ScoreManager : MonoBehaviour
     {
         return playerNumber;
     }
-    public float GetScore()
+    public int GetScore()
     {
-        return score;
+        return (int)score;
     }
     public float GetTimeActive() 
     {
@@ -87,8 +104,7 @@ public class ScoreManager : MonoBehaviour
         // Increment the score when a good collectible is collected
         score += amount;
         gameManager.UpdatePlayerScoreUI(this);
-        //bar.transform.localScale += new Vector3(0, 0.05f*amount, 0);
-        //bar.transform.position += new Vector3(0, 0.025f*amount, 0);
+        HealthBar.fillAmount = score / TotalHealth;
     }
     public void RespawnPlayer(string tagOfKiller)
     {   
@@ -136,9 +152,8 @@ public class ScoreManager : MonoBehaviour
 
 public void ReducePlayerLife()
 {
-    numOfLives--;
     gameManager.UpdatePlayerLivesUI(this);//sharan
-    if(numOfLives == 0)
+    if(score == 0)
     {
         GameOver();
     }
