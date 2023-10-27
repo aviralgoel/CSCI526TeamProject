@@ -1,15 +1,20 @@
-
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class PowerUpManager : MonoBehaviour
+
 {
     [SerializeField] private int playerNumber;
     [SerializeField] private KeyCode PowerUpControllingKey;
     [SerializeField] private int totalPowerUpCount = 0;
+	private bool isFrozen = false;
+    private float freezeTime = 10f; // Time in seconds for freezing effect
+
+    public PlayerInputController OpponentPlayerController;
+    
 
     public float fireWallMovementSpeed = 0.2f;
 
@@ -40,8 +45,6 @@ public class PowerUpManager : MonoBehaviour
     public bool moveWallsInside = false;
     public bool moveWallsOutside = false;
 
-    public float vibrationFrequency = 0.05f; // Frequency of the vibration effect
-    public float vibrationIntensity = 0.1f;
     // enum for powerup types
     public enum PowerUpType
     {
@@ -62,6 +65,7 @@ public class PowerUpManager : MonoBehaviour
     {
         playerNumber = GetComponent<ScoreManager>().GetPlayerNumber();
         PowerUpControllingKey = (playerNumber == 2) ? KeyCode.Q : KeyCode.P;
+		
 
     }
 
@@ -156,11 +160,6 @@ public class PowerUpManager : MonoBehaviour
         }
     }
 
-    private void UseFreeze()
-    {
-        // Niranjanaa implements
-
-    }
 
     private void UseFireWalls()
     {
@@ -191,14 +190,14 @@ public class PowerUpManager : MonoBehaviour
         {
             powerupsCount[type] = 0;
             totalPowerUpCount = 0;
-            /*if (playerNumber == 1)
+            if (playerNumber == 1)
             {
                 UIManager.instance.SetPlayer1PowerUpText("No Powerup Collected Yet...");
             }
             else if (playerNumber == 2)
             {
                 UIManager.instance.SetPlayer2PowerUpText("No Powerup Collected Yet...");
-            }*/
+            }
         }        
     }
 
@@ -217,12 +216,33 @@ public class PowerUpManager : MonoBehaviour
             addPowerUp(PowerUpType.Shield);
         }
     }
+
     // co routine to pause 5 second
     IEnumerator Pause()
     {
         
         yield return new WaitForSeconds(15);
         moveWallsOutside = true;
-
+	}
+	private void UseFreeze()
+    {
+        StartCoroutine(FreezeAndUnfreeze());
     }
+
+    private IEnumerator FreezeAndUnfreeze()
+    {
+        isFrozen = true;
+
+        //OpponentPlayerController.isMovementAllowed = false; // Freeze the player's movement
+        OpponentPlayerController.FreezeThisPlayer();
+
+        yield return new WaitForSeconds(freezeTime);
+        OpponentPlayerController.UnFreezeThisPlayer();
+
+        isFrozen = false;
+
+        //OpponentPlayerController.isMovementAllowed = true; // Unfreeze the player's movement
+    }
+
+
 }
