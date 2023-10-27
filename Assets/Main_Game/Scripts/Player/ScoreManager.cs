@@ -71,8 +71,6 @@ public class ScoreManager : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if((PowerUpManagerPlayer1.fireWallActive || PowerUpManagerPlayer2.fireWallActive) && walls.Contains(collision.gameObject)) {
-
-            
             IncrementScore(-1);
         }
     }
