@@ -11,7 +11,7 @@ public class Player_Movement : MonoBehaviour
     public float movementSpeed;
     public float turnSpeed;
     public float angleToTurn = 10f;
-    private ScoreManager scoreManager;
+    //private ScoreManager scoreManager;
     [Range(1f, 5f)]
     public float speedMultiplier;
     [Range(0f, 2f)]
@@ -40,7 +40,7 @@ public class Player_Movement : MonoBehaviour
         speedMultiplier = 1f;
         turnSpeedMultiplier = 1f;
         turnSpeed = 1f;
-        scoreManager = GetComponent<ScoreManager>();
+        //scoreManager = GetComponent<ScoreManager>();
         
     }
 
@@ -57,8 +57,9 @@ public class Player_Movement : MonoBehaviour
     }
     private void Update()
     {
-        speedMultiplier = (scoreManager.GetTimeActive() < 10f) ? 1f : 1 + scoreManager.GetTimeActive() / 75f;
-        angleToTurn = (scoreManager.GetTimeActive() < 10f) ? 10f : 10f + scoreManager.GetTimeActive() / 20f;
+
+       // speedMultiplier = (scoreManager.GetTimeActive() < 10f) ? 1f : 1 + scoreManager.GetTimeActive() / 75f;
+        //angleToTurn = (scoreManager.GetTimeActive() < 10f) ? 10f : 10f + scoreManager.GetTimeActive() / 20f;
         //defaultTurnSpeedMultiplierValue = (scoreManager.GetTimeActive() < 10f) ? 1f : 1 + scoreManager.GetTimeActive() / 10f;
         if(Input.GetKey(controllingKey) && !isMovementAllowed){
             isMovementAllowed = true;
