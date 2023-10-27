@@ -4,7 +4,7 @@ public class CollisionController : MonoBehaviour
 {
 
     //public ScoreManager scoreManager;
-    public int scoreOnKill = 4;
+    public int scoreOnKill = 10;
     public ScoreManager scoreManagerPlayer1;
     public ScoreManager scoreManagerPlayer2;
 
@@ -48,7 +48,8 @@ public class CollisionController : MonoBehaviour
                 scoreManagerPlayer2.IncrementScore(scoreChange);
                 scoreManagerPlayer2.RespawnPlayer(collision.gameObject.tag); // this will not actually respawn player, just increase count of collectible
             }
-            Destroy(collision.gameObject);
+            // collectible is already being destroyed in collectible script
+            //Destroy(collision.gameObject);
         }
 
     }

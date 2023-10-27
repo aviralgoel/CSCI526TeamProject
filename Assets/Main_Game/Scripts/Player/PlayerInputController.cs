@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerInputController : MonoBehaviour
 {
-    int playerNumber;
+    public int playerNumber;
     Rigidbody2D rb;
     Vector3 direction;
     Quaternion targetRotation;
@@ -22,6 +22,10 @@ public class PlayerInputController : MonoBehaviour
 
     //public GameObject blackHole;
 
+    private void Awake()
+    {
+        isMovementAllowed = false;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +40,6 @@ public class PlayerInputController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         controllingKey = playerNumber == 1 ? KeyCode.L : KeyCode.A;
         rb.velocity = Vector3.zero;
-        isMovementAllowed = false;
         speedMultiplier = 1f;
         turnSpeedMultiplier = 1f;
         turnSpeed = 1f;
@@ -54,6 +57,40 @@ public class PlayerInputController : MonoBehaviour
         }
         
 
+    }
+    public void SetIsMovementAllowed(bool isAllowed)
+    {
+        isMovementAllowed = isAllowed;
+        //Debug.Log("Player movement active");
+    }
+    public void FreezeThisPlayer()
+    {
+        isMovementAllowed = false;
+        rb.velocity = Vector3.zero;
+        if(playerNumber == 1)
+        {
+            UIManager.instance.SetPlayer1PowerUpText("You got frozen!");
+
+        }
+        else
+        {
+            UIManager.instance.SetPlayer2PowerUpText("You got frozen!");
+        }
+        //Debug.Log("Player movement freezed");
+    }
+    public void UnFreezeThisPlayer()
+    {
+        isMovementAllowed = true;
+        if (playerNumber == 1)
+        {
+            UIManager.instance.SetPlayer1PowerUpText("");
+
+        }
+        else
+        {
+            UIManager.instance.SetPlayer2PowerUpText("");
+        }
+        Debug.Log("Player movement unfreezed");
     }
     private void Update()
     {
