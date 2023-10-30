@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class ScoreManager : MonoBehaviour
 {   
@@ -14,6 +15,9 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] public int numOfCollectiblesCollected = 0;
     [SerializeField] public int numOfGoodCollectiblesCollected = 0;
     [SerializeField] public int numOfBadCollectiblesCollected = 0;
+    public List<GameObject> walls = new List<GameObject>();
+    public PowerUpManager PowerUpManagerPlayer1;
+    public PowerUpManager PowerUpManagerPlayer2;
 
     public Image HealthBar;
     public float TotalHealth;
@@ -34,7 +38,6 @@ public class ScoreManager : MonoBehaviour
     {
         isPlayerActive = false;
         respawnPosition = transform.position;
-        InvokeRepeating("UpdateScore", 0, 1.0f);
     }
 
     // Update is called once per frame
@@ -44,14 +47,27 @@ public class ScoreManager : MonoBehaviour
         {
             UpdateTime();
         }
-        HealthBar.fillAmount = score / TotalHealth;
+
+        if(gameManager.isGameStarted) {
+            score -= Time.deltaTime;
+            HealthBar.fillAmount = score / TotalHealth;
+            if(score <= 0)
+            {
+                score = 0;
+                if(!gameManager.isGameOver)
+                {
+                    GameOver();
+                }
+                
+            }
+        }
     }
 
-    private void UpdateScore()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        score--;
-        //bar.transform.localScale -= new Vector3(0, 0.05f, 0);
-        //bar.transform.position -= new Vector3(0, 0.025f, 0);
+        if((PowerUpManagerPlayer1.fireWallActive || PowerUpManagerPlayer2.fireWallActive) && walls.Contains(collision.gameObject)) {
+            score=-3;
+        }
     }
 
     private void UpdateTime()
@@ -79,9 +95,9 @@ public class ScoreManager : MonoBehaviour
     {
         return playerNumber;
     }
-    public float GetScore()
+    public int GetScore()
     {
-        return score;
+        return (int)score;
     }
     public float GetTimeActive() 
     {
@@ -100,12 +116,12 @@ public class ScoreManager : MonoBehaviour
         if(tagOfKiller == "Blackhole")
         {
             numOfTimesKilledByBlackHole++;
-            ReducePlayerLife();
+            //ReducePlayerLife();
         }
         else if(tagOfKiller == "OtherPlayer")
         {
             numOfTimesKilledByPlayer++;
-            ReducePlayerLife();
+            //ReducePlayerLife();
         }
         else if(tagOfKiller == "Good" || tagOfKiller=="Bad")
         {
@@ -128,9 +144,22 @@ public class ScoreManager : MonoBehaviour
         // sstop the player
         isPlayerActive = false;
         this.gameObject.SetActive(false);
-        gameManager.isGameOver = true; 
+        gameManager.isGameOver = true;
+        gameManager.losePlayerNumber = playerNumber;
+        /*if(playerNumber == 1)
+        {
+            UIManager.instance.SetPlayer1PowerUpText("Player 1 has lost");
+            UIManager.instance.SetPlayer2PowerUpText("Player 2 has won");
+        }
+        else
+        {
+            UIManager.instance.SetPlayer1PowerUpText("Player 2 has lost");
+            UIManager.instance.SetPlayer2PowerUpText("Player 1 has won");
+        }*/
+
+
         //change scene to game over
-        SceneManager.LoadScene("End_Scene");
+        //SceneManager.LoadScene("End_Scene");
 
     }
 
@@ -138,15 +167,14 @@ public class ScoreManager : MonoBehaviour
 
 
 
-public void ReducePlayerLife()
+/*public void ReducePlayerLife()
 {
-    numOfLives--;
-    gameManager.UpdatePlayerLivesUI(this);//sharan
-    if(numOfLives == 0)
+    // gameManager.UpdatePlayerLivesUI(this);//sharan
+    if(score == 0)
     {
         GameOver();
     }
-}
+}*/
    
    
 }
