@@ -506,6 +506,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1179226516}
     - target: {fileID: 1619474688059181860, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
+      propertyPath: floatingText
+      value: 
+      objectReference: {fileID: 8813652237249848376, guid: 69e97c459da9849e3985e62bf3cd4b97, type: 3}
+    - target: {fileID: 1619474688059181860, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
       propertyPath: PowerUpManager
       value: 
       objectReference: {fileID: 1441567225}
@@ -1740,6 +1744,10 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 1179226516}
+    - target: {fileID: 7929893104096976367, guid: aa9161055e227c24583beef344af0ec7, type: 3}
+      propertyPath: floatingText
+      value: 
+      objectReference: {fileID: 8813652237249848376, guid: 69e97c459da9849e3985e62bf3cd4b97, type: 3}
     - target: {fileID: 7929893104096976367, guid: aa9161055e227c24583beef344af0ec7, type: 3}
       propertyPath: PowerUpManager
       value: 
