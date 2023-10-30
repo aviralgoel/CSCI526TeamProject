@@ -12,17 +12,13 @@ public class GameManager : MonoBehaviour
     public int losePlayerNumber = 0;
 
     // text mesh pro text field
-    public TextMeshProUGUI player1ScoreTextMeshPro;
-    public TextMeshProUGUI player2ScoreTextMeshPro;
-
-    public TextMeshProUGUI player1LivesTextMeshPro;
-    public TextMeshProUGUI player2LivesTextMeshPro;
+    // public TextMeshProUGUI player1ScoreTextMeshPro;
+    // public TextMeshProUGUI player2ScoreTextMeshPro;
 
     public bool isGameOver = false;
     public bool isGameStarted = false;
 
     public AnalyticsCollector analyticsCollector;
-
 
     private ScoreManager player1ScoreManager;
     private ScoreManager player2ScoreManager;
@@ -58,14 +54,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
 
-        // Update UI
-        player1ScoreTextMeshPro.text = player1ScoreManager.GetScore().ToString();
-        player2ScoreTextMeshPro.text = player2ScoreManager.GetScore().ToString();
-
-        player1LivesTextMeshPro.text = "Lives:" + player1ScoreManager.numOfLives.ToString();
-        player2LivesTextMeshPro.text = "Lives:" + player2ScoreManager.numOfLives.ToString();
         HasPlayersJoined();
-
         // collect player1 data when it is dead
         if (isPlayerOneActive)
         {
@@ -109,7 +98,7 @@ public class GameManager : MonoBehaviour
                 UIManager.instance.SetPlayer1PowerUpText("You Win!");
                 player1ScoreManager.SetPlayerActive(false);
             }
-            //isGameOver = true;
+            isGameOver = true;
             
         }
     }
@@ -117,6 +106,7 @@ public class GameManager : MonoBehaviour
     private void HasPlayersJoined()
     {   
         if(isGameStarted) { return; } // game is in session, no further needs to make these checks
+       
         if (!isPlayerOneActive) // player 1 has not yet joined the game
         {
             if (Input.GetKeyUp(KeyCode.L)) // player has joined the game
@@ -146,25 +136,13 @@ public class GameManager : MonoBehaviour
                 isPlayerTwoMoving = true;
                 isPlayerOneMoving = true;
             }
-            /*if (Input.GetKeyUp(KeyCode.L) && !isPlayerOneMoving)
-            {
-                isPlayerOneMoving = true;
-            }
-            if (Input.GetKeyUp(KeyCode.A) && !isPlayerTwoMoving)
-            {
-                //playerTwo.GetComponent<PlayerInputController>().SetIsMovementAllowed(true);
-                isPlayerTwoMoving = true;
-            }*/
             if(isPlayerTwoMoving && isPlayerOneMoving)
             {
                 StartCoroutine(BeginTheGame());
-
-            }
-            if (isPlayerOneMoving && isPlayerTwoMoving)
-            {
                 isGameStarted = true;
                 UIManager.instance.SetPlayer1PowerUpText("Collect Health & Powerups to outlive your opponent");
                 UIManager.instance.SetPlayer2PowerUpText("Collect Health & Powerups to outlive your oppoenent");
+
             }
         }
 
@@ -232,36 +210,12 @@ public class GameManager : MonoBehaviour
         return new string(sessionID);
     }
     //sharan
-     public void UpdatePlayerScoreUI(ScoreManager scoreManager)
-    {
-        if (scoreManager == player1ScoreManager)
-        {
-            player1ScoreTextMeshPro.text = "Player 1 Score: " + scoreManager.GetScore().ToString();
-        }
-        else if (scoreManager == player2ScoreManager)
-        {
-            player2ScoreTextMeshPro.text = "Player 2 Score: " + scoreManager.GetScore().ToString();
-        }
-    }
-
-   
-    public void UpdatePlayerLivesUI(ScoreManager scoreManager)
-    {
-        if (scoreManager == player1ScoreManager)
-        {
-            player1LivesTextMeshPro.text = "Lives: " + scoreManager.numOfLives.ToString();
-        }
-        else if (scoreManager == player2ScoreManager)
-        {
-            player2LivesTextMeshPro.text = "Lives: " + scoreManager.numOfLives.ToString();
-        }
-    }
 
     IEnumerator BeginTheGame()
     {   
         CountDownAudioSource.Play();
         //Wait Until Sound has finished playing
-        for (int i = (int)CountDownAudioSource.clip.length-1; i >= 0; i--)
+        for (int i = (int)CountDownAudioSource.clip.length; i >= 0; i--)
         {
             UIManager.instance.SetPlayer1PanelnText("Game Begins in ..." + i.ToString());
             UIManager.instance.SetPlayer2PanelText("Game Begins in ..." + i.ToString());
