@@ -128,11 +128,11 @@ public class PowerUpManager : MonoBehaviour
 
         UIManager.instance.SetPlayer1PowerUpText("Avoid Red Walls!");
         UIManager.instance.SetPlayer2PowerUpText("Avoid Red Walls!");
-        if (Mathf.Approximately(Vector3.Distance(walls[(int)Walls.Bottom].position, wallDestinations[(int)Walls.Bottom].position),0))
+        if (Mathf.Approximately(Vector3.Distance(walls[(int)Walls.Bottom].position, wallDestinations[(int)Walls.Bottom].position),0) &&
+            Mathf.Approximately(Vector3.Distance(walls[(int)Walls.Top].position, wallDestinations[(int)Walls.Top].position),0))
         {
             StartCoroutine(Pause());
-            moveWallsInside = false;
-            moveWallsOutside = true;
+
 
         }
     }
@@ -160,7 +160,9 @@ public class PowerUpManager : MonoBehaviour
             walls[i].transform.GetComponent<SpriteRenderer>().color = Color.white;
             walls[i].position = Vector3.MoveTowards(walls[i].position, wallSources[i].position, Time.deltaTime * fireWallMovementSpeed);
         }
-        if (Mathf.Approximately(Vector3.Distance(walls[(int)Walls.Bottom].position, wallSources[(int)Walls.Bottom].position), 0))
+        if (Mathf.Approximately(Vector3.Distance(walls[(int)Walls.Bottom].position, wallSources[(int)Walls.Bottom].position), 0) &&
+            Mathf.Approximately(Vector3.Distance(walls[(int)Walls.Top].position, wallSources[(int)Walls.Top].position), 0) &&
+            Mathf.Approximately(Vector3.Distance(walls[(int)Walls.TopLeft].position, wallSources[(int)Walls.TopLeft].position), 0))
         {
             moveWallsOutside = false;
             fireWallActive = false;
@@ -244,8 +246,10 @@ public class PowerUpManager : MonoBehaviour
     {
         
         yield return new WaitForSeconds(fireWallDuration);
-        
-	}
+        moveWallsInside = false;
+        moveWallsOutside = true;
+
+    }
 	private void UseFreeze()
     {
         StartCoroutine(FreezeAndUnfreeze());
