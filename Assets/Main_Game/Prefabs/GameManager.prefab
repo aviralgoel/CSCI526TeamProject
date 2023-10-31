@@ -50,10 +50,7 @@ MonoBehaviour:
   playerOne: {fileID: 0}
   playerTwo: {fileID: 0}
   spanwerManager: {fileID: 0}
-  player1ScoreTextMeshPro: {fileID: 0}
-  player2ScoreTextMeshPro: {fileID: 0}
-  player1LivesTextMeshPro: {fileID: 0}
-  player2LivesTextMeshPro: {fileID: 0}
+  losePlayerNumber: 0
   isGameOver: 0
   isGameStarted: 0
   analyticsCollector: {fileID: 1469920200}

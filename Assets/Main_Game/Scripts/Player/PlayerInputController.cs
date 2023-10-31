@@ -61,7 +61,6 @@ public class PlayerInputController : MonoBehaviour
     public void SetIsMovementAllowed(bool isAllowed)
     {
         isMovementAllowed = isAllowed;
-        //Debug.Log("Player movement active");
     }
     public void FreezeThisPlayer()
     {
@@ -70,13 +69,11 @@ public class PlayerInputController : MonoBehaviour
         if(playerNumber == 1)
         {
             UIManager.instance.SetPlayer1PowerUpText("You got frozen!");
-
         }
         else
         {
             UIManager.instance.SetPlayer2PowerUpText("You got frozen!");
         }
-        //Debug.Log("Player movement freezed");
     }
     public void UnFreezeThisPlayer()
     {
@@ -90,7 +87,6 @@ public class PlayerInputController : MonoBehaviour
         {
             UIManager.instance.SetPlayer2PowerUpText("");
         }
-        Debug.Log("Player movement unfreezed");
     }
     private void Update()
     {   
@@ -99,8 +95,6 @@ public class PlayerInputController : MonoBehaviour
             speedMultiplier = (scoreManager.GetTimeActive() < 10f) ? 1f : 1 + scoreManager.GetTimeActive() / 75f;
             angleToTurn = (scoreManager.GetTimeActive() < 10f) ? 10f : 10f + scoreManager.GetTimeActive() / 20f;
         }
-        
-        //defaultTurnSpeedMultiplierValue = (scoreManager.GetTimeActive() < 10f) ? 1f : 1 + scoreManager.GetTimeActive() / 10f;
     }
 
 
