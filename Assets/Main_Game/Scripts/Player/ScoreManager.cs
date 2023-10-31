@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 public class ScoreManager : MonoBehaviour
 {   
@@ -27,6 +28,11 @@ public class ScoreManager : MonoBehaviour
     private GameManager gameManager;
 
     Vector3 respawnPosition;
+    [Header("Mechanic: ChargeUp Area")]
+    [SerializeField] private bool isInsideSpeedUp = false;
+    [SerializeField] private float healingAmountPerSecond = 2.0f;
+    [SerializeField] private float damageAmountPerSecond = 1.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -62,6 +68,36 @@ public class ScoreManager : MonoBehaviour
     {
         if((PowerUpManagerPlayer1.fireWallActive || PowerUpManagerPlayer2.fireWallActive) && walls.Contains(collision.gameObject)) {
             IncrementScore(-1);
+        }
+        if(collision.gameObject.tag == "SpeedUp" && !isInsideSpeedUp)
+        {   
+
+            isInsideSpeedUp = true;
+            if(collision.gameObject.GetComponent<SpeedUp>().beginHealing)
+            {
+                InvokeRepeating("HealOverTime", 0.1f, 1.0f);
+            }
+            else if(collision.gameObject.GetComponent<SpeedUp>().beginDamage)
+            {
+                InvokeRepeating("DamageOverTime", 0.1f, 1.0f);
+            }
+            
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "SpeedUp" && isInsideSpeedUp)
+        {
+            isInsideSpeedUp = false;
+            if (collision.gameObject.GetComponent<SpeedUp>().beginHealing)
+            {
+                CancelInvoke("HealOverTime");
+            }
+            else if (collision.gameObject.GetComponent<SpeedUp>().beginDamage)
+            {
+                CancelInvoke("DamageOverTime");
+            }
+            
         }
     }
 
@@ -154,6 +190,16 @@ public class ScoreManager : MonoBehaviour
         gameManager.losePlayerNumber = playerNumber;
 
     }
-  
-   
+
+    private void HealOverTime()
+    {
+        IncrementScore((int)healingAmountPerSecond);
+    }
+    private void DamageOverTime()
+    {
+        IncrementScore((int)damageAmountPerSecond);
+    }
+
+
+
 }
