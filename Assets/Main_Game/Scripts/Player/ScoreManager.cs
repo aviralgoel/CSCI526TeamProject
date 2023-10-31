@@ -28,7 +28,10 @@ public class ScoreManager : MonoBehaviour
     private GameManager gameManager;
 
     Vector3 respawnPosition;
-    public bool isInsideSpeedUp = false;
+    [Header("Mechanic: ChargeUp Area")]
+    [SerializeField] private bool isInsideSpeedUp = false;
+    [SerializeField] private float healingAmountPerSecond = 2.0f;
+    [SerializeField] private float damageAmountPerSecond = 1.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -190,11 +193,11 @@ public class ScoreManager : MonoBehaviour
 
     private void HealOverTime()
     {
-        IncrementScore(1);
+        IncrementScore((int)healingAmountPerSecond);
     }
     private void DamageOverTime()
     {
-        IncrementScore(-1);
+        IncrementScore((int)damageAmountPerSecond);
     }
 
 
