@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 public class ScoreManager : MonoBehaviour
 {   
@@ -9,12 +10,12 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private float timeActive = 0;
     [SerializeField] private int playerNumber;
     [SerializeField] private bool isPlayerActive;
-    [SerializeField] public int numOfLives = 3;
-    [SerializeField] public int numOfTimesKilledByBlackHole = 0;
-    [SerializeField] public int numOfTimesKilledByPlayer = 0;
-    [SerializeField] public int numOfCollectiblesCollected = 0;
-    [SerializeField] public int numOfGoodCollectiblesCollected = 0;
-    [SerializeField] public int numOfBadCollectiblesCollected = 0;
+    // [SerializeField] public int numOfLives = 3;
+    [HideInInspector] public int numOfTimesKilledByBlackHole = 0;
+    [HideInInspector] public int numOfTimesKilledByPlayer = 0;
+    [HideInInspector] public int numOfCollectiblesCollected = 0;
+    [HideInInspector] public int numOfGoodCollectiblesCollected = 0;
+    [HideInInspector] public int numOfBadCollectiblesCollected = 0;
     [SerializeField] private GameObject floatingText;
     public List<GameObject> walls = new List<GameObject>();
     public PowerUpManager PowerUpManagerPlayer1;
@@ -22,18 +23,16 @@ public class ScoreManager : MonoBehaviour
 
     public Image HealthBar;
     public float TotalHealth;
-    //public GameObject bar;
-
-    //sharan
+    
     [SerializeField]
     private GameManager gameManager;
 
-  
-   //sharan
-
-
-    
     Vector3 respawnPosition;
+    [Header("Mechanic: ChargeUp Area")]
+    [SerializeField] private bool isInsideSpeedUp = false;
+    [SerializeField] private float healingAmountPerSecond = 2.0f;
+    [SerializeField] private float damageAmountPerSecond = 1.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -61,9 +60,6 @@ public class ScoreManager : MonoBehaviour
                     GameOver();
                 }
                 
-
-                // GameOver();
-
             }
         }
     }
@@ -73,6 +69,36 @@ public class ScoreManager : MonoBehaviour
         if((PowerUpManagerPlayer1.fireWallActive || PowerUpManagerPlayer2.fireWallActive) && walls.Contains(collision.gameObject)) {
             IncrementScore(-1);
         }
+        if(collision.gameObject.tag == "SpeedUp" && !isInsideSpeedUp)
+        {   
+
+            isInsideSpeedUp = true;
+            if(collision.gameObject.GetComponent<SpeedUp>().beginHealing)
+            {
+                InvokeRepeating("HealOverTime", 0.1f, 1.0f);
+            }
+            else if(collision.gameObject.GetComponent<SpeedUp>().beginDamage)
+            {
+                InvokeRepeating("DamageOverTime", 0.1f, 1.0f);
+            }
+            
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "SpeedUp" && isInsideSpeedUp)
+        {
+            isInsideSpeedUp = false;
+            if (collision.gameObject.GetComponent<SpeedUp>().beginHealing)
+            {
+                CancelInvoke("HealOverTime");
+            }
+            else if (collision.gameObject.GetComponent<SpeedUp>().beginDamage)
+            {
+                CancelInvoke("DamageOverTime");
+            }
+            
+        }
     }
 
     void showDamage(string text)
@@ -81,19 +107,17 @@ public class ScoreManager : MonoBehaviour
         {
             GameObject prefab = Instantiate(floatingText, transform.position + new Vector3(0.5f, 1.5f, 0), Quaternion.identity);
             prefab.GetComponentInChildren<TextMesh>().text = text;
-
         }
     }
 
     private void UpdateTime()
     {
-        timeActive += Time.deltaTime; 
+        timeActive += Time.deltaTime;
     }
     
     public void SetPlayerActive(bool isActive)
     {
         this.gameObject.SetActive(isActive);
-        // print the player number
         Debug.Log("Player " + playerNumber + " has joined the game");
         isPlayerActive = isActive;
         
@@ -126,7 +150,6 @@ public class ScoreManager : MonoBehaviour
         else damage = "+" +  amount.ToString();
         showDamage(damage);
         score += amount;
-        gameManager.UpdatePlayerScoreUI(this);
         HealthBar.fillAmount = score / TotalHealth;
     }
     public void RespawnPlayer(string tagOfKiller)
@@ -165,35 +188,18 @@ public class ScoreManager : MonoBehaviour
         this.gameObject.SetActive(false);
         gameManager.isGameOver = true;
         gameManager.losePlayerNumber = playerNumber;
-        /*if(playerNumber == 1)
-        {
-            UIManager.instance.SetPlayer1PowerUpText("Player 1 has lost");
-            UIManager.instance.SetPlayer2PowerUpText("Player 2 has won");
-        }
-        else
-        {
-            UIManager.instance.SetPlayer1PowerUpText("Player 2 has lost");
-            UIManager.instance.SetPlayer2PowerUpText("Player 1 has won");
-        }*/
-
-
-        //change scene to game over
-        //SceneManager.LoadScene("End_Scene");
 
     }
 
-    //sharan
-
-
-
-/*public void ReducePlayerLife()
-{
-    // gameManager.UpdatePlayerLivesUI(this);//sharan
-    if(score == 0)
+    private void HealOverTime()
     {
-        GameOver();
+        IncrementScore((int)healingAmountPerSecond);
     }
-}*/
-   
-   
+    private void DamageOverTime()
+    {
+        IncrementScore((int)damageAmountPerSecond);
+    }
+
+
+
 }

@@ -7,6 +7,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 809736422, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
+      propertyPath: walls.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 809736422, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
+      propertyPath: wallSources.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 809736422, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
+      propertyPath: wallDestinations.Array.size
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1852375672634493914, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
       propertyPath: m_TagString
       value: Player1Blade
@@ -80,6 +92,14 @@ PrefabInstance:
       value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 7929893104096976367, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
+      propertyPath: floatingText
+      value: 
+      objectReference: {fileID: 8813652237249848376, guid: 69e97c459da9849e3985e62bf3cd4b97, type: 3}
+    - target: {fileID: 7929893104096976367, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
+      propertyPath: walls.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7929893104096976367, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
       propertyPath: PowerUpManagerPlayer1
       value: 
       objectReference: {fileID: 1250625391053489653}
@@ -87,6 +107,7 @@ PrefabInstance:
     - {fileID: 1441567228, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
     - {fileID: 1619474688059181860, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
     - {fileID: 1441567226, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
+    - {fileID: 651818641807876764, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
 --- !u!114 &1250625391053489653 stripped
 MonoBehaviour:

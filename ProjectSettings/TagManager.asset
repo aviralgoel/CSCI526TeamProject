@@ -15,6 +15,7 @@ TagManager:
   - FireWalls
   - Shield
   - Freeze
+  - SpeedUp
   layers:
   - Default
   - TransparentFX

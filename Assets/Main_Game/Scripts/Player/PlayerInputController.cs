@@ -61,7 +61,6 @@ public class PlayerInputController : MonoBehaviour
     public void SetIsMovementAllowed(bool isAllowed)
     {
         isMovementAllowed = isAllowed;
-        //Debug.Log("Player movement active");
     }
     public void FreezeThisPlayer()
     {
@@ -70,13 +69,11 @@ public class PlayerInputController : MonoBehaviour
         if(playerNumber == 1)
         {
             UIManager.instance.SetPlayer1PowerUpText("You got frozen!");
-
         }
         else
         {
             UIManager.instance.SetPlayer2PowerUpText("You got frozen!");
         }
-        //Debug.Log("Player movement freezed");
     }
     public void UnFreezeThisPlayer()
     {
@@ -90,17 +87,14 @@ public class PlayerInputController : MonoBehaviour
         {
             UIManager.instance.SetPlayer2PowerUpText("");
         }
-        Debug.Log("Player movement unfreezed");
     }
     private void Update()
     {   
         if(scoreManager != null)
         {
-            speedMultiplier = (scoreManager.GetTimeActive() < 10f) ? 1f : 1 + scoreManager.GetTimeActive() / 75f;
-            angleToTurn = (scoreManager.GetTimeActive() < 10f) ? 10f : 10f + scoreManager.GetTimeActive() / 20f;
+            //speedMultiplier = (scoreManager.GetTimeActive() < 10f) ? 1f : 1 + scoreManager.GetTimeActive() / 75f;
+            //angleToTurn = (scoreManager.GetTimeActive() < 10f) ? 10f : 10f + scoreManager.GetTimeActive() / 20f;
         }
-        
-        //defaultTurnSpeedMultiplierValue = (scoreManager.GetTimeActive() < 10f) ? 1f : 1 + scoreManager.GetTimeActive() / 10f;
     }
 
 
@@ -128,6 +122,33 @@ public class PlayerInputController : MonoBehaviour
         if(Input.GetKeyUp(controllingKey))
         {
             turnSpeedMultiplier = defaultTurnSpeedMultiplierValue;
+        }
+    }
+
+    public void BoostSpeed()
+    {
+        speedMultiplier = 2f;
+        turnSpeedMultiplier = 2f;
+        if (playerNumber == 1)
+        {
+            UIManager.instance.SetPlayer1PowerUpText("Speed Boost!");
+        }
+        else
+        {
+            UIManager.instance.SetPlayer2PowerUpText("Speed Boost!");
+        }
+    }
+    public void ResetSpeed()
+    {
+        speedMultiplier = 1f;
+        turnSpeedMultiplier = 1f;
+        if (playerNumber == 1)
+        {
+            UIManager.instance.SetPlayer1PowerUpText("");
+        }
+        else
+        {
+            UIManager.instance.SetPlayer2PowerUpText("");
         }
     }
    
