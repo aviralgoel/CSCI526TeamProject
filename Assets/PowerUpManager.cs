@@ -11,18 +11,24 @@ public class PowerUpManager : MonoBehaviour
     [SerializeField] private int playerNumber;
     [SerializeField] private KeyCode PowerUpControllingKey;
     [SerializeField] private int totalPowerUpCount = 0;
-	private bool isFrozen = false;
-    private float freezeTime = 10f; // Time in seconds for freezing effect
+	
 
     public PlayerInputController OpponentPlayerController;
-    
 
+    [HeaderAttribute("Fire Wall Mechanic")]
     public float fireWallMovementSpeed = 0.2f;
     public float fireWallDuration = 7f;
-
     public Transform[] walls;
     public Transform[] wallSources;
     public Transform[] wallDestinations;
+
+    [HeaderAttribute("Freeze Mechanic")]
+    [SerializeField]private bool isFrozen = false;
+    public float freezeTime = 10f; // Time in seconds for freezing effect
+    public float freezeMovementSpeed = 0.2f;
+    public ParticleSystem freezeEffect;
+
+
 
     public enum Walls
     {
@@ -259,6 +265,7 @@ public class PowerUpManager : MonoBehaviour
     {
         isFrozen = true;
         OpponentPlayerController.FreezeThisPlayer();
+        freezeEffect.Play(true);
         yield return new WaitForSeconds(freezeTime);
         OpponentPlayerController.UnFreezeThisPlayer();
         isFrozen = false;

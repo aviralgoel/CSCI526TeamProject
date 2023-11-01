@@ -197,7 +197,7 @@ public class ScoreManager : MonoBehaviour
     }
     private void DamageOverTime()
     {
-        IncrementScore((int)damageAmountPerSecond);
+        IncrementScore((int)(damageAmountPerSecond)*-1);
     }
 
 
