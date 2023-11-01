@@ -47,3 +47,4 @@ public class Collectibles : MonoBehaviour
         Debug.Log(collision.gameObject.tag);
     }
 }
+
