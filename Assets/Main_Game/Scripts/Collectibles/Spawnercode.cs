@@ -3,14 +3,15 @@ using UnityEngine;
 public class Spawnercode : MonoBehaviour
 {
     public GameObject[] myobj;  // Array of prefabs to spawn
-    public float spawnInterval = 1.0f;  // Time interval between spawns
+    public float spawnInterval = 0.5f;  // Time interval between spawns
     public float destructionTime = 15f;  // Time after which the collectible will be destroyed
     public GameObject HexagonPlayground;
-    SpriteRenderer sr;
+    private SpriteRenderer sr; // Change the variable type to SpriteRenderer
     private float timer = 0.0f;
-    Vector3 playGroundExtendMin;
-    Vector3 playGroundExtendMax;
+    private Vector3 playGroundExtendMin;
+    private Vector3 playGroundExtendMax;
     public int numOfCollectiblesSpawned = 0;
+    private bool canSpawn = false; // Control whether objects can spawn or not
 
     private void Start()
     {
@@ -21,27 +22,51 @@ public class Spawnercode : MonoBehaviour
 
     void Update()
     {
-        // Update the timer
-        timer += Time.deltaTime;
-
-        // Check if it's time to spawn a new object
-        if (timer >= spawnInterval)
+        if (canSpawn == false && Input.GetKeyDown(KeyCode.Space))
         {
-            // Reset the timer
-            timer = 0.0f;
+            canSpawn = true; // Enable spawning when spacebar is pressed
+        }
 
-            // Generate a random position
-            Vector3 randomSpawn = new Vector3(Random.Range(-5f, 5f), Random.Range(-5, 5f), 0);
+        if (canSpawn )
+        {
+            // Update the timer
+            timer += Time.deltaTime;
 
-            // Choose a random prefab from the array
-            int randomIndex = Random.Range(0, myobj.Length);
-
-            if(randomSpawn.x > playGroundExtendMin.x && randomSpawn.x < playGroundExtendMax.x && randomSpawn.y > playGroundExtendMin.y && randomSpawn.y < playGroundExtendMax.y)
+            // Check if it's time to spawn a new object
+            if (timer >= spawnInterval)
             {
-                GameObject newCollectible = Instantiate(myobj[randomIndex], randomSpawn, Quaternion.identity);
-                numOfCollectiblesSpawned++;
-            }
+                // Reset the timer
+                timer = 0.0f;
 
+                // Generate a random position
+                Vector3 randomSpawn = new Vector3(Random.Range(-5f, 5f), Random.Range(-5, 5f), 0);
+
+                // Choose a random prefab from the array
+                int randomIndex = Random.Range(0, myobj.Length);
+                if (Random.Range(0, 4) != 0)
+                {
+                    // Spawn "good" object (75% chance)
+                    randomIndex = 0;
+                }
+                else
+                {
+                    // Spawn "bad" object (25% chance)
+                    randomIndex = 1;
+                }
+
+                if (randomSpawn.x > playGroundExtendMin.x && randomSpawn.x < playGroundExtendMax.x &&
+                    randomSpawn.y > playGroundExtendMin.y && randomSpawn.y < playGroundExtendMax.y)
+                {
+                    GameObject newCollectible = Instantiate(myobj[randomIndex], randomSpawn, Quaternion.identity);
+                    numOfCollectiblesSpawned++;
+                }
+            }
         }
     }
+
+    public void StopSpawning()
+    {
+        canSpawn = false;
+    }
 }
+
