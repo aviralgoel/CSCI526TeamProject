@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
 
     public bool isGameOver = false;
     public bool isGameStarted = false;
+    public bool isGameStarting = false;
 
     public AnalyticsCollector analyticsCollector;
 
@@ -148,7 +149,7 @@ public class GameManager : MonoBehaviour
 
     private void HasPlayersJoined()
     {   
-        if(isGameStarted) { return; } // game is in session, no further needs to make these checks
+        if(isGameStarting || isGameStarted) { return; } // game is in session, no further needs to make these checks
        
         if (!isPlayerOneActive) // player 1 has not yet joined the game
         {
@@ -181,8 +182,8 @@ public class GameManager : MonoBehaviour
             }
             if(isPlayerTwoMoving && isPlayerOneMoving)
             {
+                isGameStarting = true;
                 StartCoroutine(BeginTheGame());
-                isGameStarted = true;
                 UIManager.instance.SetPlayer1PowerUpText("Collect Health & Powerups to outlive your opponent");
                 UIManager.instance.SetPlayer2PowerUpText("Collect Health & Powerups to outlive your oppoenent");
 
@@ -216,11 +217,12 @@ public class GameManager : MonoBehaviour
             UIManager.instance.SetPlayer2PanelText("Game Begins in ..." + i.ToString());
             yield return new WaitForSeconds(1.0f);
         }
-
         playerOne.GetComponent<PlayerInputController>().SetIsMovementAllowed(true);
         playerTwo.GetComponent<PlayerInputController>().SetIsMovementAllowed(true);
         UIManager.instance.SetPlayer1PanelnText("Press L to Turn");
         UIManager.instance.SetPlayer2PanelText("Press A to Turn");
+        isGameStarted = true;
+        
 
     }
 

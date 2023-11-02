@@ -797,7 +797,7 @@ PrefabInstance:
       objectReference: {fileID: 2113452624}
     - target: {fileID: 1250625390056630104, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
       propertyPath: movementSpeed
-      value: 0
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 1250625391053489653, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
       propertyPath: walls.Array.data[0]
@@ -963,6 +963,10 @@ PrefabInstance:
       propertyPath: walls.Array.data[5]
       value: 
       objectReference: {fileID: 881682087}
+    - target: {fileID: 9176012675809100028, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
+      propertyPath: PowerUpManagerPlayer1
+      value: 
+      objectReference: {fileID: 1441567237}
     - target: {fileID: 9176012675809100028, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
       propertyPath: PowerUpManagerPlayer2
       value: 
