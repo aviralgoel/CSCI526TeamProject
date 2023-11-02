@@ -11,9 +11,12 @@ public class PowerUpManager : MonoBehaviour
     [SerializeField] private int playerNumber;
     [SerializeField] private KeyCode PowerUpControllingKey;
     [SerializeField] private int totalPowerUpCount = 0;
+    [SerializeField] private ScoreManager scoreManager;
 
 
     public PlayerInputController OpponentPlayerController;
+
+    public int scoreOnPowerUp = 2;
 
     [HeaderAttribute("Fire Wall Mechanic")]
     public float fireWallMovementSpeed = 0.2f;
@@ -67,8 +70,9 @@ public class PowerUpManager : MonoBehaviour
    
     // Start is called before the first frame update
     void Start()
-    {
-        playerNumber = GetComponent<ScoreManager>().GetPlayerNumber();
+    {   
+        scoreManager = GetComponent<ScoreManager>();
+        playerNumber = scoreManager.GetPlayerNumber();
         // PowerUpControllingKey = (playerNumber == 2) ? KeyCode.Q : KeyCode.P;
     }
 
@@ -170,6 +174,7 @@ public class PowerUpManager : MonoBehaviour
             {
                 UIManager.instance.SetPlayer2PowerUpText("You picked up " + type.ToString());
             }
+            scoreManager.IncrementScore(scoreOnPowerUp);
         }
         
     }

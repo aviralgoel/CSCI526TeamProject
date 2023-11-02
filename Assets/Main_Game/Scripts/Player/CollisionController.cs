@@ -4,7 +4,10 @@ public class CollisionController : MonoBehaviour
 {
 
     //public ScoreManager scoreManager;
-    public int scoreOnKill = 5;
+    public int scoreOnKill = 4;
+    public int scoreOnGreen = 2;
+    public int scoreOnRed = -2;
+
     public ScoreManager scoreManagerPlayer1;
     public ScoreManager scoreManagerPlayer2;
 
@@ -49,7 +52,7 @@ public class CollisionController : MonoBehaviour
         {
             if (gameObject.CompareTag("Player1Blade"))
             {
-                int scoreChange = collision.gameObject.CompareTag("Good") ? 6 : -2;
+                int scoreChange = collision.gameObject.CompareTag("Good") ? scoreOnGreen : scoreOnRed;
                 scoreManagerPlayer1.IncrementScore(scoreChange);
                 scoreManagerPlayer1.RespawnPlayer(collision.gameObject.tag); // this will not actually respawn player, just increase count of collectible
             
@@ -58,7 +61,7 @@ public class CollisionController : MonoBehaviour
             }
             else if (gameObject.CompareTag("Player2Blade"))
             {
-                int scoreChange = collision.gameObject.CompareTag("Good") ? 6 : -2;
+                int scoreChange = collision.gameObject.CompareTag("Good") ? scoreOnGreen : scoreOnRed;
                 scoreManagerPlayer2.IncrementScore(scoreChange);
                 scoreManagerPlayer2.RespawnPlayer(collision.gameObject.tag); // this will not actually respawn player, just increase count of collectible
             
