@@ -13,6 +13,9 @@ public class Spawnercode : MonoBehaviour
     public int numOfCollectiblesSpawned = 0;
     private bool canSpawn = false; // Control whether objects can spawn or not
 
+    [Range(0.0f, 1.0f)]
+    public float goodObjectPercentage = 0.75f;  // Percentage of "good" object spawns
+
     private void Start()
     {
         sr = HexagonPlayground.GetComponent<SpriteRenderer>();
@@ -27,7 +30,7 @@ public class Spawnercode : MonoBehaviour
             canSpawn = true; // Enable spawning when spacebar is pressed
         }
 
-        if (canSpawn )
+        if (canSpawn)
         {
             // Update the timer
             timer += Time.deltaTime;
@@ -41,18 +44,8 @@ public class Spawnercode : MonoBehaviour
                 // Generate a random position
                 Vector3 randomSpawn = new Vector3(Random.Range(-5f, 5f), Random.Range(-5, 5f), 0);
 
-                // Choose a random prefab from the array
-                int randomIndex = Random.Range(0, myobj.Length);
-                if (Random.Range(0, 4) != 0)
-                {
-                    // Spawn "good" object (75% chance)
-                    randomIndex = 0;
-                }
-                else
-                {
-                    // Spawn "bad" object (25% chance)
-                    randomIndex = 1;
-                }
+                // Determine whether to spawn a "good" or "bad" object based on the percentage
+                int randomIndex = (Random.value < goodObjectPercentage) ? 0 : 1;
 
                 if (randomSpawn.x > playGroundExtendMin.x && randomSpawn.x < playGroundExtendMax.x &&
                     randomSpawn.y > playGroundExtendMin.y && randomSpawn.y < playGroundExtendMax.y)
@@ -69,4 +62,3 @@ public class Spawnercode : MonoBehaviour
         canSpawn = false;
     }
 }
-
