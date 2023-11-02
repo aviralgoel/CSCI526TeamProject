@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-
+        
         HasPlayersJoined();
 
         if(losePlayerNumber != 0)
@@ -117,6 +117,7 @@ public class GameManager : MonoBehaviour
                     // my success rate = how many attempts I made on the other player / how many times I actually killed the other player
                     // int successfullKills = ((playerTwo.GetComponentInChildren<PlayerAnalytics>().GetNumOfKillAttemptsByOpponents() - player2ScoreManager.numOfTimesKilledByPlayer) / player2ScoreManager.numOfTimesKilledByPlayer);
                 };
+                int successRate = player2ScoreManager.numOfTimesKilledByPlayer / (playerTwo.GetComponentInChildren<PlayerAnalytics>().GetNumOfKillAttemptsByOpponents() - player2ScoreManager.numOfTimesKilledByPlayer);
                 //analyticsCollector.SendPlayerData(player1Data, 1);
                 isPlayer1DataSent = true;
             }
@@ -138,6 +139,7 @@ public class GameManager : MonoBehaviour
                     FreezePowerUP = 3, // test data
                     HealthPowerUP = 2 // test data
                 };
+                int successRate = player1ScoreManager.numOfTimesKilledByPlayer / (playerOne.GetComponentInChildren<PlayerAnalytics>().GetNumOfKillAttemptsByOpponents() - player1ScoreManager.numOfTimesKilledByPlayer);
                 //analyticsCollector.SendPlayerData(player2Data, 2);
                 isPlayer2DataSent = true;
             }

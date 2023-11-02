@@ -792,6 +792,10 @@ PrefabInstance:
       value: Player1Blade
       objectReference: {fileID: 0}
     - target: {fileID: 643989418509866701, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
+      propertyPath: scoreManagerPlayer1
+      value: 
+      objectReference: {fileID: 1441567235}
+    - target: {fileID: 643989418509866701, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
       propertyPath: scoreManagerPlayer2
       value: 
       objectReference: {fileID: 2113452624}
