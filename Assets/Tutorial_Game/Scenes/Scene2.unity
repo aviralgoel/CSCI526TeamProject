@@ -697,6 +697,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2202385777686666833, guid: 83a63d1f28beab94ca00197e4f35846b, type: 3}
+      propertyPath: m_text
+      value: Hold A to Escape the Blackhole Pull
+      objectReference: {fileID: 0}
+    - target: {fileID: 2202385777686666833, guid: 83a63d1f28beab94ca00197e4f35846b, type: 3}
+      propertyPath: m_fontSize
+      value: 20.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 2202385777847378648, guid: 83a63d1f28beab94ca00197e4f35846b, type: 3}
+      propertyPath: m_text
+      value: Hold L to Escape the Blackhole Pull
+      objectReference: {fileID: 0}
     - target: {fileID: 3370493893106715366, guid: 83a63d1f28beab94ca00197e4f35846b, type: 3}
       propertyPath: m_Name
       value: Tutorial2Stuff (1)

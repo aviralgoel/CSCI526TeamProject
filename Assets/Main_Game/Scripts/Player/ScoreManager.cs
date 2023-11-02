@@ -189,6 +189,8 @@ public class ScoreManager : MonoBehaviour
         gameManager.isGameOver = true;
         gameManager.losePlayerNumber = playerNumber;
 
+        FindObjectOfType<SoundManager>().Play("GameOver");
+
     }
 
     private void HealOverTime()

@@ -236,10 +236,17 @@ public class PowerUpManager : MonoBehaviour
         if (collision.gameObject.CompareTag("FireWalls"))
         {
             addPowerUp(PowerUpType.FireWalls);
+
+            //Debug.Log("we will now search for sound!");
+            FindObjectOfType<SoundManager>().Play("PowerUp");
+
         }
         else if (collision.gameObject.CompareTag("Freeze"))
         {
             addPowerUp(PowerUpType.Freeeze);
+
+            FindObjectOfType<SoundManager>().Play("PowerUp");
+            
         }
         else if (collision.gameObject.CompareTag("Shield"))
         {
