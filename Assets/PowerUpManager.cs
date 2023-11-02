@@ -42,26 +42,7 @@ public class PowerUpManager : MonoBehaviour
     }
 
 
-    /*  public Transform wallBottom;
-      public Transform wallTop;
-      public Transform wallLeftTop;
-      public Transform wallLeftBottom;
-      public Transform wallRightTop;
-      public Transform wallRightBottom;
 
-      public Transform wallBottomDestination;
-      public Transform wallTopDestination;
-      public Transform wallLeftTopDestination;
-      public Transform wallLeftBottomDestination;
-      public Transform wallRightTopDestination;
-      public Transform wallRightBottomDestination;
-
-      public Transform wallBottomSource;
-      public Transform wallTopSource;
-      public Transform wallLeftTopSource;
-      public Transform wallLeftBottomSource;
-      public Transform wallRightTopSource;
-      public Transform wallRightBottomSource;*/
 
 
 
@@ -110,21 +91,7 @@ public class PowerUpManager : MonoBehaviour
 
     private void MoveWallsInside()
     {   
-        // move
-        //wallBottom.position = Vector3.MoveTowards(wallBottom.position, wallBottomDestination.position, Time.deltaTime * fireWallMovementSpeed);
-        //wallLeftBottom.position = Vector3.MoveTowards(wallLeftBottom.position, wallLeftBottomDestination.position, Time.deltaTime*fireWallMovementSpeed);
-        //wallLeftTop.position = Vector3.MoveTowards(wallLeftTop.position, wallLeftTopDestination.position, Time.deltaTime*fireWallMovementSpeed);
-        //wallRightBottom.position = Vector3.MoveTowards(wallRightBottom.position, wallRightBottomDestination.position, Time.deltaTime*fireWallMovementSpeed);
-        //wallRightTop.position = Vector3.MoveTowards(wallRightTop.position, wallRightTopDestination.position, Time.deltaTime*fireWallMovementSpeed);
-        //wallTop.position = Vector3.MoveTowards(wallTop.position, wallTopDestination.position, Time.deltaTime*fireWallMovementSpeed);
 
-        // change color of all the walls to red
-        //wallBottom.transform.GetComponent<SpriteRenderer>().color = Color.red;
-        //wallLeftBottom.transform.GetComponent<SpriteRenderer>().color = Color.red;
-        //wallTop.transform.GetComponent<SpriteRenderer>().color = Color.red;
-        //wallLeftTop.transform.GetComponent<SpriteRenderer>().color = Color.red;
-        //wallRightBottom.transform.GetComponent<SpriteRenderer>().color = Color.red;
-        //wallRightTop.transform.GetComponent<SpriteRenderer>().color = Color.red;
 
         for(int i = 0; i < 6; i++)
         {
@@ -144,22 +111,6 @@ public class PowerUpManager : MonoBehaviour
     }
     private void MoveWallsOutside()
     {   
-        // move
-        //wallBottom.position = Vector3.MoveTowards(wallBottom.position, wallBottomSource.position, Time.deltaTime * fireWallMovementSpeed );
-        //wallLeftBottom.position = Vector3.MoveTowards(wallLeftBottom.position, wallLeftBottomSource.position, Time.deltaTime*fireWallMovementSpeed);
-        //wallLeftTop.position = Vector3.MoveTowards(wallLeftTop.position, wallLeftTopSource.position, Time.deltaTime*fireWallMovementSpeed);
-        //wallRightBottom.position = Vector3.MoveTowards(wallRightBottom.position, wallRightBottomSource.position, Time.deltaTime * fireWallMovementSpeed);
-        //wallRightTop.position = Vector3.MoveTowards(wallRightTop.position, wallRightTopSource.position, Time.deltaTime * fireWallMovementSpeed);
-        //wallTop.position = Vector3.MoveTowards(wallTop.position, wallTopSource.position , Time.deltaTime * fireWallMovementSpeed);
-
-
-        // change color of all the walls to white
-        //wallBottom.transform.GetComponent<SpriteRenderer>().color = Color.white;
-        //wallLeftBottom.transform.GetComponent<SpriteRenderer>().color = Color.white;
-        //wallTop.transform.GetComponent<SpriteRenderer>().color = Color.white;
-        //wallLeftTop.transform.GetComponent<SpriteRenderer>().color = Color.white;
-        //wallRightBottom.transform.GetComponent<SpriteRenderer>().color = Color.white;
-        //wallRightTop.transform.GetComponent<SpriteRenderer>().color = Color.white;
 
         for(int i = 0; i < 6; i++)
         {

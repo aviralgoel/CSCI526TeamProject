@@ -40,6 +40,7 @@ public class ScoreManager : MonoBehaviour
         isPlayerActive = false;
         respawnPosition = transform.position;
         spawner = FindObjectOfType<Spawnercode>();
+        score = TotalHealth;
     }
 
     // Update is called once per frame
@@ -198,10 +199,12 @@ public class ScoreManager : MonoBehaviour
 
     private void HealOverTime()
     {
+        FindObjectOfType<SoundManager>().Play("good");
         IncrementScore((int)healingAmountPerSecond);
     }
     private void DamageOverTime()
     {
+        FindObjectOfType<SoundManager>().Play("bad");
         IncrementScore((int)(damageAmountPerSecond)*-1);
     }
 
