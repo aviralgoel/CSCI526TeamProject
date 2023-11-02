@@ -6,7 +6,7 @@ using System.Collections;
 public struct PlayerAnalyticsData
 {
     public string SessionID;
-    public string Winner;
+    public int Winner;
     public float TimeActive;
     public int TotalCollectibles;
 
@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     public Spawnercode spanwerManager;
 
     public int losePlayerNumber = 0;
+    public int gameWinner = 0;
 
     // text mesh pro text field
     // public TextMeshProUGUI player1ScoreTextMeshPro;
@@ -50,8 +51,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private bool isPlayerTwoMoving = false;
 
     private string sessionID;
-    //private bool isPlayer1DataSent = false;
-    //private bool isPlayer2DataSent = false;
+    private bool isPlayer1DataSent = false;
+    private bool isPlayer2DataSent = false;
     
     // audio source
     public AudioSource CountDownAudioSource;
@@ -63,7 +64,7 @@ public class GameManager : MonoBehaviour
 
         player1ScoreManager = playerOne.GetComponent<ScoreManager>();
         player2ScoreManager = playerTwo.GetComponent<ScoreManager>();
-       //analyticsCollector = GetComponent<AnalyticsCollector>();
+        analyticsCollector = GetComponent<AnalyticsCollector>();
         UIManager.instance.SetPlayer1PanelnText("Press L to Join");
         UIManager.instance.SetPlayer2PanelText("Press A to Join");
     }
@@ -80,48 +81,66 @@ public class GameManager : MonoBehaviour
                 UIManager.instance.SetPlayer1PowerUpText("You Lose!");
                 UIManager.instance.SetPlayer2PowerUpText("You Win!");
                 player2ScoreManager.SetPlayerActive(false);
+                gameWinner = 2;
             }
             else if(losePlayerNumber == 2)
             {
                 UIManager.instance.SetPlayer2PowerUpText("You Lose!");
                 UIManager.instance.SetPlayer1PowerUpText("You Win!");
                 player1ScoreManager.SetPlayerActive(false);
+                gameWinner = 1;
             }
             isGameOver = true;
             
         }
 
-        // if (isGameOver)
-        // {
-        //     Debug.Log("---- 1 ----");
-        //     PlayerAnalyticsData player1Data;
-        //     //PlayerAnalyticsData player2Data;
+        if (isGameOver)
+        {
+            if (!isPlayer1DataSent)
+            {
+                PlayerAnalyticsData player1Data;
+                player1Data = new PlayerAnalyticsData
+                {
+                    SessionID = sessionID,
+                    Winner = gameWinner,
+                    TimeActive = player1ScoreManager.GetTimeActive(),
+                    TotalCollectibles = spanwerManager.numOfCollectiblesSpawned,
+                    Score = (int)player1ScoreManager.GetScore(),
+                    KilledByBlackHole = player1ScoreManager.numOfTimesKilledByBlackHole,
+                    KilledByPlayer = player1ScoreManager.numOfTimesKilledByPlayer,
+                    GoodCollectiblesCollected = player1ScoreManager.numOfGoodCollectiblesCollected,
+                    BadCollectiblesCollected = player1ScoreManager.numOfBadCollectiblesCollected,
+                    FirewallPowerUP = 12, // test data
+                    FreezePowerUP = 4, // test data
+                    HealthPowerUP = 3 // test data
+                };
+                //analyticsCollector.SendPlayerData(player1Data, 1);
+                isPlayer1DataSent = true;
+            }
+            if (!isPlayer2DataSent)
+            {
+                PlayerAnalyticsData player2Data;
+                player2Data = new PlayerAnalyticsData
+                {
+                    SessionID = sessionID,
+                    Winner = gameWinner,
+                    TimeActive = player2ScoreManager.GetTimeActive(),
+                    TotalCollectibles = spanwerManager.numOfCollectiblesSpawned,
+                    Score = (int)player2ScoreManager.GetScore(),
+                    KilledByBlackHole = player2ScoreManager.numOfTimesKilledByBlackHole,
+                    KilledByPlayer = player2ScoreManager.numOfTimesKilledByPlayer,
+                    GoodCollectiblesCollected = player2ScoreManager.numOfGoodCollectiblesCollected,
+                    BadCollectiblesCollected = player2ScoreManager.numOfBadCollectiblesCollected,
+                    FirewallPowerUP = 10, // test data
+                    FreezePowerUP = 3, // test data
+                    HealthPowerUP = 2 // test data
+                };
+                //analyticsCollector.SendPlayerData(player2Data, 2);
+                isPlayer2DataSent = true;
+            }
+            
+        }
 
-        //     void SetPlayer1AnalyticsData()
-        //     {
-        //         player1Data = new PlayerAnalyticsData
-        //         {
-        //             SessionID = sessionID,
-        //             Score = 1000,
-        //             TimeActive = 3600.5f,
-        //             KilledByBlackHole = 5,
-        //             KilledByPlayer = 3,
-        //             KilledByObstacle = 2,
-        //             GoodCollectiblesCollected = 50,
-        //             BadCollectiblesCollected = 10,
-        //             TotalCollectibles = 60,
-        //             TotalPowerups = 8,
-        //             CollectedPowerups = 3
-        //         };
-        //         analyticsCollector.SendPlayerData(player1Data);
-        //     }
-        //     if (!isPlayer2DataSent)
-        //     { 
-        //         SetPlayer1AnalyticsData();
-        //         isPlayer2DataSent = true;
-        //         Debug.Log("---- 2 ----");
-        //     }
-        // }
 
     }
 
