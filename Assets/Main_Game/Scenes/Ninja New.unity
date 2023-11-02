@@ -140,7 +140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 794948793, guid: e5e30e8b166c19040a2821b786af2f45, type: 3}
       propertyPath: freezePowerupPercentage
-      value: 0
+      value: 0.51
       objectReference: {fileID: 0}
     - target: {fileID: 794948793, guid: e5e30e8b166c19040a2821b786af2f45, type: 3}
       propertyPath: firewallPowerupPercentage
@@ -232,7 +232,7 @@ PrefabInstance:
       objectReference: {fileID: 5818194942804883219, guid: 1c8c6bef141aba240a6c9a44a6129a24, type: 3}
     - target: {fileID: 6587957134335053147, guid: e5e30e8b166c19040a2821b786af2f45, type: 3}
       propertyPath: goodObjectPercentage
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5e30e8b166c19040a2821b786af2f45, type: 3}

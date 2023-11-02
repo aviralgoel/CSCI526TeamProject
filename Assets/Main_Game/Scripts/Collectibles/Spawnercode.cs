@@ -12,6 +12,7 @@ public class Spawnercode : MonoBehaviour
     private Vector3 playGroundExtendMax;
     public int numOfCollectiblesSpawned = 0;
     private bool canSpawn = false; // Control whether objects can spawn or not
+    private GameManager gameManager;
 
     [Range(0.0f, 1.0f)]
     public float goodObjectPercentage = 0.75f;  // Percentage of "good" object spawns
@@ -25,12 +26,13 @@ public class Spawnercode : MonoBehaviour
 
     void Update()
     {
-        if (canSpawn == false && Input.GetKeyDown(KeyCode.Space))
+        gameManager = FindObjectOfType<GameManager>();
+        if (canSpawn == false )
         {
-            canSpawn = true; // Enable spawning when spacebar is pressed
+            canSpawn = true; // Enable spawning 
         }
 
-        if (canSpawn)
+        if (canSpawn && gameManager != null && gameManager.isGameStarted && gameManager.isGameOver == false)
         {
             // Update the timer
             timer += Time.deltaTime;

@@ -14,6 +14,7 @@ public class PowerupSpawner : MonoBehaviour
     SpriteRenderer sr;
     Vector3 playGroundExtendMin;
     Vector3 playGroundExtendMax;
+    private GameManager gameManager;
     private bool canSpawn = false;
 
     [Range(0.0f, 1.0f)]
@@ -26,18 +27,21 @@ public class PowerupSpawner : MonoBehaviour
         playGroundExtendMax = sr.bounds.max;
 
         // Start spawning power-ups at regular intervals, but only after the space bar is pressed
-        StartCoroutine(SpawnPowerUpsAfterSpacebar());
+        StartCoroutine(SpawnPowerUpsgame());
     }
 
-    private IEnumerator SpawnPowerUpsAfterSpacebar()
+    private IEnumerator SpawnPowerUpsgame()
     {
+        gameManager = FindObjectOfType<GameManager>();
         while (!canSpawn)
         {
             yield return null; // Wait until the space bar is pressed
         }
 
-        // Once space bar is pressed, begin spawning power-ups at regular intervals
-        StartCoroutine(SpawnPowerUps());
+        if (canSpawn && gameManager != null && gameManager.isGameStarted)// Once space bar is pressed, begin spawning power-ups at regular intervals
+        {
+            StartCoroutine(SpawnPowerUps());
+        }
     }
 
     private IEnumerator SpawnPowerUps()
