@@ -23,9 +23,25 @@ PrefabInstance:
       propertyPath: wallDestinations.Array.size
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 1069691799887434991, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1852375672634493914, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
+      propertyPath: m_TagString
+      value: Player2Blade
+      objectReference: {fileID: 0}
     - target: {fileID: 1852375672634493918, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
       propertyPath: scoreManagerPlayer1
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1852375672634493918, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
+      propertyPath: scoreManagerPlayer2
+      value: 
+      objectReference: {fileID: 7377482947940202310}
+    - target: {fileID: 3329596251995659048, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
+      propertyPath: clearBehavior
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4940011466156706936, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
       propertyPath: m_Name
@@ -135,5 +151,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 09149736fb2616047af42ac41780fc8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7377482947940202310 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7929893104096976367, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
+  m_PrefabInstance: {fileID: 607623543995181737}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06cd899b5724d124abe1ef804929784f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

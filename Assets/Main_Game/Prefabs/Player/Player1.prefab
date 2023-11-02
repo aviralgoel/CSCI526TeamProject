@@ -35,6 +35,10 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 966750281
       objectReference: {fileID: 0}
+    - target: {fileID: 3329596251995659048, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
+      propertyPath: clearBehavior
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4940011466156706936, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
       propertyPath: m_Name
       value: Player1
