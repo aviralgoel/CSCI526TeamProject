@@ -95,10 +95,10 @@ public class PlayerInputController : MonoBehaviour
         {
             speedMultiplier = (scoreManager.GetTimeActive() < 10f) ? 1f : 1 + scoreManager.GetTimeActive() / 75f;
             angleToTurn = (scoreManager.GetTimeActive() < 10f) ? 10f : 10f + scoreManager.GetTimeActive() / 20f;
-            Debug.Log("Player" +  playerNumber + transform.position);
-            //Debug.Log("Player 2 Position: X = " + playerObj2.transform.position.x + " --- Y = " + playerObj2.transform.position.y);
-            // print the location of the gameobect THIS script is on
-            ;
+           
+            //speedMultiplier = (scoreManager.GetTimeActive() < 10f) ? 1f : 1 + scoreManager.GetTimeActive() / 75f;
+            //angleToTurn = (scoreManager.GetTimeActive() < 10f) ? 10f : 10f + scoreManager.GetTimeActive() / 20f;
+
         }
     }
 
@@ -127,6 +127,33 @@ public class PlayerInputController : MonoBehaviour
         if(Input.GetKeyUp(controllingKey))
         {
             turnSpeedMultiplier = defaultTurnSpeedMultiplierValue;
+        }
+    }
+
+    public void BoostSpeed()
+    {
+        speedMultiplier = 2f;
+        turnSpeedMultiplier = 2f;
+        if (playerNumber == 1)
+        {
+            UIManager.instance.SetPlayer1PowerUpText("Speed Boost!");
+        }
+        else
+        {
+            UIManager.instance.SetPlayer2PowerUpText("Speed Boost!");
+        }
+    }
+    public void ResetSpeed()
+    {
+        speedMultiplier = 1f;
+        turnSpeedMultiplier = 1f;
+        if (playerNumber == 1)
+        {
+            UIManager.instance.SetPlayer1PowerUpText("");
+        }
+        else
+        {
+            UIManager.instance.SetPlayer2PowerUpText("");
         }
     }
    

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1469920200}
   - component: {fileID: 1179226518}
   - component: {fileID: 1179226519}
+  - component: {fileID: 1829664478}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -51,6 +52,7 @@ MonoBehaviour:
   playerTwo: {fileID: 0}
   spanwerManager: {fileID: 0}
   losePlayerNumber: 0
+  gameWinner: 0
   isGameOver: 0
   isGameStarted: 0
   analyticsCollector: {fileID: 1469920200}
@@ -71,7 +73,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a0b0fbb1968140728e192c540ca6824, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shouldDataBeSentToGoogleForms: 0
 --- !u!82 &1179226518
 AudioSource:
   m_ObjectHideFlags: 0
@@ -82,9 +83,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 0b65681c3a86432459e93078e4399e2a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 887db164d19c64846b04cae36a31d54c, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.488
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -184,3 +185,26 @@ MonoBehaviour:
   player2PanelText: {fileID: 0}
   player1PowerUpText: {fileID: 0}
   player2PowerUpText: {fileID: 0}
+--- !u!114 &1829664478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8413391673206966585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c6678cb1d5ae8f4eba5010b23486239, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedUps:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  chargeUpChangeTime: 0.25
+  chargeUpTotalTime: 10
+  chargeUpEveryXSeconds: 20
+  isChargeUp: 1

@@ -8,28 +8,40 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 809736422, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
-      propertyPath: walls.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 809736422, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
-      propertyPath: wallSources.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 809736422, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
-      propertyPath: wallDestinations.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1852375672634493914, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
-      propertyPath: m_TagString
-      value: Player1Blade
-      objectReference: {fileID: 0}
-    - target: {fileID: 1852375672634493918, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
-      propertyPath: scoreManagerPlayer1
+      propertyPath: freezeEffect
       value: 
-      objectReference: {fileID: 9176012675809100028}
+      objectReference: {fileID: 2270748989074704890}
+    - target: {fileID: 809736422, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
+      propertyPath: freezeMovementSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1069691799887434984, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.268
+      objectReference: {fileID: 0}
+    - target: {fileID: 1069691799887434985, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
+      propertyPath: lengthInSec
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1069691799887434985, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1069691799887434990, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1069691799887434990, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 966750281
+      objectReference: {fileID: 0}
     - target: {fileID: 1852375672634493918, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
       propertyPath: scoreManagerPlayer2
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3329596251995659048, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
+      propertyPath: clearBehavior
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4940011466156706936, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
       propertyPath: m_Name
@@ -38,6 +50,14 @@ PrefabInstance:
     - target: {fileID: 4940011466156706936, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4940011466156706942, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
+      propertyPath: m_Color.b
+      value: 0.44483566
+      objectReference: {fileID: 0}
+    - target: {fileID: 4940011466156706942, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4940011466156706943, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
       propertyPath: m_RootOrder
@@ -83,51 +103,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 226.423
       objectReference: {fileID: 0}
-    - target: {fileID: 7142725499597133494, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
-      propertyPath: scoreManagerPlayer1
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 7929893104096976367, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
       propertyPath: score
-      value: 40
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7929893104096976367, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
-      propertyPath: floatingText
+      propertyPath: PowerUpManagerPlayer2
       value: 
-      objectReference: {fileID: 8813652237249848376, guid: 69e97c459da9849e3985e62bf3cd4b97, type: 3}
-    - target: {fileID: 7929893104096976367, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
-      propertyPath: walls.Array.size
-      value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 7929893104096976367, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
-      propertyPath: PowerUpManagerPlayer1
-      value: 
-      objectReference: {fileID: 1250625391053489653}
-    m_RemovedComponents:
-    - {fileID: 1441567228, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
-    - {fileID: 1619474688059181860, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
-    - {fileID: 1441567226, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
-    - {fileID: 651818641807876764, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
+    - target: {fileID: 8463252920686273765, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
---- !u!114 &1250625391053489653 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 809736422, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
+--- !u!198 &2270748989074704890 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1069691799887434985, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
   m_PrefabInstance: {fileID: 1250625391854378259}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09149736fb2616047af42ac41780fc8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &9176012675809100028 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7929893104096976367, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
-  m_PrefabInstance: {fileID: 1250625391854378259}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06cd899b5724d124abe1ef804929784f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

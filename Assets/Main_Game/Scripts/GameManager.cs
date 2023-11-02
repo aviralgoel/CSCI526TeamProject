@@ -3,6 +3,23 @@ using TMPro;
 using static Unity.VisualScripting.Member;
 using System.Collections;
 
+public struct PlayerAnalyticsData
+{
+    public string SessionID;
+    public int Winner;
+    public float TimeActive;
+    public int TotalCollectibles;
+
+    public int Score;
+    public int KilledByBlackHole;
+    public int KilledByPlayer;
+    public int BadCollectiblesCollected;
+    public int GoodCollectiblesCollected;
+    public int FirewallPowerUP;
+    public int FreezePowerUP;
+    public int HealthPowerUP;
+}
+
 public class GameManager : MonoBehaviour
 {   
     public GameObject playerOne;
@@ -10,6 +27,7 @@ public class GameManager : MonoBehaviour
     public Spawnercode spanwerManager;
 
     public int losePlayerNumber = 0;
+    public int gameWinner = 0;
 
     // text mesh pro text field
     // public TextMeshProUGUI player1ScoreTextMeshPro;
@@ -17,6 +35,7 @@ public class GameManager : MonoBehaviour
 
     public bool isGameOver = false;
     public bool isGameStarted = false;
+    public bool isGameStarting = false;
 
     public AnalyticsCollector analyticsCollector;
 
@@ -53,36 +72,8 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-
+        
         HasPlayersJoined();
-        // collect player1 data when it is dead
-        if (isPlayerOneActive)
-        {
-            if (!isPlayer1DataSent && player1ScoreManager.IsPlayerActive() == false)
-            {
-                string player1AnalyticsData = collectPlayer1AnalyticsData();
-                string player2AnalyticsData = collectPlayer2AnalyticsData();
-                analyticsCollector.SendPlayer1Data(player1AnalyticsData);
-                analyticsCollector.SendPlayer2Data(player2AnalyticsData);
-                //Debug.Log("Analytics Data:\n" + player1AnalyticsData);
-                isPlayer1DataSent = true;
-            }
-
-        }
-
-        // collect player2 data when it is dead
-        if (isPlayerTwoActive)
-        {
-            if (!isPlayer2DataSent && player2ScoreManager.IsPlayerActive() == false)
-            {
-                string player2AnalyticsData = collectPlayer2AnalyticsData();
-                string player1AnalyticsData = collectPlayer1AnalyticsData();
-                analyticsCollector.SendPlayer1Data(player1AnalyticsData);
-                analyticsCollector.SendPlayer2Data(player2AnalyticsData);
-                //Debug.Log("Analytics Data:\n" + player2AnalyticsData);
-                isPlayer2DataSent = true;
-            }
-        }
 
         if(losePlayerNumber != 0)
         {
@@ -91,21 +82,76 @@ public class GameManager : MonoBehaviour
                 UIManager.instance.SetPlayer1PowerUpText("You Lose!");
                 UIManager.instance.SetPlayer2PowerUpText("You Win!");
                 player2ScoreManager.SetPlayerActive(false);
+                gameWinner = 2;
             }
             else if(losePlayerNumber == 2)
             {
                 UIManager.instance.SetPlayer2PowerUpText("You Lose!");
                 UIManager.instance.SetPlayer1PowerUpText("You Win!");
                 player1ScoreManager.SetPlayerActive(false);
+                gameWinner = 1;
             }
             isGameOver = true;
             
         }
+
+        if (isGameOver)
+        {
+            if (!isPlayer1DataSent)
+            {
+                PlayerAnalyticsData player1Data;
+                player1Data = new PlayerAnalyticsData
+                {
+                    SessionID = sessionID,
+                    Winner = gameWinner,
+                    TimeActive = player1ScoreManager.GetTimeActive(),
+                    TotalCollectibles = spanwerManager.numOfCollectiblesSpawned,
+                    Score = (int)player1ScoreManager.GetScore(),
+                    KilledByBlackHole = player1ScoreManager.numOfTimesKilledByBlackHole,
+                    KilledByPlayer = player1ScoreManager.numOfTimesKilledByPlayer,
+                    GoodCollectiblesCollected = player1ScoreManager.numOfGoodCollectiblesCollected,
+                    BadCollectiblesCollected = player1ScoreManager.numOfBadCollectiblesCollected,
+                    FirewallPowerUP = 12, // test data
+                    FreezePowerUP = 4, // test data
+                    HealthPowerUP = 3 // test data
+                    // my success rate = how many attempts I made on the other player / how many times I actually killed the other player
+                    // int successfullKills = ((playerTwo.GetComponentInChildren<PlayerAnalytics>().GetNumOfKillAttemptsByOpponents() - player2ScoreManager.numOfTimesKilledByPlayer) / player2ScoreManager.numOfTimesKilledByPlayer);
+                };
+                int successRate = player2ScoreManager.numOfTimesKilledByPlayer / (playerTwo.GetComponentInChildren<PlayerAnalytics>().GetNumOfKillAttemptsByOpponents() - player2ScoreManager.numOfTimesKilledByPlayer);
+                //analyticsCollector.SendPlayerData(player1Data, 1);
+                isPlayer1DataSent = true;
+            }
+            if (!isPlayer2DataSent)
+            {
+                PlayerAnalyticsData player2Data;
+                player2Data = new PlayerAnalyticsData
+                {
+                    SessionID = sessionID,
+                    Winner = gameWinner,
+                    TimeActive = player2ScoreManager.GetTimeActive(),
+                    TotalCollectibles = spanwerManager.numOfCollectiblesSpawned,
+                    Score = (int)player2ScoreManager.GetScore(),
+                    KilledByBlackHole = player2ScoreManager.numOfTimesKilledByBlackHole,
+                    KilledByPlayer = player2ScoreManager.numOfTimesKilledByPlayer,
+                    GoodCollectiblesCollected = player2ScoreManager.numOfGoodCollectiblesCollected,
+                    BadCollectiblesCollected = player2ScoreManager.numOfBadCollectiblesCollected,
+                    FirewallPowerUP = 10, // test data
+                    FreezePowerUP = 3, // test data
+                    HealthPowerUP = 2 // test data
+                };
+                int successRate = player1ScoreManager.numOfTimesKilledByPlayer / (playerOne.GetComponentInChildren<PlayerAnalytics>().GetNumOfKillAttemptsByOpponents() - player1ScoreManager.numOfTimesKilledByPlayer);
+                //analyticsCollector.SendPlayerData(player2Data, 2);
+                isPlayer2DataSent = true;
+            }
+            
+        }
+
+
     }
 
     private void HasPlayersJoined()
     {   
-        if(isGameStarted) { return; } // game is in session, no further needs to make these checks
+        if(isGameStarting || isGameStarted) { return; } // game is in session, no further needs to make these checks
        
         if (!isPlayerOneActive) // player 1 has not yet joined the game
         {
@@ -138,8 +184,8 @@ public class GameManager : MonoBehaviour
             }
             if(isPlayerTwoMoving && isPlayerOneMoving)
             {
+                isGameStarting = true;
                 StartCoroutine(BeginTheGame());
-                isGameStarted = true;
                 UIManager.instance.SetPlayer1PowerUpText("Collect Health & Powerups to outlive your opponent");
                 UIManager.instance.SetPlayer2PowerUpText("Collect Health & Powerups to outlive your oppoenent");
 
@@ -147,54 +193,6 @@ public class GameManager : MonoBehaviour
         }
 
        
-    }
-
-    private string collectPlayer1AnalyticsData()
-    {
-        int player1Score = (int)player1ScoreManager.GetScore();
-        float player1Time = player1ScoreManager.GetTimeActive();
-        int player1KilledByBlackHole = player1ScoreManager.numOfTimesKilledByBlackHole;
-        int player1KilledByPlayer = player1ScoreManager.numOfTimesKilledByPlayer;
-        int player1GoodCollectibles = player1ScoreManager.numOfGoodCollectiblesCollected;
-        int player1BadCollectibles = player1ScoreManager.numOfBadCollectiblesCollected;
-        int totalCollectibles = spanwerManager.numOfCollectiblesSpawned;
-
-        string player1AnalyticsData = 
-            "Player 1 Session: " + sessionID + "\n" +
-            "Player 1 Key: L"  + "\n" +
-            "Player 1 Score: " + player1Score + "\n" +
-            "Player 1 Time: " + player1Time + "\n" +
-            "Player 1 Killed by Black Hole: " + player1KilledByBlackHole + "\n" +
-            "Player 1 Killed by Player: " + player1KilledByPlayer + "\n" +
-            "Player 1 Good Collectibles: " + player1GoodCollectibles + "\n" +
-            "Player 1 Bad Collectibles: " + player1BadCollectibles + "\n" +
-            "Total Collectibles: " + totalCollectibles;
-        
-        return player1AnalyticsData;
-    }
-
-    private string collectPlayer2AnalyticsData()
-    {
-        int player2Score = (int)player2ScoreManager.GetScore();
-        float player2Time = player2ScoreManager.GetTimeActive();
-        int player2KilledByBlackHole = player2ScoreManager.numOfTimesKilledByBlackHole;
-        int player2KilledByPlayer = player2ScoreManager.numOfTimesKilledByPlayer;
-        int player2GoodCollectibles = player2ScoreManager.numOfGoodCollectiblesCollected;
-        int player2BadCollectibles = player2ScoreManager.numOfBadCollectiblesCollected;
-        int totalCollectibles = spanwerManager.numOfCollectiblesSpawned;
-
-        string player2AnalyticsData = 
-            "Player 2 Session: " + sessionID + "\n" +
-            "Player 2 Key: A"  + "\n" +
-            "Player 2 Score: " + player2Score + "\n" +
-            "Player 2 Time: " + player2Time + "\n" +
-            "Player 2 Killed by Black Hole: " + player2KilledByBlackHole + "\n" +
-            "Player 2 Killed by Player: " + player2KilledByPlayer + "\n" +
-            "Player 2 Good Collectibles: " + player2GoodCollectibles + "\n" +
-            "Player 2 Bad Collectibles: " + player2BadCollectibles + "\n" +
-            "Total Collectibles: " + totalCollectibles;
-        
-        return player2AnalyticsData;
     }
 
     private string GenerateSessionID()
@@ -221,11 +219,12 @@ public class GameManager : MonoBehaviour
             UIManager.instance.SetPlayer2PanelText("Game Begins in ..." + i.ToString());
             yield return new WaitForSeconds(1.0f);
         }
-
         playerOne.GetComponent<PlayerInputController>().SetIsMovementAllowed(true);
         playerTwo.GetComponent<PlayerInputController>().SetIsMovementAllowed(true);
         UIManager.instance.SetPlayer1PanelnText("Press L to Turn");
         UIManager.instance.SetPlayer2PanelText("Press A to Turn");
+        isGameStarted = true;
+        
 
     }
 

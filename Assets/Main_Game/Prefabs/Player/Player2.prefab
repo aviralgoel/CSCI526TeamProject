@@ -7,18 +7,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 809736422, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
-      propertyPath: walls.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 809736422, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
-      propertyPath: wallSources.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 809736422, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
-      propertyPath: wallDestinations.Array.size
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 4940011466156706936, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
       propertyPath: m_Name
       value: Player2
@@ -26,18 +14,6 @@ PrefabInstance:
     - target: {fileID: 4940011466156706936, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4940011466156706936, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
-      propertyPath: m_TagString
-      value: Player2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4940011466156706942, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4940011466156706942, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
-      propertyPath: m_Color.r
-      value: 0.22167921
       objectReference: {fileID: 0}
     - target: {fileID: 4940011466156706943, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
       propertyPath: m_RootOrder
@@ -83,40 +59,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 46.736
       objectReference: {fileID: 0}
-    - target: {fileID: 7142725499597133494, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
-      propertyPath: scoreManagerPlayer1
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7929893104096976367, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
-      propertyPath: score
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 7929893104096976367, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
-      propertyPath: floatingText
-      value: 
-      objectReference: {fileID: 8813652237249848376, guid: 69e97c459da9849e3985e62bf3cd4b97, type: 3}
-    - target: {fileID: 7929893104096976367, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
-      propertyPath: walls.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 7929893104096976367, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
-      propertyPath: PowerUpManagerPlayer2
-      value: 
-      objectReference: {fileID: 607623544259261007}
-    m_RemovedComponents:
-    - {fileID: 1441567228, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
-    - {fileID: 1619474688059181860, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
-    - {fileID: 1441567226, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
-    - {fileID: 651818641807876764, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
---- !u!114 &607623544259261007 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 809736422, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
-  m_PrefabInstance: {fileID: 607623543995181737}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09149736fb2616047af42ac41780fc8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
