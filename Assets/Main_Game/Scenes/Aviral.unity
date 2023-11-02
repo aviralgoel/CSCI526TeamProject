@@ -687,6 +687,63 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &609344416
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5958283616341732705, guid: 83323f3b126144843ba12b861c469455, type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5958283616341732705, guid: 83323f3b126144843ba12b861c469455, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 898.57117
+      objectReference: {fileID: 0}
+    - target: {fileID: 5958283616341732705, guid: 83323f3b126144843ba12b861c469455, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 66.52166
+      objectReference: {fileID: 0}
+    - target: {fileID: 5958283616341732705, guid: 83323f3b126144843ba12b861c469455, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.2878613
+      objectReference: {fileID: 0}
+    - target: {fileID: 5958283616341732705, guid: 83323f3b126144843ba12b861c469455, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5958283616341732705, guid: 83323f3b126144843ba12b861c469455, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5958283616341732705, guid: 83323f3b126144843ba12b861c469455, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5958283616341732705, guid: 83323f3b126144843ba12b861c469455, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5958283616341732705, guid: 83323f3b126144843ba12b861c469455, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5958283616341732705, guid: 83323f3b126144843ba12b861c469455, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5958283616341732705, guid: 83323f3b126144843ba12b861c469455, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5958283616341732711, guid: 83323f3b126144843ba12b861c469455, type: 3}
+      propertyPath: m_Name
+      value: SoundManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 83323f3b126144843ba12b861c469455, type: 3}
 --- !u!1 &630335852
 GameObject:
   m_ObjectHideFlags: 0
@@ -1921,7 +1978,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6309508478128937345, guid: b25c44eadcf8d0e43b6980cf9b94a946, type: 3}
   m_PrefabInstance: {fileID: 8491089684687662137}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8491089684687662138}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c90d9ab784dede343a57eff5f2265fbd, type: 3}
@@ -3547,59 +3604,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b25c44eadcf8d0e43b6980cf9b94a946, type: 3}
---- !u!1 &8491089684687662138 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8413391673206966585, guid: b25c44eadcf8d0e43b6980cf9b94a946, type: 3}
-  m_PrefabInstance: {fileID: 8491089684687662137}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8491089684687662145
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8491089684687662138}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63f54a5cf6b09ff41926d124a2586c2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sounds:
-  - name: PowerUp
-    clip: {fileID: 8300000, guid: 0d110308c9dc214428a2cf44d8a4c572, type: 3}
-    volume: 1
-    pitch: 2
-    source: {fileID: 0}
-  - name: Respawn
-    clip: {fileID: 8300000, guid: 8b69944384538694f9b88920f146bf8f, type: 3}
-    volume: 1
-    pitch: 2
-    source: {fileID: 0}
-  - name: good
-    clip: {fileID: 8300000, guid: cd732e5a3eb0ebe4a9fb1a63a69825fb, type: 3}
-    volume: 1
-    pitch: 2
-    source: {fileID: 0}
-  - name: bad
-    clip: {fileID: 8300000, guid: 05c5ee2ea23380e46b82fc66ca995baf, type: 3}
-    volume: 1
-    pitch: 2
-    source: {fileID: 0}
-  - name: GameOver
-    clip: {fileID: 8300000, guid: aa55a58582c9e0445b32aa24946caec8, type: 3}
-    volume: 1
-    pitch: 2
-    source: {fileID: 0}
-  - name: playerdeath
-    clip: {fileID: 8300000, guid: 9567020dd21435f4aad9d6bbac60a22e, type: 3}
-    volume: 1
-    pitch: 2
-    source: {fileID: 0}
-  - name: button
-    clip: {fileID: 8300000, guid: f220628b3fd3a2144afbc125b53a8b10, type: 3}
-    volume: 1
-    pitch: 2
-    source: {fileID: 0}
 --- !u!1001 &9073951829010867851
 PrefabInstance:
   m_ObjectHideFlags: 0

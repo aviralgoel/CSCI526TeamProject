@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-public class CollectibleBehavior : MonoBehaviour
+public class playercol : MonoBehaviour
 {
     public TextMeshProUGUI collectText;
     public float popUpDuration = 3.0f; // Set the duration to 3 seconds
@@ -13,7 +13,7 @@ public class CollectibleBehavior : MonoBehaviour
         if (other.CompareTag("Player1") || other.CompareTag("Player2"))
         {
             collected = true;
-            collectText.text = "+1 Collected!";
+            collectText.text = "+4 You Killed";
             collectText.enabled = true; // Show the TextMeshProUI component
             gameObject.SetActive(false);
 
