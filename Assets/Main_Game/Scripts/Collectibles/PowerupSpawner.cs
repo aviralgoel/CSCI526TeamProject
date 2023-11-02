@@ -38,7 +38,7 @@ public class PowerupSpawner : MonoBehaviour
             yield return null; // Wait until the space bar is pressed
         }
 
-        if (canSpawn && gameManager != null && gameManager.isGameStarted)// Once space bar is pressed, begin spawning power-ups at regular intervals
+        if (canSpawn && gameManager != null && gameManager.isGameStarted && gameManager.isGameOver == false)// Once space bar is pressed, begin spawning power-ups at regular intervals
         {
             StartCoroutine(SpawnPowerUps());
         }
@@ -89,11 +89,5 @@ public class PowerupSpawner : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if (!canSpawn && Input.GetKeyDown(KeyCode.Space))
-        {
-            canSpawn = true; // Enable spawning when space bar is pressed
-        }
-    }
+    
 }
