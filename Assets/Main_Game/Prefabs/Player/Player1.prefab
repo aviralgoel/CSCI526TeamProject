@@ -35,6 +35,10 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 966750281
       objectReference: {fileID: 0}
+    - target: {fileID: 1852375672634493918, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
+      propertyPath: scoreManagerPlayer2
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3329596251995659048, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
       propertyPath: clearBehavior
       value: 0
@@ -46,6 +50,14 @@ PrefabInstance:
     - target: {fileID: 4940011466156706936, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4940011466156706942, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
+      propertyPath: m_Color.b
+      value: 0.44483566
+      objectReference: {fileID: 0}
+    - target: {fileID: 4940011466156706942, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4940011466156706943, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
       propertyPath: m_RootOrder
@@ -94,6 +106,10 @@ PrefabInstance:
     - target: {fileID: 7929893104096976367, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
       propertyPath: score
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7929893104096976367, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
+      propertyPath: PowerUpManagerPlayer2
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8463252920686273765, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
       propertyPath: playOnAwake

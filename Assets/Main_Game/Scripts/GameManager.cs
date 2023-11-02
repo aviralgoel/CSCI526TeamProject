@@ -113,6 +113,8 @@ public class GameManager : MonoBehaviour
                     FirewallPowerUP = 12, // test data
                     FreezePowerUP = 4, // test data
                     HealthPowerUP = 3 // test data
+                    // my success rate = how many attempts I made on the other player / how many times I actually killed the other player
+                    // int successfullKills = ((playerTwo.GetComponentInChildren<PlayerAnalytics>().GetNumOfKillAttemptsByOpponents() - player2ScoreManager.numOfTimesKilledByPlayer) / player2ScoreManager.numOfTimesKilledByPlayer);
                 };
                 //analyticsCollector.SendPlayerData(player1Data, 1);
                 isPlayer1DataSent = true;
