@@ -10,6 +10,7 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private float timeActive = 0;
     [SerializeField] private int playerNumber;
     [SerializeField] private bool isPlayerActive;
+    private Spawnercode spawner;
     // [SerializeField] public int numOfLives = 3;
     [HideInInspector] public int numOfTimesKilledByBlackHole = 0;
     [HideInInspector] public int numOfTimesKilledByPlayer = 0;
@@ -38,6 +39,7 @@ public class ScoreManager : MonoBehaviour
     {
         isPlayerActive = false;
         respawnPosition = transform.position;
+        spawner = FindObjectOfType<Spawnercode>();
     }
 
     // Update is called once per frame
@@ -188,6 +190,7 @@ public class ScoreManager : MonoBehaviour
         this.gameObject.SetActive(false);
         gameManager.isGameOver = true;
         gameManager.losePlayerNumber = playerNumber;
+        spawner.StopSpawning();
 
         FindObjectOfType<SoundManager>().Play("GameOver");
 
