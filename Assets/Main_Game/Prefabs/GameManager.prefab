@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1179226518}
   - component: {fileID: 1179226519}
   - component: {fileID: 1829664478}
+  - component: {fileID: 8491089684687662145}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -52,6 +53,7 @@ MonoBehaviour:
   playerTwo: {fileID: 0}
   spanwerManager: {fileID: 0}
   losePlayerNumber: 0
+  gameWinner: 0
   isGameOver: 0
   isGameStarted: 0
   analyticsCollector: {fileID: 1469920200}
@@ -207,3 +209,51 @@ MonoBehaviour:
   chargeUpTotalTime: 10
   chargeUpEveryXSeconds: 20
   isChargeUp: 1
+--- !u!114 &8491089684687662145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8413391673206966585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63f54a5cf6b09ff41926d124a2586c2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: PowerUp
+    clip: {fileID: 8300000, guid: 0d110308c9dc214428a2cf44d8a4c572, type: 3}
+    volume: 1
+    pitch: 2
+    source: {fileID: 0}
+  - name: Respawn
+    clip: {fileID: 8300000, guid: 8b69944384538694f9b88920f146bf8f, type: 3}
+    volume: 1
+    pitch: 2
+    source: {fileID: 0}
+  - name: good
+    clip: {fileID: 8300000, guid: cd732e5a3eb0ebe4a9fb1a63a69825fb, type: 3}
+    volume: 1
+    pitch: 2
+    source: {fileID: 0}
+  - name: bad
+    clip: {fileID: 8300000, guid: 05c5ee2ea23380e46b82fc66ca995baf, type: 3}
+    volume: 1
+    pitch: 2
+    source: {fileID: 0}
+  - name: GameOver
+    clip: {fileID: 8300000, guid: aa55a58582c9e0445b32aa24946caec8, type: 3}
+    volume: 1
+    pitch: 2
+    source: {fileID: 0}
+  - name: playerdeath
+    clip: {fileID: 8300000, guid: 9567020dd21435f4aad9d6bbac60a22e, type: 3}
+    volume: 1
+    pitch: 2
+    source: {fileID: 0}
+  - name: button
+    clip: {fileID: 8300000, guid: f220628b3fd3a2144afbc125b53a8b10, type: 3}
+    volume: 1
+    pitch: 2
+    source: {fileID: 0}

@@ -12,11 +12,6 @@ public class PowerUpManager : MonoBehaviour
     [SerializeField] private KeyCode PowerUpControllingKey;
     [SerializeField] private int totalPowerUpCount = 0;
 
-	
-
-	private bool isFrozen = false;
-    private float freezeTime = 5f; // Time in seconds for freezing effect
-
 
     public PlayerInputController OpponentPlayerController;
 
