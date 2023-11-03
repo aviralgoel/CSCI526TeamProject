@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748171, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -197,6 +197,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1dcec61017af6e0428bdf60070e76813, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &27868113 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 794948793, guid: e5e30e8b166c19040a2821b786af2f45, type: 3}
+  m_PrefabInstance: {fileID: 27868111}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 750e3a38fbfb0ec48a1645a6334f94ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &87515036 stripped
@@ -1567,6 +1578,10 @@ PrefabInstance:
       propertyPath: spanwerManager
       value: 
       objectReference: {fileID: 27868112}
+    - target: {fileID: 6309508478128937345, guid: b25c44eadcf8d0e43b6980cf9b94a946, type: 3}
+      propertyPath: powerSpanwerManager
+      value: 
+      objectReference: {fileID: 27868113}
     - target: {fileID: 6690346119174730491, guid: b25c44eadcf8d0e43b6980cf9b94a946, type: 3}
       propertyPath: m_RootOrder
       value: 2
