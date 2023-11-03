@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748171, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -235,6 +235,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5657236043985154681, guid: 41433c31d6401cc46890a14ed4cc10dc, type: 3}
   m_PrefabInstance: {fileID: 881682086}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &430623196 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2270748989074704890, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
+  m_PrefabInstance: {fileID: 671775149}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &438467160 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9073951828907957459, guid: 79cc7058d82fd99409b0caa5fce0ce27, type: 3}
@@ -409,6 +414,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2113452624}
     - target: {fileID: 1250625391053489653, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
+      propertyPath: freezeTime
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1250625391053489653, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
       propertyPath: walls.Array.data[0]
       value: 
       objectReference: {fileID: 1538753719}
@@ -461,6 +470,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1694710912}
     - target: {fileID: 1250625391053489653, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
+      propertyPath: opponentFreezeParticleEffect
+      value: 
+      objectReference: {fileID: 1745139827}
+    - target: {fileID: 1250625391053489653, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
       propertyPath: wallDestinations.Array.data[0]
       value: 
       objectReference: {fileID: 2143722204}
@@ -484,9 +497,29 @@ PrefabInstance:
       propertyPath: wallDestinations.Array.data[5]
       value: 
       objectReference: {fileID: 1702240735}
+    - target: {fileID: 2270748989074704890, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
+      propertyPath: lengthInSec
+      value: 3.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2270748989074704890, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2270748989074704892, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
+      propertyPath: m_Name
+      value: FreezeParticleEffectP1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2270748989074704892, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6184972171403645291, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
       propertyPath: m_Name
       value: Player1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6184972171403645291, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6184972171403645292, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
       propertyPath: m_RootOrder
@@ -1037,6 +1070,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5657236042866399030, guid: 41433c31d6401cc46890a14ed4cc10dc, type: 3}
   m_PrefabInstance: {fileID: 881682086}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &1745139827 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 483848211967999552, guid: aa9161055e227c24583beef344af0ec7, type: 3}
+  m_PrefabInstance: {fileID: 2113452613}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1944986160
 GameObject:
   m_ObjectHideFlags: 0
@@ -1117,6 +1155,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 483848211967999552, guid: aa9161055e227c24583beef344af0ec7, type: 3}
+      propertyPath: lengthInSec
+      value: 3.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 483848211967999552, guid: aa9161055e227c24583beef344af0ec7, type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 483848211967999558, guid: aa9161055e227c24583beef344af0ec7, type: 3}
+      propertyPath: m_Name
+      value: FreezeParticleEffectP2
+      objectReference: {fileID: 0}
+    - target: {fileID: 483848211967999558, guid: aa9161055e227c24583beef344af0ec7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 607623544259261007, guid: aa9161055e227c24583beef344af0ec7, type: 3}
+      propertyPath: freezeTime
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 607623544259261007, guid: aa9161055e227c24583beef344af0ec7, type: 3}
       propertyPath: walls.Array.data[0]
       value: 
@@ -1169,6 +1227,10 @@ PrefabInstance:
       propertyPath: wallSources.Array.data[5]
       value: 
       objectReference: {fileID: 1694710912}
+    - target: {fileID: 607623544259261007, guid: aa9161055e227c24583beef344af0ec7, type: 3}
+      propertyPath: opponentFreezeParticleEffect
+      value: 
+      objectReference: {fileID: 430623196}
     - target: {fileID: 607623544259261007, guid: aa9161055e227c24583beef344af0ec7, type: 3}
       propertyPath: wallDestinations.Array.data[0]
       value: 

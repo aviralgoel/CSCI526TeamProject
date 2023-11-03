@@ -8,6 +8,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 809736422, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
+      propertyPath: freezeTime
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 809736422, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
       propertyPath: freezeEffect
       value: 
       objectReference: {fileID: 2270748989074704890}
@@ -29,11 +33,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1069691799887434985, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
       propertyPath: lengthInSec
-      value: 2
+      value: 3.75
       objectReference: {fileID: 0}
     - target: {fileID: 1069691799887434985, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
       propertyPath: playOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1069691799887434985, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 1069691799887434990, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
       propertyPath: m_SortingLayer
@@ -42,6 +50,14 @@ PrefabInstance:
     - target: {fileID: 1069691799887434990, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
       propertyPath: m_SortingLayerID
       value: -1140960811
+      objectReference: {fileID: 0}
+    - target: {fileID: 1069691799887434991, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
+      propertyPath: m_Name
+      value: FreezeParticleEffectP1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1069691799887434991, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1852375672634493914, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
       propertyPath: m_TagString
@@ -65,7 +81,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4940011466156706936, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4940011466156706936, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
       propertyPath: m_TagString
