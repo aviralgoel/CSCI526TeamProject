@@ -58,6 +58,11 @@ public class CollisionController : MonoBehaviour
             powerUpManager.addPowerUp(PowerUpManager.PowerUpType.Freeze);
             Debug.Log("Power Up: Freeze Collected");
         }
+        else if(collision.gameObject.CompareTag("Missile"))
+        {
+            powerUpManager.addPowerUp(PowerUpManager.PowerUpType.Missiles);
+            Debug.Log("Power Up: Missile Collected");
+        }
         // detect collision with good and bad objects
         else if (collision.CompareTag("Good") || collision.CompareTag("Bad"))
         {

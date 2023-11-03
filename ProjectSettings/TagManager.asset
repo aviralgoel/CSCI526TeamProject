@@ -19,6 +19,7 @@ TagManager:
   - Walls
   - Player2Boundary
   - Player1Boundary
+  - Missile
   layers:
   - Default
   - TransparentFX
