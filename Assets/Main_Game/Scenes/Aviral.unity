@@ -563,7 +563,7 @@ PrefabInstance:
       objectReference: {fileID: 530217565}
     - target: {fileID: 9176012675809100028, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
       propertyPath: TotalHealth
-      value: 40
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 9176012675809100028, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
       propertyPath: gameManager
@@ -1599,7 +1599,7 @@ PrefabInstance:
       objectReference: {fileID: 1178492063}
     - target: {fileID: 7377482947940202310, guid: aa9161055e227c24583beef344af0ec7, type: 3}
       propertyPath: TotalHealth
-      value: 40
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7377482947940202310, guid: aa9161055e227c24583beef344af0ec7, type: 3}
       propertyPath: gameManager
