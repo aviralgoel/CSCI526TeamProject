@@ -10,8 +10,6 @@ public class HomingMissile : MonoBehaviour
     private Rigidbody2D rb;
     public float speed = 5f;
     public float rotateSpeed = 200f;
-    public GameObject player1;
-    public GameObject player2;
     public ScoreManager player1ScoreManager;
     public ScoreManager player2ScoreManager;
     [SerializeField] private GameManager gameManager;
@@ -52,7 +50,7 @@ public class HomingMissile : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col)
     {
         Debug.Log(col.gameObject.name + " : " + gameObject.name + " : " + Time.time);
-        if(col.gameObject.CompareTag("Player1") || col.gameObject.CompareTag("Player2"))
+        if(col.gameObject.CompareTag("Player1") || col.gameObject.CompareTag("Player2") || col.gameObject.CompareTag("Player1Boundary") || col.gameObject.CompareTag("Player2Boundary"))
         {
             Destroy(gameObject);
         }
