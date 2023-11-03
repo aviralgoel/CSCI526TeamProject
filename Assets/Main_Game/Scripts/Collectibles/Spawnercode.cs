@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Spawnercode : MonoBehaviour
 {
+    public float radiusToSpawnWithin = 3.10f;
+    public bool shouldCollectibleMove = false;
     public GameObject[] myobj;  // Array of prefabs to spawn
     public float spawnInterval = 0.5f;  // Time interval between spawns
     public float destructionTime = 15f;  // Time after which the collectible will be destroyed
@@ -12,6 +14,7 @@ public class Spawnercode : MonoBehaviour
     private Vector3 playGroundExtendMax;
     public int numOfCollectiblesSpawned = 0;
     private bool canSpawn = false; // Control whether objects can spawn or not
+
 
     [Range(0.0f, 1.0f)]
     public float goodObjectPercentage = 0.75f;  // Percentage of "good" object spawns
@@ -42,7 +45,7 @@ public class Spawnercode : MonoBehaviour
                 timer = 0.0f;
 
                 // Generate a random position
-                Vector3 randomSpawn = new Vector3(Random.Range(-5f, 5f), Random.Range(-5, 5f), 0);
+                Vector3 randomSpawn = Random.insideUnitCircle * radiusToSpawnWithin;
 
                 // Determine whether to spawn a "good" or "bad" object based on the percentage
                 int randomIndex = (Random.value < goodObjectPercentage) ? 0 : 1;
@@ -51,6 +54,10 @@ public class Spawnercode : MonoBehaviour
                     randomSpawn.y > playGroundExtendMin.y && randomSpawn.y < playGroundExtendMax.y)
                 {
                     GameObject newCollectible = Instantiate(myobj[randomIndex], randomSpawn, Quaternion.identity);
+                    if (shouldCollectibleMove)
+                    {
+                        newCollectible.GetComponent<Collectibles>().shouldMove = true;
+                    }
                     numOfCollectiblesSpawned++;
                 }
             }

@@ -32,7 +32,7 @@ public class PowerUpManager : MonoBehaviour
     [SerializeField]private bool isFrozen = false;
     public float freezeTime = 10f; // Time in seconds for freezing effect
     public float freezeMovementSpeed = 0.2f;
-    public ParticleSystem freezeEffect;
+    public ParticleSystem opponentFreezeParticleEffect;
 
 
 
@@ -121,7 +121,6 @@ public class PowerUpManager : MonoBehaviour
 
         for(int i = 0; i < 6; i++)
         {
-            walls[i].transform.GetComponent<SpriteRenderer>().color = Color.white;
             walls[i].position = Vector3.MoveTowards(walls[i].position, wallSources[i].position, Time.deltaTime * fireWallMovementSpeed);
         }
         if (Mathf.Approximately(Vector3.Distance(walls[(int)Walls.Bottom].position, wallSources[(int)Walls.Bottom].position), 0) &&
@@ -130,10 +129,15 @@ public class PowerUpManager : MonoBehaviour
         {
             moveWallsOutside = false;
             fireWallActive = false;
+            for (int i = 0; i < 6; i++)
+            {
+                walls[i].transform.GetComponent<SpriteRenderer>().color = Color.white;
+            }
         }
 
         UIManager.instance.SetPlayer1PowerUpText("");
         UIManager.instance.SetPlayer2PowerUpText("");
+       
 
     }
 
@@ -233,7 +237,7 @@ public class PowerUpManager : MonoBehaviour
     {
         isFrozen = true;
         OpponentPlayerController.FreezeThisPlayer();
-        freezeEffect.Play(true);
+        opponentFreezeParticleEffect.Play();
         yield return new WaitForSeconds(freezeTime);
         OpponentPlayerController.UnFreezeThisPlayer();
         isFrozen = false;
