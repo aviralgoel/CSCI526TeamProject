@@ -53,6 +53,7 @@ MonoBehaviour:
   destructionTime: 15
   HexagonPlayground: {fileID: 0}
   numOfCollectiblesSpawned: 0
+  goodObjectPercentage: 0.75
 --- !u!114 &794948793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,3 +74,4 @@ MonoBehaviour:
   powerup_index: 0000000000
   numberofpowerupsspawned: 0
   HexagonPlayground: {fileID: 0}
+  freezePowerupPercentage: 0.5

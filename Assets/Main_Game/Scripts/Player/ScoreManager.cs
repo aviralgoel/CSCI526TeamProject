@@ -70,9 +70,7 @@ public class ScoreManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if((PowerUpManagerPlayer1.fireWallActive || PowerUpManagerPlayer2.fireWallActive) && walls.Contains(collision.gameObject)) {
-            IncrementScore(-1);
-        }
+        
         if(collision.gameObject.tag == "SpeedUp" && !isInsideSpeedUp)
         {   
 
@@ -86,6 +84,13 @@ public class ScoreManager : MonoBehaviour
                 InvokeRepeating("DamageOverTime", 0.1f, 1.0f);
             }
             
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if ((PowerUpManagerPlayer1.fireWallActive || PowerUpManagerPlayer2.fireWallActive) && walls.Contains(collision.gameObject))
+        {
+            IncrementScore(-1);
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -122,7 +127,7 @@ public class ScoreManager : MonoBehaviour
     public void SetPlayerActive(bool isActive)
     {
         this.gameObject.SetActive(isActive);
-        Debug.Log("Player " + playerNumber + " has joined the game");
+        //Debug.Log("Player " + playerNumber + " has joined the game");
         isPlayerActive = isActive;
         
     }
