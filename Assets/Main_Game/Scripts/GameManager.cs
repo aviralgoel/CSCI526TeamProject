@@ -10,7 +10,7 @@ public struct PlayerAnalyticsData
     public float TimeActive;
     public int TotalCollectibles;
 
-    public int Score;
+    public int SuccessRate;
     public int KilledByBlackHole;
     public int KilledByPlayer;
     public int BadCollectiblesCollected;
@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     public GameObject playerOne;
     public GameObject playerTwo;
     public Spawnercode spanwerManager;
+    public PowerupSpawner powerSpanwerManager;
 
     public int losePlayerNumber = 0;
     public int gameWinner = 0;
@@ -42,6 +43,9 @@ public class GameManager : MonoBehaviour
     private ScoreManager player1ScoreManager;
     private ScoreManager player2ScoreManager;
     private static System.Random random = new System.Random();
+
+    private PowerUpManager player1PowerUpManager;
+    private PowerUpManager player2PowerUpManager;
     
     // player 1 variables
     [SerializeField] private bool isPlayerOneActive = false;
@@ -100,13 +104,19 @@ public class GameManager : MonoBehaviour
             if (!isPlayer1DataSent)
             {
                 PlayerAnalyticsData player1Data;
+                int player1successRate = 0;
+                if (playerTwo.GetComponentInChildren<PlayerAnalytics>().GetNumOfKillAttemptsByOpponents() != 0){
+                    if ((playerTwo.GetComponentInChildren<PlayerAnalytics>().GetNumOfKillAttemptsByOpponents() - player2ScoreManager.numOfTimesKilledByPlayer) != 0){
+                        player1successRate = player2ScoreManager.numOfTimesKilledByPlayer / (playerTwo.GetComponentInChildren<PlayerAnalytics>().GetNumOfKillAttemptsByOpponents() - player2ScoreManager.numOfTimesKilledByPlayer);
+                    }
+                }
                 player1Data = new PlayerAnalyticsData
                 {
                     SessionID = sessionID,
                     Winner = gameWinner,
                     TimeActive = player1ScoreManager.GetTimeActive(),
                     TotalCollectibles = spanwerManager.numOfCollectiblesSpawned,
-                    Score = (int)player1ScoreManager.GetScore(),
+                    SuccessRate = player1successRate,
                     KilledByBlackHole = player1ScoreManager.numOfTimesKilledByBlackHole,
                     KilledByPlayer = player1ScoreManager.numOfTimesKilledByPlayer,
                     GoodCollectiblesCollected = player1ScoreManager.numOfGoodCollectiblesCollected,
@@ -114,23 +124,26 @@ public class GameManager : MonoBehaviour
                     FirewallPowerUP = 12, // test data
                     FreezePowerUP = 4, // test data
                     HealthPowerUP = 3 // test data
-                    // my success rate = how many attempts I made on the other player / how many times I actually killed the other player
-                    // int successfullKills = ((playerTwo.GetComponentInChildren<PlayerAnalytics>().GetNumOfKillAttemptsByOpponents() - player2ScoreManager.numOfTimesKilledByPlayer) / player2ScoreManager.numOfTimesKilledByPlayer);
                 };
-                int successRate = player2ScoreManager.numOfTimesKilledByPlayer / (playerTwo.GetComponentInChildren<PlayerAnalytics>().GetNumOfKillAttemptsByOpponents() - player2ScoreManager.numOfTimesKilledByPlayer);
                 //analyticsCollector.SendPlayerData(player1Data, 1);
                 isPlayer1DataSent = true;
             }
             if (!isPlayer2DataSent)
             {
                 PlayerAnalyticsData player2Data;
+                int player2successRate = 0;
+                if (playerOne.GetComponentInChildren<PlayerAnalytics>().GetNumOfKillAttemptsByOpponents() != 0){
+                    if ((playerOne.GetComponentInChildren<PlayerAnalytics>().GetNumOfKillAttemptsByOpponents() - player1ScoreManager.numOfTimesKilledByPlayer) != 0){
+                        player2successRate = player1ScoreManager.numOfTimesKilledByPlayer / (playerOne.GetComponentInChildren<PlayerAnalytics>().GetNumOfKillAttemptsByOpponents() - player1ScoreManager.numOfTimesKilledByPlayer);
+                    }
+                }
                 player2Data = new PlayerAnalyticsData
                 {
                     SessionID = sessionID,
                     Winner = gameWinner,
                     TimeActive = player2ScoreManager.GetTimeActive(),
                     TotalCollectibles = spanwerManager.numOfCollectiblesSpawned,
-                    Score = (int)player2ScoreManager.GetScore(),
+                    SuccessRate = player2successRate,
                     KilledByBlackHole = player2ScoreManager.numOfTimesKilledByBlackHole,
                     KilledByPlayer = player2ScoreManager.numOfTimesKilledByPlayer,
                     GoodCollectiblesCollected = player2ScoreManager.numOfGoodCollectiblesCollected,
@@ -139,7 +152,6 @@ public class GameManager : MonoBehaviour
                     FreezePowerUP = 3, // test data
                     HealthPowerUP = 2 // test data
                 };
-                int successRate = player1ScoreManager.numOfTimesKilledByPlayer / (playerOne.GetComponentInChildren<PlayerAnalytics>().GetNumOfKillAttemptsByOpponents() - player1ScoreManager.numOfTimesKilledByPlayer);
                 //analyticsCollector.SendPlayerData(player2Data, 2);
                 isPlayer2DataSent = true;
             }

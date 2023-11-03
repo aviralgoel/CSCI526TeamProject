@@ -18,6 +18,9 @@ public class PowerUpManager : MonoBehaviour
 
     public int scoreOnPowerUp = 2;
 
+    [HideInInspector] public int numOfFireWallHitByPlayer = 0;
+    [HideInInspector] public int numOfFreezeHitByPlayer = 0;
+
     [HeaderAttribute("Fire Wall Mechanic")]
     public float fireWallMovementSpeed = 0.2f;
     public float fireWallDuration = 7f;
@@ -140,6 +143,7 @@ public class PowerUpManager : MonoBehaviour
         {
             UseFreeze();
             removePowerUp(PowerUpType.Freeeze);
+            numOfFreezeHitByPlayer++;
         }
         else if (powerupsCount[PowerUpType.Shield] > 0)
         {
@@ -150,6 +154,7 @@ public class PowerUpManager : MonoBehaviour
         {
             UseFireWalls();
             removePowerUp(PowerUpType.FireWalls);
+            numOfFireWallHitByPlayer++;
         }
     }
 
