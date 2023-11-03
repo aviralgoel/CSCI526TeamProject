@@ -572,6 +572,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3493344184246712991, guid: 38000a60a3d3a6443a3909cfa3c6b321, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4201854233365715617, guid: 38000a60a3d3a6443a3909cfa3c6b321, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8803665642153796104, guid: 38000a60a3d3a6443a3909cfa3c6b321, type: 3}
       propertyPath: m_Name
       value: Player2
@@ -676,6 +684,14 @@ PrefabInstance:
     - target: {fileID: 2621391432045662598, guid: 0cb5a7019a3abc8468a5f233dbdf26d5, type: 3}
       propertyPath: m_Name
       value: Player1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7206347600302893359, guid: 0cb5a7019a3abc8468a5f233dbdf26d5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7941870178361755921, guid: 0cb5a7019a3abc8468a5f233dbdf26d5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0cb5a7019a3abc8468a5f233dbdf26d5, type: 3}

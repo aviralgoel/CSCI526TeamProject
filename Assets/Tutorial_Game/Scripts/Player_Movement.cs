@@ -20,6 +20,8 @@ public class Player_Movement : MonoBehaviour
     KeyCode controllingKey;
     private float defaultTurnSpeedMultiplierValue = 1f;
 
+    Vector3 respawnPosition;
+
     //public GameObject blackHole;
 
     // Start is called before the first frame update
@@ -41,6 +43,8 @@ public class Player_Movement : MonoBehaviour
         turnSpeedMultiplier = 1f;
         turnSpeed = 1f;
         //scoreManager = GetComponent<ScoreManager>();
+
+        respawnPosition = transform.position;
         
     }
 
@@ -93,5 +97,13 @@ public class Player_Movement : MonoBehaviour
             turnSpeedMultiplier = defaultTurnSpeedMultiplierValue;
         }
     }
-   
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.CompareTag("Blackhole"))
+        {
+            transform.position = respawnPosition;
+        }
+    }
+
 }
