@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.U2D;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class HomingMissile : MonoBehaviour
@@ -31,20 +32,31 @@ public class HomingMissile : MonoBehaviour
         }
 	}
 
-    void OnTriggerExit2D(Collider2D collision)
+/*    void OnTriggerEnter2D(Collider2D collision)
+     {
+         if(collision.gameObject.CompareTag("Player1"))
+         {
+             player1ScoreManager.IncrementScore(-10);
+             Debug.Log("Hit P1");
+             Destroy(this.gameObject);
+         }
+         if(collision.gameObject.CompareTag("Player2"))
+         {
+             player2ScoreManager.IncrementScore(-10);
+             Debug.Log("Hit P2");
+             Destroy(this.gameObject);
+         }
+         // Destroy(gameObject);
+     }*/
+
+    void OnTriggerEnter2D(Collider2D col)
     {
-        if(collision.gameObject.CompareTag("Player1"))
+        Debug.Log(col.gameObject.name + " : " + gameObject.name + " : " + Time.time);
+        if(col.gameObject.CompareTag("Player1") || col.gameObject.CompareTag("Player2"))
         {
-            player1ScoreManager.IncrementScore(-10);
-            Debug.Log("Hit P1");
             Destroy(gameObject);
         }
-        if(collision.gameObject.CompareTag("Player2"))
-        {
-            player2ScoreManager.IncrementScore(-10);
-            Debug.Log("Hit P2");
-            Destroy(gameObject);
-        }
-        // Destroy(gameObject);
+        //spriteMove = -0.1f;
     }
 }
+
