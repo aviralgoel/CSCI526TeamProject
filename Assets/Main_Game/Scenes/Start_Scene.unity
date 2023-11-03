@@ -563,6 +563,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3666594016984141155, guid: c73e76eb4446e924ba833d2cda66799b, type: 3}
+      propertyPath: m_PixelPerfect
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3666594016984141155, guid: c73e76eb4446e924ba833d2cda66799b, type: 3}
       propertyPath: m_TargetDisplay
       value: 0
       objectReference: {fileID: 0}
