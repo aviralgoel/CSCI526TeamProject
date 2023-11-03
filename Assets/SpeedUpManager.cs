@@ -40,7 +40,7 @@ public class SpeedUpManager : MonoBehaviour
             Color white = Color.white; // new Color(1, 1, 1, 0.05f);
             Color green = Color.green; // new Color(0, 1, 0, 0.05f);
             Color red = Color.red; // new Color(1, 0, 0, 0.05f);
-            green.a = 0.05f; white.a = 0.05f; red.a = 0.05f;
+            green.a = 0.25f; white.a = 0.15f; red.a = 0.25f;
 
             // round clockwise animation
             for (int i = 0; i < speedUps.Length; i++)
