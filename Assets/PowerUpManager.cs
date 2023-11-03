@@ -60,14 +60,14 @@ public class PowerUpManager : MonoBehaviour
     public enum PowerUpType
     {
         FireWalls, 
-        Freeeze,
+        Freeze,
         Shield
     }
     // create a hashmap to store the powerups of size 3 element with value 0
     public Dictionary<PowerUpType, int> powerupsCount = new Dictionary<PowerUpType, int>()
     {
         {PowerUpType.FireWalls, 0},
-        {PowerUpType.Freeeze, 0},
+        {PowerUpType.Freeze, 0},
         {PowerUpType.Shield, 0}
     };
    
@@ -139,10 +139,10 @@ public class PowerUpManager : MonoBehaviour
 
     private void UsePowerUp()
     {
-        if (powerupsCount[PowerUpType.Freeeze] > 0)
+        if (powerupsCount[PowerUpType.Freeze] > 0)
         {
             UseFreeze();
-            removePowerUp(PowerUpType.Freeeze);
+            removePowerUp(PowerUpType.Freeze);
             numOfFreezeHitByPlayer++;
         }
         else if (powerupsCount[PowerUpType.Shield] > 0)
@@ -165,7 +165,7 @@ public class PowerUpManager : MonoBehaviour
         moveWallsInside = true;
     }
 
-    void addPowerUp(PowerUpType type)
+    public void addPowerUp(PowerUpType type)
     {
         if (powerupsCount[type] <  1)
         {
@@ -192,7 +192,7 @@ public class PowerUpManager : MonoBehaviour
         }        
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+   /* private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("FireWalls"))
         {
@@ -213,7 +213,7 @@ public class PowerUpManager : MonoBehaviour
         {
             addPowerUp(PowerUpType.Shield);
         }
-    }
+    }*/
 
     // co routine to pause 5 second
     IEnumerator Pause()
