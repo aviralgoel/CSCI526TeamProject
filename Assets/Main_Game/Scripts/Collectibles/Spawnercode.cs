@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Spawnercode : MonoBehaviour
 {
+    public float radiusToSpawnWithin = 3.10f;
     public GameObject[] myobj;  // Array of prefabs to spawn
     public float spawnInterval = 0.5f;  // Time interval between spawns
     public float destructionTime = 15f;  // Time after which the collectible will be destroyed
@@ -44,7 +45,7 @@ public class Spawnercode : MonoBehaviour
                 timer = 0.0f;
 
                 // Generate a random position
-                Vector3 randomSpawn = new Vector3(Random.Range(-5f, 5f), Random.Range(-5, 5f), 0);
+                Vector3 randomSpawn = Random.insideUnitCircle * radiusToSpawnWithin;
 
                 // Determine whether to spawn a "good" or "bad" object based on the percentage
                 int randomIndex = (Random.value < goodObjectPercentage) ? 0 : 1;

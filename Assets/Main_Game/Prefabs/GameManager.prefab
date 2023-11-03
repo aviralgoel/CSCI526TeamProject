@@ -55,6 +55,7 @@ MonoBehaviour:
   gameWinner: 0
   isGameOver: 0
   isGameStarted: 0
+  isGameStarting: 0
   analyticsCollector: {fileID: 1469920200}
   isPlayerOneActive: 0
   isPlayerOneMoving: 0

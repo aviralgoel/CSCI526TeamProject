@@ -9,6 +9,8 @@ public class PlayerInputController : MonoBehaviour
     Quaternion targetRotation;
     public bool isMovementAllowed;
     public float movementSpeed;
+    public float freezeMovementSpeed;
+    public float normalMovementSpeed;
     public float turnSpeed;
     public float angleToTurn = 10f;
     private ScoreManager scoreManager;
@@ -65,8 +67,9 @@ public class PlayerInputController : MonoBehaviour
     }
     public void FreezeThisPlayer()
     {
-        isMovementAllowed = false;
-        rb.velocity = Vector3.zero;
+        // isMovementAllowed = false;
+        // rb.velocity = Vector3.zero;
+        movementSpeed = freezeMovementSpeed;
         if(playerNumber == 1)
         {
             UIManager.instance.SetPlayer1PowerUpText("You got frozen!");
@@ -78,7 +81,9 @@ public class PlayerInputController : MonoBehaviour
     }
     public void UnFreezeThisPlayer()
     {
-        isMovementAllowed = true;
+        //isMovementAllowed = true;
+        //rb.velocity = Vector3.zero;
+        movementSpeed = normalMovementSpeed;
         if (playerNumber == 1)
         {
             UIManager.instance.SetPlayer1PowerUpText("");
@@ -93,11 +98,19 @@ public class PlayerInputController : MonoBehaviour
     {   
         if(scoreManager != null)
         {
-            speedMultiplier = (scoreManager.GetTimeActive() < 10f) ? 1f : 1 + scoreManager.GetTimeActive() / 75f;
-            angleToTurn = (scoreManager.GetTimeActive() < 10f) ? 10f : 10f + scoreManager.GetTimeActive() / 20f;
-           
+
             //speedMultiplier = (scoreManager.GetTimeActive() < 10f) ? 1f : 1 + scoreManager.GetTimeActive() / 75f;
             //angleToTurn = (scoreManager.GetTimeActive() < 10f) ? 10f : 10f + scoreManager.GetTimeActive() / 20f;
+
+
+            //speedMultiplier = (scoreManager.GetTimeActive() < 10f) ? 1f : 1 + scoreManager.GetTimeActive() / 75f;
+            //angleToTurn = (scoreManager.GetTimeActive() < 10f) ? 10f : 10f + scoreManager.GetTimeActive() / 20f;
+
+
+            //Debug.Log("Player" +  playerNumber + transform.position);
+            //Debug.Log("Player 2 Position: X = " + playerObj2.transform.position.x + " --- Y = " + playerObj2.transform.position.y);
+            // print the location of the gameobect THIS script is on
+            
 
         }
     }

@@ -18,6 +18,9 @@ public class PowerUpManager : MonoBehaviour
 
     public int scoreOnPowerUp = 2;
 
+    [HideInInspector] public int numOfFireWallHitByPlayer = 0;
+    [HideInInspector] public int numOfFreezeHitByPlayer = 0;
+
     [HeaderAttribute("Fire Wall Mechanic")]
     public float fireWallMovementSpeed = 0.2f;
     public float fireWallDuration = 7f;
@@ -29,7 +32,7 @@ public class PowerUpManager : MonoBehaviour
     [SerializeField]private bool isFrozen = false;
     public float freezeTime = 10f; // Time in seconds for freezing effect
     public float freezeMovementSpeed = 0.2f;
-    public ParticleSystem freezeEffect;
+    public ParticleSystem opponentFreezeParticleEffect;
 
 
 
@@ -57,14 +60,14 @@ public class PowerUpManager : MonoBehaviour
     public enum PowerUpType
     {
         FireWalls, 
-        Freeeze,
+        Freeze,
         Shield
     }
     // create a hashmap to store the powerups of size 3 element with value 0
     public Dictionary<PowerUpType, int> powerupsCount = new Dictionary<PowerUpType, int>()
     {
         {PowerUpType.FireWalls, 0},
-        {PowerUpType.Freeeze, 0},
+        {PowerUpType.Freeze, 0},
         {PowerUpType.Shield, 0}
     };
    
@@ -118,7 +121,6 @@ public class PowerUpManager : MonoBehaviour
 
         for(int i = 0; i < 6; i++)
         {
-            walls[i].transform.GetComponent<SpriteRenderer>().color = Color.white;
             walls[i].position = Vector3.MoveTowards(walls[i].position, wallSources[i].position, Time.deltaTime * fireWallMovementSpeed);
         }
         if (Mathf.Approximately(Vector3.Distance(walls[(int)Walls.Bottom].position, wallSources[(int)Walls.Bottom].position), 0) &&
@@ -127,19 +129,25 @@ public class PowerUpManager : MonoBehaviour
         {
             moveWallsOutside = false;
             fireWallActive = false;
+            for (int i = 0; i < 6; i++)
+            {
+                walls[i].transform.GetComponent<SpriteRenderer>().color = Color.white;
+            }
         }
 
         UIManager.instance.SetPlayer1PowerUpText("");
         UIManager.instance.SetPlayer2PowerUpText("");
+       
 
     }
 
     private void UsePowerUp()
     {
-        if (powerupsCount[PowerUpType.Freeeze] > 0)
+        if (powerupsCount[PowerUpType.Freeze] > 0)
         {
             UseFreeze();
-            removePowerUp(PowerUpType.Freeeze);
+            removePowerUp(PowerUpType.Freeze);
+            numOfFreezeHitByPlayer++;
         }
         else if (powerupsCount[PowerUpType.Shield] > 0)
         {
@@ -150,6 +158,7 @@ public class PowerUpManager : MonoBehaviour
         {
             UseFireWalls();
             removePowerUp(PowerUpType.FireWalls);
+            numOfFireWallHitByPlayer++;
         }
     }
 
@@ -160,7 +169,7 @@ public class PowerUpManager : MonoBehaviour
         moveWallsInside = true;
     }
 
-    void addPowerUp(PowerUpType type)
+    public void addPowerUp(PowerUpType type)
     {
         if (powerupsCount[type] <  1)
         {
@@ -187,7 +196,7 @@ public class PowerUpManager : MonoBehaviour
         }        
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+   /* private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("FireWalls"))
         {
@@ -208,7 +217,7 @@ public class PowerUpManager : MonoBehaviour
         {
             addPowerUp(PowerUpType.Shield);
         }
-    }
+    }*/
 
     // co routine to pause 5 second
     IEnumerator Pause()
@@ -228,7 +237,7 @@ public class PowerUpManager : MonoBehaviour
     {
         isFrozen = true;
         OpponentPlayerController.FreezeThisPlayer();
-        freezeEffect.Play(true);
+        opponentFreezeParticleEffect.Play();
         yield return new WaitForSeconds(freezeTime);
         OpponentPlayerController.UnFreezeThisPlayer();
         isFrozen = false;

@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class PowerupSpawner : MonoBehaviour
 {
+    public float radiusToSpawnWithin = 3f;
     public GameObject[] powerUpPrefabs; // Assign the PowerUp prefabs in the Unity Inspector
     public float spawnInterval = 5f; // Time interval between spawns
     public float powerUpDuration = 8f; // Time the power-up lasts if not collected
@@ -11,6 +12,7 @@ public class PowerupSpawner : MonoBehaviour
 
     public int numberofpowerupsspawned = 0;
     public GameObject HexagonPlayground;
+    public GameObject CenterOfPlayGround;
     SpriteRenderer sr;
     Vector3 playGroundExtendMin;
     Vector3 playGroundExtendMax;
@@ -53,8 +55,9 @@ public class PowerupSpawner : MonoBehaviour
             // Randomly choose one of the power-up prefabs to spawn
             int randomIndex = ChooseRandomPowerupIndex();
 
+
             // Randomly determine the spawn position within a defined area
-            Vector3 randomSpawn = new Vector3(Random.Range(-5f, 5f), Random.Range(-5, 5f), 0);
+            Vector3 randomSpawn = Random.insideUnitCircle * radiusToSpawnWithin;
 
             if (randomSpawn.x > playGroundExtendMin.x && randomSpawn.x < playGroundExtendMax.x && randomSpawn.y > playGroundExtendMin.y && randomSpawn.y < playGroundExtendMax.y && powerup_index[randomIndex] == false)
             {
@@ -84,9 +87,9 @@ public class PowerupSpawner : MonoBehaviour
         yield return new WaitForSeconds(delay);
         if (powerUp != null)
         {
-            powerup_index[randomIndex] = false;
             Destroy(powerUp);
         }
+        powerup_index[randomIndex] = false;
     }
 
     
