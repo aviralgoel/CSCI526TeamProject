@@ -7,6 +7,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2113452619, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
+      propertyPath: freezeMovementSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2113452619, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
+      propertyPath: normalMovementSpeed
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 1069691799887434985, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1069691799887434990, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
+      propertyPath: m_SortMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1069691799887434990, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1069691799887434990, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1140960811
+      objectReference: {fileID: 0}
+    - target: {fileID: 1069691799887434991, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4940011465256298640, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
       propertyPath: m_TagString
       value: Player2

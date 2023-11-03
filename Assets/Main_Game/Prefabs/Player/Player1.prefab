@@ -15,6 +15,14 @@ PrefabInstance:
       propertyPath: freezeMovementSpeed
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 2113452619, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
+      propertyPath: freezeMovementSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2113452619, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
+      propertyPath: normalMovementSpeed
+      value: 45
+      objectReference: {fileID: 0}
     - target: {fileID: 1069691799887434984, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.268
@@ -29,11 +37,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1069691799887434990, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
       propertyPath: m_SortingLayer
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1069691799887434990, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
       propertyPath: m_SortingLayerID
-      value: 966750281
+      value: -1140960811
       objectReference: {fileID: 0}
     - target: {fileID: 1852375672634493914, guid: c9845bfd47adff64b845f7d5ac350be5, type: 3}
       propertyPath: m_TagString
