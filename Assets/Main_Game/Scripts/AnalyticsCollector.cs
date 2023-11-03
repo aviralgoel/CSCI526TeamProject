@@ -43,8 +43,6 @@ public class AnalyticsCollector : MonoBehaviour
         string freezeCountKey = (playerNumber == 1) ? player1FreezeCountFormFieldKey : player2FreezeCountFormFieldKey;
         string healthCountKey = (playerNumber == 1) ? player1HealthFormFieldKey : player2HealthFormFieldKey;
 
-
-
         StartCoroutine(Post(playerData, playerSessionFormFieldKey, playerWinnerFormFieldKey, playerActiveTimeFormFieldKey, playerTotalCollectibleFormFieldKey, playerSuccessRate, killedByBlackHoleKey, killedByPlayerKey, badCollectibleCountKey, goodCollectibleCountKey, firewallCountKey, freezeCountKey, healthCountKey));
     }
 
