@@ -131,14 +131,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 794948793, guid: e5e30e8b166c19040a2821b786af2f45, type: 3}
-      propertyPath: spawnInterval
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 794948793, guid: e5e30e8b166c19040a2821b786af2f45, type: 3}
-      propertyPath: powerUpDuration
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 794948793, guid: e5e30e8b166c19040a2821b786af2f45, type: 3}
       propertyPath: HexagonPlayground
       value: 
       objectReference: {fileID: 1725413073}
@@ -146,10 +138,6 @@ PrefabInstance:
       propertyPath: CenterOfPlayGround
       value: 
       objectReference: {fileID: 1639310927}
-    - target: {fileID: 794948793, guid: e5e30e8b166c19040a2821b786af2f45, type: 3}
-      propertyPath: radiusToSpawnWithin
-      value: 2.8
-      objectReference: {fileID: 0}
     - target: {fileID: 6587957134335053144, guid: e5e30e8b166c19040a2821b786af2f45, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -200,23 +188,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6587957134335053147, guid: e5e30e8b166c19040a2821b786af2f45, type: 3}
       propertyPath: spawnInterval
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6587957134335053147, guid: e5e30e8b166c19040a2821b786af2f45, type: 3}
-      propertyPath: myobj.Array.size
-      value: 2
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 6587957134335053147, guid: e5e30e8b166c19040a2821b786af2f45, type: 3}
       propertyPath: HexagonPlayground
       value: 
       objectReference: {fileID: 1725413073}
     - target: {fileID: 6587957134335053147, guid: e5e30e8b166c19040a2821b786af2f45, type: 3}
-      propertyPath: radiusToSpawnWithin
-      value: 2.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 6587957134335053147, guid: e5e30e8b166c19040a2821b786af2f45, type: 3}
       propertyPath: goodObjectPercentage
-      value: 0.6
+      value: 0.65
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5e30e8b166c19040a2821b786af2f45, type: 3}
@@ -583,7 +563,7 @@ PrefabInstance:
       objectReference: {fileID: 530217565}
     - target: {fileID: 9176012675809100028, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
       propertyPath: TotalHealth
-      value: 30
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 9176012675809100028, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
       propertyPath: gameManager
@@ -1345,7 +1325,7 @@ PrefabInstance:
       objectReference: {fileID: 1178492063}
     - target: {fileID: 7377482947940202310, guid: aa9161055e227c24583beef344af0ec7, type: 3}
       propertyPath: TotalHealth
-      value: 30
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 7377482947940202310, guid: aa9161055e227c24583beef344af0ec7, type: 3}
       propertyPath: gameManager

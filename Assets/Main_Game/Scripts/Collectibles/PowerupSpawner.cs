@@ -7,7 +7,7 @@ public class PowerupSpawner : MonoBehaviour
     public GameObject[] powerUpPrefabs; // Assign the PowerUp prefabs in the Unity Inspector
     public float spawnInterval = 5f; // Time interval between spawns
     public float powerUpDuration = 8f; // Time the power-up lasts if not collected
-
+    public bool shouldPowerUpMove = false;
     public bool[] powerup_index = new bool[2]; // Two types of power-ups
 
     public int numberofpowerupsspawned = 0;
@@ -58,6 +58,10 @@ public class PowerupSpawner : MonoBehaviour
             if (randomSpawn.x > playGroundExtendMin.x && randomSpawn.x < playGroundExtendMax.x && randomSpawn.y > playGroundExtendMin.y && randomSpawn.y < playGroundExtendMax.y && powerup_index[randomIndex] == false)
             {
                 GameObject newCollectible = Instantiate(powerUpPrefabs[randomIndex], randomSpawn, Quaternion.identity);
+                if (shouldPowerUpMove)
+                {
+                    newCollectible.GetComponent<Collectibles>().shouldMove = true;
+                }
                 powerup_index[randomIndex] = true;
                 numberofpowerupsspawned++;
                 StartCoroutine(DestroyPowerUp(newCollectible, powerUpDuration, randomIndex));
