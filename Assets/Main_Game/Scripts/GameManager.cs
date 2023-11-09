@@ -44,8 +44,8 @@ public class GameManager : MonoBehaviour
     private ScoreManager player2ScoreManager;
     private static System.Random random = new System.Random();
 
-    private PowerUpManager player1PowerUpManager;
-    private PowerUpManager player2PowerUpManager;
+    public PowerUpManager player1PowerUpManager;
+    public PowerUpManager player2PowerUpManager;
     
     // player 1 variables
     [SerializeField] private bool isPlayerOneActive = false;
@@ -121,11 +121,11 @@ public class GameManager : MonoBehaviour
                     KilledByPlayer = player1ScoreManager.numOfTimesKilledByPlayer,
                     GoodCollectiblesCollected = player1ScoreManager.numOfGoodCollectiblesCollected,
                     BadCollectiblesCollected = player1ScoreManager.numOfBadCollectiblesCollected,
-                    FirewallPowerUP = 12, // test data
-                    FreezePowerUP = 4, // test data
-                    HealthPowerUP = 3 // test data
+                    FirewallPowerUP = player1PowerUpManager.numOfFireWallHitByPlayer,
+                    FreezePowerUP = player1PowerUpManager.numOfFreezeHitByPlayer, 
+                    HealthPowerUP = powerSpanwerManager.numberofpowerupsspawned
                 };
-                //analyticsCollector.SendPlayerData(player1Data, 1);
+                analyticsCollector.SendPlayerData(player1Data, 1);
                 isPlayer1DataSent = true;
             }
             if (!isPlayer2DataSent)
@@ -148,11 +148,11 @@ public class GameManager : MonoBehaviour
                     KilledByPlayer = player2ScoreManager.numOfTimesKilledByPlayer,
                     GoodCollectiblesCollected = player2ScoreManager.numOfGoodCollectiblesCollected,
                     BadCollectiblesCollected = player2ScoreManager.numOfBadCollectiblesCollected,
-                    FirewallPowerUP = 10, // test data
-                    FreezePowerUP = 3, // test data
-                    HealthPowerUP = 2 // test data
+                    FirewallPowerUP = player2PowerUpManager.numOfFireWallHitByPlayer,
+                    FreezePowerUP = player2PowerUpManager.numOfFreezeHitByPlayer, 
+                    HealthPowerUP = powerSpanwerManager.numberofpowerupsspawned
                 };
-                //analyticsCollector.SendPlayerData(player2Data, 2);
+                analyticsCollector.SendPlayerData(player2Data, 2);
                 isPlayer2DataSent = true;
             }
             
