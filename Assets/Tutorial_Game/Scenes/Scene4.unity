@@ -1770,5 +1770,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4158575367743472251, guid: 61d1a35662ef163438e8c1a32b2d5dcd, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 289.2836
+      objectReference: {fileID: 0}
+    - target: {fileID: 4158575367743472251, guid: 61d1a35662ef163438e8c1a32b2d5dcd, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 155.74432
+      objectReference: {fileID: 0}
+    - target: {fileID: 4158575368387648563, guid: 61d1a35662ef163438e8c1a32b2d5dcd, type: 3}
+      propertyPath: m_text
+      value: Hit the other player head-on to Kill & Steal Health
+      objectReference: {fileID: 0}
+    - target: {fileID: 4158575368387648563, guid: 61d1a35662ef163438e8c1a32b2d5dcd, type: 3}
+      propertyPath: m_margin.z
+      value: 13.811066
+      objectReference: {fileID: 0}
+    - target: {fileID: 4158575368967874126, guid: 61d1a35662ef163438e8c1a32b2d5dcd, type: 3}
+      propertyPath: m_margin.z
+      value: 21.96405
+      objectReference: {fileID: 0}
+    - target: {fileID: 4158575369278471155, guid: 61d1a35662ef163438e8c1a32b2d5dcd, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 274.0735
+      objectReference: {fileID: 0}
+    - target: {fileID: 4158575369278471155, guid: 61d1a35662ef163438e8c1a32b2d5dcd, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -156.6372
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61d1a35662ef163438e8c1a32b2d5dcd, type: 3}
