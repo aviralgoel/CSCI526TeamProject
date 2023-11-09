@@ -40,3 +40,5 @@ public class SoundManager : MonoBehaviour
         s.source.Play();
     }
 }
+
+/////FindObjectOfType<SoundManager>().Play("Sound Name");
