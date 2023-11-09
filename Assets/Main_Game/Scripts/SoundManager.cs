@@ -34,9 +34,9 @@ public class SoundManager : MonoBehaviour
     }
     public void Play(string name)
     {   
-        Debug.Log("we are now searching for" + name);
+        //Debug.Log("we are now searching for" + name);
         Sound s = Array.Find(sounds, sound => sound.name == name);
-        Debug.Log(s.name + " sound found\n");
+        //Debug.Log(s.name + " sound found\n");
         s.source.Play();
     }
 }

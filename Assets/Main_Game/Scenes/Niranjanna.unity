@@ -523,7 +523,7 @@ PrefabInstance:
     - target: {fileID: 8249208950005484453, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
       propertyPath: scoreManagerPlayer2
       value: 
-      objectReference: {fileID: 809736416}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
 --- !u!1 &777378307
@@ -773,17 +773,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5539643207180068561, guid: aa9161055e227c24583beef344af0ec7, type: 3}
   m_PrefabInstance: {fileID: 2113452613}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &809736416 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7929893104096976367, guid: aa9161055e227c24583beef344af0ec7, type: 3}
-  m_PrefabInstance: {fileID: 2113452613}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 809736415}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06cd899b5724d124abe1ef804929784f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &809736423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -796,8 +785,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09149736fb2616047af42ac41780fc8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 0}
+  playerNumber: 0
+  PowerUpControllingKey: 0
   totalPowerUpCount: 0
+  OpponentPlayerController: {fileID: 0}
+  fireWallMovementSpeed: 0.2
+  fireWallDuration: 7
+  walls: []
+  wallSources: []
+  wallDestinations: []
+  fireWallActive: 0
+  moveWallsInside: 0
+  moveWallsOutside: 0
 --- !u!1001 &881682086
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1245,17 +1244,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6184972171403645291, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
   m_PrefabInstance: {fileID: 671775149}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1441567222 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1619474688059181860, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
-  m_PrefabInstance: {fileID: 671775149}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1441567221}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06cd899b5724d124abe1ef804929784f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1585465659 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6868708358998262783, guid: bf29a5cc1c01d4a429259105bbfbf1db, type: 3}
@@ -1503,7 +1491,7 @@ PrefabInstance:
     - target: {fileID: 7732320587634424863, guid: aa9161055e227c24583beef344af0ec7, type: 3}
       propertyPath: scoreManagerPlayer1
       value: 
-      objectReference: {fileID: 1441567222}
+      objectReference: {fileID: 0}
     - target: {fileID: 7929893104096976367, guid: aa9161055e227c24583beef344af0ec7, type: 3}
       propertyPath: gameManager
       value: 

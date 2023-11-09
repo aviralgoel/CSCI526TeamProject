@@ -24,12 +24,22 @@ using UnityEngine;
 public class Collectibles : MonoBehaviour
 {
     public float selfDestructionTime = 10f;
+    Vector2 randomDirection;
+    public float moveSpeed = 8.3f;
+    public bool shouldMove = false;
 
     private void Start()
     {
         StartCoroutine(DestroyAfterDelay());
+        randomDirection = Random.insideUnitCircle;
     }
 
+    private void Update()
+    {
+        //transform.position += new Vector3(randomDirection.x, randomDirection.y, 0) * Time.deltaTime * moveSpeed;
+        // move in a random direction
+        if(shouldMove) transform.Translate(randomDirection * Time.deltaTime* 0.2f);
+    }
     IEnumerator DestroyAfterDelay()
     {
         yield return new WaitForSeconds(selfDestructionTime);
@@ -38,7 +48,7 @@ public class Collectibles : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player1") || collision.gameObject.CompareTag("Player2"))
+        if (collision.gameObject.CompareTag("Player1Blade") || collision.gameObject.CompareTag("Player2Blade"))
         {         
             // Destroy this collectible immediately upon collision
             Destroy(this.gameObject);

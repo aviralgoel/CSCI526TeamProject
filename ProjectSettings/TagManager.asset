@@ -16,6 +16,7 @@ TagManager:
   - Shield
   - Freeze
   - SpeedUp
+  - Walls
   layers:
   - Default
   - TransparentFX

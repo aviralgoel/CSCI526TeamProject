@@ -21,11 +21,11 @@ public class Blackholetext : MonoBehaviour
     void ShowTextComponent()
     {
         textComponent.gameObject.SetActive(true);
-        Invoke("HideTextComponent", 5f);  // Schedule the text to be hidden after 5 seconds
+        //Invoke("HideTextComponent", 5f);  // Schedule the text to be hidden after 5 seconds
     }
 
-    void HideTextComponent()
+    /*void HideTextComponent()
     {
         textComponent.gameObject.SetActive(false);
-    }
+    }*/
 }

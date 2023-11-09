@@ -12,7 +12,7 @@ public class AnalyticsCollector : MonoBehaviour
     private string playerActiveTimeFormFieldKey = "entry.381794890";
     private string playerTotalCollectibleFormFieldKey = "entry.1708779778";
 
-    private string player1ScoreFormFieldKey = "entry.65508597";
+    private string player1SuccessRateFormFieldKey = "entry.65508597";
     private string player1KilledByBlackHoleFormFieldKey = "entry.295074975";
     private string player1KilledByPlayerFormFieldKey = "entry.377703588";
     private string player1BadCollectibleCountFormFieldKey = "entry.528433352";
@@ -21,7 +21,7 @@ public class AnalyticsCollector : MonoBehaviour
     private string player1FreezeCountFormFieldKey = "entry.306319702";
     private string player1HealthFormFieldKey = "entry.510534800";
 
-    private string player2ScoreFormFieldKey = "entry.1425639501";
+    private string player2SuccessRateFormFieldKey = "entry.1425639501";
     private string player2KilledByBlackHoleFormFieldKey = "entry.634025400";
     private string player2KilledByPlayerFormFieldKey = "entry.1655115362";
     private string player2BadCollectibleCountFormFieldKey = "entry.1344989641";
@@ -34,7 +34,7 @@ public class AnalyticsCollector : MonoBehaviour
 
     public void SendPlayerData(PlayerAnalyticsData playerData, int playerNumber)
     {
-        string playerScore = (playerNumber == 1) ? player1ScoreFormFieldKey : player2ScoreFormFieldKey;
+        string playerSuccessRate = (playerNumber == 1) ? player1SuccessRateFormFieldKey : player2SuccessRateFormFieldKey;
         string killedByBlackHoleKey = (playerNumber == 1) ? player1KilledByBlackHoleFormFieldKey : player2KilledByBlackHoleFormFieldKey;
         string killedByPlayerKey = (playerNumber == 1) ? player1KilledByPlayerFormFieldKey : player2KilledByPlayerFormFieldKey;
         string badCollectibleCountKey = (playerNumber == 1) ? player1BadCollectibleCountFormFieldKey : player2BadCollectibleCountFormFieldKey;
@@ -45,10 +45,10 @@ public class AnalyticsCollector : MonoBehaviour
 
 
 
-        StartCoroutine(Post(playerData, playerSessionFormFieldKey, playerWinnerFormFieldKey, playerActiveTimeFormFieldKey, playerTotalCollectibleFormFieldKey, playerScore, killedByBlackHoleKey, killedByPlayerKey, badCollectibleCountKey, goodCollectibleCountKey, firewallCountKey, freezeCountKey, healthCountKey));
+        StartCoroutine(Post(playerData, playerSessionFormFieldKey, playerWinnerFormFieldKey, playerActiveTimeFormFieldKey, playerTotalCollectibleFormFieldKey, playerSuccessRate, killedByBlackHoleKey, killedByPlayerKey, badCollectibleCountKey, goodCollectibleCountKey, firewallCountKey, freezeCountKey, healthCountKey));
     }
 
-    private IEnumerator Post(PlayerAnalyticsData playerData, string playerSessionFormFieldKey, string playerWinnerFormFieldKey, string playerActiveTimeFormFieldKey, string playerTotalCollectibleFormFieldKey, string playerScore, string killedByBlackHoleKey, string killedByPlayerKey, string badCollectibleCountKey, string goodCollectibleCountKey, string firewallCountKey, string freezeCountKey, string healthCountKey)
+    private IEnumerator Post(PlayerAnalyticsData playerData, string playerSessionFormFieldKey, string playerWinnerFormFieldKey, string playerActiveTimeFormFieldKey, string playerTotalCollectibleFormFieldKey, string playerSuccessRate, string killedByBlackHoleKey, string killedByPlayerKey, string badCollectibleCountKey, string goodCollectibleCountKey, string firewallCountKey, string freezeCountKey, string healthCountKey)
     {
         WWWForm form = new WWWForm();
         form.AddField(playerSessionFormFieldKey, playerData.SessionID);
@@ -56,7 +56,7 @@ public class AnalyticsCollector : MonoBehaviour
         form.AddField(playerActiveTimeFormFieldKey, playerData.TimeActive.ToString());
         form.AddField(playerTotalCollectibleFormFieldKey, playerData.TotalCollectibles);
         
-        form.AddField(playerScore, playerData.Score);
+        form.AddField(playerSuccessRate, playerData.SuccessRate);
         form.AddField(killedByBlackHoleKey, playerData.KilledByBlackHole);
         form.AddField(killedByPlayerKey, playerData.KilledByPlayer);
         form.AddField(badCollectibleCountKey, playerData.BadCollectiblesCollected);

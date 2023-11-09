@@ -10,6 +10,7 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private float timeActive = 0;
     [SerializeField] private int playerNumber;
     [SerializeField] private bool isPlayerActive;
+    private Spawnercode spawner;
     // [SerializeField] public int numOfLives = 3;
     [HideInInspector] public int numOfTimesKilledByBlackHole = 0;
     [HideInInspector] public int numOfTimesKilledByPlayer = 0;
@@ -38,6 +39,8 @@ public class ScoreManager : MonoBehaviour
     {
         isPlayerActive = false;
         respawnPosition = transform.position;
+        spawner = FindObjectOfType<Spawnercode>();
+        score = TotalHealth;
     }
 
     // Update is called once per frame
@@ -49,7 +52,7 @@ public class ScoreManager : MonoBehaviour
         }
 
         if(gameManager.isGameStarted) {
-            score -= Time.deltaTime;
+            score -= (Time.deltaTime/1.2f);
             HealthBar.fillAmount = score / TotalHealth;
             if(score <= 0)
             {
@@ -61,14 +64,13 @@ public class ScoreManager : MonoBehaviour
                 }
                 
             }
+            isPlayerActive = true;
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if((PowerUpManagerPlayer1.fireWallActive || PowerUpManagerPlayer2.fireWallActive) && walls.Contains(collision.gameObject)) {
-            IncrementScore(-1);
-        }
+        
         if(collision.gameObject.tag == "SpeedUp" && !isInsideSpeedUp)
         {   
 
@@ -82,6 +84,13 @@ public class ScoreManager : MonoBehaviour
                 InvokeRepeating("DamageOverTime", 0.1f, 1.0f);
             }
             
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if ((PowerUpManagerPlayer1.fireWallActive || PowerUpManagerPlayer2.fireWallActive) && walls.Contains(collision.gameObject))
+        {
+            IncrementScore(-1);
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -118,7 +127,7 @@ public class ScoreManager : MonoBehaviour
     public void SetPlayerActive(bool isActive)
     {
         this.gameObject.SetActive(isActive);
-        Debug.Log("Player " + playerNumber + " has joined the game");
+        //Debug.Log("Player " + playerNumber + " has joined the game");
         isPlayerActive = isActive;
         
     }
@@ -188,6 +197,7 @@ public class ScoreManager : MonoBehaviour
         this.gameObject.SetActive(false);
         gameManager.isGameOver = true;
         gameManager.losePlayerNumber = playerNumber;
+        spawner.StopSpawning();
 
         FindObjectOfType<SoundManager>().Play("GameOver");
 
@@ -195,11 +205,13 @@ public class ScoreManager : MonoBehaviour
 
     private void HealOverTime()
     {
+        FindObjectOfType<SoundManager>().Play("good");
         IncrementScore((int)healingAmountPerSecond);
     }
     private void DamageOverTime()
     {
-        IncrementScore((int)damageAmountPerSecond);
+        FindObjectOfType<SoundManager>().Play("bad");
+        IncrementScore((int)(damageAmountPerSecond)*-1);
     }
 
 
