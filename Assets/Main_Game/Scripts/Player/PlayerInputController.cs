@@ -9,6 +9,8 @@ public class PlayerInputController : MonoBehaviour
     Quaternion targetRotation;
     public bool isMovementAllowed;
     public float movementSpeed;
+    public float freezeMovementSpeed;
+    public float normalMovementSpeed;
     public float turnSpeed;
     public float angleToTurn = 10f;
     private ScoreManager scoreManager;
@@ -65,8 +67,9 @@ public class PlayerInputController : MonoBehaviour
     }
     public void FreezeThisPlayer()
     {
-        isMovementAllowed = false;
-        rb.velocity = Vector3.zero;
+        // isMovementAllowed = false;
+        // rb.velocity = Vector3.zero;
+        movementSpeed = freezeMovementSpeed;
         if(playerNumber == 1)
         {
             UIManager.instance.SetPlayer1PowerUpText("You got frozen!");
@@ -78,7 +81,9 @@ public class PlayerInputController : MonoBehaviour
     }
     public void UnFreezeThisPlayer()
     {
-        isMovementAllowed = true;
+        //isMovementAllowed = true;
+        //rb.velocity = Vector3.zero;
+        movementSpeed = normalMovementSpeed;
         if (playerNumber == 1)
         {
             UIManager.instance.SetPlayer1PowerUpText("");

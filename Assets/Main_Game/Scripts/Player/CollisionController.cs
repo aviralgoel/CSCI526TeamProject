@@ -10,11 +10,12 @@ public class CollisionController : MonoBehaviour
 
     public ScoreManager scoreManagerPlayer1;
     public ScoreManager scoreManagerPlayer2;
+    public PowerUpManager powerUpManager;
 
 
     private void Start()
     {
-        //respawnLocation = this.gameObject.transform.root.position;
+        powerUpManager = GetComponentInParent<PowerUpManager>();
     }
     // detect collision with other game bodies 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -46,6 +47,16 @@ public class CollisionController : MonoBehaviour
 
             FindObjectOfType<SoundManager>().Play("playerdeath");
 
+        }
+        else if(collision.gameObject.CompareTag("FireWalls"))
+        {
+            powerUpManager.addPowerUp(PowerUpManager.PowerUpType.FireWalls);
+            Debug.Log("Power Up: Firewall Collected");
+        }
+        else if(collision.gameObject.CompareTag("Freeze"))
+        {
+            powerUpManager.addPowerUp(PowerUpManager.PowerUpType.Freeze);
+            Debug.Log("Power Up: Freeze Collected");
         }
         // detect collision with good and bad objects
         else if (collision.CompareTag("Good") || collision.CompareTag("Bad"))
