@@ -17,7 +17,7 @@ public struct PlayerAnalyticsData
     public int GoodCollectiblesCollected;
     public int FirewallPowerUP;
     public int FreezePowerUP;
-    public int HealthPowerUP;
+    public int TotalPowerUPs;
 }
 
 public class GameManager : MonoBehaviour
@@ -123,7 +123,7 @@ public class GameManager : MonoBehaviour
                     BadCollectiblesCollected = player1ScoreManager.numOfBadCollectiblesCollected,
                     FirewallPowerUP = player1PowerUpManager.numOfFireWallHitByPlayer,
                     FreezePowerUP = player1PowerUpManager.numOfFreezeHitByPlayer, 
-                    HealthPowerUP = powerSpanwerManager.numberofpowerupsspawned
+                    TotalPowerUPs = powerSpanwerManager.numberofpowerupsspawned
                 };
                 analyticsCollector.SendPlayerData(player1Data, 1);
                 isPlayer1DataSent = true;
@@ -150,7 +150,7 @@ public class GameManager : MonoBehaviour
                     BadCollectiblesCollected = player2ScoreManager.numOfBadCollectiblesCollected,
                     FirewallPowerUP = player2PowerUpManager.numOfFireWallHitByPlayer,
                     FreezePowerUP = player2PowerUpManager.numOfFreezeHitByPlayer, 
-                    HealthPowerUP = powerSpanwerManager.numberofpowerupsspawned
+                    TotalPowerUPs = powerSpanwerManager.numberofpowerupsspawned
                 };
                 analyticsCollector.SendPlayerData(player2Data, 2);
                 isPlayer2DataSent = true;
