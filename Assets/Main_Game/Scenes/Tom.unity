@@ -425,6 +425,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 809736415}
     - target: {fileID: 1250625391053489653, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
+      propertyPath: Missiles
+      value: 
+      objectReference: {fileID: 5963140542485091051, guid: 3164e3be2e9014ab2a474b17708e3a16, type: 3}
+    - target: {fileID: 1250625391053489653, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
       propertyPath: MissilesPlayer1
       value: 
       objectReference: {fileID: 3336505446191350386, guid: ced0e3216a01a4e6ab09d10a92cabadb, type: 3}
@@ -1173,6 +1177,10 @@ PrefabInstance:
       propertyPath: Player2
       value: 
       objectReference: {fileID: 809736415}
+    - target: {fileID: 607623544259261007, guid: aa9161055e227c24583beef344af0ec7, type: 3}
+      propertyPath: Missiles
+      value: 
+      objectReference: {fileID: 5963140542485091051, guid: 3164e3be2e9014ab2a474b17708e3a16, type: 3}
     - target: {fileID: 607623544259261007, guid: aa9161055e227c24583beef344af0ec7, type: 3}
       propertyPath: MissilesPlayer1
       value: 

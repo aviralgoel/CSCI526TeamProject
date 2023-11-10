@@ -239,8 +239,7 @@ public class PowerUpManager : MonoBehaviour
         isFrozen = false;
     }
 
-    public GameObject MissilesPlayer1;
-    public GameObject MissilesPlayer2;
+    public GameObject Missiles;
     public GameObject Player1;
     public GameObject Player2;
     public GameObject HexagonPlayground;
@@ -253,18 +252,13 @@ public class PowerUpManager : MonoBehaviour
         playGroundExtendMin = sr.bounds.min;
         playGroundExtendMax = sr.bounds.max;
         Debug.Log("Use Missiles");
-        // Vector3 randomSpawn = new Vector3(Random.Range(-5f, 5f), Random.Range(-5, 5f), 0);
-        Vector3 test = new Vector3(1,1,0);
+        Vector3 randomSpawn = new Vector3(UnityEngine.Random.Range(-3f, 3f), UnityEngine.Random.Range(-3, 3f), 0);
         if(this.gameObject.CompareTag("Player1")) {
-            Transform target = MissilesPlayer2.GetComponent<Transform>();
-            target = Player2.transform;
-            this.GetComponent<HomingMissile>().setTarget(Player2.transform);
-            GameObject missiles = Instantiate(MissilesPlayer2, test, Quaternion.identity);
+            GameObject missile = Instantiate(Missiles, randomSpawn, Quaternion.identity);
+            missile.GetComponent<HomingMissile>().target = Player2.transform;
         } else {
-            Transform target = MissilesPlayer1.GetComponent<Transform>();
-            target = Player1.transform;
-            this.GetComponent<HomingMissile>().setTarget(Player1.transform);
-            GameObject missiles = Instantiate(MissilesPlayer1, test, Quaternion.identity);
+            GameObject missile = Instantiate(Missiles, randomSpawn, Quaternion.identity);
+            missile.GetComponent<HomingMissile>().target = Player1.transform;
         }
     }
 

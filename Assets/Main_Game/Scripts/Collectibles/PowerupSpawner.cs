@@ -48,8 +48,7 @@ public class PowerupSpawner : MonoBehaviour
             yield return new WaitForSeconds(spawnInterval); // Wait for the spawn interval
 
             // Randomly choose one of the power-up prefabs to spawn
-            // int randomIndex = ChooseRandomPowerupIndex();
-            int randomIndex = 2;
+            int randomIndex = ChooseRandomPowerupIndex();
             Debug.Log(randomIndex);
             // Randomly determine the spawn position within a defined area
             Vector3 randomSpawn = new Vector3(Random.Range(-5f, 5f), Random.Range(-5, 5f), 0);
