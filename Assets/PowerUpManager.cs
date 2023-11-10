@@ -239,17 +239,33 @@ public class PowerUpManager : MonoBehaviour
         isFrozen = false;
     }
 
-    public GameObject MissilesPrefabs;
+    public GameObject MissilesPlayer1;
+    public GameObject MissilesPlayer2;
+    public GameObject Player1;
+    public GameObject Player2;
     public GameObject HexagonPlayground;
     Vector3 playGroundExtendMin;
     Vector3 playGroundExtendMax;
     SpriteRenderer sr;
     private void UseMissiles() {
+
         sr = HexagonPlayground.GetComponent<SpriteRenderer>();
         playGroundExtendMin = sr.bounds.min;
         playGroundExtendMax = sr.bounds.max;
-        // Vector3 randomSpawn = new Vector3(UnityEngine.Random.Range(playGroundExtendMin.x, playGroundExtendMax.x), UnityEngine.Random.Range(playGroundExtendMax.y, playGroundExtendMax.y), 0);
-        // public GameObject newCollectible = Instantiate(MissilesPrefabs, randomSpawn, Quaternion.identity);
+        Debug.Log("Use Missiles");
+        // Vector3 randomSpawn = new Vector3(Random.Range(-5f, 5f), Random.Range(-5, 5f), 0);
+        Vector3 test = new Vector3(1,1,0);
+        if(this.gameObject.CompareTag("Player1")) {
+            Transform target = MissilesPlayer2.GetComponent<Transform>();
+            target = Player2.transform;
+            this.GetComponent<HomingMissile>().setTarget(Player2.transform);
+            GameObject missiles = Instantiate(MissilesPlayer2, test, Quaternion.identity);
+        } else {
+            Transform target = MissilesPlayer1.GetComponent<Transform>();
+            target = Player1.transform;
+            this.GetComponent<HomingMissile>().setTarget(Player1.transform);
+            GameObject missiles = Instantiate(MissilesPlayer1, test, Quaternion.identity);
+        }
     }
 
 
