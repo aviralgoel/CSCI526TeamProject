@@ -249,10 +249,8 @@ public class PowerUpManager : MonoBehaviour
     private void UseMissiles() {
 
         sr = HexagonPlayground.GetComponent<SpriteRenderer>();
-        playGroundExtendMin = sr.bounds.min;
-        playGroundExtendMax = sr.bounds.max;
         Debug.Log("Use Missiles");
-        Vector3 randomSpawn = new Vector3(UnityEngine.Random.Range(-3f, 3f), UnityEngine.Random.Range(-3, 3f), 0);
+        Vector3 randomSpawn = new Vector3(UnityEngine.Random.Range(-2.5f, 2.5f), UnityEngine.Random.Range(-2.5f, 2.5f), 0);
         if(this.gameObject.CompareTag("Player1")) {
             GameObject missile = Instantiate(Missiles, randomSpawn, Quaternion.identity);
             missile.GetComponent<HomingMissile>().target = Player2.transform;

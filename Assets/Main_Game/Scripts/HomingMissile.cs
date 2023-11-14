@@ -53,11 +53,13 @@ public class HomingMissile : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col)
     {
         Debug.Log(col.gameObject.name + " : " + gameObject.name + " : " + Time.time);
-        if(col.gameObject.CompareTag("Player1") || col.gameObject.CompareTag("Player1Boundary"))
+        if(col.gameObject.CompareTag("Player1"))
         {
+            col.gameObject.GetComponent<ScoreManager>().IncrementScore(-10);
             Destroy(gameObject);
         }
-        else if( col.gameObject.CompareTag("Player2") || col.gameObject.CompareTag("Player2Boundary")) {
+        else if(col.gameObject.CompareTag("Player2")) {
+            col.gameObject.GetComponent<ScoreManager>().IncrementScore(-10);
             Destroy(gameObject);
         }
         //spriteMove = -0.1f;

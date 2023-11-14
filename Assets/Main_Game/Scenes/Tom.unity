@@ -524,6 +524,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player1Boundary
       objectReference: {fileID: 0}
+    - target: {fileID: 2434070101412029764, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2588702820962649808, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.3
@@ -535,6 +539,10 @@ PrefabInstance:
     - target: {fileID: 2588702820962649808, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3794913688590724183, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6184972171403645291, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
       propertyPath: m_Name
@@ -785,6 +793,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5657236043178004035, guid: 41433c31d6401cc46890a14ed4cc10dc, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5657236043216862707, guid: 41433c31d6401cc46890a14ed4cc10dc, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5657236043450372837, guid: 41433c31d6401cc46890a14ed4cc10dc, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5657236043565603523, guid: 41433c31d6401cc46890a14ed4cc10dc, type: 3}
       propertyPath: m_Name
       value: Level
@@ -831,6 +851,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5657236043565603525, guid: 41433c31d6401cc46890a14ed4cc10dc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5657236043985154682, guid: 41433c31d6401cc46890a14ed4cc10dc, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5657236044051540939, guid: 41433c31d6401cc46890a14ed4cc10dc, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5657236044057426551, guid: 41433c31d6401cc46890a14ed4cc10dc, type: 3}
+      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1285,6 +1317,14 @@ PrefabInstance:
       propertyPath: scoreManagerPlayer1
       value: 
       objectReference: {fileID: 1441567235}
+    - target: {fileID: 3287511912406375405, guid: aa9161055e227c24583beef344af0ec7, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4103384620160996094, guid: aa9161055e227c24583beef344af0ec7, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5539643207180068561, guid: aa9161055e227c24583beef344af0ec7, type: 3}
       propertyPath: m_Name
       value: Player2
