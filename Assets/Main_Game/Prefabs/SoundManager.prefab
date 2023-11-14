@@ -80,3 +80,13 @@ MonoBehaviour:
     volume: 1
     pitch: 2
     source: {fileID: 0}
+  - name: button
+    clip: {fileID: 8300000, guid: f220628b3fd3a2144afbc125b53a8b10, type: 3}
+    volume: 1
+    pitch: 2
+    source: {fileID: 0}
+  - name: firewall
+    clip: {fileID: 8300000, guid: 3fc58091817ca024c817de7026e0c451, type: 3}
+    volume: 1
+    pitch: 2
+    source: {fileID: 0}
