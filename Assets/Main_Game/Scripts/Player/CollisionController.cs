@@ -57,6 +57,9 @@ public class CollisionController : MonoBehaviour
         {
             powerUpManager.addPowerUp(PowerUpManager.PowerUpType.Freeze);
             Debug.Log("Power Up: Freeze Collected");
+
+            FindObjectOfType<SoundManager>().Play("freeze");
+
         }
         // detect collision with good and bad objects
         else if (collision.CompareTag("Good") || collision.CompareTag("Bad"))
@@ -67,7 +70,7 @@ public class CollisionController : MonoBehaviour
                 scoreManagerPlayer1.IncrementScore(scoreChange);
                 scoreManagerPlayer1.RespawnPlayer(collision.gameObject.tag); // this will not actually respawn player, just increase count of collectible
             
-                FindObjectOfType<SoundManager>().Play("good");
+                FindObjectOfType<SoundManager>().Play("bad");
 
             }
             else if (gameObject.CompareTag("Player2Blade"))
