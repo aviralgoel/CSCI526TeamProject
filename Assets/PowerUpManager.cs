@@ -61,14 +61,14 @@ public class PowerUpManager : MonoBehaviour
     {
         FireWalls, 
         Freeze,
-        Shield
+        Missiles
     }
     // create a hashmap to store the powerups of size 3 element with value 0
     public Dictionary<PowerUpType, int> powerupsCount = new Dictionary<PowerUpType, int>()
     {
         {PowerUpType.FireWalls, 0},
         {PowerUpType.Freeze, 0},
-        {PowerUpType.Shield, 0}
+        {PowerUpType.Missiles, 0}
     };
    
     // Start is called before the first frame update
@@ -149,10 +149,10 @@ public class PowerUpManager : MonoBehaviour
             removePowerUp(PowerUpType.Freeze);
             numOfFreezeHitByPlayer++;
         }
-        else if (powerupsCount[PowerUpType.Shield] > 0)
+        else if (powerupsCount[PowerUpType.Missiles] > 0)
         {
-            //UseShield();
-            removePowerUp(PowerUpType.Shield);
+            UseMissiles();
+            removePowerUp(PowerUpType.Missiles);
         }
         else if (powerupsCount[PowerUpType.FireWalls] > 0)
         {
@@ -241,6 +241,27 @@ public class PowerUpManager : MonoBehaviour
         yield return new WaitForSeconds(freezeTime);
         OpponentPlayerController.UnFreezeThisPlayer();
         isFrozen = false;
+    }
+
+    public GameObject Missiles;
+    public GameObject Player1;
+    public GameObject Player2;
+    public GameObject HexagonPlayground;
+    Vector3 playGroundExtendMin;
+    Vector3 playGroundExtendMax;
+    SpriteRenderer sr;
+    private void UseMissiles() {
+
+        sr = HexagonPlayground.GetComponent<SpriteRenderer>();
+        Debug.Log("Use Missiles");
+        Vector3 randomSpawn = new Vector3(UnityEngine.Random.Range(-2.5f, 2.5f), UnityEngine.Random.Range(-2.5f, 2.5f), 0);
+        if(this.gameObject.CompareTag("Player1")) {
+            GameObject missile = Instantiate(Missiles, randomSpawn, Quaternion.identity);
+            missile.GetComponent<HomingMissile>().target = Player2.transform;
+        } else {
+            GameObject missile = Instantiate(Missiles, randomSpawn, Quaternion.identity);
+            missile.GetComponent<HomingMissile>().target = Player1.transform;
+        }
     }
 
 
