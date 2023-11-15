@@ -2,53 +2,70 @@ using UnityEngine;
 
 public class Spawnercode : MonoBehaviour
 {
+    public float radiusToSpawnWithin = 3.10f;
+    public bool shouldCollectibleMove = false;
     public GameObject[] myobj;  // Array of prefabs to spawn
-    public float spawnInterval = 1.0f;  // Time interval between spawns
+    public float spawnInterval = 0.5f;  // Time interval between spawns
     public float destructionTime = 15f;  // Time after which the collectible will be destroyed
     public GameObject HexagonPlayground;
-    SpriteRenderer sr;
+    private SpriteRenderer sr; // Change the variable type to SpriteRenderer
     private float timer = 0.0f;
-    Vector3 playGroundExtendMin;
-    Vector3 playGroundExtendMax;
+    private Vector3 playGroundExtendMin;
+    private Vector3 playGroundExtendMax;
     public int numOfCollectiblesSpawned = 0;
-    private GameManager gameManager;
+    private bool canSpawn = false; // Control whether objects can spawn or not
+
+
+    [Range(0.0f, 1.0f)]
+    public float goodObjectPercentage = 0.75f;  // Percentage of "good" object spawns
 
     private void Start()
     {
         sr = HexagonPlayground.GetComponent<SpriteRenderer>();
         playGroundExtendMin = sr.bounds.min;
         playGroundExtendMax = sr.bounds.max;
-        gameManager = FindObjectOfType<GameManager>();
     }
 
     void Update()
     {
-        if (!gameManager.isGameStarted || gameManager.isGameOver)
+        if (canSpawn == false && Input.GetKeyDown(KeyCode.Space))
         {
-            // Don't spawn objects if the game hasn't started or if it's over
-            return;
+            canSpawn = true; // Enable spawning when spacebar is pressed
         }
-        // Update the timer
-        timer += Time.deltaTime;
 
-        // Check if it's time to spawn a new object
-        if (timer >= spawnInterval)
+        if (canSpawn)
         {
-            // Reset the timer
-            timer = 0.0f;
+            // Update the timer
+            timer += Time.deltaTime;
 
-            // Generate a random position
-            Vector3 randomSpawn = new Vector3(Random.Range(-5f, 5f), Random.Range(-5, 5f), 0);
-
-            // Choose a random prefab from the array
-            int randomIndex = Random.Range(0, myobj.Length);
-
-            if (randomSpawn.x > playGroundExtendMin.x && randomSpawn.x < playGroundExtendMax.x && randomSpawn.y > playGroundExtendMin.y && randomSpawn.y < playGroundExtendMax.y)
+            // Check if it's time to spawn a new object
+            if (timer >= spawnInterval)
             {
-                GameObject newCollectible = Instantiate(myobj[randomIndex], randomSpawn, Quaternion.identity);
-                numOfCollectiblesSpawned++;
-            }
+                // Reset the timer
+                timer = 0.0f;
 
+                // Generate a random position
+                Vector3 randomSpawn = Random.insideUnitCircle * radiusToSpawnWithin;
+
+                // Determine whether to spawn a "good" or "bad" object based on the percentage
+                int randomIndex = (Random.value < goodObjectPercentage) ? 0 : 1;
+
+                if (randomSpawn.x > playGroundExtendMin.x && randomSpawn.x < playGroundExtendMax.x &&
+                    randomSpawn.y > playGroundExtendMin.y && randomSpawn.y < playGroundExtendMax.y)
+                {
+                    GameObject newCollectible = Instantiate(myobj[randomIndex], randomSpawn, Quaternion.identity);
+                    if (shouldCollectibleMove)
+                    {
+                        newCollectible.GetComponent<Collectibles>().shouldMove = true;
+                    }
+                    numOfCollectiblesSpawned++;
+                }
+            }
         }
+    }
+
+    public void StopSpawning()
+    {
+        canSpawn = false;
     }
 }
