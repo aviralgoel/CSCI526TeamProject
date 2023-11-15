@@ -71,15 +71,17 @@ public class PowerupSpawner : MonoBehaviour
 
     private int ChooseRandomPowerupIndex()
     {
-        float randomValue = Random.value;
-        if (randomValue < freezePowerupPercentage)
-        {
-            return 0; // "freeze" power-up
-        }
-        else
-        {
-            return 1; // "firewall" power-up
-        }
+        float randomValue = Random.value * 100;
+        return Mathf.RoundToInt(randomValue) % 3;
+        // float randomValue = Random.value;
+        // if (randomValue < freezePowerupPercentage)
+        // {
+        //     return 0; // "freeze" power-up
+        // }
+        // else
+        // {
+        //     return 1; // "firewall" power-up
+        // }
     }
 
     private IEnumerator DestroyPowerUp(GameObject powerUp, float delay, int randomIndex)

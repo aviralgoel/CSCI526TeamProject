@@ -32,7 +32,7 @@ public class PowerUpManager : MonoBehaviour
     [SerializeField]private bool isFrozen = false;
     public float freezeTime = 10f; // Time in seconds for freezing effect
     public float freezeMovementSpeed = 0.2f;
-    public ParticleSystem opponentFreezeParticleEffect;
+    public ParticleSystem freezeEffect;
 
 
 
@@ -61,14 +61,14 @@ public class PowerUpManager : MonoBehaviour
     {
         FireWalls, 
         Freeze,
-        Shield
+        Missiles
     }
     // create a hashmap to store the powerups of size 3 element with value 0
     public Dictionary<PowerUpType, int> powerupsCount = new Dictionary<PowerUpType, int>()
     {
         {PowerUpType.FireWalls, 0},
         {PowerUpType.Freeze, 0},
-        {PowerUpType.Shield, 0}
+        {PowerUpType.Missiles, 0}
     };
    
     // Start is called before the first frame update
@@ -121,6 +121,7 @@ public class PowerUpManager : MonoBehaviour
 
         for(int i = 0; i < 6; i++)
         {
+            walls[i].transform.GetComponent<SpriteRenderer>().color = Color.white;
             walls[i].position = Vector3.MoveTowards(walls[i].position, wallSources[i].position, Time.deltaTime * fireWallMovementSpeed);
         }
         if (Mathf.Approximately(Vector3.Distance(walls[(int)Walls.Bottom].position, wallSources[(int)Walls.Bottom].position), 0) &&
@@ -129,15 +130,10 @@ public class PowerUpManager : MonoBehaviour
         {
             moveWallsOutside = false;
             fireWallActive = false;
-            for (int i = 0; i < 6; i++)
-            {
-                walls[i].transform.GetComponent<SpriteRenderer>().color = Color.white;
-            }
         }
 
         UIManager.instance.SetPlayer1PowerUpText("");
         UIManager.instance.SetPlayer2PowerUpText("");
-       
 
     }
 
@@ -149,10 +145,10 @@ public class PowerUpManager : MonoBehaviour
             removePowerUp(PowerUpType.Freeze);
             numOfFreezeHitByPlayer++;
         }
-        else if (powerupsCount[PowerUpType.Shield] > 0)
+        else if (powerupsCount[PowerUpType.Missiles] > 0)
         {
-            //UseShield();
-            removePowerUp(PowerUpType.Shield);
+            UseMissiles();
+            removePowerUp(PowerUpType.Missiles);
         }
         else if (powerupsCount[PowerUpType.FireWalls] > 0)
         {
@@ -237,10 +233,30 @@ public class PowerUpManager : MonoBehaviour
     {
         isFrozen = true;
         OpponentPlayerController.FreezeThisPlayer();
-        opponentFreezeParticleEffect.Play();
+        freezeEffect.Play(true);
         yield return new WaitForSeconds(freezeTime);
         OpponentPlayerController.UnFreezeThisPlayer();
         isFrozen = false;
+    }
+
+    public GameObject Missiles;
+    public GameObject Player1;
+    public GameObject Player2;
+    public GameObject HexagonPlayground;
+    Vector3 playGroundExtendMin;
+    Vector3 playGroundExtendMax;
+    SpriteRenderer sr;
+    private void UseMissiles() {
+
+        Debug.Log("Use Missiles");
+        Vector3 randomSpawn = new Vector3(UnityEngine.Random.Range(-2.5f, 2.5f), UnityEngine.Random.Range(-2.5f, 2.5f), 0);
+        if(this.gameObject.CompareTag("Player1")) {
+            GameObject missile = Instantiate(Missiles, this.gameObject.transform.position + new Vector3(0.5f, 0.5f, 0), Quaternion.identity);
+            missile.GetComponent<HomingMissile>().target = Player2.transform;
+        } else {
+            GameObject missile = Instantiate(Missiles, this.gameObject.transform.position + new Vector3(0.5f, 0.5f, 0), Quaternion.identity);
+            missile.GetComponent<HomingMissile>().target = Player1.transform;
+        }
     }
 
 
