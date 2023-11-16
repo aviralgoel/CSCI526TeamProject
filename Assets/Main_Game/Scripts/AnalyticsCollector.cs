@@ -3,6 +3,7 @@ using UnityEngine.Networking;
 using UnityEngine.UI;
 using System.Collections;
 
+//Main class to collect all analytics data
 public class AnalyticsCollector : MonoBehaviour
 {
     private string googleFormURL = "https://docs.google.com/forms/u/0/d/1Bzx0bE5zS9WPcNZXTGq1ZVLMDmkgT8iWEa-L3u_wnEU/formResponse";
@@ -31,7 +32,7 @@ public class AnalyticsCollector : MonoBehaviour
     private string player2TotalPowerUpFormFieldKey = "entry.1394166838";
 
     
-
+    // Function to decide between sending Player 1 and Player 2 data
     public void SendPlayerData(PlayerAnalyticsData playerData, int playerNumber)
     {
         string playerSuccessRate = (playerNumber == 1) ? player1SuccessRateFormFieldKey : player2SuccessRateFormFieldKey;
