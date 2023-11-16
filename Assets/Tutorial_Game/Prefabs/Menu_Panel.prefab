@@ -225,6 +225,7 @@ GameObject:
   - component: {fileID: 660721444375137951}
   - component: {fileID: 660721444375137949}
   - component: {fileID: 660721444375137948}
+  - component: {fileID: 7184301954965540278}
   m_Layer: 5
   m_Name: Close But
   m_TagString: Untagged
@@ -290,6 +291,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7184301954965540278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 660721444375137950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdeda4631047db0479ed0bea9ea57e3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  settingsPanel: {fileID: 660721444373957578}
 --- !u!1 &660721444892612106
 GameObject:
   m_ObjectHideFlags: 0
@@ -436,6 +450,7 @@ GameObject:
   - component: {fileID: 660721445283643041}
   - component: {fileID: 660721445283643055}
   - component: {fileID: 660721445283643054}
+  - component: {fileID: 4251484315562460518}
   m_Layer: 5
   m_Name: Play_But
   m_TagString: Untagged
@@ -502,6 +517,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4251484315562460518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 660721445283643040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5807167de3b9404faf2b375077bfb97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverColor: {r: 0.3882353, g: 0.35686275, b: 0.35686275, a: 1}
+  clickColor: {r: 0.3882353, g: 0.35686275, b: 0.35686275, a: 1}
 --- !u!1 &660721445570329783
 GameObject:
   m_ObjectHideFlags: 0
@@ -513,7 +542,7 @@ GameObject:
   - component: {fileID: 660721445570329780}
   - component: {fileID: 660721445570329778}
   - component: {fileID: 660721445570329781}
-  - component: {fileID: 8416744138681373761}
+  - component: {fileID: 2445194730312338496}
   m_Layer: 5
   m_Name: Restart_But
   m_TagString: Untagged
@@ -580,7 +609,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8416744138681373761
+--- !u!114 &2445194730312338496
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -589,10 +618,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 660721445570329783}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23e9d9b4d183ecb4fb188d6c76afb6a3, type: 3}
+  m_Script: {fileID: 11500000, guid: f5807167de3b9404faf2b375077bfb97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 660721445570329781}
-  normalSprite: {fileID: 0}
-  hoverSprite: {fileID: 0}
-  sceneToLoad: Aviral
+  hoverColor: {r: 0.38679248, g: 0.3554112, b: 0.3554112, a: 1}
+  clickColor: {r: 0.3882353, g: 0.35686275, b: 0.35686275, a: 1}
