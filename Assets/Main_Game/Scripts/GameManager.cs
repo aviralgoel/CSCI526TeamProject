@@ -99,8 +99,10 @@ public class GameManager : MonoBehaviour
             
         }
 
+        //Send players data on game end condition
         if (isGameOver)
         {
+            //Condition for sending Player1 data
             if (!isPlayer1DataSent)
             {
                 PlayerAnalyticsData player1Data;
@@ -128,6 +130,8 @@ public class GameManager : MonoBehaviour
                 analyticsCollector.SendPlayerData(player1Data, 1);
                 isPlayer1DataSent = true;
             }
+
+            //Condition for sending Player2 data
             if (!isPlayer2DataSent)
             {
                 PlayerAnalyticsData player2Data;
