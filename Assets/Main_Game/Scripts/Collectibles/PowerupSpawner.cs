@@ -15,19 +15,24 @@ public class PowerupSpawner : MonoBehaviour
     Vector3 playGroundExtendMin;
     Vector3 playGroundExtendMax;
     private bool canSpawn = false;
+    private LayerMask layerMask;
 
     [Range(0.0f, 1.0f)]
     public float freezePowerupPercentage = 0.5f; // Percentage of "freeze" power-up spawns
     public int numOfPowerup = 3;
+
+    public bool shouldCollectibleMove = false;
 
     private void Start()
     {
         sr = HexagonPlayground.GetComponent<SpriteRenderer>();
         playGroundExtendMin = sr.bounds.min;
         playGroundExtendMax = sr.bounds.max;
+        
+    layerMask = ~LayerMask.GetMask("Walls");
 
-        // Start spawning power-ups at regular intervals, but only after the space bar is pressed
-        StartCoroutine(SpawnPowerUpsAfterSpacebar());
+    // Start spawning power-ups at regular intervals, but only after the space bar is pressed
+    StartCoroutine(SpawnPowerUpsAfterSpacebar());
     }
 
     private IEnumerator SpawnPowerUpsAfterSpacebar()
@@ -58,24 +63,17 @@ public class PowerupSpawner : MonoBehaviour
             Vector3 randomSpawn = new Vector3(Random.Range(-5f, 5f), Random.Range(-5, 5f), 0);
 
             // Check if the new position is too close to existing power-ups or collectibles
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(randomSpawn, 1.0f);
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(randomSpawn, 0.3f, layerMask);
 
             bool canSpawnHere = true;
-
-            foreach (var collider in colliders)
-            {
-                if (collider.CompareTag("PowerUp") || collider.CompareTag("Collectible"))
-                {
-                    canSpawnHere = false;
-                    break;
-                }
-            }
+            if (colliders.Length == 0) canSpawnHere = true;
 
             if (canSpawnHere &&
                 randomSpawn.x > playGroundExtendMin.x && randomSpawn.x < playGroundExtendMax.x &&
                 randomSpawn.y > playGroundExtendMin.y && randomSpawn.y < playGroundExtendMax.y && powerup_index[randomIndex] == false)
             {
                 GameObject newCollectible = Instantiate(powerUpPrefabs[randomIndex], randomSpawn, Quaternion.identity);
+                if(shouldCollectibleMove) newCollectible.GetComponent<Collectibles>().shouldMove = true;
                 powerup_index[randomIndex] = true;
                 numberofpowerupsspawned++;
                 StartCoroutine(DestroyPowerUp(newCollectible, powerUpDuration, randomIndex));

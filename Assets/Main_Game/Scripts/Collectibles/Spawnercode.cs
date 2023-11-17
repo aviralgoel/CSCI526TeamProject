@@ -87,6 +87,9 @@ public class Spawnercode : MonoBehaviour
     private Vector3 playGroundExtendMax;
     public int numOfCollectiblesSpawned = 0;
     private bool canSpawn = false; // Control whether objects can spawn or not
+    private LayerMask layerMask;
+    public GameManager gameManager;
+    
 
 
     [Range(0.0f, 1.0f)]
@@ -97,11 +100,13 @@ public class Spawnercode : MonoBehaviour
         sr = HexagonPlayground.GetComponent<SpriteRenderer>();
         playGroundExtendMin = sr.bounds.min;
         playGroundExtendMax = sr.bounds.max;
+        layerMask = ~LayerMask.GetMask("Walls"); 
+        //gameManager = GetComponent<GameManager>(); 
     }
 
     void Update()
     {
-        if (canSpawn == false && Input.GetKeyDown(KeyCode.Space))
+        if (canSpawn == false && gameManager.isGameStarted)
         {
             canSpawn = true; // Enable spawning when spacebar is pressed
         }
@@ -121,18 +126,16 @@ public class Spawnercode : MonoBehaviour
                 Vector3 randomSpawn = Random.insideUnitCircle * radiusToSpawnWithin;
 
                 // Check if the new position is too close to existing collectibles
-                Collider2D[] colliders = Physics2D.OverlapCircleAll(randomSpawn, 0.8f);
+                Collider2D[] colliders = Physics2D.OverlapCircleAll(randomSpawn, 0.4f, layerMask);
 
-                bool canSpawnHere = true;
 
-                foreach (var collider in colliders)
+                bool canSpawnHere = false;
+                if (colliders.Length == 0)
                 {
-                    if (collider.CompareTag("Collectible"))
-                    {
-                        canSpawnHere = false;
-                        break;
-                    }
+                    canSpawnHere = true;
                 }
+
+        
 
                 if (canSpawnHere &&
                     randomSpawn.x > playGroundExtendMin.x && randomSpawn.x < playGroundExtendMax.x &&
