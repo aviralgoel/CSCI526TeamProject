@@ -139,5 +139,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selfDestructionTime: 100
-  moveSpeed: 8.3
-  shouldMove: 0

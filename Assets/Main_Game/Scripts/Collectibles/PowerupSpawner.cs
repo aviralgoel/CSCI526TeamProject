@@ -20,6 +20,7 @@ public class PowerupSpawner : MonoBehaviour
 
     [Range(0.0f, 1.0f)]
     public float freezePowerupPercentage = 0.5f; // Percentage of "freeze" power-up spawns
+    public int numOfPowerup = 3;
 
     private void Start()
     {
@@ -50,6 +51,7 @@ public class PowerupSpawner : MonoBehaviour
 
             // Randomly choose one of the power-up prefabs to spawn
             int randomIndex = ChooseRandomPowerupIndex();
+            Debug.Log(randomIndex);
 
 
             // Randomly determine the spawn position within a defined area
@@ -73,7 +75,9 @@ public class PowerupSpawner : MonoBehaviour
     {
         float randomValue = Random.value * 100;
         return Mathf.RoundToInt(randomValue) % 3;
+
         // float randomValue = Random.value;
+
         // if (randomValue < freezePowerupPercentage)
         // {
         //     return 0; // "freeze" power-up

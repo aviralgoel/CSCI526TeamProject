@@ -17,6 +17,11 @@ TagManager:
   - Freeze
   - SpeedUp
   - Walls
+  - Player2Boundary
+  - Player1Boundary
+  - Missile
+  - p1missile
+  - p2missile
   layers:
   - Default
   - TransparentFX
