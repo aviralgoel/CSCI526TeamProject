@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -410,6 +410,42 @@ PrefabInstance:
     - target: {fileID: 5958283616341732705, guid: 83323f3b126144843ba12b861c469455, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5958283616341732710, guid: 83323f3b126144843ba12b861c469455, type: 3}
+      propertyPath: sounds.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5958283616341732710, guid: 83323f3b126144843ba12b861c469455, type: 3}
+      propertyPath: sounds.Array.data[7].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: f220628b3fd3a2144afbc125b53a8b10, type: 3}
+    - target: {fileID: 5958283616341732710, guid: 83323f3b126144843ba12b861c469455, type: 3}
+      propertyPath: sounds.Array.data[7].name
+      value: button
+      objectReference: {fileID: 0}
+    - target: {fileID: 5958283616341732710, guid: 83323f3b126144843ba12b861c469455, type: 3}
+      propertyPath: sounds.Array.data[8].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 3fc58091817ca024c817de7026e0c451, type: 3}
+    - target: {fileID: 5958283616341732710, guid: 83323f3b126144843ba12b861c469455, type: 3}
+      propertyPath: sounds.Array.data[8].name
+      value: firewall
+      objectReference: {fileID: 0}
+    - target: {fileID: 5958283616341732710, guid: 83323f3b126144843ba12b861c469455, type: 3}
+      propertyPath: sounds.Array.data[7].pitch
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5958283616341732710, guid: 83323f3b126144843ba12b861c469455, type: 3}
+      propertyPath: sounds.Array.data[8].pitch
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5958283616341732710, guid: 83323f3b126144843ba12b861c469455, type: 3}
+      propertyPath: sounds.Array.data[7].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5958283616341732710, guid: 83323f3b126144843ba12b861c469455, type: 3}
+      propertyPath: sounds.Array.data[8].volume
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5958283616341732711, guid: 83323f3b126144843ba12b861c469455, type: 3}
       propertyPath: m_Name
