@@ -136,7 +136,11 @@ PrefabInstance:
       objectReference: {fileID: 1179226516}
     - target: {fileID: 794948793, guid: e5e30e8b166c19040a2821b786af2f45, type: 3}
       propertyPath: spawnInterval
-      value: 4
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 794948793, guid: e5e30e8b166c19040a2821b786af2f45, type: 3}
+      propertyPath: powerUpDuration
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 794948793, guid: e5e30e8b166c19040a2821b786af2f45, type: 3}
       propertyPath: HexagonPlayground
@@ -150,6 +154,10 @@ PrefabInstance:
       propertyPath: CenterOfPlayGround
       value: 
       objectReference: {fileID: 1639310927}
+    - target: {fileID: 794948793, guid: e5e30e8b166c19040a2821b786af2f45, type: 3}
+      propertyPath: shouldCollectibleMove
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 794948793, guid: e5e30e8b166c19040a2821b786af2f45, type: 3}
       propertyPath: powerUpPrefabs.Array.size
       value: 3

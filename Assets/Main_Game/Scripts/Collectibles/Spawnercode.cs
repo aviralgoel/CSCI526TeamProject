@@ -106,7 +106,7 @@ public class Spawnercode : MonoBehaviour
 
     void Update()
     {
-        if (canSpawn == false && gameManager.isGameStarted)
+        if (canSpawn == false && gameManager.isGameStarted && gameManager.isGameOver==false)
         {
             canSpawn = true; // Enable spawning when spacebar is pressed
         }

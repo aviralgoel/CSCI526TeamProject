@@ -104,16 +104,17 @@ public class PowerupSpawner : MonoBehaviour
         yield return new WaitForSeconds(delay);
         if (powerUp != null)
         {
-            powerup_index[randomIndex] = false;
+            
             Destroy(powerUp);
         }
+        powerup_index[randomIndex] = false;
     }
 
     private void Update()
     {
-        if (!canSpawn && gameManager.isGameStarted)
+        if (!canSpawn && gameManager.isGameStarted && gameManager.isGameOver == false)
         {
-            canSpawn = true; // Enable spawning when space bar is pressed
+            canSpawn = true; 
         }
     }
 }
