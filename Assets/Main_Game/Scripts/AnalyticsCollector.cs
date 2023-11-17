@@ -32,7 +32,7 @@ public class AnalyticsCollector : MonoBehaviour
     private string player2TotalPowerUpFormFieldKey = "entry.1394166838";
 
     
-    // Function to decide between sending Player 1 and Player 2 data
+    // Function for sending Player 1 and Player 2 data
     public void SendPlayerData(PlayerAnalyticsData playerData, int playerNumber)
     {
         string playerSuccessRate = (playerNumber == 1) ? player1SuccessRateFormFieldKey : player2SuccessRateFormFieldKey;
