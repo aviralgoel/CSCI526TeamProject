@@ -32,7 +32,7 @@ public class PowerUpManager : MonoBehaviour
     [SerializeField]private bool isFrozen = false;
     public float freezeTime = 10f; // Time in seconds for freezing effect
     public float freezeMovementSpeed = 0.2f;
-    public ParticleSystem opponentFreezeParticleEffect;
+    public ParticleSystem freezeEffect;
 
 
 
@@ -121,6 +121,7 @@ public class PowerUpManager : MonoBehaviour
 
         for(int i = 0; i < 6; i++)
         {
+            walls[i].transform.GetComponent<SpriteRenderer>().color = Color.white;
             walls[i].position = Vector3.MoveTowards(walls[i].position, wallSources[i].position, Time.deltaTime * fireWallMovementSpeed);
         }
         if (Mathf.Approximately(Vector3.Distance(walls[(int)Walls.Bottom].position, wallSources[(int)Walls.Bottom].position), 0) &&
@@ -129,15 +130,10 @@ public class PowerUpManager : MonoBehaviour
         {
             moveWallsOutside = false;
             fireWallActive = false;
-            for (int i = 0; i < 6; i++)
-            {
-                walls[i].transform.GetComponent<SpriteRenderer>().color = Color.white;
-            }
         }
 
         UIManager.instance.SetPlayer1PowerUpText("");
         UIManager.instance.SetPlayer2PowerUpText("");
-       
 
     }
 
@@ -165,8 +161,18 @@ public class PowerUpManager : MonoBehaviour
 
     private void UseFireWalls()
     {
-        fireWallActive = true;
-        moveWallsInside = true;
+        if (!fireWallActive) // there is 
+        {
+            fireWallActive = true;
+            moveWallsInside = true;
+        }
+        if(fireWallActive && moveWallsOutside)
+        {
+            moveWallsOutside = false;
+            moveWallsInside = true;
+            fireWallActive = true;
+        }
+        
     }
 
     public void addPowerUp(PowerUpType type)
@@ -196,28 +202,7 @@ public class PowerUpManager : MonoBehaviour
         }        
     }
 
-   /* private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("FireWalls"))
-        {
-            addPowerUp(PowerUpType.FireWalls);
-
-            //Debug.Log("we will now search for sound!");
-            FindObjectOfType<SoundManager>().Play("PowerUp");
-
-        }
-        else if (collision.gameObject.CompareTag("Freeze"))
-        {
-            addPowerUp(PowerUpType.Freeeze);
-
-            FindObjectOfType<SoundManager>().Play("PowerUp");
-            
-        }
-        else if (collision.gameObject.CompareTag("Shield"))
-        {
-            addPowerUp(PowerUpType.Shield);
-        }
-    }*/
+   
 
     // co routine to pause 5 second
     IEnumerator Pause()
@@ -237,7 +222,7 @@ public class PowerUpManager : MonoBehaviour
     {
         isFrozen = true;
         OpponentPlayerController.FreezeThisPlayer();
-        opponentFreezeParticleEffect.Play();
+        freezeEffect.Play(true);
         yield return new WaitForSeconds(freezeTime);
         OpponentPlayerController.UnFreezeThisPlayer();
         isFrozen = false;
@@ -250,19 +235,23 @@ public class PowerUpManager : MonoBehaviour
     Vector3 playGroundExtendMin;
     Vector3 playGroundExtendMax;
     SpriteRenderer sr;
-    private void UseMissiles() {
+    private void UseMissiles()
+    {
 
         sr = HexagonPlayground.GetComponent<SpriteRenderer>();
         Debug.Log("Use Missiles");
         Vector3 randomSpawn = new Vector3(UnityEngine.Random.Range(-2.5f, 2.5f), UnityEngine.Random.Range(-2.5f, 2.5f), 0);
-        if(this.gameObject.CompareTag("Player1")) {
+        if (this.gameObject.CompareTag("Player1"))
+        {
             GameObject missile = Instantiate(Missiles, randomSpawn, Quaternion.identity);
             missile.GetComponent<HomingMissile>().target = Player2.transform;
-        } else {
+        }
+        else
+        {
             GameObject missile = Instantiate(Missiles, randomSpawn, Quaternion.identity);
             missile.GetComponent<HomingMissile>().target = Player1.transform;
         }
     }
-
-
 }
+
+
