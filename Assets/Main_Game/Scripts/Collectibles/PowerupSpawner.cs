@@ -53,7 +53,23 @@ public class PowerupSpawner : MonoBehaviour
             // Randomly determine the spawn position within a defined area
             Vector3 randomSpawn = new Vector3(Random.Range(-5f, 5f), Random.Range(-5, 5f), 0);
 
-            if (randomSpawn.x > playGroundExtendMin.x && randomSpawn.x < playGroundExtendMax.x && randomSpawn.y > playGroundExtendMin.y && randomSpawn.y < playGroundExtendMax.y && powerup_index[randomIndex] == false)
+            // Check if the new position is too close to existing power-ups or collectibles
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(randomSpawn, 1.0f);
+
+            bool canSpawnHere = true;
+
+            foreach (var collider in colliders)
+            {
+                if (collider.CompareTag("PowerUp") || collider.CompareTag("Collectible"))
+                {
+                    canSpawnHere = false;
+                    break;
+                }
+            }
+
+            if (canSpawnHere &&
+                randomSpawn.x > playGroundExtendMin.x && randomSpawn.x < playGroundExtendMax.x &&
+                randomSpawn.y > playGroundExtendMin.y && randomSpawn.y < playGroundExtendMax.y && powerup_index[randomIndex] == false)
             {
                 GameObject newCollectible = Instantiate(powerUpPrefabs[randomIndex], randomSpawn, Quaternion.identity);
                 powerup_index[randomIndex] = true;
@@ -67,14 +83,6 @@ public class PowerupSpawner : MonoBehaviour
     {
         float randomValue = Random.value * 100;
         return Mathf.RoundToInt(randomValue) % 3;
-        // if (randomValue < freezePowerupPercentage)
-        // {
-        //     return 0; // "freeze" power-up
-        // }
-        // else
-        // {
-        //     return 1; // "firewall" power-up
-        // }
     }
 
     private IEnumerator DestroyPowerUp(GameObject powerUp, float delay, int randomIndex)

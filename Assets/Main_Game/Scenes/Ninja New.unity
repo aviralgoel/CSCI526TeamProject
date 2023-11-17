@@ -232,7 +232,7 @@ PrefabInstance:
       objectReference: {fileID: 5818194942804883219, guid: 1c8c6bef141aba240a6c9a44a6129a24, type: 3}
     - target: {fileID: 6587957134335053147, guid: e5e30e8b166c19040a2821b786af2f45, type: 3}
       propertyPath: goodObjectPercentage
-      value: 0.5
+      value: 0.706
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5e30e8b166c19040a2821b786af2f45, type: 3}
@@ -294,7 +294,7 @@ GameObject:
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!81 &552687326
 AudioListener:
@@ -355,7 +355,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 552687325}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.15, y: 0, z: -5}
+  m_LocalPosition: {x: -1, y: 1.79, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -767,11 +767,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5657236043565603525, guid: 41433c31d6401cc46890a14ed4cc10dc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -1.02
       objectReference: {fileID: 0}
     - target: {fileID: 5657236043565603525, guid: 41433c31d6401cc46890a14ed4cc10dc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.79
       objectReference: {fileID: 0}
     - target: {fileID: 5657236043565603525, guid: 41433c31d6401cc46890a14ed4cc10dc, type: 3}
       propertyPath: m_LocalPosition.z
