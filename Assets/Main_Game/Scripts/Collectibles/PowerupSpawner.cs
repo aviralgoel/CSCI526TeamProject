@@ -67,7 +67,18 @@ public class PowerupSpawner : MonoBehaviour
             Collider2D[] colliders = Physics2D.OverlapCircleAll(randomSpawn, 0.3f, layerMask);
 
             bool canSpawnHere = true;
-            if (colliders.Length == 0) canSpawnHere = true;
+            foreach (Collider2D collider in colliders)
+            {
+                if (collider.gameObject.CompareTag("Player1") || collider.gameObject.CompareTag("Player2") || collider.gameObject.CompareTag("Blackhole"))
+                {
+                    canSpawnHere = false; 
+                }
+                else
+                {
+                    canSpawnHere = true;
+                    
+                }
+            }
 
             if (canSpawnHere &&
                 randomSpawn.x > playGroundExtendMin.x && randomSpawn.x < playGroundExtendMax.x &&
@@ -86,8 +97,6 @@ public class PowerupSpawner : MonoBehaviour
     {
         float randomValue = Random.value * 100;
         return Mathf.RoundToInt(randomValue) % 3;
-
-
     }
 
     private IEnumerator DestroyPowerUp(GameObject powerUp, float delay, int randomIndex)
