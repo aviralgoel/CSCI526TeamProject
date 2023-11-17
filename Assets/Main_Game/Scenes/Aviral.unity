@@ -138,6 +138,14 @@ PrefabInstance:
       propertyPath: CenterOfPlayGround
       value: 
       objectReference: {fileID: 1639310927}
+    - target: {fileID: 794948793, guid: e5e30e8b166c19040a2821b786af2f45, type: 3}
+      propertyPath: powerUpPrefabs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 794948793, guid: e5e30e8b166c19040a2821b786af2f45, type: 3}
+      propertyPath: powerUpPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 5050191165903179170, guid: ae93dddab974c406ba9bb6a7e4dfdd9c, type: 3}
     - target: {fileID: 6587957134335053144, guid: e5e30e8b166c19040a2821b786af2f45, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -429,6 +437,18 @@ PrefabInstance:
       propertyPath: scoreManagerPlayer2
       value: 
       objectReference: {fileID: 2113452624}
+    - target: {fileID: 1250625391053489653, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
+      propertyPath: Player1
+      value: 
+      objectReference: {fileID: 1441567221}
+    - target: {fileID: 1250625391053489653, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
+      propertyPath: Player2
+      value: 
+      objectReference: {fileID: 809736415}
+    - target: {fileID: 1250625391053489653, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
+      propertyPath: Missiles
+      value: 
+      objectReference: {fileID: 5963140542485091051, guid: 3164e3be2e9014ab2a474b17708e3a16, type: 3}
     - target: {fileID: 1250625391053489653, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
       propertyPath: walls.Array.data[0]
       value: 
@@ -1434,6 +1454,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 607623544259261007, guid: aa9161055e227c24583beef344af0ec7, type: 3}
+      propertyPath: Player1
+      value: 
+      objectReference: {fileID: 1441567221}
+    - target: {fileID: 607623544259261007, guid: aa9161055e227c24583beef344af0ec7, type: 3}
+      propertyPath: Player2
+      value: 
+      objectReference: {fileID: 809736415}
+    - target: {fileID: 607623544259261007, guid: aa9161055e227c24583beef344af0ec7, type: 3}
+      propertyPath: Missiles
+      value: 
+      objectReference: {fileID: 5963140542485091051, guid: 3164e3be2e9014ab2a474b17708e3a16, type: 3}
     - target: {fileID: 607623544259261007, guid: aa9161055e227c24583beef344af0ec7, type: 3}
       propertyPath: walls.Array.data[0]
       value: 
