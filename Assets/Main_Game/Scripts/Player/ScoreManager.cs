@@ -52,7 +52,7 @@ public class ScoreManager : MonoBehaviour
         }
 
         if(gameManager.isGameStarted) {
-            score -= Time.deltaTime;
+            score -= (Time.deltaTime/1.2f);
             HealthBar.fillAmount = score / TotalHealth;
             if(score <= 0)
             {
