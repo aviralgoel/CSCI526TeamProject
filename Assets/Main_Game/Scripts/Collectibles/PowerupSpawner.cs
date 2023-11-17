@@ -3,16 +3,14 @@ using UnityEngine;
 
 public class PowerupSpawner : MonoBehaviour
 {
-    public float radiusToSpawnWithin = 3f;
     public GameObject[] powerUpPrefabs; // Assign the PowerUp prefabs in the Unity Inspector
     public float spawnInterval = 5f; // Time interval between spawns
     public float powerUpDuration = 8f; // Time the power-up lasts if not collected
-    public bool shouldPowerUpMove = false;
+
     public bool[] powerup_index = new bool[2]; // Two types of power-ups
 
     public int numberofpowerupsspawned = 0;
     public GameObject HexagonPlayground;
-    public GameObject CenterOfPlayGround;
     SpriteRenderer sr;
     Vector3 playGroundExtendMin;
     Vector3 playGroundExtendMax;
@@ -54,16 +52,30 @@ public class PowerupSpawner : MonoBehaviour
             Debug.Log(randomIndex);
 
 
-            // Randomly determine the spawn position within a defined area
-            Vector3 randomSpawn = Random.insideUnitCircle * radiusToSpawnWithin;
 
-            if (randomSpawn.x > playGroundExtendMin.x && randomSpawn.x < playGroundExtendMax.x && randomSpawn.y > playGroundExtendMin.y && randomSpawn.y < playGroundExtendMax.y && powerup_index[randomIndex] == false)
+
+            // Randomly determine the spawn position within a defined area
+            Vector3 randomSpawn = new Vector3(Random.Range(-5f, 5f), Random.Range(-5, 5f), 0);
+
+            // Check if the new position is too close to existing power-ups or collectibles
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(randomSpawn, 1.0f);
+
+            bool canSpawnHere = true;
+
+            foreach (var collider in colliders)
+            {
+                if (collider.CompareTag("PowerUp") || collider.CompareTag("Collectible"))
+                {
+                    canSpawnHere = false;
+                    break;
+                }
+            }
+
+            if (canSpawnHere &&
+                randomSpawn.x > playGroundExtendMin.x && randomSpawn.x < playGroundExtendMax.x &&
+                randomSpawn.y > playGroundExtendMin.y && randomSpawn.y < playGroundExtendMax.y && powerup_index[randomIndex] == false)
             {
                 GameObject newCollectible = Instantiate(powerUpPrefabs[randomIndex], randomSpawn, Quaternion.identity);
-                if (shouldPowerUpMove)
-                {
-                    newCollectible.GetComponent<Collectibles>().shouldMove = true;
-                }
                 powerup_index[randomIndex] = true;
                 numberofpowerupsspawned++;
                 StartCoroutine(DestroyPowerUp(newCollectible, powerUpDuration, randomIndex));
@@ -86,6 +98,7 @@ public class PowerupSpawner : MonoBehaviour
         // {
         //     return 1; // "firewall" power-up
         // }
+
     }
 
     private IEnumerator DestroyPowerUp(GameObject powerUp, float delay, int randomIndex)
@@ -93,9 +106,9 @@ public class PowerupSpawner : MonoBehaviour
         yield return new WaitForSeconds(delay);
         if (powerUp != null)
         {
+            powerup_index[randomIndex] = false;
             Destroy(powerUp);
         }
-        powerup_index[randomIndex] = false;
     }
 
     private void Update()
