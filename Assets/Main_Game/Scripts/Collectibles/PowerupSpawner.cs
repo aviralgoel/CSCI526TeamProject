@@ -22,6 +22,7 @@ public class PowerupSpawner : MonoBehaviour
     public int numOfPowerup = 3;
 
     public bool shouldCollectibleMove = false;
+    public GameManager gameManager;
 
     private void Start()
     {
@@ -86,16 +87,6 @@ public class PowerupSpawner : MonoBehaviour
         float randomValue = Random.value * 100;
         return Mathf.RoundToInt(randomValue) % 3;
 
-        // float randomValue = Random.value;
-
-        // if (randomValue < freezePowerupPercentage)
-        // {
-        //     return 0; // "freeze" power-up
-        // }
-        // else
-        // {
-        //     return 1; // "firewall" power-up
-        // }
 
     }
 
@@ -111,7 +102,7 @@ public class PowerupSpawner : MonoBehaviour
 
     private void Update()
     {
-        if (!canSpawn && Input.GetKeyDown(KeyCode.Space))
+        if (!canSpawn && gameManager.isGameStarted)
         {
             canSpawn = true; // Enable spawning when space bar is pressed
         }
