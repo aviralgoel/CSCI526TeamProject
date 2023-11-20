@@ -113,7 +113,6 @@ public class PowerUpManager : MonoBehaviour
         {
             StartCoroutine(Pause());
 
-
         }
     }
     private void MoveWallsOutside()
@@ -161,18 +160,12 @@ public class PowerUpManager : MonoBehaviour
 
     private void UseFireWalls()
     {
-        if (!fireWallActive) // there is 
+        if (!fireWallActive)  // only do something while firewall is not already active
         {
             fireWallActive = true;
             moveWallsInside = true;
         }
-        if(fireWallActive && moveWallsOutside)
-        {
-            moveWallsOutside = false;
-            moveWallsInside = true;
-            fireWallActive = true;
-        }
-        
+             
     }
 
     public void addPowerUp(PowerUpType type)
