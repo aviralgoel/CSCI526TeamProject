@@ -64,6 +64,11 @@ public class CollisionController : MonoBehaviour
             FindObjectOfType<SoundManager>().Play("freeze");
 
         }
+        else if(collision.gameObject.CompareTag("Missile"))
+        {
+            powerUpManager.addPowerUp(PowerUpManager.PowerUpType.Missiles);
+            Debug.Log("Power Up: Missile Collected");
+        }
         // detect collision with good and bad objects
         else if (collision.CompareTag("Good") || collision.CompareTag("Bad"))
         {

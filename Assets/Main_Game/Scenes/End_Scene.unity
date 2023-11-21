@@ -226,6 +226,10 @@ PrefabInstance:
       propertyPath: sceneToLoad
       value: Start_Scene
       objectReference: {fileID: 0}
+    - target: {fileID: 8810299169720683916, guid: f9ba1044021e4604fac7d57da3b27a1b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1f2dbfef7aaa9d94f88dfecc65df6f50, type: 3}
     - target: {fileID: 8810299169720683919, guid: f9ba1044021e4604fac7d57da3b27a1b, type: 3}
       propertyPath: m_SizeDelta.x
       value: 1065.425
