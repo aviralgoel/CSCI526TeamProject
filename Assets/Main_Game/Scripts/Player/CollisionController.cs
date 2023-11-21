@@ -43,6 +43,7 @@ public class CollisionController : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Blackhole"))
         {
+            this.gameObject.GetComponentInParent<ScoreManager>().IncrementScore(-scoreOnKill); // - score
             this.gameObject.GetComponentInParent<ScoreManager>().RespawnPlayer("Blackhole");
 
             FindObjectOfType<SoundManager>().Play("playerdeath");
