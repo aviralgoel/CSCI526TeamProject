@@ -50,6 +50,7 @@ public class InteractiveImage : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
         // Handle click logic here
         // For example, you can add a method to be called on click
+        
         HandleClick();
     }
 

@@ -23,6 +23,8 @@ public class settings_panel : MonoBehaviour, IPointerClickHandler
 
             // Pause the game
             Time.timeScale = 0f;
+
+            FindObjectOfType<SoundManager>().Play("button");
         }
     }
 
@@ -35,6 +37,8 @@ public class settings_panel : MonoBehaviour, IPointerClickHandler
 
             // Resume the game
             Time.timeScale = 1f;
+
+            FindObjectOfType<SoundManager>().Play("button");
         }
     }
 }

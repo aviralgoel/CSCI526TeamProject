@@ -67,6 +67,8 @@ public class Player_Movement : MonoBehaviour
         //defaultTurnSpeedMultiplierValue = (scoreManager.GetTimeActive() < 10f) ? 1f : 1 + scoreManager.GetTimeActive() / 10f;
         if(Input.GetKey(controllingKey) && !isMovementAllowed){
             isMovementAllowed = true;
+
+            FindObjectOfType<SoundManager>().Play("button");
         }
     }
 
@@ -103,6 +105,8 @@ public class Player_Movement : MonoBehaviour
         if(collision.gameObject.CompareTag("Blackhole"))
         {
             transform.position = respawnPosition;
+
+            FindObjectOfType<SoundManager>().Play("Respawn");
         }
     }
 
