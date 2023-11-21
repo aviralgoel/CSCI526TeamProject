@@ -330,6 +330,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 866557261253243390, guid: 83a63d1f28beab94ca00197e4f35846b, type: 3}
+      propertyPath: image
+      value: 
+      objectReference: {fileID: 876016206}
+    - target: {fileID: 866557261253243390, guid: 83a63d1f28beab94ca00197e4f35846b, type: 3}
+      propertyPath: hoverSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a16c91ca6a9a60b4596b57635c8a3e71, type: 3}
+    - target: {fileID: 866557261253243390, guid: 83a63d1f28beab94ca00197e4f35846b, type: 3}
+      propertyPath: sceneToLoad
+      value: Scene3
+      objectReference: {fileID: 0}
+    - target: {fileID: 866557261253243390, guid: 83a63d1f28beab94ca00197e4f35846b, type: 3}
+      propertyPath: normalSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: dad1da2ca9b01964288f231323af48ec, type: 3}
+    - target: {fileID: 866557261253243390, guid: 83a63d1f28beab94ca00197e4f35846b, type: 3}
+      propertyPath: animationDuration
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 866557261253243390, guid: 83a63d1f28beab94ca00197e4f35846b, type: 3}
+      propertyPath: clickScaleMultiplier
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2202385777493762543, guid: 83a63d1f28beab94ca00197e4f35846b, type: 3}
       propertyPath: sceneToLoad
       value: Scene3
@@ -441,6 +465,7 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 2202385777493762543, guid: 83a63d1f28beab94ca00197e4f35846b, type: 3}
     - {fileID: 2202385777493762542, guid: 83a63d1f28beab94ca00197e4f35846b, type: 3}
+    - {fileID: 866557261253243390, guid: 83a63d1f28beab94ca00197e4f35846b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 83a63d1f28beab94ca00197e4f35846b, type: 3}
 --- !u!1 &876016205 stripped
 GameObject:
