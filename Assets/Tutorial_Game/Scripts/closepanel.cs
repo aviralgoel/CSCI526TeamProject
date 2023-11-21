@@ -15,6 +15,8 @@ public class closepanel : MonoBehaviour, IPointerClickHandler
 
             // Pause or resume the game based on the panel's active state
             Time.timeScale = settingsPanel.activeSelf ? 0f : 1f;
+
+            FindObjectOfType<SoundManager>().Play("button");
         }
     }
 }
