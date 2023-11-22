@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Main_Game/Scenes/Aviral.unity
     guid: 7314570b7d5d4df44b9edf732effa2cf
+  - enabled: 1
+    path: Assets/Main_Game/Scenes/End_Scene.unity
+    guid: eb8171f12f00dd04081b0fcceb566b47
   m_configObjects: {}
