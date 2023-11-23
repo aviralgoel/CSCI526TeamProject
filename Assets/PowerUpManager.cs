@@ -113,7 +113,6 @@ public class PowerUpManager : MonoBehaviour
         {
             StartCoroutine(Pause());
 
-
         }
     }
     private void MoveWallsOutside()
@@ -161,8 +160,12 @@ public class PowerUpManager : MonoBehaviour
 
     private void UseFireWalls()
     {
-        fireWallActive = true;
-        moveWallsInside = true;
+        if (!fireWallActive)  // only do something while firewall is not already active
+        {
+            fireWallActive = true;
+            moveWallsInside = true;
+        }
+             
     }
 
     public void addPowerUp(PowerUpType type)
@@ -192,28 +195,7 @@ public class PowerUpManager : MonoBehaviour
         }        
     }
 
-   /* private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("FireWalls"))
-        {
-            addPowerUp(PowerUpType.FireWalls);
-
-            //Debug.Log("we will now search for sound!");
-            FindObjectOfType<SoundManager>().Play("PowerUp");
-
-        }
-        else if (collision.gameObject.CompareTag("Freeze"))
-        {
-            addPowerUp(PowerUpType.Freeeze);
-
-            FindObjectOfType<SoundManager>().Play("PowerUp");
-            
-        }
-        else if (collision.gameObject.CompareTag("Shield"))
-        {
-            addPowerUp(PowerUpType.Shield);
-        }
-    }*/
+   
 
     // co routine to pause 5 second
     IEnumerator Pause()
@@ -246,18 +228,23 @@ public class PowerUpManager : MonoBehaviour
     Vector3 playGroundExtendMin;
     Vector3 playGroundExtendMax;
     SpriteRenderer sr;
-    private void UseMissiles() {
+    private void UseMissiles()
+    {
 
+        sr = HexagonPlayground.GetComponent<SpriteRenderer>();
         Debug.Log("Use Missiles");
         Vector3 randomSpawn = new Vector3(UnityEngine.Random.Range(-2.5f, 2.5f), UnityEngine.Random.Range(-2.5f, 2.5f), 0);
-        if(this.gameObject.CompareTag("Player1")) {
-            GameObject missile = Instantiate(Missiles, this.gameObject.transform.position + new Vector3(0.5f, 0.5f, 0), Quaternion.identity);
+        if (this.gameObject.CompareTag("Player1"))
+        {
+            GameObject missile = Instantiate(Missiles, randomSpawn, Quaternion.identity);
             missile.GetComponent<HomingMissile>().target = Player2.transform;
-        } else {
-            GameObject missile = Instantiate(Missiles, this.gameObject.transform.position + new Vector3(0.5f, 0.5f, 0), Quaternion.identity);
+        }
+        else
+        {
+            GameObject missile = Instantiate(Missiles, randomSpawn, Quaternion.identity);
             missile.GetComponent<HomingMissile>().target = Player1.transform;
         }
     }
-
-
 }
+
+

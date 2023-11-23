@@ -173,6 +173,8 @@ public class GameManager : MonoBehaviour
                 player1ScoreManager.SetPlayerNumber(1);
                 player1ScoreManager.SetPlayerActive(true);
                 UIManager.instance.SetPlayer1PanelnText("waiting for other player to join...");
+
+                FindObjectOfType<SoundManager>().Play("button");
             }
         }
         if (!isPlayerTwoActive) // player 2 has not yet joined the game
@@ -183,6 +185,8 @@ public class GameManager : MonoBehaviour
                 player2ScoreManager.SetPlayerNumber(2);
                 player2ScoreManager.SetPlayerActive(true);
                 UIManager.instance.SetPlayer2PanelText("waiting for other player to join...");
+
+                FindObjectOfType<SoundManager>().Play("button");
             }
         }
         if (isPlayerOneActive && isPlayerTwoActive) // both players have joined but are yet to move

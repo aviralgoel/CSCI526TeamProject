@@ -17,7 +17,7 @@ public class CollectibleBehavior : MonoBehaviour
             collectText.enabled = true; // Show the TextMeshProUI component
             gameObject.SetActive(false);
 
-            // FindObjectOfType<SoundManager>().Play("playerdeath");
+            FindObjectOfType<SoundManager>().Play("good");
 
             // Schedule the method to disable the TextMeshProUI component after popUpDuration seconds
             Invoke("DisableCollectText", popUpDuration);

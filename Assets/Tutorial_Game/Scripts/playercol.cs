@@ -17,6 +17,8 @@ public class playercol : MonoBehaviour
             collectText.enabled = true; // Show the TextMeshProUI component
             gameObject.SetActive(false);
 
+            FindObjectOfType<SoundManager>().Play("playerdeath");
+
             // Schedule the method to disable the TextMeshProUI component after popUpDuration seconds
             Invoke("DisableCollectText", popUpDuration);
         }

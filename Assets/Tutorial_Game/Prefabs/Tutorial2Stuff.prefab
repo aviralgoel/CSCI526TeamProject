@@ -147,8 +147,7 @@ GameObject:
   - component: {fileID: 2202385777493762536}
   - component: {fileID: 2202385777493762537}
   - component: {fileID: 2202385777493762538}
-  - component: {fileID: 2202385777493762543}
-  - component: {fileID: 2202385777493762542}
+  - component: {fileID: 866557261253243390}
   m_Layer: 5
   m_Name: Next_Button
   m_TagString: Untagged
@@ -259,7 +258,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &2202385777493762543
+--- !u!114 &866557261253243390
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -268,39 +267,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2202385777493762532}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4cfd8dc5c3e7234d807725ee2b5e6cf, type: 3}
+  m_Script: {fileID: 11500000, guid: cd97ffb0fed828c45819f170624953af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: tut3
---- !u!114 &2202385777493762542
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2202385777493762532}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 4
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 2202385777493762543}
-          m_TargetAssemblyTypeName: SceneTransition, Assembly-CSharp
-          m_MethodName: LoadScene
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &2202385777686666835
 GameObject:
   m_ObjectHideFlags: 0

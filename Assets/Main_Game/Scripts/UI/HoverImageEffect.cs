@@ -21,6 +21,8 @@ public class HoverImageEffect : MonoBehaviour, IPointerEnterHandler, IPointerExi
     public void OnPointerEnter(PointerEventData eventData)
     {
         image.sprite = hoverSprite;
+        FindObjectOfType<SoundManager>().Play("button");
+
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -31,7 +33,8 @@ public class HoverImageEffect : MonoBehaviour, IPointerEnterHandler, IPointerExi
     public void OnPointerClick(PointerEventData eventData)
     {
         // Load the specified scene when the image is clicked.
-        FindObjectOfType<SoundManager>().Play("button");
+        
         SceneManager.LoadScene(sceneToLoad);
+        //FindObjectOfType<SoundManager>().Play("button");
     }
 }
