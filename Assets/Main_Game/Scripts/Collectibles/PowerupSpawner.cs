@@ -60,7 +60,7 @@ public class PowerupSpawner : MonoBehaviour
 
             foreach (var collider in colliders)
             {
-                if (collider.CompareTag("PowerUp") || collider.CompareTag("Collectible"))
+                if (collider.CompareTag("Good") || collider.CompareTag("Bad") || collider.CompareTag("Freeze") || collider.CompareTag("FireWalls"))
                 {
                     canSpawnHere = false;
                     break;
