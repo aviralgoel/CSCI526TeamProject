@@ -51,12 +51,15 @@ MonoBehaviour:
   playerOne: {fileID: 0}
   playerTwo: {fileID: 0}
   spanwerManager: {fileID: 0}
+  powerSpanwerManager: {fileID: 0}
   losePlayerNumber: 0
   gameWinner: 0
   isGameOver: 0
   isGameStarted: 0
   isGameStarting: 0
   analyticsCollector: {fileID: 1469920200}
+  player1PowerUpManager: {fileID: 0}
+  player2PowerUpManager: {fileID: 0}
   isPlayerOneActive: 0
   isPlayerOneMoving: 0
   isPlayerTwoActive: 0
