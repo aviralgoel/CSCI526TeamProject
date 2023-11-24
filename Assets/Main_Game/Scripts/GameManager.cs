@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using static Unity.VisualScripting.Member;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public struct PlayerAnalyticsData
 {
@@ -87,6 +88,8 @@ public class GameManager : MonoBehaviour
                 UIManager.instance.SetPlayer2PowerUpText("You Win!");
                 player2ScoreManager.SetPlayerActive(false);
                 gameWinner = 2;
+
+                
             }
             else if(losePlayerNumber == 2)
             {
@@ -101,6 +104,15 @@ public class GameManager : MonoBehaviour
 
         if (isGameOver)
         {
+                    // Add this code where you set the win/lose data
+            PlayerPrefs.SetInt("WinningPlayer", gameWinner);
+
+            // Load the new scene
+            SceneManager.LoadScene("End_Scene");
+
+            // Set isGameOver to true
+            isGameOver = true;
+
             if (!isPlayer1DataSent)
             {
                 PlayerAnalyticsData player1Data;

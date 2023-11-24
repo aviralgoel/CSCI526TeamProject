@@ -69,7 +69,13 @@ public class CollisionController : MonoBehaviour
         else if(collision.gameObject.CompareTag("Missile"))
         {
             powerUpManager.addPowerUp(PowerUpManager.PowerUpType.Missiles);
+
             this.gameObject.GetComponentInParent<ScoreManager>().IncrementScore(scoreOnKill); // + score
+
+            
+
+            FindObjectOfType<SoundManager>().Play("missile");
+
 
         }
         // detect collision with good and bad objects

@@ -21,6 +21,7 @@ public class playercol : MonoBehaviour
 
             // Schedule the method to disable the TextMeshProUI component after popUpDuration seconds
             Invoke("DisableCollectText", popUpDuration);
+            
         }
     }
 
