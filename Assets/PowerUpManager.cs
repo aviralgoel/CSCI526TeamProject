@@ -16,7 +16,7 @@ public class PowerUpManager : MonoBehaviour
 
     public PlayerInputController OpponentPlayerController;
 
-    public int scoreOnPowerUp = 2;
+    //public int scoreOnPowerUp = 5;
 
     [HideInInspector] public int numOfFireWallHitByPlayer = 0;
     [HideInInspector] public int numOfFreezeHitByPlayer = 0;
@@ -120,7 +120,7 @@ public class PowerUpManager : MonoBehaviour
 
         for(int i = 0; i < 6; i++)
         {
-            walls[i].transform.GetComponent<SpriteRenderer>().color = Color.white;
+            //walls[i].transform.GetComponent<SpriteRenderer>().color = Color.white;
             walls[i].position = Vector3.MoveTowards(walls[i].position, wallSources[i].position, Time.deltaTime * fireWallMovementSpeed);
         }
         if (Mathf.Approximately(Vector3.Distance(walls[(int)Walls.Bottom].position, wallSources[(int)Walls.Bottom].position), 0) &&
@@ -129,6 +129,11 @@ public class PowerUpManager : MonoBehaviour
         {
             moveWallsOutside = false;
             fireWallActive = false;
+            for (int i = 0; i < 6; i++)
+            {
+                walls[i].transform.GetComponent<SpriteRenderer>().color = Color.white;
+
+            }
         }
 
         UIManager.instance.SetPlayer1PowerUpText("");
@@ -165,6 +170,13 @@ public class PowerUpManager : MonoBehaviour
             fireWallActive = true;
             moveWallsInside = true;
         }
+        else
+        {
+            if(moveWallsInside)
+            {
+
+            }
+        }
              
     }
 
@@ -182,7 +194,7 @@ public class PowerUpManager : MonoBehaviour
             {
                 UIManager.instance.SetPlayer2PowerUpText("You picked up " + type.ToString());
             }
-            scoreManager.IncrementScore(scoreOnPowerUp);
+            //scoreManager.IncrementScore(scoreOnPowerUp);
         }
         
     }
