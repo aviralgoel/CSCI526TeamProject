@@ -4,9 +4,10 @@ public class CollisionController : MonoBehaviour
 {
 
     //public ScoreManager scoreManager;
-    public int scoreOnKill = 4;
+    public int scoreOnKill = 10;
     public int scoreOnGreen = 2;
     public int scoreOnRed = -2;
+    public int powerUpScore = 4;
 
     public ScoreManager scoreManagerPlayer1;
     public ScoreManager scoreManagerPlayer2;
@@ -52,23 +53,24 @@ public class CollisionController : MonoBehaviour
         else if(collision.gameObject.CompareTag("FireWalls"))
         {
             powerUpManager.addPowerUp(PowerUpManager.PowerUpType.FireWalls);
-            Debug.Log("Power Up: Firewall Collected");
-
+    
             FindObjectOfType<SoundManager>().Play("firewall");
+            this.gameObject.GetComponentInParent<ScoreManager>().IncrementScore(scoreOnKill); // + score
 
         }
         else if(collision.gameObject.CompareTag("Freeze"))
         {
             powerUpManager.addPowerUp(PowerUpManager.PowerUpType.Freeze);
             Debug.Log("Power Up: Freeze Collected");
-
             FindObjectOfType<SoundManager>().Play("freeze");
+            this.gameObject.GetComponentInParent<ScoreManager>().IncrementScore(scoreOnKill); // + score
 
         }
         else if(collision.gameObject.CompareTag("Missile"))
         {
             powerUpManager.addPowerUp(PowerUpManager.PowerUpType.Missiles);
-            Debug.Log("Power Up: Missile Collected");
+            this.gameObject.GetComponentInParent<ScoreManager>().IncrementScore(scoreOnKill); // + score
+
         }
         // detect collision with good and bad objects
         else if (collision.CompareTag("Good") || collision.CompareTag("Bad"))

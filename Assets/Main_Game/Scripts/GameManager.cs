@@ -228,6 +228,8 @@ public class GameManager : MonoBehaviour
     IEnumerator BeginTheGame()
     {   
         CountDownAudioSource.Play();
+        //Debug.Log("Game Begins in 3");
+        Time.timeScale = 1.0f;
         //Wait Until Sound has finished playing
         for (int i = (int)CountDownAudioSource.clip.length; i >= 0; i--)
         {
