@@ -3,6 +3,7 @@ using TMPro;
 using static Unity.VisualScripting.Member;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 public struct PlayerAnalyticsData
 {
@@ -86,7 +87,8 @@ public class GameManager : MonoBehaviour
             {
                 UIManager.instance.SetPlayer1PowerUpText("You Lose!");
                 UIManager.instance.SetPlayer2PowerUpText("You Win!");
-                player2ScoreManager.SetPlayerActive(false);
+                //player2ScoreManager.SetPlayerActive(false);
+                playerTwo.GetComponent<PlayerInputController>().isMovementAllowed = false;
                 gameWinner = 2;
 
                 
@@ -95,7 +97,8 @@ public class GameManager : MonoBehaviour
             {
                 UIManager.instance.SetPlayer2PowerUpText("You Lose!");
                 UIManager.instance.SetPlayer1PowerUpText("You Win!");
-                player1ScoreManager.SetPlayerActive(false);
+                //player1ScoreManager.SetPlayerActive(false);
+                playerOne.GetComponent<PlayerInputController>().isMovementAllowed = false;
                 gameWinner = 1;
             }
             isGameOver = true;
@@ -108,7 +111,7 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("WinningPlayer", gameWinner);
 
             // Load the new scene
-            SceneManager.LoadScene("End_Scene");
+            //SceneManager.LoadScene("End_Scene");
 
             // Set isGameOver to true
             isGameOver = true;
