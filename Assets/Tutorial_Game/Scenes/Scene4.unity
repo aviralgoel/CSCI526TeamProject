@@ -918,6 +918,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   messageToShow: Collision Detected!
   messageText: {fileID: 2143330487}
+--- !u!114 &1116252949 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6372202887349013516, guid: 61d1a35662ef163438e8c1a32b2d5dcd, type: 3}
+  m_PrefabInstance: {fileID: 4158575368652609721}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1158026728
 GameObject:
   m_ObjectHideFlags: 0
@@ -1343,6 +1354,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83323f3b126144843ba12b861c469455, type: 3}
+--- !u!114 &1748290446 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2105426719487623854, guid: 61d1a35662ef163438e8c1a32b2d5dcd, type: 3}
+  m_PrefabInstance: {fileID: 4158575368652609721}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2029910654 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4158575368527651527, guid: 61d1a35662ef163438e8c1a32b2d5dcd, type: 3}
@@ -1494,6 +1516,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collectText: {fileID: 2059595252}
   popUpDuration: 3
+  HealthBar: {fileID: 1748290446}
 --- !u!1 &2131913952
 GameObject:
   m_ObjectHideFlags: 0
@@ -1756,6 +1779,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collectText: {fileID: 2029910654}
   popUpDuration: 3
+  HealthBar: {fileID: 1116252949}
 --- !u!1 &2143330485
 GameObject:
   m_ObjectHideFlags: 0
@@ -1787,7 +1811,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1036071374}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
