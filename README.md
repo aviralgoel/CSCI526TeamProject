@@ -10,3 +10,21 @@ Strategize, maneuver, and unleash the power of cosmic artifacts to outmaneuver y
 Only one player can defy the cosmic odds and emerge victorious. Be the one to outsmart the black hole's pull and your opponent in this high-stakes, gravity-defying race.
 
 
+Mechanics:-
+1. Player Movement Control Mechanic
+2. BlackHole Concept
+3. Freeze Mechanic
+4. Fire Walls Mechanic
+5. Slice ChargeUp Mechanic
+6. Players can shoot other players/collectibles out of the way using missiles
+7. Player-vs-Player Collision
+8. Points Collectible
+
+
+Contributors:-
+1. Sharan Murli
+2. Rahul Aggarwal
+3. Aviral Goel
+4. Shweta Kumari
+5. Niranjanaa Mohanbabu
+6. Kang Pin Chan
