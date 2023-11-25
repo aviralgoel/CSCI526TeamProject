@@ -21,6 +21,8 @@ public class ScoreManager : MonoBehaviour
     public List<GameObject> walls = new List<GameObject>();
     public PowerUpManager PowerUpManagerPlayer1;
     public PowerUpManager PowerUpManagerPlayer2;
+    public float myFirstDeathTime = 0;
+    private bool isMyFirstDeath = false;
 
     public Image HealthBar;
     public float TotalHealth;
@@ -165,7 +167,12 @@ public class ScoreManager : MonoBehaviour
     {   
         // analytics collector
         if(tagOfKiller == "Blackhole")
-        {
+        {   
+            if(!isMyFirstDeath) 
+            {
+                myFirstDeathTime = Time.time;
+                isMyFirstDeath = true;
+            }
             numOfTimesKilledByBlackHole++;
             //ReducePlayerLife();
         }
