@@ -85,8 +85,8 @@ MonoBehaviour:
     volume: 1
     pitch: 2
     source: {fileID: 0}
-  - name: firewall
-    clip: {fileID: 8300000, guid: 3fc58091817ca024c817de7026e0c451, type: 3}
+  - name: missile
+    clip: {fileID: 8300000, guid: 888b3cfe9f713ad4b85f592a28e7ae54, type: 3}
     volume: 1
     pitch: 2
     source: {fileID: 0}

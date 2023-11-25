@@ -16,7 +16,7 @@ public class PowerUpManager : MonoBehaviour
 
     public PlayerInputController OpponentPlayerController;
 
-    public int scoreOnPowerUp = 2;
+    //public int scoreOnPowerUp = 5;
 
     [HideInInspector] public int numOfFireWallHitByPlayer = 0;
     [HideInInspector] public int numOfFreezeHitByPlayer = 0;
@@ -106,8 +106,7 @@ public class PowerUpManager : MonoBehaviour
             walls[i].transform.GetComponent<SpriteRenderer>().color = Color.red;
         }
 
-        UIManager.instance.SetPlayer1PowerUpText("Avoid Red Walls!");
-        UIManager.instance.SetPlayer2PowerUpText("Avoid Red Walls!");
+        
         if (Mathf.Approximately(Vector3.Distance(walls[(int)Walls.Bottom].position, wallDestinations[(int)Walls.Bottom].position),0) &&
             Mathf.Approximately(Vector3.Distance(walls[(int)Walls.Top].position, wallDestinations[(int)Walls.Top].position),0))
         {
@@ -120,7 +119,7 @@ public class PowerUpManager : MonoBehaviour
 
         for(int i = 0; i < 6; i++)
         {
-            walls[i].transform.GetComponent<SpriteRenderer>().color = Color.white;
+            //walls[i].transform.GetComponent<SpriteRenderer>().color = Color.white;
             walls[i].position = Vector3.MoveTowards(walls[i].position, wallSources[i].position, Time.deltaTime * fireWallMovementSpeed);
         }
         if (Mathf.Approximately(Vector3.Distance(walls[(int)Walls.Bottom].position, wallSources[(int)Walls.Bottom].position), 0) &&
@@ -129,10 +128,12 @@ public class PowerUpManager : MonoBehaviour
         {
             moveWallsOutside = false;
             fireWallActive = false;
-        }
+            for (int i = 0; i < 6; i++)
+            {
+                walls[i].transform.GetComponent<SpriteRenderer>().color = Color.white;
 
-        UIManager.instance.SetPlayer1PowerUpText("");
-        UIManager.instance.SetPlayer2PowerUpText("");
+            }
+        }
 
     }
 
@@ -182,7 +183,7 @@ public class PowerUpManager : MonoBehaviour
             {
                 UIManager.instance.SetPlayer2PowerUpText("You picked up " + type.ToString());
             }
-            scoreManager.IncrementScore(scoreOnPowerUp);
+            //scoreManager.IncrementScore(scoreOnPowerUp);
         }
         
     }
@@ -204,6 +205,7 @@ public class PowerUpManager : MonoBehaviour
         yield return new WaitForSeconds(fireWallDuration);
         moveWallsInside = false;
         moveWallsOutside = true;
+
 
     }
 	private void UseFreeze()
@@ -232,17 +234,20 @@ public class PowerUpManager : MonoBehaviour
     {
 
         sr = HexagonPlayground.GetComponent<SpriteRenderer>();
-        Debug.Log("Use Missiles");
-        Vector3 randomSpawn = new Vector3(UnityEngine.Random.Range(-2.5f, 2.5f), UnityEngine.Random.Range(-2.5f, 2.5f), 0);
+        // Vector3 randomSpawn = new Vector3(UnityEngine.Random.Range(-2.5f, 2.5f), UnityEngine.Random.Range(-2.5f, 2.5f), 0);
+        Vector3 pos = this.gameObject.transform.position + new Vector3(-0.5f, -0.5f, 0);
         if (this.gameObject.CompareTag("Player1"))
         {
-            GameObject missile = Instantiate(Missiles, randomSpawn, Quaternion.identity);
+            GameObject missile = Instantiate(Missiles, pos, Quaternion.identity);
             missile.GetComponent<HomingMissile>().target = Player2.transform;
+            UIManager.instance.SetPlayer2PowerUpText("Dodge Opponent Missile");
+
         }
         else
         {
-            GameObject missile = Instantiate(Missiles, randomSpawn, Quaternion.identity);
+            GameObject missile = Instantiate(Missiles, pos, Quaternion.identity);
             missile.GetComponent<HomingMissile>().target = Player1.transform;
+            UIManager.instance.SetPlayer1PowerUpText("Dodge Opponent Missile");
         }
     }
 }
