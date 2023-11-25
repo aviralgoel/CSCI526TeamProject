@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerInputController : MonoBehaviour
 {
     public int playerNumber;    
-    Rigidbody2D rb;
+    public Rigidbody2D rb;
     Vector3 direction;
     Quaternion targetRotation;
     public bool isMovementAllowed;
