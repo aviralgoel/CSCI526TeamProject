@@ -106,8 +106,7 @@ public class PowerUpManager : MonoBehaviour
             walls[i].transform.GetComponent<SpriteRenderer>().color = Color.red;
         }
 
-        UIManager.instance.SetPlayer1PowerUpText("Avoid Red Walls!");
-        UIManager.instance.SetPlayer2PowerUpText("Avoid Red Walls!");
+        
         if (Mathf.Approximately(Vector3.Distance(walls[(int)Walls.Bottom].position, wallDestinations[(int)Walls.Bottom].position),0) &&
             Mathf.Approximately(Vector3.Distance(walls[(int)Walls.Top].position, wallDestinations[(int)Walls.Top].position),0))
         {
@@ -135,9 +134,6 @@ public class PowerUpManager : MonoBehaviour
 
             }
         }
-
-        UIManager.instance.SetPlayer1PowerUpText("");
-        UIManager.instance.SetPlayer2PowerUpText("");
 
     }
 
@@ -169,13 +165,6 @@ public class PowerUpManager : MonoBehaviour
         {
             fireWallActive = true;
             moveWallsInside = true;
-        }
-        else
-        {
-            if(moveWallsInside)
-            {
-
-            }
         }
              
     }
@@ -217,6 +206,7 @@ public class PowerUpManager : MonoBehaviour
         moveWallsInside = false;
         moveWallsOutside = true;
 
+
     }
 	private void UseFreeze()
     {
@@ -244,18 +234,20 @@ public class PowerUpManager : MonoBehaviour
     {
 
         sr = HexagonPlayground.GetComponent<SpriteRenderer>();
-        Debug.Log("Use Missiles");
         // Vector3 randomSpawn = new Vector3(UnityEngine.Random.Range(-2.5f, 2.5f), UnityEngine.Random.Range(-2.5f, 2.5f), 0);
         Vector3 pos = this.gameObject.transform.position + new Vector3(-0.5f, -0.5f, 0);
         if (this.gameObject.CompareTag("Player1"))
         {
             GameObject missile = Instantiate(Missiles, pos, Quaternion.identity);
             missile.GetComponent<HomingMissile>().target = Player2.transform;
+            UIManager.instance.SetPlayer2PowerUpText("Dodge Opponent Missile");
+
         }
         else
         {
             GameObject missile = Instantiate(Missiles, pos, Quaternion.identity);
             missile.GetComponent<HomingMissile>().target = Player1.transform;
+            UIManager.instance.SetPlayer1PowerUpText("Dodge Opponent Missile");
         }
     }
 }

@@ -44,6 +44,8 @@ public class GameManager : MonoBehaviour
 
     private ScoreManager player1ScoreManager;
     private ScoreManager player2ScoreManager;
+    private GameObject playerOneWinningFrame;
+    private GameObject playerTwoWinningFrame;
     private static System.Random random = new System.Random();
 
     public PowerUpManager player1PowerUpManager;
@@ -74,6 +76,8 @@ public class GameManager : MonoBehaviour
         analyticsCollector = GetComponent<AnalyticsCollector>();
         UIManager.instance.SetPlayer1PanelnText("Press L to Join");
         UIManager.instance.SetPlayer2PanelText("Press A to Join");
+        playerOneWinningFrame = playerOne.transform.Find("WinningFrame").gameObject;
+        playerTwoWinningFrame = playerTwo.transform.Find("WinningFrame").gameObject;
     }
 
     void Update()
@@ -89,7 +93,9 @@ public class GameManager : MonoBehaviour
                 UIManager.instance.SetPlayer2PowerUpText("You Win!");
                 //player2ScoreManager.SetPlayerActive(false);
                 playerTwo.GetComponent<PlayerInputController>().isMovementAllowed = false;
+                playerTwo.GetComponent<PlayerInputController>().rb.velocity = Vector3.zero;
                 gameWinner = 2;
+                playerTwoWinningFrame.SetActive(true);
 
                 
             }
@@ -99,7 +105,9 @@ public class GameManager : MonoBehaviour
                 UIManager.instance.SetPlayer1PowerUpText("You Win!");
                 //player1ScoreManager.SetPlayerActive(false);
                 playerOne.GetComponent<PlayerInputController>().isMovementAllowed = false;
+                playerOne.GetComponent<PlayerInputController>().rb.velocity = Vector3.zero;
                 gameWinner = 1;
+                playerOneWinningFrame.SetActive(true);
             }
             isGameOver = true;
             
