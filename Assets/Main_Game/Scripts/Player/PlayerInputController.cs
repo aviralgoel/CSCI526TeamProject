@@ -67,6 +67,10 @@ public class PlayerInputController : MonoBehaviour
         {
             InputController();
         }
+        else
+        {
+            rb.velocity = Vector3.zero;
+        }
         
 
     }
