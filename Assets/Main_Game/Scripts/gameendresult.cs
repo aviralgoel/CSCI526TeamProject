@@ -1,4 +1,4 @@
-// GameResultManager.cs
+
 using UnityEngine;
 using TMPro;
 
@@ -8,10 +8,10 @@ public class gameendresult : MonoBehaviour
 
     void Start()
     {
-        // Retrieve the winning player from PlayerPrefs
+       
         int winningPlayer = PlayerPrefs.GetInt("WinningPlayer", 0);
 
-        // Display the result in the UI
+     
         if (winningPlayer == 1)
         {
             resultText.text = "Player 1 Wins!";
@@ -20,10 +20,7 @@ public class gameendresult : MonoBehaviour
         {
             resultText.text = "Player 2 Wins!";
         }
-        else
-        {
-            resultText.text = "It's a draw!";
-        }
+      
 
         // Clear PlayerPrefs for cleanliness (optional)
         PlayerPrefs.DeleteKey("WinningPlayer");
