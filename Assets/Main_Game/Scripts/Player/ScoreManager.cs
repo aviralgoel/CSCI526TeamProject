@@ -171,10 +171,13 @@ public class ScoreManager : MonoBehaviour
         {
             numOfTimesKilledByBlackHole++;
             StartCoroutine(RespawnAfterDelay(5f));
+            return;
         }
         else if (tagOfKiller == "OtherPlayer")
         {
             numOfTimesKilledByPlayer++;
+            StartCoroutine(RespawnAfterDelay(5f));
+            return;
             //ReducePlayerLife();
         }
         else if (tagOfKiller == "Good" || tagOfKiller == "Bad")
@@ -190,6 +193,7 @@ public class ScoreManager : MonoBehaviour
             }
             return;
         }
+        transform.position = respawnPosition;
     }
 
     IEnumerator RespawnAfterDelay(float delay)
