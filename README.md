@@ -19,6 +19,8 @@ Only one player can defy the cosmic odds and emerge victorious. Be the one to ou
 
 The ultimate goal of the game is to be the last player standing, defying the relentless pull of the black hole and outlasting your opponent. To achieve victory, you must either survive until your opponent succumbs to the gravitational force or strategically decrease your opponent's health using collectibles and power-ups.
 
+![202311031225](https://github.com/aviralgoel/CSCI526TeamProject/assets/45029621/708fab7c-aa1f-4150-b13f-3f876addc415)
+
 **Mechanics:**
 1. Player Movement Control Mechanic
 2. BlackHole Concept
