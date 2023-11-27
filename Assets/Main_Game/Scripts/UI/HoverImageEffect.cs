@@ -21,7 +21,7 @@ public class HoverImageEffect : MonoBehaviour, IPointerEnterHandler, IPointerExi
     public void OnPointerEnter(PointerEventData eventData)
     {
         image.sprite = hoverSprite;
-        FindObjectOfType<SoundManager>().Play("button");
+        // FindObjectOfType<SoundManager>().Play("button");
 
     }
 
