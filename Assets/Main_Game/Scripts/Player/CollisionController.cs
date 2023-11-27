@@ -54,8 +54,10 @@ public class CollisionController : MonoBehaviour
         {
             powerUpManager.addPowerUp(PowerUpManager.PowerUpType.FireWalls);
     
-            FindObjectOfType<SoundManager>().Play("firewall");
+            // FindObjectOfType<SoundManager>().Play("firewall");
             this.gameObject.GetComponentInParent<ScoreManager>().IncrementScore(scoreOnKill); // + score
+
+            FindObjectOfType<SoundManager>().Play("firewall");
 
         }
         else if(collision.gameObject.CompareTag("Freeze"))
