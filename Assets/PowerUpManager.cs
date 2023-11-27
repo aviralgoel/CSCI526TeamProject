@@ -246,7 +246,7 @@ public class PowerUpManager : MonoBehaviour
         sr = HexagonPlayground.GetComponent<SpriteRenderer>();
         Debug.Log("Use Missiles");
         // Vector3 randomSpawn = new Vector3(UnityEngine.Random.Range(-2.5f, 2.5f), UnityEngine.Random.Range(-2.5f, 2.5f), 0);
-        Vector3 pos = this.gameObject.transform.position + new Vector3(-0.5f, -0.5f, 0);
+        Vector3 pos = new Vector3(0, 0, 0);
         if (this.gameObject.CompareTag("Player1"))
         {
             GameObject missile = Instantiate(Missiles, pos, Quaternion.identity);
