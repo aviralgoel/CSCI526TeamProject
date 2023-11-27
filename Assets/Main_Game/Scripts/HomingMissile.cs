@@ -57,10 +57,16 @@ public class HomingMissile : MonoBehaviour
         {
             col.gameObject.GetComponent<ScoreManager>().IncrementScore(-10);
             Destroy(gameObject);
+
+            FindObjectOfType<SoundManager>().Play("playerdeath");
+
         }
         else if(col.gameObject.CompareTag("Player2")) {
             col.gameObject.GetComponent<ScoreManager>().IncrementScore(-10);
             Destroy(gameObject);
+
+            FindObjectOfType<SoundManager>().Play("playerdeath");
+
         }
         //spriteMove = -0.1f;
     }
