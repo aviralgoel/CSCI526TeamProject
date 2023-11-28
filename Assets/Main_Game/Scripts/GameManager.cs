@@ -20,6 +20,7 @@ public struct PlayerAnalyticsData
     public int FirewallPowerUP;
     public int FreezePowerUP;
     public int TotalPowerUPs;
+    public float FirstDeathTime;
 }
 
 public class GameManager : MonoBehaviour
@@ -115,8 +116,6 @@ public class GameManager : MonoBehaviour
 
         //Send players data on game end condition
         if (isGameOver)
-        {
-            //Condition for sending Player1 data
         {  PlayerPrefs.SetInt("WinningPlayer", gameWinner);
 
             // Invoke the LoadScene method with a delay of 3 seconds
@@ -125,6 +124,7 @@ public class GameManager : MonoBehaviour
             // Set isGameOver to true
             isGameOver = true;
 
+            //Condition for sending Player1 data
             if (!isPlayer1DataSent)
             {
                 PlayerAnalyticsData player1Data;
@@ -147,12 +147,12 @@ public class GameManager : MonoBehaviour
                     BadCollectiblesCollected = player1ScoreManager.numOfBadCollectiblesCollected,
                     FirewallPowerUP = player1PowerUpManager.numOfFireWallHitByPlayer,
                     FreezePowerUP = player1PowerUpManager.numOfFreezeHitByPlayer, 
-                    TotalPowerUPs = powerSpanwerManager.numberofpowerupsspawned
+                    TotalPowerUPs = powerSpanwerManager.numberofpowerupsspawned,
+                    FirstDeathTime = player1ScoreManager.myFirstDeathTime
                 };
                 analyticsCollector.SendPlayerData(player1Data, 1);
                 isPlayer1DataSent = true;
             }
-
             //Condition for sending Player2 data
             if (!isPlayer2DataSent)
             {
@@ -176,7 +176,8 @@ public class GameManager : MonoBehaviour
                     BadCollectiblesCollected = player2ScoreManager.numOfBadCollectiblesCollected,
                     FirewallPowerUP = player2PowerUpManager.numOfFireWallHitByPlayer,
                     FreezePowerUP = player2PowerUpManager.numOfFreezeHitByPlayer, 
-                    TotalPowerUPs = powerSpanwerManager.numberofpowerupsspawned
+                    TotalPowerUPs = powerSpanwerManager.numberofpowerupsspawned,
+                    FirstDeathTime = player1ScoreManager.myFirstDeathTime
                 };
                 analyticsCollector.SendPlayerData(player2Data, 2);
                 isPlayer2DataSent = true;

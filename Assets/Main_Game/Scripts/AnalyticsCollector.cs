@@ -21,6 +21,7 @@ public class AnalyticsCollector : MonoBehaviour
     private string player1FireWallCountFieldKey = "entry.433277146";
     private string player1FreezeCountFormFieldKey = "entry.306319702";
     private string player1TotalPowerUpFormFieldKey = "entry.510534800";
+    private string player1FirstDeathFormFieldKey = "entry.1239078172";
 
     private string player2SuccessRateFormFieldKey = "entry.1425639501";
     private string player2KilledByBlackHoleFormFieldKey = "entry.634025400";
@@ -30,6 +31,7 @@ public class AnalyticsCollector : MonoBehaviour
     private string player2FireWallCountFieldKey = "entry.535421147";
     private string player2FreezeCountFormFieldKey = "entry.2044412748";
     private string player2TotalPowerUpFormFieldKey = "entry.1394166838";
+    private string player2FirstDeathFormFieldKey = "entry.665824447";
 
     
     // Function for sending Player 1 and Player 2 data
@@ -43,11 +45,12 @@ public class AnalyticsCollector : MonoBehaviour
         string firewallCountKey = (playerNumber == 1) ? player1FireWallCountFieldKey : player2FireWallCountFieldKey;
         string freezeCountKey = (playerNumber == 1) ? player1FreezeCountFormFieldKey : player2FreezeCountFormFieldKey;
         string totalPowerUpCountKey = (playerNumber == 1) ? player1TotalPowerUpFormFieldKey : player2TotalPowerUpFormFieldKey;
+        string firstDeathCountKey = (playerNumber == 1) ? player1FirstDeathFormFieldKey : player2FirstDeathFormFieldKey;
 
-        StartCoroutine(Post(playerData, playerSessionFormFieldKey, playerWinnerFormFieldKey, playerActiveTimeFormFieldKey, playerTotalCollectibleFormFieldKey, playerSuccessRate, killedByBlackHoleKey, killedByPlayerKey, badCollectibleCountKey, goodCollectibleCountKey, firewallCountKey, freezeCountKey, totalPowerUpCountKey));
+        StartCoroutine(Post(playerData, playerSessionFormFieldKey, playerWinnerFormFieldKey, playerActiveTimeFormFieldKey, playerTotalCollectibleFormFieldKey, playerSuccessRate, killedByBlackHoleKey, killedByPlayerKey, badCollectibleCountKey, goodCollectibleCountKey, firewallCountKey, freezeCountKey, totalPowerUpCountKey, firstDeathCountKey));
     }
 
-    private IEnumerator Post(PlayerAnalyticsData playerData, string playerSessionFormFieldKey, string playerWinnerFormFieldKey, string playerActiveTimeFormFieldKey, string playerTotalCollectibleFormFieldKey, string playerSuccessRate, string killedByBlackHoleKey, string killedByPlayerKey, string badCollectibleCountKey, string goodCollectibleCountKey, string firewallCountKey, string freezeCountKey, string totalPowerUpCountKey)
+    private IEnumerator Post(PlayerAnalyticsData playerData, string playerSessionFormFieldKey, string playerWinnerFormFieldKey, string playerActiveTimeFormFieldKey, string playerTotalCollectibleFormFieldKey, string playerSuccessRate, string killedByBlackHoleKey, string killedByPlayerKey, string badCollectibleCountKey, string goodCollectibleCountKey, string firewallCountKey, string freezeCountKey, string totalPowerUpCountKey, string firstDeathCountKey)
     {
         WWWForm form = new WWWForm();
         form.AddField(playerSessionFormFieldKey, playerData.SessionID);
@@ -63,6 +66,7 @@ public class AnalyticsCollector : MonoBehaviour
         form.AddField(firewallCountKey, playerData.FirewallPowerUP);
         form.AddField(freezeCountKey, playerData.FreezePowerUP);
         form.AddField(totalPowerUpCountKey, playerData.TotalPowerUPs);
+        form.AddField(firstDeathCountKey, playerData.FirstDeathTime.ToString());
 
         using (UnityWebRequest www = UnityWebRequest.Post(googleFormURL, form))
         {
