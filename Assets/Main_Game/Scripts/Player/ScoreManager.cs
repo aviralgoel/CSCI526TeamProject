@@ -6,7 +6,7 @@ using Unity.VisualScripting;
 using System.Collections;
 
 public class ScoreManager : MonoBehaviour
-{   
+{
     [SerializeField] private float score = 100;
     [SerializeField] private float timeActive = 0;
     [SerializeField] private int playerNumber;
@@ -23,10 +23,10 @@ public class ScoreManager : MonoBehaviour
     public PowerUpManager PowerUpManagerPlayer1;
     public PowerUpManager PowerUpManagerPlayer2;
     public PlayerInputController player;
+    public Slider respawnSliderPrefab; 
 
     public Image HealthBar;
     public float TotalHealth;
-    
     [SerializeField]
     private GameManager gameManager;
 
@@ -49,23 +49,24 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isPlayerActive)
+        if (isPlayerActive)
         {
             UpdateTime();
         }
 
-        if(gameManager.isGameStarted) {
-            score -= (Time.deltaTime/1.2f);
+        if (gameManager.isGameStarted)
+        {
+            score -= (Time.deltaTime / 1.2f);
             HealthBar.fillAmount = score / TotalHealth;
-            if(score <= 0)
+            if (score <= 0)
             {
                 score = 0;
 
-                if(!gameManager.isGameOver)
+                if (!gameManager.isGameOver)
                 {
                     GameOver();
                 }
-                
+
             }
             isPlayerActive = true;
         }
@@ -73,20 +74,20 @@ public class ScoreManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
-        if(collision.gameObject.tag == "SpeedUp" && !isInsideSpeedUp)
-        {   
+
+        if (collision.gameObject.tag == "SpeedUp" && !isInsideSpeedUp)
+        {
 
             isInsideSpeedUp = true;
-            if(collision.gameObject.GetComponent<SpeedUp>().beginHealing)
+            if (collision.gameObject.GetComponent<SpeedUp>().beginHealing)
             {
                 InvokeRepeating("HealOverTime", 0.1f, 1.0f);
             }
-            else if(collision.gameObject.GetComponent<SpeedUp>().beginDamage)
+            else if (collision.gameObject.GetComponent<SpeedUp>().beginDamage)
             {
                 InvokeRepeating("DamageOverTime", 0.1f, 1.0f);
             }
-            
+
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -98,7 +99,7 @@ public class ScoreManager : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "SpeedUp" && isInsideSpeedUp)
+        if (collision.gameObject.tag == "SpeedUp" && isInsideSpeedUp)
         {
             isInsideSpeedUp = false;
             if (collision.gameObject.GetComponent<SpeedUp>().beginHealing)
@@ -109,13 +110,13 @@ public class ScoreManager : MonoBehaviour
             {
                 CancelInvoke("DamageOverTime");
             }
-            
+
         }
     }
 
     void showDamage(string text)
     {
-        if(floatingText)
+        if (floatingText)
         {
             GameObject prefab = Instantiate(floatingText, transform.position + new Vector3(0.5f, 1.5f, 0), Quaternion.identity);
             prefab.GetComponentInChildren<TextMesh>().text = text;
@@ -126,13 +127,13 @@ public class ScoreManager : MonoBehaviour
     {
         timeActive += Time.deltaTime;
     }
-    
+
     public void SetPlayerActive(bool isActive)
     {
         this.gameObject.SetActive(isActive);
         //Debug.Log("Player " + playerNumber + " has joined the game");
         isPlayerActive = isActive;
-        
+
     }
     public bool IsPlayerActive()
     {
@@ -150,7 +151,7 @@ public class ScoreManager : MonoBehaviour
     {
         return (int)score;
     }
-    public float GetTimeActive() 
+    public float GetTimeActive()
     {
         return timeActive;
     }
@@ -158,8 +159,8 @@ public class ScoreManager : MonoBehaviour
     {
         // Increment the score when a good collectible is collected
         string damage;
-        if(amount < 0) damage = amount.ToString();
-        else damage = "+" +  amount.ToString();
+        if (amount < 0) damage = amount.ToString();
+        else damage = "+" + amount.ToString();
         showDamage(damage);
         score += amount;
         HealthBar.fillAmount = score / TotalHealth;
@@ -170,12 +171,14 @@ public class ScoreManager : MonoBehaviour
         if (tagOfKiller == "Blackhole")
         {
             numOfTimesKilledByBlackHole++;
+             //respawnSliderInstance = Instantiate(respawnSliderPrefab, transform.position + Vector3.up * 2f, Quaternion.identity);
             StartCoroutine(RespawnAfterDelay(5f));
             return;
         }
         else if (tagOfKiller == "OtherPlayer")
         {
             numOfTimesKilledByPlayer++;
+            //respawnSliderInstance = Instantiate(respawnSliderPrefab, transform.position + Vector3.up * 2f, Quaternion.identity);
             StartCoroutine(RespawnAfterDelay(5f));
             return;
             //ReducePlayerLife();
@@ -200,14 +203,28 @@ public class ScoreManager : MonoBehaviour
     {
         transform.position = respawnPosition;
         player.isMovementAllowed = false;
-        yield return new WaitForSeconds(delay);
+        float countdown = delay;
+        respawnSliderPrefab.gameObject.SetActive(true);
+        respawnSliderPrefab.value = countdown;
+        //respawnSliderInstance.transform.position = transform.position ;
+        while (countdown > 0)
+        {
+         
+            //Debug.Log(countdown);
+
+            yield return new WaitForSeconds(1f);
+            countdown--;
+            respawnSliderPrefab.value = countdown;
+ 
+        }
+        respawnSliderPrefab.gameObject.SetActive(false);
         player.isMovementAllowed = true;
 
     }
 
 
-    public void GameOver() 
-    {   
+    public void GameOver()
+    {
         // sstop the player
         isPlayerActive = false;
         this.gameObject.SetActive(false);
@@ -227,7 +244,7 @@ public class ScoreManager : MonoBehaviour
     private void DamageOverTime()
     {
         FindObjectOfType<SoundManager>().Play("bad");
-        IncrementScore((int)(damageAmountPerSecond)*-1);
+        IncrementScore((int)(damageAmountPerSecond) * -1);
     }
 
 
