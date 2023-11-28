@@ -114,12 +114,10 @@ public class GameManager : MonoBehaviour
         }
 
         if (isGameOver)
-        {
-                    // Add this code where you set the win/lose data
-            PlayerPrefs.SetInt("WinningPlayer", gameWinner);
+        {  PlayerPrefs.SetInt("WinningPlayer", gameWinner);
 
-            // Load the new scene
-            //SceneManager.LoadScene("End_Scene");
+            // Invoke the LoadScene method with a delay of 3 seconds
+            Invoke("LoadEndScene", 3f);
 
             // Set isGameOver to true
             isGameOver = true;
@@ -182,6 +180,12 @@ public class GameManager : MonoBehaviour
         }
 
 
+    }
+
+     void LoadEndScene()
+    {
+        // Load the new scene
+        SceneManager.LoadScene("End_Scene");
     }
 
     private void HasPlayersJoined()

@@ -22,8 +22,13 @@ public class ScoreManager : MonoBehaviour
     public List<GameObject> walls = new List<GameObject>();
     public PowerUpManager PowerUpManagerPlayer1;
     public PowerUpManager PowerUpManagerPlayer2;
+
+    public float myFirstDeathTime = 0;
+    private bool isMyFirstDeath = false;
+
     public PlayerInputController player;
     public Slider respawnSliderPrefab; 
+
 
     public Image HealthBar;
     public float TotalHealth;
@@ -168,8 +173,18 @@ public class ScoreManager : MonoBehaviour
     public void RespawnPlayer(string tagOfKiller)
     {
         // analytics collector
+
+        if(tagOfKiller == "Blackhole")
+        {   
+            if(!isMyFirstDeath) 
+            {
+                myFirstDeathTime = Time.time;
+                isMyFirstDeath = true;
+            }
+
         if (tagOfKiller == "Blackhole")
         {
+
             numOfTimesKilledByBlackHole++;
              //respawnSliderInstance = Instantiate(respawnSliderPrefab, transform.position + Vector3.up * 2f, Quaternion.identity);
             StartCoroutine(RespawnAfterDelay(5f));
