@@ -18,6 +18,7 @@ public class HomingMissile : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        Destroy(gameObject, 7f);
     }
 
     // Update is called once per frame
