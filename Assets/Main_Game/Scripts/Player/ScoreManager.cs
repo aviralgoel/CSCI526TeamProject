@@ -182,27 +182,15 @@ public class ScoreManager : MonoBehaviour
                 isMyFirstDeath = true;
             }
 
-            if (tagOfKiller == "Blackhole")
-            {
-
-
-                numOfTimesKilledByBlackHole++;
-                StartCoroutine(RespawnAfterDelay(5f));
-                return;
-			}
-
             numOfTimesKilledByBlackHole++;
-             //respawnSliderInstance = Instantiate(respawnSliderPrefab, transform.position + Vector3.up * 2f, Quaternion.identity);
             StartCoroutine(RespawnAfterDelay(5f));
             return;
         }
         else if (tagOfKiller == "OtherPlayer")
         {
             numOfTimesKilledByPlayer++;
-            //respawnSliderInstance = Instantiate(respawnSliderPrefab, transform.position + Vector3.up * 2f, Quaternion.identity);
             StartCoroutine(RespawnAfterDelay(5f));
             return;
-            //ReducePlayerLife();
         }
         else if (tagOfKiller == "Good" || tagOfKiller == "Bad")
         {
@@ -210,30 +198,14 @@ public class ScoreManager : MonoBehaviour
             if (tagOfKiller == "Good")
             {
                 numOfGoodCollectiblesCollected++;
-
             }
-            else if (tagOfKiller == "OtherPlayer")
+            else
             {
-                numOfTimesKilledByPlayer++;
-                StartCoroutine(RespawnAfterDelay(5f));
-                return;
-                //ReducePlayerLife();
+                numOfBadCollectiblesCollected++;
             }
-            else if (tagOfKiller == "Good" || tagOfKiller == "Bad")
-            {
-                numOfCollectiblesCollected++;
-                if (tagOfKiller == "Good")
-                {
-                    numOfGoodCollectiblesCollected++;
-                }
-                else
-                {
-                    numOfBadCollectiblesCollected++;
-                }
-                return;
-            }
+            return;
         }
-        transform.position = respawnPosition;
+        
     }
 
     IEnumerator RespawnAfterDelay(float delay)
