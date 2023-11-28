@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class PlayerInputController : MonoBehaviour
 {
+    
     public int playerNumber;    
     public Rigidbody2D rb;
     Vector3 direction;
@@ -21,6 +22,14 @@ public class PlayerInputController : MonoBehaviour
     
     KeyCode controllingKey;
     private float defaultTurnSpeedMultiplierValue = 1f;
+
+    // Guiding ArroW
+    private bool showArrow = true;
+    private float showArrowTimer = 10;
+    public float maxScale = 0.09f;
+    public float minScale = 0.03f;
+    public float scaleSpeed = 0.01f;
+    public GameObject turnArrow;
 
     //public GameObject blackHole;
 
@@ -57,6 +66,10 @@ public class PlayerInputController : MonoBehaviour
         if(isMovementAllowed)
         {
             InputController();
+        }
+        else
+        {
+            rb.velocity = Vector3.zero;
         }
         
 
@@ -113,6 +126,11 @@ public class PlayerInputController : MonoBehaviour
             
 
         }
+        showArrowTimer += Time.deltaTime;
+        if(showArrowTimer > 20.0f)
+        {
+            showArrow = false;
+        }
     }
 
 
@@ -127,12 +145,28 @@ public class PlayerInputController : MonoBehaviour
            
             direction = Quaternion.Euler(3, 5, angleToTurn * turnSpeed) * transform.up * Time.deltaTime;
             turnSpeed += turnSpeedMultiplier * Time.deltaTime;
+            if (showArrow)
+            {
+                turnArrow.SetActive(true);
+                turnArrow.transform.localScale += new Vector3(0.01f, 0.01f, 0.01f) * Time.deltaTime;
+                if (turnArrow.transform.localScale.x > maxScale)
+                {
+                    turnArrow.transform.localScale = new Vector3(maxScale, maxScale, maxScale);
+                }
+            }
+            
         }
         else
         {
             // direction = transform.position - blackHole.transform.position;
             turnSpeed = 1f;
             direction = Quaternion.Euler(3, 5, -angleToTurn*turnSpeed) * transform.up * Time.deltaTime;
+            if (showArrow || turnArrow.activeInHierarchy)
+            {
+                turnArrow.SetActive(false);
+                turnArrow.transform.localScale = new Vector3(minScale, minScale, minScale);
+            }
+            
         }
         targetRotation = Quaternion.LookRotation(Vector3.forward, direction);
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 5f * Time.deltaTime);

@@ -12,11 +12,13 @@ public class CollisionController : MonoBehaviour
     public ScoreManager scoreManagerPlayer1;
     public ScoreManager scoreManagerPlayer2;
     public PowerUpManager powerUpManager;
+    
 
 
     private void Start()
     {
         powerUpManager = GetComponentInParent<PowerUpManager>();
+        
     }
     // detect collision with other game bodies 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -46,6 +48,8 @@ public class CollisionController : MonoBehaviour
         {
             this.gameObject.GetComponentInParent<ScoreManager>().IncrementScore(-scoreOnKill); // - score
             this.gameObject.GetComponentInParent<ScoreManager>().RespawnPlayer("Blackhole");
+         
+
 
             FindObjectOfType<SoundManager>().Play("playerdeath");
 

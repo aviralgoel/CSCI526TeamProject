@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 
 public class PowerUpManager : MonoBehaviour
@@ -77,6 +78,10 @@ public class PowerUpManager : MonoBehaviour
         scoreManager = GetComponent<ScoreManager>();
         playerNumber = scoreManager.GetPlayerNumber();
         // PowerUpControllingKey = (playerNumber == 2) ? KeyCode.Q : KeyCode.P;
+        for(int i = 0; i < walls.Length; i++) 
+        {
+            walls[i].transform.position = wallSources[i].transform.position;
+        }
     }
 
     // Update is called once per frame
@@ -108,10 +113,14 @@ public class PowerUpManager : MonoBehaviour
 
         
         if (Mathf.Approximately(Vector3.Distance(walls[(int)Walls.Bottom].position, wallDestinations[(int)Walls.Bottom].position),0) &&
-            Mathf.Approximately(Vector3.Distance(walls[(int)Walls.Top].position, wallDestinations[(int)Walls.Top].position),0))
+            Mathf.Approximately(Vector3.Distance(walls[(int)Walls.Top].position, wallDestinations[(int)Walls.Top].position),0) &&
+            Mathf.Approximately(Vector3.Distance(walls[(int)Walls.TopLeft].position, wallDestinations[(int)Walls.TopLeft].position),0) &&
+            Mathf.Approximately(Vector3.Distance(walls[(int)Walls.TopRight].position, wallDestinations[(int)Walls.TopRight].position),0) &&
+            Mathf.Approximately(Vector3.Distance(walls[(int)Walls.BottomRight].position, wallDestinations[(int)Walls.BottomRight].position),0) &&
+            Mathf.Approximately(Vector3.Distance(walls[(int)Walls.BottomLeft].position, wallDestinations[(int)Walls.BottomLeft].position),0)
+            )
         {
             StartCoroutine(Pause());
-
         }
     }
     private void MoveWallsOutside()
@@ -124,14 +133,17 @@ public class PowerUpManager : MonoBehaviour
         }
         if (Mathf.Approximately(Vector3.Distance(walls[(int)Walls.Bottom].position, wallSources[(int)Walls.Bottom].position), 0) &&
             Mathf.Approximately(Vector3.Distance(walls[(int)Walls.Top].position, wallSources[(int)Walls.Top].position), 0) &&
-            Mathf.Approximately(Vector3.Distance(walls[(int)Walls.TopLeft].position, wallSources[(int)Walls.TopLeft].position), 0))
+            Mathf.Approximately(Vector3.Distance(walls[(int)Walls.TopLeft].position, wallSources[(int)Walls.TopLeft].position), 0) &&
+            Mathf.Approximately(Vector3.Distance(walls[(int)Walls.TopRight].position, wallSources[(int)Walls.TopRight].position), 0) &&
+            Mathf.Approximately(Vector3.Distance(walls[(int)Walls.BottomRight].position, wallSources[(int)Walls.BottomRight].position), 0) &&
+            Mathf.Approximately(Vector3.Distance(walls[(int)Walls.BottomLeft].position, wallSources[(int)Walls.BottomLeft].position), 0)
+            )
         {
             moveWallsOutside = false;
             fireWallActive = false;
             for (int i = 0; i < 6; i++)
             {
                 walls[i].transform.GetComponent<SpriteRenderer>().color = Color.white;
-
             }
         }
 
@@ -162,7 +174,9 @@ public class PowerUpManager : MonoBehaviour
     private void UseFireWalls()
     {
         if (!fireWallActive)  // only do something while firewall is not already active
-        {
+        {   
+            UIManager.instance.SetPlayer1PowerUpText("Avoid the Firewalls");
+            UIManager.instance.SetPlayer2PowerUpText("Avoid the Firewalls");
             fireWallActive = true;
             moveWallsInside = true;
         }
@@ -175,14 +189,14 @@ public class PowerUpManager : MonoBehaviour
         {
             powerupsCount[type] = 1;
             totalPowerUpCount = 1;
-            if (playerNumber == 1)
-            {
-                UIManager.instance.SetPlayer1PowerUpText("You picked up " + type.ToString());
-            }
-            else if (playerNumber == 2)
-            {
-                UIManager.instance.SetPlayer2PowerUpText("You picked up " + type.ToString());
-            }
+            //if (playerNumber == 1)
+            //{
+               // UIManager.instance.SetPlayer1PowerUpText("You picked up " + type.ToString());
+           // }
+           // else if (playerNumber == 2)
+           // {
+               // UIManager.instance.SetPlayer2PowerUpText("You picked up " + type.ToString());
+           // }
             //scoreManager.IncrementScore(scoreOnPowerUp);
         }
         
@@ -210,6 +224,19 @@ public class PowerUpManager : MonoBehaviour
     }
 	private void UseFreeze()
     {
+        if (this.gameObject.CompareTag("Player1"))
+        {
+            //GameObject missile = Instantiate(Missiles, pos, Quaternion.identity);
+           // missile.GetComponent<HomingMissile>().target = Player2.transform;
+            UIManager.instance.SetPlayer1PowerUpText("You collected Freeze");
+
+        }
+        else
+        {
+            //GameObject missile = Instantiate(Missiles, pos, Quaternion.identity);
+            //missile.GetComponent<HomingMissile>().target = Player1.transform;
+            UIManager.instance.SetPlayer2PowerUpText("You collected Freeze");
+        }
         StartCoroutine(FreezeAndUnfreeze());
     }
 
@@ -241,6 +268,7 @@ public class PowerUpManager : MonoBehaviour
             GameObject missile = Instantiate(Missiles, pos, Quaternion.identity);
             missile.GetComponent<HomingMissile>().target = Player2.transform;
             UIManager.instance.SetPlayer2PowerUpText("Dodge Opponent Missile");
+            UIManager.instance.SetPlayer1PowerUpText("You collected Missile");
 
         }
         else
@@ -248,6 +276,7 @@ public class PowerUpManager : MonoBehaviour
             GameObject missile = Instantiate(Missiles, pos, Quaternion.identity);
             missile.GetComponent<HomingMissile>().target = Player1.transform;
             UIManager.instance.SetPlayer1PowerUpText("Dodge Opponent Missile");
+            UIManager.instance.SetPlayer2PowerUpText("You collected Missile");
         }
     }
 }

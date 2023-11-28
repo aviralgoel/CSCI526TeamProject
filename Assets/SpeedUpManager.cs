@@ -100,12 +100,15 @@ public class SpeedUpManager : MonoBehaviour
                 speedUps[randomBadIndex].GetComponent<SpeedUp>().beginDamage = false;
                 speedUps[randomBadIndex].SetActive(false);
                 
+
             }
-              
+            UIManager.instance.SetPlayer1PowerUpText("  ");
+            UIManager.instance.SetPlayer2PowerUpText("  ");
 
 
             // reset everything
             yield return new WaitForSeconds(chargeUpEveryXSeconds);
+
         }
         
 

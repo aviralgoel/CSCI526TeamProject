@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using System.Collections;
 
 public class ScoreManager : MonoBehaviour
 {   
@@ -21,6 +22,12 @@ public class ScoreManager : MonoBehaviour
     public List<GameObject> walls = new List<GameObject>();
     public PowerUpManager PowerUpManagerPlayer1;
     public PowerUpManager PowerUpManagerPlayer2;
+
+    public float myFirstDeathTime = 0;
+    private bool isMyFirstDeath = false;
+
+    public PlayerInputController player;
+
 
     public Image HealthBar;
     public float TotalHealth;
@@ -41,6 +48,7 @@ public class ScoreManager : MonoBehaviour
         respawnPosition = transform.position;
         spawner = FindObjectOfType<Spawnercode>();
         score = TotalHealth;
+        player = GetComponent<PlayerInputController>();
     }
 
     // Update is called once per frame
@@ -162,22 +170,35 @@ public class ScoreManager : MonoBehaviour
         HealthBar.fillAmount = score / TotalHealth;
     }
     public void RespawnPlayer(string tagOfKiller)
-    {   
+    {
         // analytics collector
+
         if(tagOfKiller == "Blackhole")
+        {   
+            if(!isMyFirstDeath) 
+            {
+                myFirstDeathTime = Time.time;
+                isMyFirstDeath = true;
+            }
+
+        if (tagOfKiller == "Blackhole")
         {
+
             numOfTimesKilledByBlackHole++;
-            //ReducePlayerLife();
+            StartCoroutine(RespawnAfterDelay(5f));
+            return;
         }
-        else if(tagOfKiller == "OtherPlayer")
+        else if (tagOfKiller == "OtherPlayer")
         {
             numOfTimesKilledByPlayer++;
+            StartCoroutine(RespawnAfterDelay(5f));
+            return;
             //ReducePlayerLife();
         }
-        else if(tagOfKiller == "Good" || tagOfKiller=="Bad")
+        else if (tagOfKiller == "Good" || tagOfKiller == "Bad")
         {
             numOfCollectiblesCollected++;
-            if(tagOfKiller == "Good")
+            if (tagOfKiller == "Good")
             {
                 numOfGoodCollectiblesCollected++;
             }
@@ -188,8 +209,18 @@ public class ScoreManager : MonoBehaviour
             return;
         }
         transform.position = respawnPosition;
+    }
+
+    IEnumerator RespawnAfterDelay(float delay)
+    {
+        transform.position = respawnPosition;
+        player.isMovementAllowed = false;
+        yield return new WaitForSeconds(delay);
+        player.isMovementAllowed = true;
 
     }
+
+
     public void GameOver() 
     {   
         // sstop the player
