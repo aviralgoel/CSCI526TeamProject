@@ -173,40 +173,41 @@ public class ScoreManager : MonoBehaviour
     {
         // analytics collector
 
-        if(tagOfKiller == "Blackhole")
-        {   
-            if(!isMyFirstDeath) 
+        if (tagOfKiller == "Blackhole")
+        {
+            if (!isMyFirstDeath)
             {
                 myFirstDeathTime = Time.time;
                 isMyFirstDeath = true;
             }
 
-        if (tagOfKiller == "Blackhole")
-        {
+            if (tagOfKiller == "Blackhole")
+            {
 
-            numOfTimesKilledByBlackHole++;
-            StartCoroutine(RespawnAfterDelay(5f));
-            return;
-        }
-        else if (tagOfKiller == "OtherPlayer")
-        {
-            numOfTimesKilledByPlayer++;
-            StartCoroutine(RespawnAfterDelay(5f));
-            return;
-            //ReducePlayerLife();
-        }
-        else if (tagOfKiller == "Good" || tagOfKiller == "Bad")
-        {
-            numOfCollectiblesCollected++;
-            if (tagOfKiller == "Good")
-            {
-                numOfGoodCollectiblesCollected++;
+                numOfTimesKilledByBlackHole++;
+                StartCoroutine(RespawnAfterDelay(5f));
+                return;
             }
-            else
+            else if (tagOfKiller == "OtherPlayer")
             {
-                numOfBadCollectiblesCollected++;
+                numOfTimesKilledByPlayer++;
+                StartCoroutine(RespawnAfterDelay(5f));
+                return;
+                //ReducePlayerLife();
             }
-            return;
+            else if (tagOfKiller == "Good" || tagOfKiller == "Bad")
+            {
+                numOfCollectiblesCollected++;
+                if (tagOfKiller == "Good")
+                {
+                    numOfGoodCollectiblesCollected++;
+                }
+                else
+                {
+                    numOfBadCollectiblesCollected++;
+                }
+                return;
+            }
         }
         transform.position = respawnPosition;
     }
