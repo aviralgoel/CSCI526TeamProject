@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 
 public class PowerUpManager : MonoBehaviour
@@ -16,7 +17,7 @@ public class PowerUpManager : MonoBehaviour
 
     public PlayerInputController OpponentPlayerController;
 
-    public int scoreOnPowerUp = 2;
+    //public int scoreOnPowerUp = 5;
 
     [HideInInspector] public int numOfFireWallHitByPlayer = 0;
     [HideInInspector] public int numOfFreezeHitByPlayer = 0;
@@ -32,7 +33,7 @@ public class PowerUpManager : MonoBehaviour
     [SerializeField]private bool isFrozen = false;
     public float freezeTime = 10f; // Time in seconds for freezing effect
     public float freezeMovementSpeed = 0.2f;
-    public ParticleSystem opponentFreezeParticleEffect;
+    public ParticleSystem freezeEffect;
 
 
 
@@ -61,14 +62,14 @@ public class PowerUpManager : MonoBehaviour
     {
         FireWalls, 
         Freeze,
-        Shield
+        Missiles
     }
     // create a hashmap to store the powerups of size 3 element with value 0
     public Dictionary<PowerUpType, int> powerupsCount = new Dictionary<PowerUpType, int>()
     {
         {PowerUpType.FireWalls, 0},
         {PowerUpType.Freeze, 0},
-        {PowerUpType.Shield, 0}
+        {PowerUpType.Missiles, 0}
     };
    
     // Start is called before the first frame update
@@ -77,6 +78,10 @@ public class PowerUpManager : MonoBehaviour
         scoreManager = GetComponent<ScoreManager>();
         playerNumber = scoreManager.GetPlayerNumber();
         // PowerUpControllingKey = (playerNumber == 2) ? KeyCode.Q : KeyCode.P;
+        for(int i = 0; i < walls.Length; i++) 
+        {
+            walls[i].transform.position = wallSources[i].transform.position;
+        }
     }
 
     // Update is called once per frame
@@ -106,14 +111,16 @@ public class PowerUpManager : MonoBehaviour
             walls[i].transform.GetComponent<SpriteRenderer>().color = Color.red;
         }
 
-        UIManager.instance.SetPlayer1PowerUpText("Avoid Red Walls!");
-        UIManager.instance.SetPlayer2PowerUpText("Avoid Red Walls!");
+        
         if (Mathf.Approximately(Vector3.Distance(walls[(int)Walls.Bottom].position, wallDestinations[(int)Walls.Bottom].position),0) &&
-            Mathf.Approximately(Vector3.Distance(walls[(int)Walls.Top].position, wallDestinations[(int)Walls.Top].position),0))
+            Mathf.Approximately(Vector3.Distance(walls[(int)Walls.Top].position, wallDestinations[(int)Walls.Top].position),0) &&
+            Mathf.Approximately(Vector3.Distance(walls[(int)Walls.TopLeft].position, wallDestinations[(int)Walls.TopLeft].position),0) &&
+            Mathf.Approximately(Vector3.Distance(walls[(int)Walls.TopRight].position, wallDestinations[(int)Walls.TopRight].position),0) &&
+            Mathf.Approximately(Vector3.Distance(walls[(int)Walls.BottomRight].position, wallDestinations[(int)Walls.BottomRight].position),0) &&
+            Mathf.Approximately(Vector3.Distance(walls[(int)Walls.BottomLeft].position, wallDestinations[(int)Walls.BottomLeft].position),0)
+            )
         {
             StartCoroutine(Pause());
-
-
         }
     }
     private void MoveWallsOutside()
@@ -121,11 +128,16 @@ public class PowerUpManager : MonoBehaviour
 
         for(int i = 0; i < 6; i++)
         {
+            //walls[i].transform.GetComponent<SpriteRenderer>().color = Color.white;
             walls[i].position = Vector3.MoveTowards(walls[i].position, wallSources[i].position, Time.deltaTime * fireWallMovementSpeed);
         }
         if (Mathf.Approximately(Vector3.Distance(walls[(int)Walls.Bottom].position, wallSources[(int)Walls.Bottom].position), 0) &&
             Mathf.Approximately(Vector3.Distance(walls[(int)Walls.Top].position, wallSources[(int)Walls.Top].position), 0) &&
-            Mathf.Approximately(Vector3.Distance(walls[(int)Walls.TopLeft].position, wallSources[(int)Walls.TopLeft].position), 0))
+            Mathf.Approximately(Vector3.Distance(walls[(int)Walls.TopLeft].position, wallSources[(int)Walls.TopLeft].position), 0) &&
+            Mathf.Approximately(Vector3.Distance(walls[(int)Walls.TopRight].position, wallSources[(int)Walls.TopRight].position), 0) &&
+            Mathf.Approximately(Vector3.Distance(walls[(int)Walls.BottomRight].position, wallSources[(int)Walls.BottomRight].position), 0) &&
+            Mathf.Approximately(Vector3.Distance(walls[(int)Walls.BottomLeft].position, wallSources[(int)Walls.BottomLeft].position), 0)
+            )
         {
             moveWallsOutside = false;
             fireWallActive = false;
@@ -134,10 +146,6 @@ public class PowerUpManager : MonoBehaviour
                 walls[i].transform.GetComponent<SpriteRenderer>().color = Color.white;
             }
         }
-
-        UIManager.instance.SetPlayer1PowerUpText("");
-        UIManager.instance.SetPlayer2PowerUpText("");
-       
 
     }
 
@@ -149,10 +157,10 @@ public class PowerUpManager : MonoBehaviour
             removePowerUp(PowerUpType.Freeze);
             numOfFreezeHitByPlayer++;
         }
-        else if (powerupsCount[PowerUpType.Shield] > 0)
+        else if (powerupsCount[PowerUpType.Missiles] > 0)
         {
-            //UseShield();
-            removePowerUp(PowerUpType.Shield);
+            UseMissiles();
+            removePowerUp(PowerUpType.Missiles);
         }
         else if (powerupsCount[PowerUpType.FireWalls] > 0)
         {
@@ -165,8 +173,14 @@ public class PowerUpManager : MonoBehaviour
 
     private void UseFireWalls()
     {
-        fireWallActive = true;
-        moveWallsInside = true;
+        if (!fireWallActive)  // only do something while firewall is not already active
+        {   
+            UIManager.instance.SetPlayer1PowerUpText("Avoid the Firewalls");
+            UIManager.instance.SetPlayer2PowerUpText("Avoid the Firewalls");
+            fireWallActive = true;
+            moveWallsInside = true;
+        }
+             
     }
 
     public void addPowerUp(PowerUpType type)
@@ -175,15 +189,15 @@ public class PowerUpManager : MonoBehaviour
         {
             powerupsCount[type] = 1;
             totalPowerUpCount = 1;
-            if (playerNumber == 1)
-            {
-                UIManager.instance.SetPlayer1PowerUpText("You picked up " + type.ToString());
-            }
-            else if (playerNumber == 2)
-            {
-                UIManager.instance.SetPlayer2PowerUpText("You picked up " + type.ToString());
-            }
-            scoreManager.IncrementScore(scoreOnPowerUp);
+            //if (playerNumber == 1)
+            //{
+               // UIManager.instance.SetPlayer1PowerUpText("You picked up " + type.ToString());
+           // }
+           // else if (playerNumber == 2)
+           // {
+               // UIManager.instance.SetPlayer2PowerUpText("You picked up " + type.ToString());
+           // }
+            //scoreManager.IncrementScore(scoreOnPowerUp);
         }
         
     }
@@ -196,28 +210,7 @@ public class PowerUpManager : MonoBehaviour
         }        
     }
 
-   /* private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("FireWalls"))
-        {
-            addPowerUp(PowerUpType.FireWalls);
-
-            //Debug.Log("we will now search for sound!");
-            FindObjectOfType<SoundManager>().Play("PowerUp");
-
-        }
-        else if (collision.gameObject.CompareTag("Freeze"))
-        {
-            addPowerUp(PowerUpType.Freeeze);
-
-            FindObjectOfType<SoundManager>().Play("PowerUp");
-            
-        }
-        else if (collision.gameObject.CompareTag("Shield"))
-        {
-            addPowerUp(PowerUpType.Shield);
-        }
-    }*/
+   
 
     // co routine to pause 5 second
     IEnumerator Pause()
@@ -227,9 +220,23 @@ public class PowerUpManager : MonoBehaviour
         moveWallsInside = false;
         moveWallsOutside = true;
 
+
     }
 	private void UseFreeze()
     {
+        if (this.gameObject.CompareTag("Player1"))
+        {
+            //GameObject missile = Instantiate(Missiles, pos, Quaternion.identity);
+           // missile.GetComponent<HomingMissile>().target = Player2.transform;
+            UIManager.instance.SetPlayer1PowerUpText("You collected Freeze");
+
+        }
+        else
+        {
+            //GameObject missile = Instantiate(Missiles, pos, Quaternion.identity);
+            //missile.GetComponent<HomingMissile>().target = Player1.transform;
+            UIManager.instance.SetPlayer2PowerUpText("You collected Freeze");
+        }
         StartCoroutine(FreezeAndUnfreeze());
     }
 
@@ -237,11 +244,41 @@ public class PowerUpManager : MonoBehaviour
     {
         isFrozen = true;
         OpponentPlayerController.FreezeThisPlayer();
-        opponentFreezeParticleEffect.Play();
+        freezeEffect.Play(true);
         yield return new WaitForSeconds(freezeTime);
         OpponentPlayerController.UnFreezeThisPlayer();
         isFrozen = false;
     }
 
+    public GameObject Missiles;
+    public GameObject Player1;
+    public GameObject Player2;
+    public GameObject HexagonPlayground;
+    Vector3 playGroundExtendMin;
+    Vector3 playGroundExtendMax;
+    SpriteRenderer sr;
+    private void UseMissiles()
+    {
 
+        sr = HexagonPlayground.GetComponent<SpriteRenderer>();
+        // Vector3 randomSpawn = new Vector3(UnityEngine.Random.Range(-2.5f, 2.5f), UnityEngine.Random.Range(-2.5f, 2.5f), 0);
+        Vector3 pos = new Vector3(0, 0, 0);
+        if (this.gameObject.CompareTag("Player1"))
+        {
+            GameObject missile = Instantiate(Missiles, pos, Quaternion.identity);
+            missile.GetComponent<HomingMissile>().target = Player2.transform;
+            UIManager.instance.SetPlayer2PowerUpText("Dodge Opponent Missile");
+            UIManager.instance.SetPlayer1PowerUpText("You collected Missile");
+
+        }
+        else
+        {
+            GameObject missile = Instantiate(Missiles, pos, Quaternion.identity);
+            missile.GetComponent<HomingMissile>().target = Player1.transform;
+            UIManager.instance.SetPlayer1PowerUpText("Dodge Opponent Missile");
+            UIManager.instance.SetPlayer2PowerUpText("You collected Missile");
+        }
+    }
 }
+
+

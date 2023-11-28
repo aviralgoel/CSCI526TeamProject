@@ -7,7 +7,7 @@ public class Sound
     public string name;
     public AudioClip clip;
 
-    [Range(0f, 1f)]
+    [Range(0f, 0.5f)]
     public float volume;
     [Range(0.1f, 3f)]
     public float pitch;
@@ -41,54 +41,4 @@ public class SoundManager : MonoBehaviour
     }
 }
 
-
-// using UnityEngine;
-// using System.Collections.Generic;
-
-// public class SoundManager : MonoBehaviour
-// {
-//     [System.Serializable]
-//     public class Sound
-//     {
-//         public string name;
-//         public AudioClip clip;
-//     }
-
-//     public static SoundManager instance;
-
-//     public List<Sound> sounds = new List<Sound>();
-//     private Dictionary<string, AudioSource> soundDictionary = new Dictionary<string, AudioSource>();
-
-//     private void Awake()
-//     {
-//         if (instance == null)
-//         {
-//             instance = this;
-//             DontDestroyOnLoad(gameObject);
-//         }
-//         else if (instance != this)
-//         {
-//             Destroy(gameObject);
-//             return  ;
-//         }
-
-//         foreach (var sound in sounds)
-//         {
-//             AudioSource source = gameObject.AddComponent<AudioSource>();
-//             source.clip = sound.clip;
-//             soundDictionary.Add(sound.name, source);
-//         }
-//     }
-
-//     public void Play(string soundName)
-//     {
-//         if (soundDictionary.TryGetValue(soundName, out AudioSource source))
-//         {
-//             source.Play();
-//         }
-//         else
-//         {
-//             Debug.LogError("Sound not found in dictionary: " + soundName);
-//         }
-//     }
-// }
+/////FindObjectOfType<SoundManager>().Play("Sound Name");

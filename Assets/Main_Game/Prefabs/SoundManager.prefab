@@ -75,8 +75,18 @@ MonoBehaviour:
     volume: 1
     pitch: 2
     source: {fileID: 0}
+  - name: freeze
+    clip: {fileID: 8300000, guid: 3a79c30c6c0a3824289b3705ef1a3caa, type: 3}
+    volume: 1
+    pitch: 2
+    source: {fileID: 0}
   - name: button
     clip: {fileID: 8300000, guid: f220628b3fd3a2144afbc125b53a8b10, type: 3}
+    volume: 1
+    pitch: 2
+    source: {fileID: 0}
+  - name: missile
+    clip: {fileID: 8300000, guid: 888b3cfe9f713ad4b85f592a28e7ae54, type: 3}
     volume: 1
     pitch: 2
     source: {fileID: 0}

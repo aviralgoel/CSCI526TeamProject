@@ -24,11 +24,13 @@ public class PlayerManagertutorial : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.L) && !player1Joined)
         {
+            FindObjectOfType<SoundManager>().Play("button");
             JoinPlayer(1);
         }
 
         if (Input.GetKeyDown(KeyCode.A) && !player2Joined)
         {
+            FindObjectOfType<SoundManager>().Play("button");
             JoinPlayer(2);
         }
 

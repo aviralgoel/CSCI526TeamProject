@@ -67,6 +67,8 @@ public class SpeedUpManager : MonoBehaviour
             int probability = Random.Range(0, 12);
             if(probability > 4) // good
             {
+                UIManager.instance.SetPlayer1PowerUpText("Stay in Green Region to Gain Health");
+                UIManager.instance.SetPlayer2PowerUpText("Stay in Green Region to Gain Health");
                 speedUps[randomGoodIndex].SetActive(true);
                 speedUps[randomGoodIndex].GetComponent<PolygonCollider2D>().enabled = true;
                 speedUps[randomGoodIndex].GetComponent<SpeedUp>().rn.color = green;
@@ -78,9 +80,13 @@ public class SpeedUpManager : MonoBehaviour
                 speedUps[randomGoodIndex].GetComponent<PolygonCollider2D>().enabled = false;
                 speedUps[randomGoodIndex].GetComponent<SpeedUp>().beginHealing = false;
                 speedUps[randomGoodIndex].SetActive(false);
+                
+
             }
             else // bad
             {
+                UIManager.instance.SetPlayer1PowerUpText("Avoid Red Region");
+                UIManager.instance.SetPlayer2PowerUpText("Avoid Red Region");
                 speedUps[randomBadIndex].SetActive(true);
                 speedUps[randomBadIndex].GetComponent<PolygonCollider2D>().enabled = true;
                 speedUps[randomBadIndex].GetComponent<SpeedUp>().rn.color = red;
@@ -93,12 +99,16 @@ public class SpeedUpManager : MonoBehaviour
                 speedUps[randomBadIndex].GetComponent<PolygonCollider2D>().enabled = false;
                 speedUps[randomBadIndex].GetComponent<SpeedUp>().beginDamage = false;
                 speedUps[randomBadIndex].SetActive(false);
+                
+
             }
-              
+            UIManager.instance.SetPlayer1PowerUpText("  ");
+            UIManager.instance.SetPlayer2PowerUpText("  ");
 
 
             // reset everything
             yield return new WaitForSeconds(chargeUpEveryXSeconds);
+
         }
         
 
