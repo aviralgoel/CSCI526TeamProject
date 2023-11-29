@@ -338,7 +338,7 @@ MonoBehaviour:
   angleToTurn: 10
   speedMultiplier: 0
   turnSpeedMultiplier: 0
-  respawnSliderPrefab: {fileID: 0}
+  respawnSliderPrefab: {fileID: 243285422}
   maxScale: 0.09
   minScale: 0.05
   scaleSpeed: 0.01
@@ -465,6 +465,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 233990324765502823, guid: 37b9c2785d0d2ed4c9a44ffeebab617a, type: 3}
   m_PrefabInstance: {fileID: 239588600}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &243285422 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 842936962684863469, guid: aa9161055e227c24583beef344af0ec7, type: 3}
+  m_PrefabInstance: {fileID: 168790063}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &332508249
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -681,6 +692,17 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 1089453811, guid: 51f01ce396669da44a50d42c23ea6947, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 51f01ce396669da44a50d42c23ea6947, type: 3}
+--- !u!114 &639470348 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5525832231306219318, guid: 28028cd388d86a24a96f1d54637b7eb7, type: 3}
+  m_PrefabInstance: {fileID: 1196791629}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &689576558
 GameObject:
   m_ObjectHideFlags: 0
@@ -1214,7 +1236,7 @@ MonoBehaviour:
   angleToTurn: 10
   speedMultiplier: 0
   turnSpeedMultiplier: 0
-  respawnSliderPrefab: {fileID: 0}
+  respawnSliderPrefab: {fileID: 639470348}
   maxScale: 0.09
   minScale: 0.05
   scaleSpeed: 0.01
