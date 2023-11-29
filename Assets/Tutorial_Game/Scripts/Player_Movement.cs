@@ -106,7 +106,7 @@ public class Player_Movement : MonoBehaviour
         {
             transform.position = respawnPosition;
 
-            FindObjectOfType<SoundManager>().Play("Respawn");
+            FindObjectOfType<SoundManager>().Play("playerdeath");
         }
     }
 
