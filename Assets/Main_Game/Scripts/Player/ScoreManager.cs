@@ -215,6 +215,7 @@ public class ScoreManager : MonoBehaviour
         float countdown = delay;
         respawnSliderPrefab.gameObject.SetActive(true);
         respawnSliderPrefab.value = countdown;
+        transform.GetComponent<PolygonCollider2D>().enabled = false;
         //respawnSliderInstance.transform.position = transform.position ;
         while (countdown > 0)
         {
@@ -228,6 +229,7 @@ public class ScoreManager : MonoBehaviour
         }
         respawnSliderPrefab.gameObject.SetActive(false);
         player.isMovementAllowed = true;
+        transform.GetComponent<PolygonCollider2D>().enabled = true;
 
     }
 
