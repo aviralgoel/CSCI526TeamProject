@@ -26,6 +26,14 @@ public class Player_Movement : MonoBehaviour
     public Slider respawnSliderPrefab;
     Vector3 respawnPosition;
 
+    // Guiding ArroW
+    private bool showArrow = true;
+    private float showArrowTimer = 10;
+    public float maxScale = 0.09f;
+    public float minScale = 0.03f;
+    public float scaleSpeed = 0.01f;
+    public GameObject turnArrow;
+
     void Start()
     {
         playerNumber = (gameObject.tag == "Player1") ? 1 : 2;
@@ -67,11 +75,26 @@ public class Player_Movement : MonoBehaviour
         {
             direction = Quaternion.Euler(3, 5, angleToTurn * turnSpeed) * transform.up * Time.deltaTime;
             turnSpeed += turnSpeedMultiplier * Time.deltaTime;
+            if (showArrow)
+            {
+                turnArrow.SetActive(true);
+                turnArrow.transform.localScale += new Vector3(0.01f, 0.01f, 0.01f) * Time.deltaTime;
+                if (turnArrow.transform.localScale.x > maxScale)
+                {
+                    turnArrow.transform.localScale = new Vector3(maxScale, maxScale, maxScale);
+                }
+            }
+
         }
         else
         {
             turnSpeed = 1f;
             direction = Quaternion.Euler(3, 5, -angleToTurn * turnSpeed) * transform.up * Time.deltaTime;
+            if (showArrow || turnArrow.activeInHierarchy)
+            {
+                turnArrow.SetActive(false);
+                turnArrow.transform.localScale = new Vector3(minScale, minScale, minScale);
+            }
         }
         targetRotation = Quaternion.LookRotation(Vector3.forward, direction);
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 5f * Time.deltaTime);
