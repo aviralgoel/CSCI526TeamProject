@@ -4,7 +4,8 @@
 **COSMIC GRAVITATION**
 
 
-![202311031225](https://github.com/aviralgoel/CSCI526TeamProject/assets/45029621/708fab7c-aa1f-4150-b13f-3f876addc415)
+![bandicam 2023-12-01 10-26-35-872](https://github.com/aviralgoel/CSCI526TeamProject/assets/45029621/9fa5c9b2-8364-4bd7-bbbf-8f6d9238692b)
+
 
 
 **Logline:** 
