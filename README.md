@@ -28,7 +28,9 @@ The ultimate goal of the game is to be the last player standing, defying the rel
 7. Player-vs-Player Collision
 8. Collectibles (Inspiration coins in Mario)
 
-**Gameplay Video:** <a href="https://www.youtube.com/watch?v=JWWFG6_QJYk" target="_blank">Youtube Link</a>
+**Gameplay Video(Beta prototype):** <a href="https://www.youtube.com/watch?v=JWWFG6_QJYk" target="_blank">Youtube Link</a>
+
+**Gameplay Video(Gold prototype):** <a href="https://www.youtube.com/watch?v=Cs-Nc141sjk" target="_blank">Youtube Link</a>
 
 **Contributors:**
 1. Sharan Murli
